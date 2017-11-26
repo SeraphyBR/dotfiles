@@ -1,0 +1,543 @@
+;=====================================================
+;
+;   Polybar de SeraphyBR (Luiz Junio)
+;   email => luisjuniorbr@gmail.com
+;
+;   Para aprender mais sobre como configurar o Polybar
+;   vá para: https://github.com/jaagr/polybar
+;
+;   O arquivo README está cheio de informação.
+;
+;=====================================================
+
+[colors]
+SteelBlue = #4682B4
+Crimson = #DC143C
+Yellow = #FFFF00
+OrangeRed = #FF4500
+Gold = #FFD700
+Red = #FF0000
+DeepSkyBlue = #00BFFF
+chartreuse = #7FFF00
+SpringGreen = #00FF7F
+white = #FFFAFA
+blue = #0000FF
+violet = #9400D3
+SaddleBrown = #8B4513
+DarkOliveGreen = #556B2F
+TrueBlack = #000000
+Black = #222
+DimGray = #696969
+
+background = ${self.TrueBlack}
+background-alt = #444
+foreground = ${self.white}
+foreground-alt = #ffffff
+primary = #00FF00
+secondary = #006400
+alert = ${self.Red}
+
+[bar/seraphybr]
+; Use the following command to list available outputs:
+; If unspecified, the application will pick the first one it finds.
+; $ xrandr -q | grep " connected" | cut -d ' ' -f1
+monitor = ${env:MONITOR}
+width = 100%
+height = 28
+#offset-x = 1%
+#offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #0000FF
+
+border-size = 0
+border-color = #c0c5ce
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = Book:pixelsize=12;1
+#font-1 = Noto Sans:fontformat=Bold:size=12:antialias=true;0
+font-1 = FontAwesome:pixelsize=12;1
+font-2 = MaterialIcons:pixelsize=12;1
+
+modules-left = my-text-label bspwm
+modules-center =
+modules-right = volume backlight-acpi redshift bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
+
+
+tray-position =
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+;override-redirect = true
+
+[bar/seraphybr_bottom]
+
+monitor = ${env:MONITOR}
+width = 100%
+height = 28
+#offset-x = 1%
+#offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #0000FF
+
+border-size = 0
+border-color = #c0c5ce
+
+padding-left = 3
+padding-right = 3
+
+bottom = true
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = Book:pixelsize=13;1
+font-1 = FontAwesome:pixelsize=12;1
+font-2 = MaterialIcons:pixelsize=12;1
+
+modules-left = mocp
+modules-center = xwindow
+modules-right = powermenu
+
+tray-position = left
+tray-padding = 2
+
+###############################################################################
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+format-underline = ${colors.OrangeRed}
+###############################################################################
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Set the scroll cycle direction
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; Note that the label needs to correspond with the bspwm workspace name
+ws-icon-0 = code;♚
+ws-icon-1 = office;♛
+ws-icon-2 = graphics;♜
+ws-icon-3 = mail;♝
+ws-icon-4 = web;♞
+ws-icon-default = "  "
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+
+; If any values for label-dimmed-N are defined, the workspace/mode
+; colors will get overridden with those values if the monitor is out of focus
+; To only override workspaces in a specific state, use:
+;   label-dimmed-focused
+;   label-dimmed-occupied
+;   label-dimmed-urgent
+;   label-dimmed-empty
+label-dimmed-foreground = #555
+label-dimmed-underline = ${colors.white}
+label-dimmed-focused-background = #f00
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = #555555
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = #55
+
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+;label-monocle = 
+;label-tiled = 
+;label-fullscreen = 
+;label-floating = 
+;label-pseudotiled = P
+;label-locked = 
+;label-locked-foreground = #bd2c40
+;label-sticky = 
+;label-sticky-foreground = #fba922
+;label-private = 
+;label-private-foreground = #bd2c40
+###############################################################################
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/redshift.sh
+##############################################################################
+[module/bluetooth]
+type = custom/script
+interval = 5
+format-underline = ${colors.DeepSkyBlue}
+exec = ~/.config/polybar/bluetooth.py
+
+###############################################################################
+[module/mocp]
+type = custom/script
+interval = 0.56
+format = " <label> "
+format-prefix = " "
+format-underline = ${colors.violet}
+exec = ~/.config/polybar/mocp.py
+click-left = mocp -f
+click-right = mocp -r
+click-middle = mocp -G
+###############################################################################
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+###############################################################################
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+###############################################################################
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+###############################################################################
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #ffd60a
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = #ffffff
+##############################################################################
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+#############################################################################
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.SteelBlue}
+label = %percentage%%
+##############################################################################
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.SteelBlue}
+label = %percentage_used%%
+###################################################################
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <label-connected> 
+format-connected-underline = ${colors.DeepSkyBlue}
+label-connected = %essid%
+
+
+format-disconnected = 
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+#####################################################################
+
+[module/eth]
+type = internal/network
+interface = enp1s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = "  "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+format-underline = ${colors.DeepSkyBlue}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+#####################################################################
+[module/date]
+type = internal/date
+interval = 1
+
+date = " %d-%m-%Y "
+date-alt = " %d-%m-%Y "
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format = <label> 
+format-foreground = ${colors.foreground-alt}
+format-underline = ${colors.SpringGreen}
+
+label = %date% %time%
+label-font = 10
+#########################################################
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = Som Mudo
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.blue}
+bar-volume-foreground-1 = ${colors.blue}
+bar-volume-foreground-2 = ${colors.blue}
+bar-volume-foreground-3 = ${colors.blue}
+bar-volume-foreground-4 = ${colors.blue}
+bar-volume-foreground-5 = ${colors.blue}
+bar-volume-foreground-6 = ${colors.blue}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+##########################################################
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.Yellow}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = "  "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+##########################################################
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format = <ramp> <label>
+format-underline = ${colors.Crimson}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+#########################################################
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+format-underline = ${colors.white}
+
+label-open = "Power Menu  "
+label-open-foreground = ${colors.white}
+label-close = " Cancelar"
+label-close-foreground = ${colors.Red}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = Reiniciar
+menu-0-0-exec = menu-open-1
+
+menu-0-1 = Desligar
+menu-0-1-exec = menu-open-2
+
+menu-0-2 = Suspender
+menu-0-2-exec = menu-open-3
+
+menu-0-3 = Bloquear
+menu-0-3-exec = light-locker-command -l &
+
+menu-1-0 = Voltar
+menu-1-0-exec = menu-open-0
+
+menu-1-1 = Reiniciar
+menu-1-1-exec = sudo reboot &
+
+menu-2-0 = Desligar
+menu-2-0-exec = sudo poweroff &
+
+menu-2-1 = Voltar
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = Suspender
+menu-3-0-exec =gksudo systemctl suspend --now &
+
+menu-3-1 = Voltar
+menu-3-1-exec = menu-open-0
+##########################################################
+
+
+[module/my-text-label]
+type = custom/script
+interval = 1
+format = "<label>   "
+format-prefix = " "
+format-underline = ${colors.white}
+exec = ~/.config/polybar/texto_bar.sh
+
+[module/bbswitch_show]
+type = custom/script
+interval = 1
+format = " <label> "
+format-prefix = " "
+format-underline = ${colors.chartreuse}
+exec = ~/.config/polybar/bbswitch.sh
+###########################################################################
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+compositing-border = source
+###########################################################
+[global/wm]
+margin-top = 4
+margin-bottom = 4
+
+; vim:ft=dosini
