@@ -253,6 +253,7 @@ interval = 5
 format-underline = ${colors.DeepSkyBlue}
 exec = ~/.config/polybar/bluetooth.py
 
+
 ###############################################################################
 [module/mocp]
 type = custom/script
@@ -491,22 +492,22 @@ menu-0-2 = Suspender
 menu-0-2-exec = menu-open-3
 
 menu-0-3 = Bloquear
-menu-0-3-exec = light-locker-command -l &
+menu-0-3-exec = light-locker-command -l
 
 menu-1-0 = Voltar
 menu-1-0-exec = menu-open-0
 
 menu-1-1 = Reiniciar
-menu-1-1-exec = sudo reboot &
+menu-1-1-exec = systemctl reboot
 
 menu-2-0 = Desligar
-menu-2-0-exec = sudo poweroff &
+menu-2-0-exec = systemctl shutdown
 
 menu-2-1 = Voltar
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec =gksudo systemctl suspend --now &
+menu-3-0-exec = systemctl suspend 
 
 menu-3-1 = Voltar
 menu-3-1-exec = menu-open-0
