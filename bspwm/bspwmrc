@@ -1,10 +1,17 @@
 #! /bin/zsh
 
 sxhkd &
+# Compositor
 compton &
+# Wallpaper
 nitrogen --restore &
+# Paineis
 ~/.config/polybar/launch.sh
+# Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# MPD daemon start (if no other user instance exists)
+# [ ! -s ~/.config/mpd/pid ] && mpd
+# Ajuste de temperatura da cor da tela
 redshift &
 
 

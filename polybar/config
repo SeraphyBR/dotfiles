@@ -28,6 +28,7 @@ DarkOliveGreen = #556B2F
 TrueBlack = #000000
 Black = #222
 DimGray = #696969
+DavysGrey = #555
 
 background = ${self.TrueBlack}
 background-alt = #444
@@ -53,7 +54,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #0000FF
+#line-color = #0000FF
 
 border-size = 0
 border-color = #c0c5ce
@@ -94,7 +95,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #0000FF
+#line-color = #0000FF
 
 border-size = 0
 border-color = #c0c5ce
@@ -122,7 +123,7 @@ tray-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:60:...%
+label = %title:0:70:...%
 format-underline = ${colors.OrangeRed}
 ###############################################################################
 [module/bspwm]
@@ -184,9 +185,10 @@ label-monitor = %name%
 ;   label-dimmed-occupied
 ;   label-dimmed-urgent
 ;   label-dimmed-empty
-label-dimmed-foreground = #555
+label-dimmed-foreground = ${colors.DavysGrey}
 label-dimmed-underline = ${colors.white}
-label-dimmed-focused-background = #f00
+label-dimmed-focused-background = ${colors.chartreuse}
+
 
 ; Available tokens:
 ;   %name%
@@ -204,7 +206,7 @@ label-focused-underline = #fba922
 ;   %index%
 ; Default: %icon%  %name%
 label-occupied = %icon%
-label-occupied-underline = #555555
+label-occupied-underline = ${colors.DavysGrey}
 
 ; Available tokens:
 ;   %name%
@@ -406,13 +408,8 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = Som Mudo
 
 bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.blue}
-bar-volume-foreground-1 = ${colors.blue}
-bar-volume-foreground-2 = ${colors.blue}
-bar-volume-foreground-3 = ${colors.blue}
-bar-volume-foreground-4 = ${colors.blue}
-bar-volume-foreground-5 = ${colors.blue}
-bar-volume-foreground-6 = ${colors.blue}
+bar-volume-foreground-0 = ${colors.DeepSkyBlue}
+
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -507,7 +504,7 @@ menu-2-1 = Voltar
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = systemctl suspend 
+menu-3-0-exec = systemctl suspend
 
 menu-3-1 = Voltar
 menu-3-1-exec = menu-open-0
