@@ -22,17 +22,17 @@ super + {_,shift + }l
 
 # Controles de Volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%
+	pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +10%
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%
+	pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -10%
 
 # Controles de brihlo
 XF86MonBrightnessUp
-	xbacklight -inc 5
+	xbacklight -inc 10
 
 XF86MonBrightnessDown
-	xbacklight -dec 5
+	xbacklight -dec 10
 
 
 # bspwm hotkeys
