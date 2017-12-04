@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Criado por Luiz Junio Veloso Dos Santos - luisjuniorbr@gmail.com
 # Para uso em mudulo "custom script" do polybar.
 # Mude de acordo com sua realidade.
