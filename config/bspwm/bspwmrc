@@ -1,0 +1,40 @@
+#! /bin/zsh
+
+sxhkd &
+# Compositor
+compton &
+# Wallpaper
+nitrogen --restore &
+# Paineis
+~/.config/polybar/launch.sh
+# Polkit
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# MPD daemon start (if no other user instance exists)
+# [ ! -s ~/.config/mpd/pid ] && mpd
+# Ajuste de temperatura da cor da tela
+redshift &
+manjaro-hello &
+
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+#bspc config click_to_focus true
+bspc config focus_follows_pointer true
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config normal_border_color "#332d29"
+#bspc config active_border_color "#817267"
+bspc config focused_border_color "#50a53e"
+bspc config presel_border_color "#18fe64"
+#bspc config urgent_border_color "#9f7155"
+
+bspc rule -a manjaro-hello state=floating follow=on
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
