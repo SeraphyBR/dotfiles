@@ -77,6 +77,7 @@ height = 28
 #offset-y = 1%
 radius = 0.0
 fixed-center = true
+wm-restack = bspwm
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -103,7 +104,7 @@ modules-center =
 modules-right = volume backlight-acpi redshift bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
 
 
-tray-position =
+# tray-position =
 tray-padding = 2
 #tray-transparent = true
 ;tray-background = #0063ff
@@ -118,6 +119,7 @@ height = 28
 #offset-y = 1%
 radius = 0.0
 fixed-center = true
+wm-restack = bspwm
 
 background = ${colors.background}
 foreground = ${colors.foreground}
