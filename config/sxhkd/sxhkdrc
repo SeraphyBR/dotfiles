@@ -3,7 +3,7 @@
 
 # terminal emulator
 super + Return
-	xfce4-terminal
+	termite
 
 # Lançador de Programas
 super + d
