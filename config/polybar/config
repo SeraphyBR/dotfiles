@@ -101,7 +101,7 @@ font-2 = MaterialIcons:pixelsize=12;1
 
 modules-left = my-text-label bspwm
 modules-center =
-modules-right = volume backlight-acpi redshift bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
+modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
 
 
 # tray-position =
@@ -174,7 +174,7 @@ enable-click = true
 
 ; Create scroll handlers used to cycle workspaces
 ; Default: true
-enable-scroll = false
+enable-scroll = true
 
 ; Set the scroll cycle direction
 ; Default: true
@@ -273,11 +273,11 @@ label-empty-foreground = #55
 ;label-private = 
 ;label-private-foreground = #bd2c40
 ###############################################################################
-[module/redshift]
+[module/gmail]
 type = custom/script
-interval = 5
-
-exec = ~/.config/polybar/redshift.sh
+exec = ~/.config/polybar/gmail/launch.py
+tail = true
+click-left = xdg-open https://mail.google.com
 ##############################################################################
 [module/bluetooth]
 type = custom/script
@@ -290,6 +290,7 @@ exec = ~/.config/polybar/bluetooth.py
 [module/mocp]
 type = custom/script
 interval = 0.56
+
 format = " <label> "
 format-prefix = " "
 format-underline = ${colors.violet}
@@ -519,7 +520,7 @@ menu-0-2 = Suspender
 menu-0-2-exec = menu-open-3
 
 menu-0-3 = Bloquear
-menu-0-3-exec = light-locker-command -l
+menu-0-3-exec = blurlock
 
 menu-1-0 = Voltar
 menu-1-0-exec = menu-open-0
@@ -534,7 +535,7 @@ menu-2-1 = Voltar
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = systemctl suspend
+menu-3-0-exec = blurlock && systemctl suspend
 
 menu-3-1 = Voltar
 menu-3-1-exec = menu-open-0
@@ -542,12 +543,12 @@ menu-3-1-exec = menu-open-0
 
 
 [module/my-text-label]
-type = custom/script
-interval = 1
-format = "<label>   "
-format-prefix = " "
-format-underline = ${colors.white}
-exec = ~/.config/polybar/texto_bar.sh
+type = custom/text
+content = "    SeraphyBR - Manjaro Linux  "
+content-foreground = ${colors.white}
+content-underline = ${colors.white}
+#content-background = ${colors.Black}
+
 
 [module/bbswitch_show]
 type = custom/script

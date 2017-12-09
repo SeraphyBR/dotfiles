@@ -16,9 +16,9 @@ super + w
 super + Escape
 	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
-# Bloqueio de tela Light-locker (lightdm)
+# Bloqueio de tela Blurlock (i3lock)
 super + {_,shift + }l
-	light-locker-command -l
+	blurlock
 
 # Controles de Volume
 XF86AudioRaiseVolume
@@ -26,6 +26,14 @@ XF86AudioRaiseVolume
 
 XF86AudioLowerVolume
 	pactl set-sink-volume 0 -10% && pactl set-sink-volume 1 -10%
+
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
+
+Print
+	scrot -cd2 -q80 '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Imagens/Screenshots/'
+
+
 
 # Controles de brihlo
 XF86MonBrightnessUp
