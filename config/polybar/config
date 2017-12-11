@@ -102,7 +102,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = my-text-label bspwm
 modules-center =
-modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
+modules-right = volume backlight-acpi gmail  bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
 
 
 # tray-position =
@@ -277,7 +277,7 @@ label-empty-foreground = #55
 ###############################################################################
 [module/gmail]
 type = custom/script
-exec = ~/.config/polybar/gmail/launch.py
+exec = ~/.config/polybar/gmail/launch.py --color '#00FF7F'
 tail = true
 click-left = xdg-open https://mail.google.com
 ##############################################################################
@@ -548,7 +548,7 @@ interval = 30
 exec = ~/.config/polybar/uptime.sh
 label = %output%
 format = <label>
-format-prefix = "Uptime: " 
+format-prefix = "Uptime: "
 format-underline = ${colors.white}
 
 [module/my-text-label]
