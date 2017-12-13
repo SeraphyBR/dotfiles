@@ -1,4 +1,4 @@
-;=====================================================
+;==============================================================
 ;
 ;   Polybar de SeraphyBR (Luiz Junio)
 ;   email => luisjuniorbr@gmail.com
@@ -8,7 +8,7 @@
 ;
 ;   O arquivo README está cheio de informação.
 ;
-;=====================================================
+;==============================================================
 
 [colors]
 # Para transparencia usa-se o padrão RGBA ou AARRGGBB (Nesse arquivo de configuração) .
@@ -35,7 +35,7 @@
 # 5% — 0D
 # 0% — 00
 
-
+Orange1 = #fba922
 SteelBlue = #4682B4
 Crimson = #DC143C
 Yellow = #FFFF00
@@ -66,6 +66,8 @@ foreground-alt = #ffffff
 primary = #00FF00
 secondary = #006400
 alert = ${self.Red}
+
+################################################################################
 
 [bar/seraphybr]
 ; Use the following command to list available outputs:
@@ -102,7 +104,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = my-text-label bspwm
 modules-center =
-modules-right = volume backlight-acpi gmail  bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
+modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
 
 
 # tray-position =
@@ -110,6 +112,8 @@ modules-right = volume backlight-acpi gmail  bbswitch_show memory cpu temperatur
 #tray-transparent = true
 ;tray-background = #0063ff
 ;override-redirect = true
+
+################################################################################
 
 [bar/seraphybr_bottom]
 
@@ -151,13 +155,16 @@ tray-maxsize = 22
 tray-position = left
 tray-padding = 3
 tray-background = ${colors.DarkSlateGray}
+
 ###############################################################################
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:70:...%
 format-underline = ${colors.OrangeRed}
+
 ###############################################################################
+
 [module/bspwm]
 type = internal/bspwm
 
@@ -191,11 +198,11 @@ fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
 ; Note that the label needs to correspond with the bspwm workspace name
-ws-icon-0 = code;♚
-ws-icon-1 = office;♛
-ws-icon-2 = graphics;♜
-ws-icon-3 = mail;♝
-ws-icon-4 = web;♞
+;ws-icon-0 = code;♚
+;ws-icon-1 = office;♛
+;ws-icon-2 = graphics;♜
+;ws-icon-3 = mail;♝
+;ws-icon-4 = web;♞
 ws-icon-default = "  "
 
 ; Available tags:
@@ -230,7 +237,7 @@ label-dimmed-focused-background = ${colors.chartreuse}
 label-focused = %icon%
 label-focused-foreground = #ffffff
 label-focused-background = #3f3f3f
-label-focused-underline = #fba922
+label-focused-underline = ${colors.primary}
 
 ; Available tokens:
 ;   %name%
@@ -274,21 +281,26 @@ label-empty-foreground = #55
 ;label-sticky-foreground = #fba922
 ;label-private = 
 ;label-private-foreground = #bd2c40
+
 ###############################################################################
+
 [module/gmail]
 type = custom/script
 exec = ~/.config/polybar/gmail/launch.py --color '#00FF7F'
 tail = true
 click-left = xdg-open https://mail.google.com
+
 ##############################################################################
+
 [module/bluetooth]
 type = custom/script
 interval = 5
 format-underline = ${colors.DeepSkyBlue}
 exec = ~/.config/polybar/bluetooth.py
-
+click-left = "gksudo bluetooth toggle"
 
 ###############################################################################
+
 [module/mocp]
 type = custom/script
 interval = 0.56
@@ -300,7 +312,9 @@ exec = ~/.config/polybar/mocp.py
 click-left = mocp -f
 click-right = mocp -r
 click-middle = mocp -G
+
 ###############################################################################
+
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -316,7 +330,9 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
 ###############################################################################
+
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -326,20 +342,9 @@ mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-###############################################################################
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 ###############################################################################
+
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -356,12 +361,16 @@ bar-fill-foreground = #ffd60a
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = #ffffff
+
 ##############################################################################
+
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
 #############################################################################
+
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -369,7 +378,9 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.SteelBlue}
 label = %percentage%%
+
 ##############################################################################
+
 [module/memory]
 type = internal/memory
 interval = 2
@@ -377,11 +388,13 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.SteelBlue}
 label = %percentage_used%%
+
 ###################################################################
+
 [module/wlan]
 type = internal/network
 interface = wlp2s0
-interval = 3.0
+interval = 3.0"
 
 format-connected = <label-connected> 
 format-connected-underline = ${colors.DeepSkyBlue}
@@ -393,6 +406,7 @@ format-disconnected = 
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
 #####################################################################
 
 [module/eth]
@@ -411,7 +425,9 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
 #####################################################################
+
 [module/date]
 type = internal/date
 interval = 1
@@ -428,7 +444,9 @@ format-underline = ${colors.SpringGreen}
 
 label = %date% %time%
 label-font = 10
+
 #########################################################
+
 [module/volume]
 type = internal/volume
 
@@ -451,7 +469,9 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
 ##########################################################
+
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -478,7 +498,9 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
+
 ##########################################################
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -498,7 +520,9 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
 #########################################################
+
 [module/powermenu]
 type = custom/menu
 
@@ -541,7 +565,9 @@ menu-3-0-exec = blurlock && systemctl suspend
 
 menu-3-1 = Voltar
 menu-3-1-exec = menu-open-0
-##########################################################
+
+##############################################################################
+
 [module/uptime]
 type = custom/script
 interval = 30
@@ -551,6 +577,8 @@ format = <label>
 format-prefix = "Uptime: "
 format-underline = ${colors.white}
 
+###############################################################################
+
 [module/my-text-label]
 type = custom/text
 content = "    SeraphyBR - Manjaro Linux  "
@@ -558,6 +586,7 @@ content-foreground = ${colors.white}
 content-underline = ${colors.white}
 #content-background = ${colors.Black}
 
+################################################################################
 
 [module/bbswitch_show]
 type = custom/script
@@ -565,15 +594,20 @@ interval = 1
 format = " <label> "
 format-prefix = " "
 format-underline = ${colors.chartreuse}
+click-left = "optirun -b none nvidia-settings -c :8"
 exec = ~/.config/polybar/bbswitch.sh
+
 ###########################################################################
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 compositing-border = source
-###########################################################
+
+##############################################################################
+
 [global/wm]
 margin-top = 4
 margin-bottom = 4
