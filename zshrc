@@ -108,8 +108,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-export EDITOR=/usr/bin/nano
-export VISUAL=/usr/bin/nano
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 # Use autosuggestion
@@ -140,6 +140,7 @@ alias ls='ls --color=auto'
 alias pacman='pacman --color auto'
 alias mocp="mocp -T nightly_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
+alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 ####################################
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
