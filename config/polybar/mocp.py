@@ -3,6 +3,10 @@
 # Para uso em mudulo "custom script" do polybar.
 # Mude de acordo com sua realidade.
 #
+# Ao instalar o moc, caso o modulo não funcione, tente instalar as seguintes
+# dependencis (Opcionais do moc) para o funcionamento:
+# speex ; ffmpeg; taglib; libmpcdec; wavpack; faad2; libmodplug.
+#
 # O script dá preferencia a exibição do nome do artista ou ao que tiver menor
 # número de caracteres.
 #
