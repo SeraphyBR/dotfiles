@@ -288,7 +288,7 @@ label-empty-foreground = #55
 type = custom/script
 exec = ~/.config/polybar/gmail/launch.py --color '#00FF7F'
 tail = true
-click-left = xdg-open https://mail.google.com
+click-left = firefox https://mail.google.com
 
 ##############################################################################
 
