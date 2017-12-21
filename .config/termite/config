@@ -11,6 +11,9 @@ scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
 #geometry = 640x480
+font = Monospace 11
+
+
 
 # "system", "on" or "off"
 cursor_blink = system
