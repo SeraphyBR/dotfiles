@@ -49,6 +49,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " General
 
 set number	           " Show line numbers
+set relativenumber 
 set linebreak	           " Break lines at word (requires Wrap lines)
 set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=100	   " Line wrap (number of cols)
