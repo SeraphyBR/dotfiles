@@ -133,8 +133,8 @@ compinit -d
 colors
 
 ###### PowerLevel9K Section ################
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator  dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
