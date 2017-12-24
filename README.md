@@ -17,7 +17,7 @@ Repositorio dedicado aos meus arquivos de configuração do meu ambiente Desktop
 * Monitor = Arandr / xrandr 
 
 
-
+### Screenshots:
 ![Alt text](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
 Rofi: 
 
