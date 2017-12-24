@@ -1,7 +1,7 @@
 # Dot Files
-Repositorio dedicado aos meus arquivos de configuração do meu ambiente Desktop.
+Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
-### Programas:
+### Programs:
 * Web Browser = Firefox 
 * Program Launcher = Rofi 
 * Status bar = Polybar 
