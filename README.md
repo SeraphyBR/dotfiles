@@ -8,7 +8,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Music Player =        Moc 
 * Vídeo Player =        Vlc 
 * Sound Visualizer =    Cava 
-* File Manager =        Thunar 
+* File Manager =        Thunar/Ranger 
 * Wallpaper Setter =    Nitrogen 
 * Terminal Emulator =   Termite 
 * Shell =               Zsh (Oh-my-zsh) 
