@@ -2,6 +2,7 @@
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
 ### Programs:
+* Linux Distro =        [Manjaro](https://manjaro.org/)
 * Web Browser =         Firefox 
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi) 
 * Status bar =          [Polybar](https://github.com/jaagr/polybar) 
@@ -15,7 +16,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Text Editor =         Vim / Atom 
 * Power Manager =       Tlp 
 * Monitor =             Arandr / xrandr 
-* Lock Screen =         i3lock (Blurlock script)
+* Lock Screen =         i3lock ("Blurlock" script)
 * Notification Daemon = [Dunst](https://github.com/dunst-project/dunst)
 
 ### Screenshots:
