@@ -16,8 +16,12 @@ super + w
 super + Escape
 	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
+# Wifi menu rofi
+super + n
+        networkmanager_dmenu
+
 # Bloqueio de tela Blurlock (i3lock)
-super + space + l
+super + l
 	blurlock
 
 # Controles de Volume
@@ -30,6 +34,7 @@ XF86AudioLowerVolume
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
+# Print da tea
 Print
 	scrot -cd2 -q80 '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Imagens/Screenshots/'
 
