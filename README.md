@@ -7,11 +7,11 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Status bar =          [Polybar](https://github.com/jaagr/polybar) 
 * Music Player =        Moc 
 * Vídeo Player =        Vlc 
-* Sound Visualizer =    Cava 
+* Sound Visualizer =    [Cava](https://github.com/karlstav/cava) 
 * File Manager =        Thunar/Ranger 
 * Wallpaper Setter =    Nitrogen 
-* Terminal Emulator =   Termite 
-* Shell =               Zsh (Oh-my-zsh with PowerLevel9k theme) 
+* Terminal Emulator =   [Termite](https://github.com/thestinger/termite) 
+* Shell =               Zsh (Oh-my-zsh with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) 
 * Text Editor =         Vim / Atom 
 * Power Manager =       Tlp 
 * Monitor =             Arandr / xrandr 
