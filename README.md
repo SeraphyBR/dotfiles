@@ -2,7 +2,7 @@
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
 ### Programs:
-* O.S. =                  [Manjaro](https://manjaro.org/)
+* Linux Distro =        [Manjaro](https://manjaro.org/)
 * Web Browser =         Firefox 
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi) 
 * Status bar =          [Polybar](https://github.com/jaagr/polybar) 
