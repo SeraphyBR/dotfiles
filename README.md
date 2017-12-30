@@ -11,7 +11,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * File Manager =        Thunar/Ranger 
 * Wallpaper Setter =    Nitrogen 
 * Terminal Emulator =   Termite 
-* Shell =               Zsh (Oh-my-zsh) 
+* Shell =               Zsh (Oh-my-zsh with PowerLevel9k theme) 
 * Text Editor =         Vim / Atom 
 * Power Manager =       Tlp 
 * Monitor =             Arandr / xrandr 
