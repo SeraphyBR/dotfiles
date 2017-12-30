@@ -3,8 +3,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ### Programs:
 * Web Browser =         Firefox 
-* Program Launcher =    Rofi 
-* Status bar =          Polybar 
+* Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi) 
+* Status bar =          [Polybar](https://github.com/jaagr/polybar) 
 * Music Player =        Moc 
 * Vídeo Player =        Vlc 
 * Sound Visualizer =    Cava 
