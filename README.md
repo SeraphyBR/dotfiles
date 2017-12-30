@@ -19,6 +19,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Lock Screen =         i3lock ("Blurlock" script)
 * Notification Daemon = [Dunst](https://github.com/dunst-project/dunst)
 
+#### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro or archlinux with:
+> yaourt -S [installed_programs.txt](https://github.com/SeraphyBR/DotFiles/blob/master/installed_programs.txt)
+*I did not test it and I do not guarantee anything with it, proceed with caution.
+
 ### Screenshots:
 
 ![Alt text](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
