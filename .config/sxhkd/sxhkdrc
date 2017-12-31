@@ -20,9 +20,9 @@ super + Escape
 super + n
         networkmanager_dmenu
 
-# Bloqueio de tela Blurlock (i3lock)
+# Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
 super + l
-	blurlock
+	betterlockscreen -l
 
 # Controles de Volume
 XF86AudioRaiseVolume
