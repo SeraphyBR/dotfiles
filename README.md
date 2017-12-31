@@ -6,7 +6,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Web Browser =         Firefox 
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi) 
 * Status bar =          [Polybar](https://github.com/jaagr/polybar) 
-* Music Player =        Moc 
+* Music Player =        Moc (with a polybar module: [mocp.py](https://github.com/SeraphyBR/DotFiles/blob/master/.config/polybar/mocp.py)
 * Vídeo Player =        [VLC](https://www.videolan.org/vlc/) 
 * Sound Visualizer =    [Cava](https://github.com/karlstav/cava) 
 * File Manager =        Thunar/Ranger 
