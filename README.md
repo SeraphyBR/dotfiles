@@ -16,7 +16,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Text Editor =         Vim / Atom 
 * Power Manager =       Tlp 
 * Monitor =             Arandr / xrandr 
-* Lock Screen =         i3lock ("Blurlock" script)
+* Lock Screen =         [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) /( Old: "Blurlock" script)
 * Notification Daemon = [Dunst](https://github.com/dunst-project/dunst)
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro or archlinux with:
