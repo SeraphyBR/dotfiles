@@ -38,7 +38,7 @@ bspc config focused_border_color "#50a53e"
 bspc config presel_border_color "#18fe64"
 #bspc config urgent_border_color "#9f7155"
 
-bspc rule -a manjaro-hello desktop='^1' floating follow=on
+bspc rule -a manjaro-hello desktop='^I' state=floating center=true  follow=on
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
