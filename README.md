@@ -3,6 +3,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ### Programs:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
+* Window Manager = [Bspwm](https://github.com/baskerville/bspwm)
 * Web Browser =         Firefox 
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi) 
 * Status bar =          [Polybar](https://github.com/jaagr/polybar) 
