@@ -12,3 +12,4 @@ MONITOR=HDMI-1 polybar seraphybr &
 MONITOR=eDP-1 polybar seraphybr_bottom &
 MONITOR=HDMI-1 polybar seraphybr_bottom &
 echo "Bars launched..."
+dunstify -u low  "Bars launched"
