@@ -24,8 +24,8 @@ count_was = 0
 
 def update_count(count_was):
     gmail = discovery.build('gmail', 'v1', credentials=file.Storage(CREDENTIALS_PATH).get())
-    list = gmail.users().messages().list(userId='me', q='in:inbox is:unread newer_than:5d').execute()
-    count = list['resultSizeEstimate']
+    labels = gmail.users().labels().get(userId='me', id='INBOX').execute()
+    count = labels['messagesUnread']
     if count > 0:
         print(unread_prefix + str(count), flush=True)
     else:
@@ -42,8 +42,9 @@ while True:
         else:
             print(error_prefix + 'credentials not found', flush=True)
             time.sleep(2)
-    except (errors.HttpError, ServerNotFoundError) as error:
-        print(error_prefix + str(error), flush=True)
+    except (errors.HttpError, ServerNotFoundError, OSError) as error:
+        #print(error_prefix + str(error), flush=True)
+        print ( error_prefix + "Offline", flush=True)
         time.sleep(5)
     except client.AccessTokenRefreshError:
         print(error_prefix + 'revoked/expired credentials', flush=True)
