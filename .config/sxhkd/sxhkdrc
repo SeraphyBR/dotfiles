@@ -36,8 +36,7 @@ XF86AudioMute
 
 # Print da tea
 Print
-	scrot -cd2 -q80 '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Imagens/Screenshots/'
-
+		scrot -cd2 -q80 '%Y-%m-%d_%H-%M-%S.png' -e 'mv -n $f ~/Imagens/Screenshots/' && dunstify "Screenshot salva em ~/Imagens/Screenshots/"
 
 
 # Controles de brihlo
