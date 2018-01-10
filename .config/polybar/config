@@ -309,6 +309,7 @@ format = " <label> "
 format-prefix = " "
 format-underline = ${colors.violet}
 exec = ~/.config/polybar/mocp.py
+
 click-left = mocp -f
 click-right = mocp -r
 click-middle = mocp -G
@@ -415,7 +416,7 @@ interface = enp1s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = "  "
+format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 format-underline = ${colors.DeepSkyBlue}
@@ -484,7 +485,7 @@ format-charging-underline = ${colors.Yellow}
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "  "
+format-full-prefix = "   "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
@@ -561,7 +562,7 @@ menu-2-1 = Voltar
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = betterlockscreen -l  && systemctl suspend
+menu-3-0-exec = betterlockscreen --suspend
 
 menu-3-1 = Voltar
 menu-3-1-exec = menu-open-0
