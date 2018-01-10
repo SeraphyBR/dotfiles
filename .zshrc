@@ -138,6 +138,7 @@ colors
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator  dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+POWERLEVEL9K_MODE='awesome-fontconfig'
 
 
 
@@ -151,6 +152,7 @@ alias pacman='pacman --color auto'
 alias mocp="mocp -T nightly_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
+alias windows10="optirun /usr/lib/virtualbox/VirtualBox --comment "Windows 10 Pro" --startvm "c6a11a5b-7887-4f27-8e2b-d8ad854936a9"  "
 ####################################
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
