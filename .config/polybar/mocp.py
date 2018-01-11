@@ -1,4 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+# -*_ coding: utf-8 -*-
+
 # Criado por Luiz Junio Veloso Dos Santos - luisjuniorbr@gmail.com
 # Para uso em mudulo "custom script" do polybar.
 # Mude de acordo com sua realidade.
