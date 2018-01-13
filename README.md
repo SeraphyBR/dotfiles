@@ -37,4 +37,4 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 #### Rofi: 
 
-![Alt text]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/screenshot2-rofi.png "Screenshot 2")
+![Alt text]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot2.png "Screenshot 2")
