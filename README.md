@@ -1,7 +1,7 @@
 # Dot Files
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
-### Programs:
+### Programs and infos:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
 * Window Manager = [Bspwm](https://github.com/baskerville/bspwm)
 * Web Browser =         Firefox 
@@ -18,7 +18,11 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Power Manager =       Tlp 
 * Monitor =             Arandr / xrandr 
 * Lock Screen =         [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) / (Old: "Blurlock" script)
-* Notification Daemon = [Dunst](https://github.com/dunst-project/dunst)
+* Notification Daemon =  [Dunst](https://github.com/dunst-project/dunst)
+* Gtk theme =           Adapta-nokto-eta-maia (Manjaro repo)
+* Cursor theme =        Breeze Obsidian
+
+
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro or archlinux with:
 * I did not test it and I do not guarantee anything with it, proceed with caution.
