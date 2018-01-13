@@ -21,7 +21,7 @@ super + n
         networkmanager_dmenu
 
 # Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
-super + l
+alt + l
 	betterlockscreen -l
 
 # Controles de Volume

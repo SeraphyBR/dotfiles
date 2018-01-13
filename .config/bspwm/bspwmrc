@@ -17,8 +17,8 @@ xrdb ~/.Xresources
 redshift-gtk &
 # Notification Daemon
 dunst &
-# Welcome 
-dunstify "Bem Vindo SeraphyBR" 
+# Welcome
+dunstify "Bem Vindo SeraphyBR"
 
 
 manjaro-hello &
@@ -35,11 +35,11 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config normal_border_color "#332d29"
+bspc config normal_border_color "#FFFFFF"
 #bspc config active_border_color "#817267"
-bspc config focused_border_color "#50a53e"
+bspc config focused_border_color "#00FF7F"
 bspc config presel_border_color "#18fe64"
-#bspc config urgent_border_color "#9f7155"
+bspc config urgent_border_color "#FF4500"
 
 bspc rule -a manjaro-hello desktop='^1' follow=on  state=floating center=true
 bspc rule -a Gimp desktop='^8' state=floating follow=on

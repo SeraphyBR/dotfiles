@@ -174,7 +174,7 @@ close_all = ctrl+shift+space
 # Redisplay last message(s).
 # On the US keyboard layout "grave" is normally above TAB and left
 # of "1".
-history = ctrl+h
+history = ctrl+Shift_R 
 
 # Context menu.
 context = ctrl+shift+period
@@ -254,5 +254,4 @@ timeout = 8
 #    appname = Pidgin
 #    summary = *twitter.com*
 #    urgency = normal
-#
 # vim: ft=cfg
