@@ -91,7 +91,7 @@ width = 100%
 height = 28
 #offset-x = 1%
 #offset-y = 1%
-radius = 0.0
+
 fixed-center = true
 wm-restack = bspwm
 
@@ -117,7 +117,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = my-text-label bspwm
 #modules-center =
-modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
+modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan  date battery
 
 
 # tray-position =
@@ -147,6 +147,7 @@ line-size = 3
 border-size = 3
 border-color = ${colors.border}
 
+
 padding-left = 3
 padding-right = 3
 
@@ -161,7 +162,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = mocp
 modules-center = xwindow
-modules-right = uptime powermenu
+modules-right = eth uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
@@ -309,6 +310,7 @@ click-left = xdg-open https://mail.google.com
 type = custom/script
 interval = 5
 format-underline = ${colors.DeepSkyBlue}
+format-foreground = ${colors.DeepSkyBlue}
 exec = ~/.config/polybar/bluetooth.py
 click-left = "gksudo bluetooth toggle"
 
@@ -318,44 +320,17 @@ click-left = "gksudo bluetooth toggle"
 type = custom/script
 interval = 0.56
 
-format = " <label> "
-format-prefix = " "
-format-underline = ${colors.violet}
+format = <label>
+format-prefix = "  "
+format-suffix = "  "
+format-prefix-foreground = ${colors.Orange1}
+format-suffix-foreground = ${colors.Orange1}
+format-underline = ${colors.Orange1}
 exec = ~/.config/polybar/mocp.py
 
 click-left = mocp -f
 click-right = mocp -r
 click-middle = mocp -G
-
-###############################################################################
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-###############################################################################
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 ###############################################################################
 
@@ -388,9 +363,9 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.SteelBlue}
+format-suffix = "  "
+format-suffix-foreground = ${self.format-underline}
+format-underline =  #D6AA3F
 label = %percentage%%
 
 ##############################################################################
@@ -398,9 +373,9 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "  "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.SteelBlue}
+format-suffix = "  "
+format-suffix-foreground = ${self.format-underline}
+format-underline =  #D6AA3F
 label = %percentage_used%%
 
 ###################################################################
@@ -410,16 +385,18 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0"
 
-format-connected = <label-connected> 
+format-connected = <label-connected>
+format-connected-suffix = "  "
+format-connected-suffix-foreground = ${self.format-connected-underline}
 format-connected-underline = ${colors.DeepSkyBlue}
+
 label-connected = %essid%
+label-disconnected = "Wi-Fi não conectado"
 
-
-format-disconnected = 
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected-suffix = "  "
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 #####################################################################
 
@@ -429,16 +406,13 @@ interface = enp1s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = "  "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-format-underline = ${colors.DeepSkyBlue}
+format-connected-suffix = "  "
+format-connected-suffix-foreground = ${self.format-connected-underline}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+label-disconnected =
+
+format-disconnected = <label-disconnected>
 
 #####################################################################
 
@@ -452,8 +426,10 @@ date-alt = " %d-%m-%Y "
 time = %H:%M
 time-alt = %H:%M:%S
 
-format = <label> 
-format-foreground = ${colors.foreground-alt}
+format = <label>
+format-suffix = "  "
+format-suffix-foreground = ${self.format-underline}
+format-foreground = ${colors.foreground}
 format-underline = ${colors.SpringGreen}
 
 label = %date% %time%
@@ -492,10 +468,10 @@ battery = BAT0
 adapter = ADP0
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging =  <label-charging> <animation-charging>
 format-charging-underline = ${colors.Yellow}
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging> <ramp-capacity>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "   "
@@ -505,12 +481,12 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${self.format-charging-underline}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${self.format-charging-underline}
 animation-charging-framerate = 750
 
 ##########################################################
@@ -520,9 +496,9 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 65
 
-format = <ramp> <label>
+format =  <label> <ramp>
 format-underline = ${colors.Crimson}
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn> <ramp>
 format-warn-underline = ${self.format-underline}
 
 
@@ -533,7 +509,7 @@ label-warn-foreground = ${colors.alert}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.Crimson}
 
 #########################################################
 
@@ -543,10 +519,11 @@ type = custom/menu
 format-spacing = 1
 format-underline = ${colors.white}
 
-label-open = "Power Menu  "
+label-open = "Power Menu %{F#7FFF00}  %{F-} "
+
 label-open-foreground = ${colors.white}
 label-close = " Cancelar"
-label-close-foreground = ${colors.Red}
+label-close-foreground = ${colors.OrangeRed}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -562,22 +539,25 @@ menu-0-2-exec = menu-open-3
 menu-0-3 = Bloquear
 menu-0-3-exec = betterlockscreen -l
 
+menu-0-4 = Sair |
+menu-0-4-exec = bspc quit
+
 menu-1-0 = Voltar
 menu-1-0-exec = menu-open-0
 
-menu-1-1 = Reiniciar
+menu-1-1 = Reiniciar |
 menu-1-1-exec = systemctl reboot
 
 menu-2-0 = Desligar
 menu-2-0-exec = systemctl poweroff
 
-menu-2-1 = Voltar
+menu-2-1 = Voltar |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
 menu-3-0-exec = betterlockscreen --suspend
 
-menu-3-1 = Voltar
+menu-3-1 = Voltar |
 menu-3-1-exec = menu-open-0
 
 ##############################################################################
@@ -595,10 +575,10 @@ format-underline = ${colors.white}
 
 [module/my-text-label]
 type = custom/text
-content = "    SeraphyBR - Manjaro Linux  "
+content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro Linux  "
 content-foreground = ${colors.white}
 content-underline = ${colors.white}
-#content-background = ${colors.Black}
+
 
 ################################################################################
 

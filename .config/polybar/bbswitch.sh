@@ -4,8 +4,8 @@
 
     if [ "$( grep -o "OFF" /proc/acpi/bbswitch )" == "OFF" ]
     then
-      echo "Nvidia = Inativo "
+      echo "Nvidia = Inativo %{F#7FFF00}  %{F-}"
     elif [ "$( grep -o "ON" /proc/acpi/bbswitch )" == "ON" ]
     then
-      echo "Nvidia = Ativo "
+      echo "Nvidia = Ativo %{F#7FFF00}  %{F-}"
     fi
