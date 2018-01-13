@@ -248,7 +248,7 @@ label-dimmed-focused-background = ${colors.chartreuse}
 ;   %index%
 ; Default: %icon%  %name%
 label-focused = %icon%
-label-focused-foreground = #ffffff
+label-focused-foreground = ${colors.chartreuse}
 label-focused-background = #3f3f3f
 label-focused-underline = ${colors.primary}
 
