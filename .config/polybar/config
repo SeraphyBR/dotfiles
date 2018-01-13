@@ -35,32 +35,45 @@
 # 5% — 0D
 # 0% — 00
 
+## Colors: Red, Orange, Yellow... [Hot colors]:
+
 Orange1 = #fba922
-SteelBlue = #4682B4
 Crimson = #DC143C
 Yellow = #FFFF00
 OrangeRed = #FF4500
 Gold = #FFD700
 Red = #FF0000
+
+## Colors: Blue, Green and Brown:
+
+blue = #0000FF
 DeepSkyBlue = #00BFFF
+SteelBlue = #4682B4
+
+violet = #9400D3
+
+green2 = #253d2d
 chartreuse = #7FFF00
 SpringGreen = #00FF7F
-white = #FFFAFA
-blue = #0000FF
-violet = #9400D3
-SaddleBrown = #8B4513
 DarkOliveGreen = #556B2F
-DarkSlateGray = #2F2828
+
+SaddleBrown = #8B4513
+
+## White, Black and Gray:
 
 TrueBlack = #000000
-TrueBlack_transparent = #73000000
-
 Black = #222
+DarkSlateGray = #2F2828
+GitHubBlack = #24292e
 DimGray = #696969
 DavysGrey = #555
+white = #FFFFFF
 
-background = ${self.TrueBlack_transparent}
+#### General Colors:
+
+background = ${self.GitHubBlack}
 background-alt = #73444444
+border = ${self.background}
 foreground = ${self.white}
 foreground-alt = #ffffff
 primary = #00FF00
@@ -85,11 +98,12 @@ wm-restack = bspwm
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-#line-color = #0000FF
+underline-size = 3
+overline-size = 3
 
-border-size = 0
-border-color = #c0c5ce
+
+border-size = 3
+border-color = ${colors.background}
 
 padding-left = 0
 padding-right = 2
@@ -98,12 +112,11 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = Book:pixelsize=12;1
-#font-1 = Noto Sans:fontformat=Bold:size=12:antialias=true;0
 font-1 = FontAwesome:pixelsize=13;1
 font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = my-text-label bspwm
-modules-center =
+#modules-center =
 modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan eth  date battery
 
 
@@ -117,7 +130,7 @@ modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature
 
 [bar/seraphybr_bottom]
 
-monitor = ${env:MONITOR}
+#monitor = ${env:MONITOR}
 width = 100%
 height = 28
 #offset-x = 1%
@@ -130,10 +143,9 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-#line-color = #0000FF
 
-border-size = 0
-border-color = #c0c5ce
+border-size = 3
+border-color = ${colors.border}
 
 padding-left = 3
 padding-right = 3
@@ -154,7 +166,8 @@ modules-right = uptime powermenu
 tray-maxsize = 22
 tray-position = left
 tray-padding = 3
-tray-background = ${colors.DarkSlateGray}
+tray-background = ${colors.background}
+
 
 ###############################################################################
 
