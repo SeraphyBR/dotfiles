@@ -1,4 +1,7 @@
 [options]
+
+font = Monospace 11
+
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
@@ -9,23 +12,20 @@ urgent_on_bell = true
 clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
-#icon_name = terminal
-#geometry = 640x480
-font = Monospace 11
-
-
+icon_name = terminal
+#geometry = 640x48
 
 # "system", "on" or "off"
-cursor_blink = system
+cursor_blink = off
 
 # "block", "underline" or "ibeam"
-cursor_shape = block
+cursor_shape = underline
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 browser = firefox
 
 # set size hints for the window
-#size_hints = false
+size_hints = false
 
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
@@ -34,17 +34,15 @@ filter_unmatched_urls = true
 #modify_other_keys = false
 
 [colors]
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
+
+cursor = #00FF7F
+
 foreground = #dcdccc
 foreground_bold = #ffffff
-#background = #3f3f3f
-
-# 20% background transparency (requires a compositor)
-background = rgba(0, 0, 0, 0.7)
+background = rgba(38, 41, 39, 0.83)
 
 # if unset, will reverse foreground and background
-highlight = #2f2f2f
+#highlight =  #299852
 
 # colors from color0 to color254 can be set
 color0 = #3f3f3f
