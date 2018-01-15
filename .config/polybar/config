@@ -474,8 +474,8 @@ format-charging-underline = ${colors.Yellow}
 format-discharging = <label-discharging> <ramp-capacity>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = "   "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-suffix = "   "
+format-full-suffix-foreground = ${self.format-charging-underline}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
