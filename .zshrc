@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
@@ -51,7 +51,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cp zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 
 
 # User configuration
@@ -68,8 +68,8 @@ plugins=(git cp zsh-syntax-highlighting)
 #   export EDITOR='mvim'
 # fi
 
-
-
+export EDITOR='vim'
+export GIT_EDITOR='vim'
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -88,19 +88,19 @@ export ARCHFLAGS="-arch x86_64"
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt extendedglob                                             # Extended globbing. Allows      +++using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt rcexpandparam                                            # Array expension with           +++parameters
+setopt nocheckjobs                                              # Don't warn about running       +++processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically     +++when it makes sense
 setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
-
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
-zstyle ':completion:*' rehash true                              # automatically find new executables in path
+setopt appendhistory                                            # Immediately append history     +++instead of overwriting
+setopt histignorealldups                                        # If a new command is a          +++duplicate, remove the older one
+setopt autocd                                                   # if only directory path is      +++entered, cd there.
+ 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab           +++completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion             +++(different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new         +++executables in path
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
@@ -110,7 +110,9 @@ HISTSIZE=1000
 SAVEHIST=500
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
+ 
+
 
 # Use autosuggestion
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -127,18 +129,13 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
+# Mapa de Teclado
+setxkbmap -model abnt2 -layout br -variant abnt2
+
 # Theming section
 autoload -U compinit colors zcalc
 compinit -d
 colors
-
-###### PowerLevel9K Section ################
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator  dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
-POWERLEVEL9K_MODE='awesome-fontconfig'
 
 
 
@@ -149,11 +146,12 @@ alias ohmyzsh="nano ~/.oh-my-zsh"
 alias lc='colorls -a --sd'
 alias ls='ls --color=auto'
 alias pacman='pacman --color auto'
-alias mocp="mocp -T nightly_theme"
+alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
-alias windows10="optirun /usr/lib/virtualbox/VirtualBox --comment "Windows 10 Pro" --startvm "c6a11a5b-7887-4f27-8e2b-d8ad854936a9"  "
 ####################################
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -162,4 +160,5 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+
