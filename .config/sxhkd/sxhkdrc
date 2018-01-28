@@ -5,6 +5,10 @@
 super + Return
 	termite
 
+# Floating Terminal
+super + alt + Return
+       bspc rule -a \* -o state=floating &&  termite --name=floating
+
 # Gerenciador de arquivos cli
 super + a
         termite -e ranger
