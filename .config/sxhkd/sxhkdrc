@@ -5,6 +5,14 @@
 super + Return
 	termite
 
+# Gerenciador de arquivos cli
+super + a
+        termite -e ranger
+
+# Gerenciador de arquivos Thunar
+super + shift + a
+        thunar
+
 # Lançador de Programas
 super + d
 	rofi -modi run,drun,window -show drun -show-icons -scroll-method 1 -sidebar-mode
@@ -46,7 +54,7 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	xbacklight -dec 10
 
-
+############################################################################################################
 # bspwm hotkeys
 
 # Sair do Bspwm Normalmente
