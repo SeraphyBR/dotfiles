@@ -81,6 +81,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 
+"" Syntax
+syntax on
 
 "" Advanced
 set ruler	                " Show row and column ruler information
