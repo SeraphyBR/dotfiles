@@ -13,6 +13,10 @@ super + alt + Return
 super + a
         termite -e ranger
 
+# Editor de texto vim
+super + e
+        termite -e vim
+
 # Gerenciador de arquivos Thunar
 super + shift + a
         thunar
