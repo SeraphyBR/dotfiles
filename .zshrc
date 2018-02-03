@@ -145,7 +145,7 @@ alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias lc='colorls -a --sd'
 alias ls='ls --color=auto'
-alias rvim='sudo vim -u ~/.vimrc'
+alias svim='sudo vim'
 alias pacman='pacman --color auto'
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
