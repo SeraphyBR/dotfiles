@@ -24,8 +24,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 
 
-#### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro or archlinux with:
-* I did not test it and I do not guarantee anything with it, proceed with caution.
+#### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:
+* It should not work on arch linux because manjaro uses independent repository and some programs may not be found by pacman.
 
 
 > $ yaourt -S [installed_programs.txt](https://github.com/SeraphyBR/DotFiles/blob/master/installed_programs.txt)
