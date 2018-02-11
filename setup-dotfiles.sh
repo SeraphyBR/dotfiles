@@ -8,7 +8,7 @@ Principal() {
   echo
   echo "1. Copiar arquivos para o sistema."
   echo "2. Copiar os arquivos para o repositorio. (não implementado)"
-  echo "3. Instalar backup dos programas."
+  echo "3. Instalar backup dos programas. (Manjaro Only)  "
   echo "4. Sair do programa. "
   echo
   echo -n "Qual a opção desejada? "
@@ -52,10 +52,12 @@ copy() {
 install() {
     cd ~/DotFiles
     echo 'Iniciando instalação dos programas usados por seraphybr.....'
-    yaourt -S --needed  installed_programs.txt
+    yaourt -S --needed --noconfirm  installed_programs.txt
     if [ -e /bin/atom ] 
     then 
         apm install sync-settings
+        echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup
+        dos arquivos do Atom."
     fi     
 }
 
