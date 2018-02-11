@@ -120,7 +120,7 @@ install() {
     read opcao1 
     case opcao1 in 
         1) op1 ;;
-        2) echo ; Principal ; ; 
+        2) echo ; Principal ;; 
     esac
 
 }
