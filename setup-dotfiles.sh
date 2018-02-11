@@ -47,18 +47,82 @@ copy() {
     cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi     /usr/share/rofi/themes/flat-green.rasi
     cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/Wallpapers 
+    echo 'Arquivos já foram copiados...'
+    echo 
+    if [ ! -e ~/.config/polybar/gmail/credentials.json ] 
+    then 
+        echo "Deseja configurar o modulo gmail para o polybar?"
+        echo
+        echo "Digite: 1 - Sim (recomendado) ou 2 - Não "
+        read opcao2 
+        case opcao2 in 
+            1) gmail_module ;; 
+            2) echo ; Principal ;; 
+        esac 
+    fi 
+    } 
+
+
+gmail_module(){ 
+ if [ -e ~/.config/polybar/gmail/auth.py ] 
+ then 
+    if [ -e /bin/firefox ] 
+    then 
+        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código
+        para o terminal e de um enter."
+        sleep 10
+        python  ~/.config/polybar/gmail/auth.py
+        echo "Pronto"
+        echo 
+        sleep 2 
+        Principal 
+    else 
+        echo "Navegador Firefox não encontrado, ele será instalado a seguir."
+        sudo pacman -S firefox 
+        echo 
+        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código
+        para o terminal e de um enter."
+        sleep 10
+        python  ~/.config/polybar/gmail/auth.py 
+        echo "Pronto"
+        sleep 2
+        Principal 
+    fi
+else 
+    echo "Arquivo não encontrado, faça a copia dos arquivos para proceder." 
+    echo 
+    sleep 2
+    Principal 
+fi 
 }    
 
 install() {
     cd ~/DotFiles
     echo 'Iniciando instalação dos programas usados por seraphybr.....'
+    echo
+    echo 'Adicionando key para instalação do linux-steam-integration...'
+    gpg --recv-keys 8876CC8EDAEC52CEAB7742E778E2387015C1205F 
     yaourt -S --needed --noconfirm  installed_programs.txt
+    sudo pip install --upgrade google-api-python-client 
     if [ -e /bin/atom ] 
     then 
         apm install sync-settings
         echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup
         dos arquivos do Atom."
-    fi     
+    fi 
+    echo 
+    echo "instalação concluida.."
+    echo 
+    echo "Deseja copiar os arquivos de configuração?"
+    echo 
+    echo "Digite:   1 - Sim ; 2 - Não "
+    echo 
+    read opcao1 
+    case opcao1 in 
+        1) op1 ;;
+        2) echo ; Principal ; ; 
+    esac
+
 }
 
 Principal 
