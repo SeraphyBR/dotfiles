@@ -53,6 +53,10 @@ install() {
     cd ~/DotFiles
     echo 'Iniciando instalação dos programas usados por seraphybr.....'
     yaourt -S --needed  installed_programs.txt
+    if [ -e /bin/atom ] 
+    then 
+        apm install sync-settings
+    fi     
 }
 
 Principal 
