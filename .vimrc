@@ -50,6 +50,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " General
 
+set mouse=n                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
 set relativenumber
 set linebreak	           " Break lines at word (requires Wrap lines)
