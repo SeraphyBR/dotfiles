@@ -46,7 +46,7 @@ copy() {
     cp -v  ~/DotFiles/.Xresources    ~/.Xresources 
     sudo cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi     /usr/share/rofi/themes/flat-green.rasi
-    cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/Wallpapers 
+    cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/ 
     echo 'Arquivos já foram copiados...'
     echo 
     if [ ! -e ~/.config/polybar/gmail/credentials.json ] 
