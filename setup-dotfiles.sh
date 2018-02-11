@@ -52,7 +52,7 @@ copy() {
 install() {
     cd ~/DotFiles
     echo 'Iniciando instalação dos programas usados por seraphybr.....'
-    yaourt -S installed_programs.txt
+    yaourt -S --needed  installed_programs.txt
 }
 
 Principal 
