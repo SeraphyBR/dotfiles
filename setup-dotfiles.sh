@@ -25,7 +25,7 @@ Principal() {
 
 op1() {
 
-if [ -e -d ~/DotFiles ]
+if [ -d ~/DotFiles ]
     then 
         echo 'A pasta DotFiles já  existe, copiando arquivos.... '
         copy 
@@ -39,12 +39,12 @@ fi
 }
 
 copy() {
-    cp -Rpv  ~/DotFiles/.config/     ~/.config
-    cp -Rv ~/DotFiles/.vim/        ~/.vim
+    cp -Rpv  ~/DotFiles/.config/     ~/
+    cp -Rv ~/DotFiles/.vim/        ~/
     cp -v  ~/DotFiles/.vimrc         ~/.vimrc
     cp -v  ~/DotFiles/.zshrc         ~/.zshrc 
     cp -v  ~/DotFiles/.Xresources    ~/.Xresources 
-    cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
+    sudo cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi     /usr/share/rofi/themes/flat-green.rasi
     cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/Wallpapers 
     echo 'Arquivos já foram copiados...'
