@@ -39,6 +39,7 @@ fi
 }
 
 copy() {
+
     cp -Rpv  ~/DotFiles/.config/     ~/
     cp -Rv ~/DotFiles/.vim/        ~/
     cp -v  ~/DotFiles/.vimrc         ~/.vimrc
@@ -47,6 +48,8 @@ copy() {
     sudo cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi     /usr/share/rofi/themes/flat-green.rasi
     cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/ 
+    sudo cp -Rv ~/DotFiles/Wallpapers/* /usr/share/backgrounds
+
     echo 'Arquivos já foram copiados...'
     echo 
     if [ ! -e ~/.config/polybar/gmail/credentials.json ] 
