@@ -42,7 +42,7 @@ copy() {
 
     cp -Rpv  ~/DotFiles/.config/     ~/
     cp -Rv ~/DotFiles/.vim/        ~/
-    cp -v  ~/DotFiles/.vimrc         ~/.vimrc
+    sudo  cp -v  ~/DotFiles/.vimrc         ~/.vimrc
     cp -v  ~/DotFiles/.zshrc         ~/.zshrc 
     cp -v  ~/DotFiles/.Xresources    ~/.Xresources 
     sudo cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
