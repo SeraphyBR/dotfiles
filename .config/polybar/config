@@ -399,6 +399,7 @@ format-disconnected-underline = ${self.format-connected-underline}
 format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 #####################################################################
+
 [module/eth] 
 type = internal/network 
 interface = enp1s0 
