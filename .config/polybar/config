@@ -399,21 +399,21 @@ format-disconnected-underline = ${self.format-connected-underline}
 format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 #####################################################################
-
-[module/eth]
-type = internal/network
-interface = enp1s0
-interval = 3.0
-
-format-connected-underline = ${colors.DeepSkyBlue}
-format-connected-suffix = "  "
-format-connected-suffix-foreground = ${self.format-connected-underline}
-
-label-connected = %local_ip%
-label-disconnected =
-
-format-disconnected = <label-disconnected>
-
+[module/eth] 
+type = internal/network 
+interface = enp2s0 
+interval = 3.0 
+ 
+format-connected = <label-connected> 
+format-connected-underline = #27a2ff 
+format-connected-suffix = "  " 
+format-connected-suffix-foreground = ${self.format-connected-underline} 
+ 
+label-connected = %local_ip% 
+label-disconnected = "Sem internet" 
+ 
+format-disconnected = <label-disconnected> 
+ 
 #####################################################################
 
 [module/date]
