@@ -401,7 +401,7 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 #####################################################################
 [module/eth] 
 type = internal/network 
-interface = enp2s0 
+interface = enp1s0 
 interval = 3.0 
  
 format-connected = <label-connected> 
