@@ -117,7 +117,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = my-text-label bspwm
 #modules-center =
-modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wlan  date battery
+modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wireless-network  date battery
 
 
 # tray-position =
@@ -162,7 +162,7 @@ font-2 = MaterialIcons:pixelsize=13;1
 
 modules-left = mocp
 modules-center = xwindow
-modules-right = eth uptime powermenu
+modules-right = wired-network uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
@@ -380,7 +380,7 @@ label = %percentage_used%%
 
 ###################################################################
 
-[module/wlan]
+[module/wireless-network]
 type = internal/network
 interface = wlp2s0
 interval = 3.0"
@@ -400,20 +400,20 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 #####################################################################
 
-[module/eth] 
-type = internal/network 
-interface = enp1s0 
-interval = 3.0 
+#[module/wired-network] 
+#type = internal/network
+#interface = enp1s0 
+#interval = 3.0 
  
-format-connected = <label-connected> 
-format-connected-underline = #27a2ff 
-format-connected-suffix = "  " 
-format-connected-suffix-foreground = ${self.format-connected-underline} 
+#format-connected = <label-connected> 
+#format-connected-underline = #27a2ff 
+#format-connected-suffix = "  " 
+#format-connected-suffix-foreground = ${self.format-connected-underline} 
  
-label-connected = %local_ip% 
-label-disconnected = "Sem internet" 
+#label-connected = %local_ip% 
+#label-disconnected = "Sem internet" 
  
-format-disconnected = <label-disconnected> 
+#format-disconnected = <label-disconnected> 
  
 #####################################################################
 
