@@ -58,7 +58,7 @@ copy() {
         echo
         echo "Digite: 1 - Sim (recomendado) ou 2 - Não "
         read opcao2 
-        case opcao2 in 
+        case $opcao2 in 
             1) gmail_module ;; 
             2) echo ; Principal ;; 
         esac 
@@ -128,6 +128,8 @@ install() {
         echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
         echo 
     fi 
+    echo "Setando o lightdm-webkit-greeter...."
+    sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf 
     echo "instalação concluida.."
     echo 
     echo "Deseja copiar os arquivos de configuração?"
@@ -135,7 +137,7 @@ install() {
     echo "Digite:   1 - Sim ; 2 - Não "
     echo 
     read opcao1 
-    case opcao1 in 
+    case $opcao1 in 
         1) op1 ;;
         2) echo ; Principal ;; 
     esac
