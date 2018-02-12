@@ -383,7 +383,7 @@ label = %percentage_used%%
 [module/wireless-network]
 type = internal/network
 interface = wlp2s0
-interval = 3.0"
+interval = 3.0
 
 format-connected = <label-connected>
 format-connected-suffix = "  "
@@ -400,20 +400,20 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 #####################################################################
 
-#[module/wired-network] 
-#type = internal/network
-#interface = enp1s0 
-#interval = 3.0 
+[module/wired-network] 
+type = internal/network
+interface = enp1s0 
+interval = 3.0 
  
-#format-connected = <label-connected> 
-#format-connected-underline = #27a2ff 
-#format-connected-suffix = "  " 
-#format-connected-suffix-foreground = ${self.format-connected-underline} 
+format-connected = <label-connected> 
+format-connected-underline = #27a2ff 
+format-connected-suffix = "  " 
+format-connected-suffix-foreground = ${self.format-connected-underline} 
  
-#label-connected = %local_ip% 
-#label-disconnected = "Sem internet" 
+label-connected = %local_ip% 
+label-disconnected = "Sem internet" 
  
-#format-disconnected = <label-disconnected> 
+format-disconnected = <label-disconnected> 
  
 #####################################################################
 
