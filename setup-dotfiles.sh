@@ -8,7 +8,7 @@ Principal() {
   echo
   echo "1. Copiar arquivos para o sistema."
   echo "2. Copiar os arquivos para o repositorio. (não implementado)"
-  echo "3. Instalar backup dos programas. (Manjaro Only)  "
+  echo "3. Instalar backup dos programas e configurar ambiente. (Manjaro Only)  "
   echo "4. Sair do programa. "
   echo
   echo -n "Qual a opção desejada? "
@@ -111,8 +111,20 @@ install() {
         dos arquivos do Atom."
     fi
     echo "Instalando PowerLevel9K theme for Zsh"
-    sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo 
+    sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
+    echo
+    if [ $(cat /etc/profile.d/jre.sh | grep JAVA) -eq 1  ]
+    then
+        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o
+        JGRASP. "
+        echo 
+        sleep 2
+        echo "Por favor digite sua senha para proceder..."
+        sleep 2 
+        echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
+        echo 
+    fi 
     echo "instalação concluida.."
     echo 
     echo "Deseja copiar os arquivos de configuração?"
