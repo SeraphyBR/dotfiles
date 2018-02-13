@@ -143,7 +143,7 @@ install() {
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
 
-    if [ ! (cat /etc/profile.d/jre.sh | grep JAVA)  ]
+    if [ ! cat /etc/profile.d/jre.sh | grep JAVA ]
     then
         echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o JGRASP. "
         echo 
