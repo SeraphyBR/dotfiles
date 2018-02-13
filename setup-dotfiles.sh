@@ -163,8 +163,11 @@ install() {
     fi
 
     echo "Setando tema de cursor default do X"
+    echo
     echo -e  "[Icon Theme]\nInherits=Breese_Obsidian" | sudo tee /usr/share/icons/default/index.theme 
+    echo
 
+    echo
     echo "Definindo imagem padrão de lockscreen e wallpaper... "
     betterlockscreen -u Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
     nitrogen --set-scaled Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
