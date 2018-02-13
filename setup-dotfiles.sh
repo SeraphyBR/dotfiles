@@ -101,7 +101,16 @@ fi
 }    
 
 install() {
-    cd ~/DotFiles
+     
+    if [ -d ~/DotFiles ]
+        then 
+            cd ~/DotFiles 
+        else    
+            echo 'Clonando repositorio....'
+            git clone https://github.com/SeraphyBR/DotFiles.git
+            cd ~/DotFiles 
+    fi
+ 
     echo "Iniciando instalação dos programas usados por seraphybr....."
     echo
     echo "Adicionando key para instalação do linux-steam-integration..."
@@ -150,6 +159,13 @@ install() {
         echo
     fi
 
+    echo "Setando tema de cursor default do X"
+    sudo echo -e  "[Icon Theme]\nInherits=Breese_Obsidian" > /usr/share/icons/default/index.theme 
+
+    echo "Definindo imagem padrão de lockscreen e wallpaper... "
+    betterlockscreen -u Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
+    nitrogen --set-scaled Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
+
     echo "instalação concluida.."
     echo 
     echo "Deseja copiar os arquivos de configuração?"
@@ -159,7 +175,7 @@ install() {
     read opcao1 
 
     case $opcao1 in 
-        1) op1 ;;
+        1) copy ;;
         2) echo ; Principal ;; 
         *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
