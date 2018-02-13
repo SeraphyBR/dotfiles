@@ -30,7 +30,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 > $ yaourt -S [installed_programs.txt](https://github.com/SeraphyBR/DotFiles/blob/master/installed_programs.txt)
 
-#### Obs2: I also recently made a [setup script](https://github.com/SeraphyBR/DotFiles/blob/master/setup-dotfiles.sh), but it is available only in Brazilian Portuguese, made for my personal use. It works only on the Manjaro Distro.
+#### Obs2: I also recently made a [setup script](https://github.com/SeraphyBR/DotFiles/blob/master/setup-dotfiles.sh), but it is available only in Brazilian Portuguese, made for my personal use. It works on Manjaro and Arch Linux.
+* It works on Arch Linux, but it will be reported that some packages were not found, since they are from the manjaro repository
 
 ### Screenshots:
 
