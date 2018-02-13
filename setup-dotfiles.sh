@@ -111,6 +111,8 @@ install() {
             cd ~/DotFiles 
     fi
  
+    echo 
+    echo 
     echo "Iniciando instalação dos programas usados por seraphybr....."
     echo
     echo "Adicionando key para instalação do linux-steam-integration..."
@@ -125,6 +127,7 @@ install() {
     do 
         if ! ( yaourt -Q | grep ${P} > /dev/null ) 
         then 
+             echo "Verificando ${P} "
              yaourt -S --needed --noconfirm ${P}
          fi
     done
