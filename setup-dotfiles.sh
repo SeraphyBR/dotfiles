@@ -121,7 +121,7 @@ install() {
 
     sudo pip install --upgrade google-api-python-client 
 
-    if [ -e /bin/atom ] 
+    if [  !  -e ~/.atom/packages/sync-settings  ] 
     then 
         apm install sync-settings
         echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup
