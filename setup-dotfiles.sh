@@ -136,11 +136,8 @@ install() {
 
     if [ ! $(cat /etc/profile.d/jre.sh | grep JAVA)  ]
     then
-        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o
-        JGRASP. "
+        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o JGRASP. "
         echo 
-        sleep 2
-        echo "Por favor digite sua senha para proceder..."
         sleep 2 
         echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
         echo 
@@ -169,4 +166,4 @@ install() {
 
 }
 
-Principal 
+Principal    
