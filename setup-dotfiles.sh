@@ -106,6 +106,8 @@ install() {
     echo 'Adicionando key para instalação do linux-steam-integration...'
     gpg --recv-keys 8876CC8EDAEC52CEAB7742E778E2387015C1205F 
 
+    # This topic solved my problem, to be able to run the same script in archlinux,
+    # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
     for P in $( <installed_programs.txt )
     do 
         if [ ! (yaourt -Q | grep ${P} > /dev/null) ]
