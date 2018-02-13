@@ -8,7 +8,7 @@ Principal() {
   echo
   echo "1. Copiar arquivos para o sistema."
   echo "2. Copiar os arquivos para o repositorio. (não implementado)"
-  echo "3. Instalar backup dos programas e configurar ambiente. (Manjaro Only)  "
+  echo "3. Instalar backup dos programas e configurar ambiente.  "
   echo "4. Sair do programa. "
   echo
   echo -n "Qual a opção desejada? "
@@ -40,18 +40,19 @@ fi
 
 copy() {
 
-    cp -Rpv  ~/DotFiles/.config/     ~/
-    cp -Rv ~/DotFiles/.vim/        ~/
-    sudo  cp -v  ~/DotFiles/.vimrc         ~/.vimrc
-    cp -v  ~/DotFiles/.zshrc         ~/.zshrc 
-    cp -v  ~/DotFiles/.Xresources    ~/.Xresources 
-    sudo cp -v  ~/DotFiles/pacman.conf     /etc/pacman.conf 
-    sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi     /usr/share/rofi/themes/flat-green.rasi
-    cp -Rv  ~/DotFiles/Wallpapers/  ~/Imagens/ 
-    sudo cp -Rv ~/DotFiles/Wallpapers/* /usr/share/backgrounds
+    cp -Rpv     ~/DotFiles/.config/                    ~/
+    cp -Rv      ~/DotFiles/.vim/                       ~/
+    sudo cp -v  ~/DotFiles/.vimrc                      ~/.vimrc
+    cp -v       ~/DotFiles/.zshrc                      ~/.zshrc 
+    cp -v       ~/DotFiles/.Xresources                 ~/.Xresources 
+    sudo cp -v  ~/DotFiles/pacman.conf                  /etc/pacman.conf 
+    sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi  /usr/share/rofi/themes/flat-green.rasi
+    cp -Rv      ~/DotFiles/Wallpapers/                 ~/Imagens/ 
+    sudo cp -Rv ~/DotFiles/Wallpapers/*                 /usr/share/backgrounds
 
     echo 'Arquivos já foram copiados...'
-    echo 
+    echo
+
     if [ ! -e ~/.config/polybar/gmail/credentials.json ] 
     then 
         echo "Deseja configurar o modulo gmail para o polybar?"
@@ -83,8 +84,7 @@ gmail_module(){
         echo "Navegador Firefox não encontrado, ele será instalado a seguir."
         sudo pacman -S firefox 
         echo 
-        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código
-        para o terminal e de um enter."
+        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código para o terminal e de um enter."
         sleep 10
         python  ~/.config/polybar/gmail/auth.py 
         echo "Pronto"
@@ -105,18 +105,29 @@ install() {
     echo
     echo 'Adicionando key para instalação do linux-steam-integration...'
     gpg --recv-keys 8876CC8EDAEC52CEAB7742E778E2387015C1205F 
-    yaourt -S --needed --noconfirm  installed_programs.txt
+
+    for P in $( <installed_programs.txt )
+    do 
+        if [ ! (yaourt -Q | grep ${P} > /dev/null) ]
+        then 
+             yaourt -S --needed --noconfirm ${P}
+         fi
+    done
+
     sudo pip install --upgrade google-api-python-client 
+
     if [ -e /bin/atom ] 
     then 
         apm install sync-settings
         echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup
         dos arquivos do Atom."
     fi
+
     echo "Instalando PowerLevel9K theme for Zsh"
-    echo 
+    echo
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
+
     if [ "$(cat /etc/profile.d/jre.sh | grep JAVA)" = 1  ]
     then
         echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o
@@ -128,12 +139,14 @@ install() {
         echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
         echo 
     fi 
+
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
         sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
         echo
-    fi 
+    fi
+
     echo "instalação concluida.."
     echo 
     echo "Deseja copiar os arquivos de configuração?"
@@ -141,6 +154,7 @@ install() {
     echo "Digite:   1 - Sim ; 2 - Não "
     echo 
     read opcao1 
+
     case $opcao1 in 
         1) op1 ;;
         2) echo ; Principal ;; 
