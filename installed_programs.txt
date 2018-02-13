@@ -29,6 +29,7 @@ awesome-terminal-fonts
 b43-fwcutter
 bash
 bash-completion
+bash-pipes
 betterlockscreen
 binutils
 bison
@@ -345,6 +346,7 @@ linux-steam-integration
 linux414
 linux414-acpi_call
 linux414-bbswitch
+linux414-headers
 linux414-nvidia
 linux414-virtualbox-host-modules
 logrotate
@@ -533,6 +535,7 @@ qt5-webchannel
 qt5-webkit
 qt5-x11extras
 qt5-xmlpatterns
+r8169aspm-dkms
 ranger
 raptor
 rasqal
