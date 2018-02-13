@@ -62,6 +62,7 @@ copy() {
         case $opcao2 in 
             1) gmail_module ;; 
             2) echo ; Principal ;; 
+            *) echo "Opção desconhecida." ; echo ; Principal ;; 
         esac 
     fi 
     } 
@@ -133,13 +134,10 @@ install() {
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
 
-    if [ "$(cat /etc/profile.d/jre.sh | grep JAVA)" = 1  ]
+    if [ ! $(cat /etc/profile.d/jre.sh | grep JAVA)  ]
     then
-        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o
-        JGRASP. "
+        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o JGRASP. "
         echo 
-        sleep 2
-        echo "Por favor digite sua senha para proceder..."
         sleep 2 
         echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
         echo 
@@ -163,8 +161,9 @@ install() {
     case $opcao1 in 
         1) op1 ;;
         2) echo ; Principal ;; 
+        *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
 
 }
 
-Principal 
+Principal    
