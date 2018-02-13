@@ -62,6 +62,7 @@ copy() {
         case $opcao2 in 
             1) gmail_module ;; 
             2) echo ; Principal ;; 
+            *) echo "Opção desconhecida." ; echo ; Principal ;; 
         esac 
     fi 
     } 
@@ -163,6 +164,7 @@ install() {
     case $opcao1 in 
         1) op1 ;;
         2) echo ; Principal ;; 
+        *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
 
 }
