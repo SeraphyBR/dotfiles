@@ -158,7 +158,14 @@ install() {
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
-        sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+        if [ cat /etc/lightdm/lightdm.conf | grep "#greeter-session=" ]
+        then  
+            sudo sed -i "s|^#greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+        else 
+            sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+
+        fi 
+
         echo
     fi
 
