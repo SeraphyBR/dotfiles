@@ -101,7 +101,18 @@ fi
 }    
 
 install() {
-    cd ~/DotFiles
+     
+    if [ -d ~/DotFiles ]
+        then 
+            cd ~/DotFiles 
+        else    
+            echo 'Clonando repositorio....'
+            git clone https://github.com/SeraphyBR/DotFiles.git
+            cd ~/DotFiles 
+    fi
+ 
+    echo 
+    echo 
     echo "Iniciando instalação dos programas usados por seraphybr....."
     echo
     echo "Adicionando key para instalação do linux-steam-integration..."
@@ -116,6 +127,7 @@ install() {
     do 
         if ! ( yaourt -Q | grep ${P} > /dev/null ) 
         then 
+             echo "Verificando ${P} "
              yaourt -S --needed --noconfirm ${P}
          fi
     done
@@ -134,7 +146,7 @@ install() {
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
 
-    if [ ! $(cat /etc/profile.d/jre.sh | grep JAVA)  ]
+    if [ ! cat /etc/profile.d/jre.sh | grep JAVA ]
     then
         echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o JGRASP. "
         echo 
@@ -146,9 +158,26 @@ install() {
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
-        sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+        if [ cat /etc/lightdm/lightdm.conf | grep "#greeter-session=" ]
+        then  
+            sudo sed -i "s|^#greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+        else 
+            sudo sed -i "s|^greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
+
+        fi 
+
         echo
     fi
+
+    echo "Setando tema de cursor default do X"
+    echo
+    echo -e  "[Icon Theme]\nInherits=Breese_Obsidian" | sudo tee /usr/share/icons/default/index.theme 
+    echo
+
+    echo
+    echo "Definindo imagem padrão de lockscreen e wallpaper... "
+    betterlockscreen -u Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
+    nitrogen --set-scaled Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
 
     echo "instalação concluida.."
     echo 
@@ -159,7 +188,7 @@ install() {
     read opcao1 
 
     case $opcao1 in 
-        1) op1 ;;
+        1) copy ;;
         2) echo ; Principal ;; 
         *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
