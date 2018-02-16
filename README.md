@@ -10,7 +10,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Music Player =        [MOC](https://github.com/jonsafari/mocp) (with a polybar module: [mocp.py](https://github.com/SeraphyBR/DotFiles/blob/master/.config/polybar/mocp.py))
 * Vídeo Player =        [VLC](https://www.videolan.org/vlc/)
 * Sound Visualizer =    [Cava](https://github.com/karlstav/cava)
-* File Manager =        Thunar/Ranger
+* File Manager =        Thunar/[Ranger](https://github.com/ranger/ranger)
 * Wallpaper Setter =    Nitrogen
 * Terminal Emulator =   [Termite](https://github.com/thestinger/termite)
 * Shell =               Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)
