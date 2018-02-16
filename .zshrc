@@ -137,6 +137,12 @@ autoload -U compinit colors zcalc
 compinit -d
 colors
 
+###### PowerLevel9K Section ###########
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+POWERLEVEL9K_MODE='awesome-fontconfig'
+
 
 
 
