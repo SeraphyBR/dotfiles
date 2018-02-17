@@ -146,15 +146,6 @@ install() {
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
 
-    if [ ! cat /etc/profile.d/jre.sh | grep JAVA ]
-    then
-        echo "Adicionando opção de execução java para melhor exibição de programas no Bspwm, como o JGRASP. "
-        echo 
-        sleep 2 
-        echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile.d/jre.sh
-        echo 
-    fi 
-
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."

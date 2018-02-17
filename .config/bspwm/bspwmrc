@@ -50,3 +50,8 @@ bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+# Fix Java Windows
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+
