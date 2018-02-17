@@ -381,7 +381,10 @@ minizip
 mkinitcpio-openswap
 moc
 mousepad
+mpv
 nano
+neofetch
+neomutt
 net-snmp
 network-manager-applet
 networkmanager
@@ -626,6 +629,8 @@ wireless_tools
 wkhtmltopdf
 wpa_actiond
 wpa_supplicant
+wps-office
+wps-office-extension-portuguese-brazilian-dictionary
 wxgtk-common
 wxgtk2
 wxpython
