@@ -238,9 +238,9 @@ label-monitor = %name%
 ;   label-dimmed-occupied
 ;   label-dimmed-urgent
 ;   label-dimmed-empty
-label-dimmed-foreground = ${colors.DavysGrey}
-label-dimmed-underline = ${colors.white}
-label-dimmed-focused-background = ${colors.chartreuse}
+label-dimmed-focused-foreground = ${colors.Orange1}
+label-dimmed-focused-underline = ${colors.Orange1}
+label-dimmed-focused-background = ${self.label-focused-background}
 
 
 ; Available tokens:
