@@ -7,9 +7,9 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-MONITOR=eDP-1 polybar seraphybr &
-MONITOR=HDMI-1 polybar seraphybr &
-MONITOR=eDP-1 polybar seraphybr_bottom &
-MONITOR=HDMI-1 polybar seraphybr_bottom &
+MONITOR=eDP1 polybar seraphybr &
+MONITOR=HDMI1 polybar seraphybr &
+MONITOR=eDP1 polybar seraphybr_bottom &
+MONITOR=HDMI1 polybar seraphybr_bottom &
 echo "Bars launched..."
 dunstify -u low  "Bars launched"
