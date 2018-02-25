@@ -25,7 +25,7 @@ dunstify "Bem Vindo SeraphyBR"
 manjaro-hello &
 
 
-bspc monitor   -d I II III IV V VI VII VIII IX X
+bspc monitor eDP1  -d I II III IV V VI VII VIII IX X
 #bspc monitor HDMI1 -d VI VII VIII IX X
 
 #bspc config click_to_focus true
