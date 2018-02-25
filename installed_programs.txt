@@ -388,6 +388,7 @@ nano
 neofetch
 neomutt
 neovim
+nerd-fonts-complete
 net-snmp
 network-manager-applet
 networkmanager
