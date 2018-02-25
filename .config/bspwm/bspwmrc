@@ -7,8 +7,9 @@ compton &
 nitrogen --restore &
 # Paineis
 ~/.config/polybar/launch.sh
-# Carrega arquivo de configuração X
+# Carrega arquivo de configuração X e carrega o tema de cursor.
 xrdb ~/.Xresources
+xsetroot -cursor_name left_ptr
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # MPD daemon start (if no other user instance exists)
@@ -24,7 +25,7 @@ dunstify "Bem Vindo SeraphyBR"
 manjaro-hello &
 
 
-bspc monitor eDP1  -d I II III IV V VI VII VIII IX X
+bspc monitor   -d I II III IV V VI VII VIII IX X
 #bspc monitor HDMI1 -d VI VII VIII IX X
 
 #bspc config click_to_focus true
