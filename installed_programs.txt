@@ -79,7 +79,6 @@ dhcpcd
 dialog
 diffutils
 dmraid
-dmxproto
 dnsmasq
 dnssec-anchors
 docbook-xml
@@ -145,7 +144,10 @@ grub
 grub-theme-manjaro
 gsfonts
 gsl
+gst-libav
 gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
 gtk-doc
 gtk-engine-murrine
 gtk-engines
@@ -385,6 +387,7 @@ mpv
 nano
 neofetch
 neomutt
+neovim
 net-snmp
 network-manager-applet
 networkmanager
@@ -403,6 +406,7 @@ numix-manjaro-themes
 numix-reborn-icon-themes
 nvidia-utils
 ocl-icd
+offlineimap
 oh-my-zsh-git
 openjpeg
 openssh
@@ -477,6 +481,7 @@ python-lxml
 python-mako
 python-markdown
 python-markupsafe
+python-neovim
 python-packaging
 python-pip
 python-powerline
@@ -538,6 +543,7 @@ qt5-webchannel
 qt5-webkit
 qt5-x11extras
 qt5-xmlpatterns
+qutebrowser
 r8169aspm-dkms
 ranger
 raptor
@@ -560,17 +566,18 @@ s-nail
 sane
 sassc
 screenfetch
-scrnsaverproto
 scrot
 sdl_image
 sed
 semver
 shadow
 simple-scan
+slack-desktop
 snappy
 source-highlight
 spotify
 steam-manjaro
+steam-native
 sudo
 sxhkd
 sysfsutils
@@ -647,8 +654,6 @@ xf86-input-keyboard
 xf86-input-mouse
 xf86-input-synaptics
 xf86-video-intel
-xf86dgaproto
-xf86miscproto
 xfburn
 xfce-theme-numix-reborn
 xfconf
@@ -667,6 +672,8 @@ xorg-xkill
 xorg-xmessage
 xorg-xprop
 xorg-xrandr
+xorg-xsetroot
+xorgproto
 xsel
 xterm
 yaourt
