@@ -17,7 +17,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
-
+Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -58,7 +58,8 @@ set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=100	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
- 
+set encoding=utf8
+
 set hlsearch	           " Highlight all search results
 set smartcase	           " Enable smart-case search
 set ignorecase	           " Always case-insensitive
@@ -77,6 +78,7 @@ set shell=/bin/zsh
 set background=dark
 set termguicolors
 colorscheme material-monokai
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 "" Persistent Undo
 " Let's save undo info!
