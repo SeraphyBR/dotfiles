@@ -148,8 +148,8 @@ border-size = 3
 border-color = ${colors.border}
 
 
-padding-left = 3
-padding-right = 3
+padding-left = 2
+padding-right = 2
 
 bottom = true
 
@@ -411,7 +411,7 @@ format-connected-suffix = "  "
 format-connected-suffix-foreground = ${self.format-connected-underline}
 
 label-connected = %local_ip%
-label-disconnected =
+label-disconnected = 
 
 format-disconnected = <label-disconnected>
 #####################################################################
@@ -444,7 +444,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-suffix = "  "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = Som Mudo
 
@@ -568,8 +568,9 @@ interval = 30
 exec = ~/.config/polybar/uptime.sh
 label = %output%
 format = <label>
-format-prefix = "Uptime: "
-format-underline = ${colors.white}
+format-suffix = "  "
+format-suffix-foreground =  #AC7BE3
+format-underline =  #AC7BE3
 
 ###############################################################################
 
