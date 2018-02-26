@@ -5,6 +5,15 @@
 super + Return
 	termite
 
+# Mouse buttons: just in case the touchpad button ruin.... like now....
+# Needs to install xdotool, sudo pacman -S xdotool
+alt + Left   
+    xdotool click 1 #Left Click
+alt + Down 
+    xdotool click 2  #Middle click
+alt + Right 
+    xdotool click 3 # right click
+
 # Floating Terminal
 super + alt + Return
        bspc rule -a \* -o state=floating &&  termite --name=floating
