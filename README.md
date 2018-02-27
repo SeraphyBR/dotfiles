@@ -18,7 +18,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Power Manager =       [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html )
 * Monitor =             Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr)  
 * Lock Screen =         [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) / (Old: "Blurlock" script)
-* Notification Daemon =  [Dunst](https://github.com/dunst-project/dunst)
+* Notification Daemon =  [Dunst](https://github.com/dunst-project/dunst) / libnotify
 * Gtk theme =           Adapta-nokto-eta-maia (Manjaro repo)
 * Cursor theme =        Breeze Obsidian
 
