@@ -46,10 +46,8 @@ bspc config focused_border_color "#00FF7F"
 bspc config presel_border_color "#18fe64"
 bspc config urgent_border_color "#FF4500"
 
-# Rules:
-# -a takes class_name:instance_name, use xprop to find out the names (WM_CLASS)
 bspc rule -a manjaro-hello desktop='^1' state=floating follow=on  center=true
-
+bspc rule -a Zathura state=tiled
 # Fix Java Windows
 export _JAVA_AWT_WM_NONREPARENTING=1
 

@@ -8,9 +8,9 @@ super + Return
 # Mouse buttons: just in case the touchpad button ruin.... like now....
 # Needs to install xdotool, sudo pacman -S xdotool
 alt + Left   
-    xdotool click 1 #Left Click
-alt + Down 
-    xdotool click 2  #Middle click
+    xdotool click 1 # Left Click
+alt + Up  
+    xdotool click 2  # Middle click
 alt + Right 
     xdotool click 3 # right click
 
@@ -48,10 +48,6 @@ super + n
 # Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
 alt + l
 	betterlockscreen -l
-
-# Notificação de estado do casplock
-#@Caps_Lock
-
 
 # Controles de Volume
 XF86AudioRaiseVolume
