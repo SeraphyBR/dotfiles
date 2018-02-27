@@ -49,6 +49,10 @@ super + n
 alt + l
 	betterlockscreen -l
 
+# Notificação de estado do casplock
+#@Caps_Lock
+
+
 # Controles de Volume
 XF86AudioRaiseVolume
 	pactl set-sink-volume 0 +10% && pactl set-sink-volume 1 +10%
