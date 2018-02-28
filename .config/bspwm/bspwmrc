@@ -22,7 +22,6 @@ dunst &
 dunstify "Bem Vindo SeraphyBR"
 
 
-manjaro-hello &
 
 
 bspc monitor eDP1  -d I II III IV V VI VII VIII IX X
@@ -47,6 +46,8 @@ bspc config presel_border_color "#18fe64"
 bspc config urgent_border_color "#FF4500"
 
 bspc rule -a manjaro-hello desktop='^1' state=floating follow=on  center=true
+manjaro-hello &
+
 bspc rule -a Zathura state=tiled
 # Fix Java Windows
 export _JAVA_AWT_WM_NONREPARENTING=1
