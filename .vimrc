@@ -18,6 +18,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'chrisbra/colorizer'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,8 +108,6 @@ set ruler	                " Show row and column ruler information
 set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
  
- 
-
 
 
 
