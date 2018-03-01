@@ -48,6 +48,9 @@ bspc config urgent_border_color "#FF4500"
 bspc rule -a manjaro-hello desktop='^1' state=floating follow=on  center=true
 manjaro-hello &
 
+bspc rule -a '*:libreofficedev' state=tiled
+bspc rule -a '*:soffice' state=tiled 
+
 bspc rule -a Zathura state=tiled
 # Fix Java Windows
 export _JAVA_AWT_WM_NONREPARENTING=1
