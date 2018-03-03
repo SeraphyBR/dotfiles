@@ -62,7 +62,8 @@ XF86AudioMute
 # PrintScreen
 Print
 	scrot -cd2 -q80 '%Y-%m-%d_%H-%M-%S.png' -e 'mv -n $f ~/Imagens/Screenshots/' && dunstify "Screenshot: " "Salvo em ~/Imagens/Screenshots/"
-
+super + Print 
+        gnome-screenshot -i
 
 # Controles de brihlo
 XF86MonBrightnessUp
