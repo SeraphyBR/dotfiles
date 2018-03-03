@@ -19,7 +19,7 @@ icon_name = terminal
 cursor_blink = off
 
 # "block", "underline" or "ibeam"
-cursor_shape = underline
+cursor_shape = ibeam
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 browser = firefox
