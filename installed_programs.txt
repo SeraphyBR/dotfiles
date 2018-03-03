@@ -403,8 +403,6 @@ nodejs
 nodejs-material-design-icons
 npm
 ntfs-3g
-numix-gtk-theme
-numix-manjaro-themes
 numix-reborn-icon-themes
 nvidia-utils
 ocl-icd
@@ -418,6 +416,7 @@ p7zip
 packup
 pacman
 pamac
+papirus-folders-git
 parallel
 patch
 pavucontrol
@@ -659,7 +658,6 @@ xf86-input-mouse
 xf86-input-synaptics
 xf86-video-intel
 xfburn
-xfce-theme-numix-reborn
 xfconf
 xfsprogs
 xmlsec
