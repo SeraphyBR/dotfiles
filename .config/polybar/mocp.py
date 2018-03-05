@@ -56,7 +56,7 @@ import subprocess
 # estejam nesse diretorio, sem subpasta. Se estiver em uma subpasta, pode ocorrer
 # do numero de caracteres passar o limite e exibir o nome alternativo no lugar.
 
-limite = 36
+limite = 29
 local = "/home/seraphybr/Música/"
 nome_alternativo = "Music"
 
