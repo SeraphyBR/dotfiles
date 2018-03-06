@@ -44,6 +44,7 @@ copy() {
     cp -Rv      ~/DotFiles/.vim/                       ~/
     sudo cp -v  ~/DotFiles/.vimrc                      ~/.vimrc
     cp -v       ~/DotFiles/.zshrc                      ~/.zshrc 
+    sudo cp -v ~/.zshrc                                 /root/.zshrc
     cp -v       ~/DotFiles/.Xresources                 ~/.Xresources 
     sudo cp -v  ~/DotFiles/pacman.conf                  /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi  /usr/share/rofi/themes/flat-green.rasi
@@ -145,6 +146,12 @@ install() {
     echo
     sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
     echo
+
+    echo "Instalando o oh-my-zsh e setando o zsh como padrão no usuario root..."
+    sudo -H -u root sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    echo
+    echo
+
 
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
