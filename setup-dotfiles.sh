@@ -138,8 +138,7 @@ install() {
     if [  !  -e ~/.atom/packages/sync-settings  ] 
     then 
         apm install sync-settings
-        echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup
-        dos arquivos do Atom."
+        echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup dos arquivos do Atom."
     fi
 
     echo "Instalando PowerLevel9K theme for Zsh"
@@ -156,7 +155,7 @@ install() {
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
-        if [ cat /etc/lightdm/lightdm.conf | grep "#greeter-session=" ]
+        if [( cat /etc/lightdm/lightdm.conf | grep "#greeter-session=" )]
         then  
             sudo sed -i "s|^#greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
         else 
