@@ -111,8 +111,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
  
 
@@ -161,6 +161,7 @@ alias pacman='pacman --color auto'
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
+alias root="sudo su - "
 ####################################
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
