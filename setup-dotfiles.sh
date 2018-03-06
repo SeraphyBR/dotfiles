@@ -148,7 +148,7 @@ install() {
     echo
 
     echo "Instalando o oh-my-zsh e setando o zsh como padrão no usuario root..."
-    sudo -H -u root sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    sudo -H -u root sh -c "$(wget  https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -) ; exit "
     echo
     echo
 
