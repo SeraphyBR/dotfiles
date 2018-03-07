@@ -124,6 +124,9 @@ install() {
 
     # This topic solved my problem, to be able to run the same script in archlinux,
     # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
+    echo "Iniciando verificação dos programas presentes em installed_programs.txt e se necessario será instalado"
+    echo 
+    sleep 3 
     for P in $( <installed_programs.txt )
     do 
         if ! ( yaourt -Q | grep ${P} > /dev/null ) 
