@@ -44,7 +44,7 @@ copy() {
     cp -Rv      ~/DotFiles/.vim/                       ~/
     sudo cp -v  ~/DotFiles/.vimrc                      ~/.vimrc
     cp -v       ~/DotFiles/.zshrc                      ~/.zshrc 
-    sudo cp -v ~/.zshrc                                 /root/.zshrc
+    sudo cp -v  ~/.zshrc                                /root/.zshrc
     cp -v       ~/DotFiles/.Xresources                 ~/.Xresources 
     sudo cp -v  ~/DotFiles/pacman.conf                  /etc/pacman.conf 
     sudo cp -v  ~/DotFiles/Rofi/Themes/flat-green.rasi  /usr/share/rofi/themes/flat-green.rasi
