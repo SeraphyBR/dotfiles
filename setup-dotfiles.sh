@@ -121,12 +121,12 @@ install() {
 
     echo "Atualizando sistema para proceder com a instalação dos demais programas.... "
     sudo pacman -Syu --noconfirm 
-
+    echo 
     # This topic solved my problem, to be able to run the same script in archlinux,
     # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
-    echo "Iniciando verificação dos programas presentes em installed_programs.txt e se necessario será instalado"
+    echo "Iniciando verificação dos programas presentes em installed_programs.txt, o que não estiver no sistema será instalado..."
     echo 
-    sleep 3 
+    sleep 4 
     for P in $( <installed_programs.txt )
     do 
         if ! ( yaourt -Q | grep ${P} > /dev/null ) 
