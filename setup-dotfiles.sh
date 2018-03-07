@@ -128,8 +128,13 @@ install() {
     do 
         if ! ( yaourt -Q | grep ${P} > /dev/null ) 
         then 
+             echo
              echo "Verificando ${P} "
-             yaourt -S --needed --noconfirm ${P}
+             yaourt -S --needed --noconfirm ${P} 
+             echo 
+             echo
+         else 
+             echo "Verificando ${P}... "
          fi
     done
 
