@@ -142,6 +142,8 @@ install() {
     done
 
     sudo pip install --upgrade google-api-python-client 
+    echo
+    echo
 
     if [  !  -e ~/.atom/packages/sync-settings  ] 
     then 
