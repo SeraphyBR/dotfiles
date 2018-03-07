@@ -141,10 +141,13 @@ install() {
         echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup dos arquivos do Atom."
     fi
 
-    echo "Instalando PowerLevel9K theme for Zsh"
-    echo
-    sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
-    echo
+    if [ ! -d /usr/share/oh-my-zsh/themes/powerlevel9k ]
+    then 
+        echo "Instalando PowerLevel9K theme for Zsh"
+        echo
+        sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
+        echo
+    fi 
 
     echo "Instalando o oh-my-zsh e setando o zsh como padrão no usuario root..."
     sudo -H -u root sh -c "$(wget  https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -) ; exit "
