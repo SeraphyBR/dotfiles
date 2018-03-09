@@ -132,9 +132,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
-# Mapa de Teclado
-setxkbmap -model abnt2 -layout br -variant abnt2
-
 # Theming section
 autoload -U compinit colors zcalc
 compinit -d
