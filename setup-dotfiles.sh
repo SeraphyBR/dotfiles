@@ -105,8 +105,6 @@ fi
 
 remove() {
     cd ~/DotFiles 
-
-
     pacman -Qqe > currently_installed.txt                  
                                                         
     for R in $( <installed_programs.txt )                  
@@ -118,7 +116,6 @@ remove() {
     echo
     echo "Finalizado a remoção."
     rm currently_installed.txt 
-
 }
 
 install() {
