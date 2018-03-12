@@ -45,9 +45,9 @@ bumblebee
 bzip2
 c-ares
 cabextract
+caffeine-ng
 calcurse
 calibre
-capitaine-cursors
 catfish
 cava
 cdparanoia
@@ -71,7 +71,6 @@ cups
 cups-pdf
 cups-pk-helper
 dcadec
-debtap
 dee
 depot-tools-git
 device-mapper
@@ -448,6 +447,7 @@ perl-xml-sax
 perl-xml-sax-base
 pkg-config
 pkgfile
+playerctl
 playonlinux
 podofo
 polkit-qt5
@@ -596,7 +596,6 @@ thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
-timeshift
 tlp
 tlpui
 tmux
@@ -669,6 +668,7 @@ xorg-fonts-misc
 xorg-luit
 xorg-xbacklight
 xorg-xdpyinfo
+xorg-xev
 xorg-xinit
 xorg-xkill
 xorg-xmessage
