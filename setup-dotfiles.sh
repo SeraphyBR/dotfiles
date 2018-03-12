@@ -9,7 +9,8 @@ Principal() {
   echo "1. Copiar arquivos para o sistema."
   echo "2. Copiar os arquivos para o repositorio. (não implementado)"
   echo "3. Instalar backup dos programas e configurar ambiente. (Demorado)"
-  echo "4. Sair do programa. "
+  echo "4. Remover programas não listados em installed_programs.txt (Faça por sua conta e risco!)"
+  echo "5. Sair do programa. "
   echo
   echo -n "Qual a opção desejada? "
   read opcao
@@ -17,7 +18,8 @@ Principal() {
     1) op1  ;;
     2) exit ;;
     3) install  ;;
-    4) exit ;;
+    4) remove ;;
+    5) exit ;;
     *) echo "Opção desconhecida." ; echo ; Principal ;;
   esac
 }
@@ -100,6 +102,24 @@ else
     Principal 
 fi 
 }    
+
+remove() {
+    cd ~/DotFiles 
+
+
+    pacman -Qqe > currently_installed.txt                  
+                                                        
+    for R in $( <installed_programs.txt )                  
+    do                                                     
+        sed -i "/\b\(${R}\)\b/d" currently_installed.txt        
+    done                                                   
+                                                        
+    sudo pacman -R $( <currently_installed.txt) 
+    echo
+    echo "Finalizado a remoção."
+    rm currently_installed.txt 
+
+}
 
 install() {
      
@@ -189,8 +209,10 @@ install() {
     betterlockscreen -u Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
     nitrogen --set-scaled Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
 
+
     echo "instalação concluida.."
     echo 
+    echo
     echo "Deseja copiar os arquivos de configuração?"
     echo 
     echo "Digite:   1 - Sim ; 2 - Não "

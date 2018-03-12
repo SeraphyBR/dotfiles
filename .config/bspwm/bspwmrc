@@ -14,10 +14,10 @@ xsetroot -cursor_name left_ptr
 setxkbmap -model abnt2 -layout br -variant abnt2 
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# MPD daemon start (if no other user instance exists)
-# [ ! -s ~/.config/mpd/pid ] && mpd
 # Ajuste de temperatura da cor da tela
 redshift-gtk &
+# Plugin que desabilita escurecimento de tela
+caffeine &
 # Notification Daemon
 dunst &
 # Welcome
