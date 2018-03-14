@@ -619,6 +619,7 @@ vim
 vim-runtime
 vim-spell-pt
 virtualbox
+visual-studio-code-bin
 vivaldi
 vlc
 vte
