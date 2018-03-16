@@ -97,6 +97,7 @@ exfat-utils
 exo
 f2fs-tools
 fakeroot
+feh
 ffmpeg2.8
 file
 file-roller
@@ -382,7 +383,6 @@ minizip
 mkinitcpio-openswap
 mlocate
 moc
-mousepad
 mpv
 nano
 neofetch
@@ -592,6 +592,7 @@ telegram-desktop
 termite
 termite-terminfo
 texinfo
+texlive-core
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -609,6 +610,7 @@ ttf-ms-fonts
 tumbler
 udiskie
 ufw
+unrar
 unzip
 usbutils
 util-linux
