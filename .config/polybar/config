@@ -86,7 +86,7 @@ alert = ${self.Red}
 ; Use the following command to list available outputs:
 ; If unspecified, the application will pick the first one it finds.
 ; $ xrandr -q | grep " connected" | cut -d ' ' -f1
-monitor = ${env:MONITOR:eDP1}
+monitor = 
 width = 100%
 height = 28
 #offset-x = 1%
@@ -115,7 +115,7 @@ font-0 = Book:pixelsize=12;1
 font-1 = FontAwesome:pixelsize=13;1
 font-2 = MaterialIcons:pixelsize=13;1
 
-modules-left = my-text-label bspwm
+modules-left = my-text-label bspwm i3
 #modules-center =
 modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wireless-network  date battery
 
@@ -130,7 +130,7 @@ modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature
 
 [bar/seraphybr_bottom]
 
-monitor = ${env:MONITOR:eDP1}
+monitor = 
 width = 100%
 height = 28
 #offset-x = 1%
@@ -296,6 +296,113 @@ label-empty-foreground = #55
 ;label-private = 
 ;label-private-foreground = #bd2c40
 
+[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; NOTE: The label needs to match the name of the i3 workspace
+ws-icon-0 = 1;♚
+ws-icon-1 = 2;♛
+ws-icon-2 = 3;♜
+ws-icon-3 = 4;♝
+ws-icon-4 = 5;♞
+ws-icon-default = ♟
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %index%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-unfocused = %index%
+label-unfocused-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 2
+label-separator-foreground = #ffb52a
 ###############################################################################
 
 [module/gmail]
@@ -402,7 +509,7 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 [module/wired-network]
 type = internal/network
-interface = enp1s0
+interface = enp0s3
 interval = 3.0
 
 format-connected = <label-connected>
@@ -576,7 +683,7 @@ format-underline =  #AC7BE3
 
 [module/my-text-label]
 type = custom/text
-content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro Linux  "
+content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro VM  "
 content-foreground = ${colors.white}
 content-underline = ${colors.white}
 
