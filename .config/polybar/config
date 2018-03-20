@@ -139,6 +139,7 @@ radius = 0.0
 fixed-center = true
 wm-restack = bspwm
 
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -341,12 +342,12 @@ fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
-ws-icon-0 = 1;♚
-ws-icon-1 = 2;♛
-ws-icon-2 = 3;♜
-ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞
-ws-icon-default = ♟
+#ws-icon-0 = 1;♚
+#ws-icon-1 = 2;♛
+#ws-icon-2 = 3;♜
+#ws-icon-3 = 4;♝
+#ws-icon-4 = 5;♞
+#ws-icon-default = ♟
 
 ; Available tags:
 ;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
@@ -358,7 +359,8 @@ format = <label-state> <label-mode>
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = #e60053
+label-mode-background = ${colors.SpringGreen}
+label-mode-foreground = ${colors.Black}
 
 ; Available tokens:
 ;   %name%
@@ -366,43 +368,43 @@ label-mode-background = #e60053
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %index%
-label-focused-foreground = #ffffff
+label-focused = %name% 
+label-focused-foreground = ${colors.chartreuse}
 label-focused-background = #3f3f3f
-label-focused-underline = #fba922
-label-focused-padding = 4
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %index%
-label-unfocused-padding = 4
+label-unfocused = %name%
+label-unfocused-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %index%
+label-visible = %name%
 label-visible-underline = #555555
-label-visible-padding = 4
+label-visible-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
-label-urgent-padding = 4
+label-urgent-padding = 2
 
 ; Separator in between workspaces
-label-separator = |
-label-separator-padding = 2
-label-separator-foreground = #ffb52a
+#label-separator = |
+#label-separator-padding = 1
+#label-separator-foreground = #ffb52a
 ###############################################################################
 
 [module/gmail]
@@ -647,7 +649,7 @@ menu-0-3 = Bloquear
 menu-0-3-exec = betterlockscreen -l
 
 menu-0-4 = Sair |
-menu-0-4-exec = bspc quit
+menu-0-4-exec = bspc quit; i3-msg exit
 
 menu-1-0 = Voltar
 menu-1-0-exec = menu-open-0

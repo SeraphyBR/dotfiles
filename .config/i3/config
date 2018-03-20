@@ -40,8 +40,17 @@ exec --no-startup-id caffeine
 exec --no-startup-id dunst
 exec --no-startup-id dunstify "Bem Vindo SeraphyBR"
 
-exec --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+#Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #00ff7f
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #556b2f
+client.unfocused        #333333 #222222 #888888 #292d2e   #ffffff
+client.urgent           #2f344a #ff4500 #ffffff #ff4500   #ff4500
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
 
 # start a terminal
 bindsym $mod+Return exec termite
@@ -62,13 +71,13 @@ bindsym $mod+Shift+a exec thunar
 bindsym Mod1+l exec betterlockscreen -l
 
 # Volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10% && pactl set-sink-volume 1 +10%
-bindsym XF86udioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10% && pactl set-sink-volume 1 -10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%;exec pactl set-sink-volume 1 +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%;exec pactl set-sink-volume 1 -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Brightness control 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDowm exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 
 # change focus
@@ -123,16 +132,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "I"
+set $ws2 "II"
+set $ws3 "III"
+set $ws4 "IV"
+set $ws5 "V"
+set $ws6 "VI"
+set $ws7 "VII"
+set $ws8 "VIII"
+set $ws9 "IX"
+set $ws10 "X"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -161,7 +170,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -193,10 +202,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # i3wm-gaps config
-for_window [class="^.*"] border pixel 4
-
-#gaps outer all set 10
-
+for_window [class="^.*"] border pixel 5
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
