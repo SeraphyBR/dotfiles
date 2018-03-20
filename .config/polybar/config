@@ -86,7 +86,7 @@ alert = ${self.Red}
 ; Use the following command to list available outputs:
 ; If unspecified, the application will pick the first one it finds.
 ; $ xrandr -q | grep " connected" | cut -d ' ' -f1
-monitor = 
+monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 28
 #offset-x = 1%
@@ -130,7 +130,7 @@ modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature
 
 [bar/seraphybr_bottom]
 
-monitor = 
+monitor = ${env:MONITOR:eDP1} 
 width = 100%
 height = 28
 #offset-x = 1%
@@ -509,7 +509,7 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 [module/wired-network]
 type = internal/network
-interface = enp0s3
+interface = enp1s0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -683,7 +683,7 @@ format-underline =  #AC7BE3
 
 [module/my-text-label]
 type = custom/text
-content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro VM  "
+content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro Linux  "
 content-foreground = ${colors.white}
 content-underline = ${colors.white}
 
