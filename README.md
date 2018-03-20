@@ -3,7 +3,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ### Programs and infos:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
-* Window Manager = [Bspwm](https://github.com/baskerville/bspwm)
+* Window Manager = [Bspwm](https://github.com/baskerville/bspwm) and [i3-gaps](https://github.com/Airblader/i3)
 * Web Browser =         [Firefox](https://www.mozilla.org/pt-BR/firefox/new/)
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi)
 * Status bar =          [Polybar](https://github.com/jaagr/polybar)

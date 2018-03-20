@@ -135,7 +135,7 @@ gobject-introspection
 google-breakpad-git
 gparted
 gperf
-gpick
+gpicview-gtk3
 gradle
 graphviz
 grep
@@ -168,6 +168,7 @@ haveged
 hplip
 htop
 http-parser
+i3-gaps
 i3lock-color
 icoutils
 imlib2
@@ -397,7 +398,6 @@ nfs-utils
 nilfs-utils
 ninja
 nitrogen
-nmap
 nodejs
 nodejs-material-design-icons
 npm
@@ -554,9 +554,7 @@ re2
 redland
 redshift
 reiserfsprogs
-remmina
 rhash
-ristretto
 rkhunter
 rofi
 rofi-dmenu
