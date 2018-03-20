@@ -119,7 +119,7 @@ remove() {
 }
 
 install() {
-     
+    
     if [ -d ~/DotFiles ]
         then 
             cd ~/DotFiles 
