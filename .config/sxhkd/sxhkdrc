@@ -144,6 +144,10 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+# focus all windows, can be use to move the entire workspace
+super + alt + s
+    bspc node -f @/
+
 #
 # preselect
 #
@@ -165,7 +169,6 @@ super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ######################## move/resize ####################################
-
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
