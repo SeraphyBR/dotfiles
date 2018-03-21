@@ -11,7 +11,6 @@ adobe-air-sdk
 alsa-plugins
 alsa-utils
 android-file-transfer
-ankama-transition
 apm
 appstream-glib
 arandr
@@ -626,7 +625,6 @@ vte
 vte3-ng
 vundle-git
 w3m
-wakfu-transition
 wavpack
 wget
 which
@@ -682,6 +680,7 @@ xterm
 yaourt
 yelp-tools
 yelp-xsl
+youtube-dl
 zathura
 zathura-pdf-mupdf
 zd1211-firmware
