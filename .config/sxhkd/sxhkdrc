@@ -7,12 +7,15 @@ super + Return
 
 # Mouse buttons: just in case the touchpad button ruin.... like now....
 # Needs to install xdotool, sudo pacman -S xdotool
-alt + Left   
-    xdotool click 1 # Left Click
-alt + Up  
-    xdotool click 2  # Middle click
-alt + Right 
-    xdotool click 3 # right click
+#
+# Update 08/04/2018: solved using config for libinput https://wiki.archlinux.org/index.php/Libinput#libinput-gestures
+
+#alt + Left   
+#    xdotool click 1 # Left Click
+#alt + Up  
+#    xdotool click 2  # Middle click
+#alt + Right 
+#    xdotool click 3 # right click
 
 # Floating Terminal
 super + alt + Return
