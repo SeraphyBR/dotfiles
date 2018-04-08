@@ -3,11 +3,11 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ## Screenshots:
 
-![Alt text](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
+![Screenshot-1](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
 
 ### Rofi:
 
-![Alt text]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot2.png "Screenshot 2")
+![Screenshot-2]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot2.png "Screenshot 2")
 
 ## Programs and infos:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
