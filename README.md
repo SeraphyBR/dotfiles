@@ -1,7 +1,15 @@
 # Dot Files
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
-### Programs and infos:
+## Screenshots:
+
+![Alt text](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
+
+### Rofi:
+
+![Alt text]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot2.png "Screenshot 2")
+
+## Programs and infos:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
 * Window Manager =      [Bspwm](https://github.com/baskerville/bspwm)(Main) and [i3-gaps](https://github.com/Airblader/i3)
 * Web Browser =         [Firefox](https://www.mozilla.org/pt-BR/firefox/new/)
@@ -32,9 +40,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 #### Obs2: I also recently made a [setup script](https://github.com/SeraphyBR/DotFiles/blob/master/setup-dotfiles.sh), but it is available only in Brazilian Portuguese, made for my personal use. It works on Manjaro and Arch Linux.
 * It works on Arch Linux, but it will be reported that some packages were not found, since they are from the manjaro repository
-#### Touchpad Support: To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"
+#### Touchpad Support: 
+* To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"
 
-``` 
+```  
 Section "InputClass"
 	Identifier "touchpad"
 	Driver "libinput"
@@ -49,11 +58,3 @@ EndSection
 
 
 
-
-### Screenshots:
-
-![Alt text](https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot1.png "Screenshot 1")
-
-#### Rofi:
-
-![Alt text]( https://github.com/SeraphyBR/DotFiles/blob/master/Screenshots/Screenshot2.png "Screenshot 2")
