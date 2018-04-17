@@ -1,4 +1,5 @@
 a52dec
+abntex2
 accountsservice
 acpi
 acpid
@@ -20,6 +21,7 @@ aspell-pt
 atom
 audacious
 audacious-plugins
+audacity
 audiofile
 autoconf
 autoconf-archive
@@ -36,6 +38,8 @@ blueman
 bluez
 bluez-tools
 boost-libs
+breeze-gtk
+breeze-icons
 breeze-maia-icon-themes
 breeze-obsidian-cursor-theme
 bspwm
@@ -83,14 +87,17 @@ dnssec-anchors
 docbook-xml
 docbook-xsl
 dofus
+dosbox
 dosfstools
 double-conversion
 dunst
 dunstify
+dvdauthor
 e2fsprogs
 ecryptfs-utils
 efibootmgr
 electron
+espeak
 etcher
 exfat-utils
 exo
@@ -105,9 +112,11 @@ findutils
 firefox
 firefox-i18n-pt-br
 flashplugin
+flatpak
 flex
 foomatic-db-engine
 freeglut
+frei0r-plugins
 gamin
 garcon
 gawk
@@ -115,6 +124,7 @@ gcab
 gcc
 gcc-libs
 gd
+gespeaker
 gettext
 ghostscript
 giblib
@@ -122,6 +132,7 @@ gimp
 git
 gksu
 glances
+glava-git
 glew
 glib2-docs
 glibc
@@ -140,11 +151,13 @@ graphviz
 grep
 groff
 grub
+grub-customizer
 grub-theme-manjaro
 gsfonts
 gsl
 gst-libav
 gst-plugins-base
+gst-plugins-espeak
 gst-plugins-good
 gst-plugins-ugly
 gtk-doc
@@ -195,7 +208,9 @@ jre9-openjdk-headless
 jsoncpp
 kauth
 kcoreaddons
+kdenlive
 kitemmodels
+latex-enumitem
 ldns
 less
 lib32-acl
@@ -214,7 +229,9 @@ lib32-glib2
 lib32-glu
 lib32-gmp
 lib32-gnutls
+lib32-gst-plugins-base-libs
 lib32-gtk2
+lib32-gtk3
 lib32-harfbuzz
 lib32-keyutils
 lib32-krb5
@@ -252,6 +269,7 @@ lib32-nettle
 lib32-nspr
 lib32-nss
 lib32-nvidia-utils
+lib32-ocl-icd
 lib32-openssl
 lib32-p11-kit
 lib32-pango
@@ -261,6 +279,8 @@ lib32-primus
 lib32-sqlite
 lib32-systemd
 lib32-util-linux
+lib32-v4l-utils
+lib32-vulkan-icd-loader
 lib32-wavpack
 lib32-xz
 libabw
@@ -307,7 +327,7 @@ libpagemaker
 libpng12
 libpwquality
 libreoffice-fresh
-libreoffice-fresh-pt-BR
+libreoffice-fresh-pt-br
 librevenge
 libsass
 libshout
@@ -357,6 +377,7 @@ lsb-release
 lua
 lua51
 lua52
+lutris
 lvm2
 lxappearance-gtk3
 lxrandr-gtk3
@@ -373,6 +394,13 @@ manjaro-settings-manager-notifier
 manjaro-system
 manjaro-wallpapers-17.0
 manjaro-zsh-config
+mbrola
+mbrola-voices-br1
+mbrola-voices-br2
+mbrola-voices-br3
+mbrola-voices-br4
+mbrola-voices-us3
+mc
 mdadm
 megasync
 memtest86+
@@ -403,6 +431,7 @@ npm
 ntfs-3g
 numix-reborn-icon-themes
 nvidia-utils
+obs-studio
 ocl-icd
 offlineimap
 oh-my-zsh-git
@@ -447,7 +476,6 @@ perl-xml-sax-base
 pkg-config
 pkgfile
 playerctl
-playonlinux
 podofo
 polkit-qt5
 polybar
@@ -533,6 +561,7 @@ python2-sip
 python2-six
 python2-unrardll
 python2-webencodings
+python2-wxpython3
 python2-xdg
 qt5-base
 qt5-declarative
@@ -560,8 +589,10 @@ rofi-dmenu
 rp-pppoe
 rsync
 ruby
+rxvt-unicode
 rxvt-unicode-terminfo
 s-nail
+samba
 sane
 sassc
 screenfetch
@@ -590,6 +621,9 @@ termite
 termite-terminfo
 texinfo
 texlive-core
+texlive-latexextra
+texmaker
+texstudio
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -598,6 +632,7 @@ tlp
 tlpui
 tmux
 transmission-gtk
+trizen
 tslib
 ttf-dejavu-sans-mono-powerline
 ttf-font-awesome
@@ -622,14 +657,14 @@ visual-studio-code-bin
 vivaldi
 vlc
 vte
-vte3-ng
+vte3
 vundle-git
 w3m
 wavpack
 wget
 which
-wine
 wine-mono
+wine-staging
 wine_gecko
 winetricks
 wireless_tools
@@ -640,7 +675,6 @@ wps-office
 wps-office-extension-portuguese-brazilian-dictionary
 wxgtk-common
 wxgtk2
-wxpython
 xautolock
 xbitmaps
 xcb-util-cursor
@@ -653,7 +687,6 @@ xdg-utils
 xdotool
 xf86-input-keyboard
 xf86-input-mouse
-xf86-input-synaptics
 xf86-video-intel
 xfburn
 xfconf
