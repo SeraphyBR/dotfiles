@@ -16,7 +16,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi)
 * Status bar =          [Polybar](https://github.com/jaagr/polybar)
 * Music Player =        [MOC](https://github.com/jonsafari/mocp) (with a polybar module: [mocp.py](https://github.com/SeraphyBR/DotFiles/blob/master/.config/polybar/mocp.py)) and [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify))
-* Vídeo Player =        [VLC](https://www.videolan.org/vlc/)
+* Vídeo Player =        [VLC](https://www.videolan.org/vlc/) and [MPV](https://mpv.io/)
 * Sound Visualizer =    [Cava](https://github.com/karlstav/cava)
 * File Manager =        Thunar/[Ranger](https://github.com/ranger/ranger)
 * Wallpaper Setter =    Nitrogen
