@@ -459,7 +459,7 @@ exec = python ~/.config/polybar/spotify_status.py -t 36
 
 click-left = playerctl next
 click-right = playerctl previous
-click-middle = playerctl play-pause
+click-middle = playerctl play-pause && notify-send -u low "Spotify: $(playerctl status)"
 
 format-underline = #1db954
 ###############################################################################
