@@ -7,6 +7,7 @@ adapta-black-breath-theme
 adapta-black-maia-theme
 adapta-breath-theme
 adapta-gtk-theme
+adapta-kde
 adapta-maia-theme
 adobe-air-sdk
 alsa-plugins
@@ -208,6 +209,7 @@ jre9-openjdk-headless
 jsoncpp
 kauth
 kcoreaddons
+kdeconnect
 kdenlive
 kitemmodels
 latex-enumitem
@@ -402,7 +404,6 @@ mbrola-voices-br4
 mbrola-voices-us3
 mc
 mdadm
-megasync
 memtest86+
 mesa-demos
 mhwd
@@ -412,6 +413,7 @@ mkinitcpio-openswap
 mlocate
 moc
 mpv
+multimc-git
 nano
 neofetch
 neomutt
@@ -455,6 +457,7 @@ perl-clone
 perl-dbi
 perl-encode-locale
 perl-file-listing
+perl-file-mimeinfo
 perl-html-parser
 perl-html-tagset
 perl-http-cookies
@@ -476,6 +479,7 @@ perl-xml-sax-base
 pkg-config
 pkgfile
 playerctl
+playonlinux
 podofo
 polkit-qt5
 polybar
@@ -567,12 +571,14 @@ qt5-base
 qt5-declarative
 qt5-location
 qt5-sensors
+qt5-styleplugins
 qt5-svg
 qt5-translations
 qt5-webchannel
 qt5-webkit
 qt5-x11extras
 qt5-xmlpatterns
+qt5ct
 qutebrowser
 r8169aspm-dkms
 ranger
@@ -596,6 +602,7 @@ samba
 sane
 sassc
 screenfetch
+screenkey
 scrot
 sdl_image
 sed
@@ -603,12 +610,18 @@ semver
 shadow
 simple-scan
 slack-desktop
+slop
+smplayer
+smplayer-skins
+smplayer-themes
+smtube
 snappy
 source-highlight
 spotify
 steam-manjaro
 steam-native
 sudo
+supertuxkart
 sxhkd
 sysfsutils
 system-config-printer
@@ -627,6 +640,8 @@ texstudio
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
+thunar-shares-plugin
+thunar-vcs-plugin
 thunar-volman
 tlp
 tlpui
@@ -655,12 +670,12 @@ vim-spell-pt
 virtualbox
 visual-studio-code-bin
 vivaldi
-vlc
 vte
 vte3
 vundle-git
 w3m
 wavpack
+weechat
 wget
 which
 wine-mono

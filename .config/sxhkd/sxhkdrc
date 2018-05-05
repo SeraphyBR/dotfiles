@@ -47,6 +47,9 @@ super + Escape
 # Wifi menu rofi
 super + n
         networkmanager_dmenu
+# Localizar arquivos pelo rofi:
+super + f
+        xdg-open "$(locate home media | rofi -threads 0 -width 60 -dmenu -i -p "locate:")"    
 
 # Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
 alt + l
