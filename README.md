@@ -12,11 +12,11 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 ## Programs and infos:
 * Linux Distro =        [Manjaro](https://manjaro.org/)
 * Window Manager =      [Bspwm](https://github.com/baskerville/bspwm)(Main) and [i3-gaps](https://github.com/Airblader/i3)
-* Web Browser =         [Firefox](https://www.mozilla.org/pt-BR/firefox/new/)
+* Web Browser =         [Firefox](https://www.mozilla.org/pt-BR/firefox/new/)/[qutebrowser](https://qutebrowser.org/)
 * Program Launcher =    [Rofi](https://github.com/DaveDavenport/rofi)
 * Status bar =          [Polybar](https://github.com/jaagr/polybar)
 * Music Player =        [MOC](https://github.com/jonsafari/mocp) (with a polybar module: [mocp.py](https://github.com/SeraphyBR/DotFiles/blob/master/.config/polybar/mocp.py)) and [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify))
-* Vídeo Player =        [VLC](https://www.videolan.org/vlc/) and [MPV](https://mpv.io/)
+* Vídeo Player =        [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/)
 * Sound Visualizer =    [Cava](https://github.com/karlstav/cava)
 * File Manager =        Thunar/[Ranger](https://github.com/ranger/ranger)
 * Wallpaper Setter =    Nitrogen
