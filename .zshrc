@@ -1,5 +1,5 @@
 
-export TERM="xterm-256color"
+export TERM="xterm-termite"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -71,8 +71,9 @@ plugins=(git zsh-syntax-highlighting)
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='vim'
-export GIT_EDITOR='vim'
+export EDITOR=/usr/bin/nvim 
+export VISUAL=/usr/bin/nvim 
+export GIT_EDITOR=/usr/bin/nvim 
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -104,6 +105,7 @@ setopt autocd                                                   # if only direct
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion    (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
+
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
@@ -111,8 +113,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
  
 
