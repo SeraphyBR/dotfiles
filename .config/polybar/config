@@ -432,7 +432,7 @@ click-left = "gksudo bluetooth toggle"
 
 [module/mocp]
 type = custom/script
-interval = 1
+interval = 1.5
 
 format = <label>
 label-maxlen = 40
@@ -450,7 +450,7 @@ click-middle = mocp -G
 #############################################################################
 [module/spotify]
 type = custom/script
-interval = 1
+interval = 1.5
 format-prefix = "  "
 format-suffix = "  "
 format-prefix-foreground = #1db954
