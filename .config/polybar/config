@@ -710,7 +710,6 @@ content = " %{F#7df059}  %{F-} SeraphyBR - Manjaro Linux  "
 content-foreground = ${colors.white}
 content-underline = #7df059
 
-
 ################################################################################
 
 [module/bbswitch_show]
