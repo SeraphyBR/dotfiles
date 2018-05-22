@@ -441,7 +441,7 @@ format-suffix = "  "
 format-prefix-foreground = ${colors.Orange1}
 format-suffix-foreground = ${colors.Orange1}
 format-underline = ${colors.Orange1}
-exec = echo "$(mocp -Q %song) - $(mocp -Q %album)"
+exec = ~/.config/polybar/player-moc.sh
 
 click-left = mocp -f
 click-right = mocp -r
