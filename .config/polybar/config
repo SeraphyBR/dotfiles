@@ -175,7 +175,7 @@ tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:70:...%
+label = %title:0:60:...%
 format-underline = ${colors.OrangeRed}
 
 ###############################################################################
@@ -432,15 +432,16 @@ click-left = "gksudo bluetooth toggle"
 
 [module/mocp]
 type = custom/script
-interval = 0.56
+interval = 1
 
 format = <label>
+label-maxlen = 40
 format-prefix = "  "
 format-suffix = "  "
 format-prefix-foreground = ${colors.Orange1}
 format-suffix-foreground = ${colors.Orange1}
 format-underline = ${colors.Orange1}
-exec = ~/.config/polybar/mocp.py
+exec = echo "$(mocp -Q %song) - $(mocp -Q %album)"
 
 click-left = mocp -f
 click-right = mocp -r
@@ -468,7 +469,8 @@ format-underline = #1db954
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
+label-foreground = #c8f059
 
 bar-width = 10
 bar-indicator = 
@@ -521,6 +523,7 @@ format-connected-suffix-foreground = ${self.format-connected-underline}
 format-connected-underline = ${colors.DeepSkyBlue}
 
 label-connected = %essid%
+label-connected-maxlen = 12
 label-disconnected = "Wi-Fi não conectado"
 
 format-disconnected-suffix = "  "
@@ -571,8 +574,8 @@ label-font = 10
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
+label-volume = 
+label-volume-foreground = ${colors.DeepSkyBlue}
 
 format-muted-suffix = "  "
 format-muted-foreground = ${colors.foreground-alt}
@@ -582,7 +585,7 @@ bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.DeepSkyBlue}
 
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator =  
 bar-volume-indicator-font = 0
 bar-volume-fill = ""
 bar-volume-fill-font = 1
@@ -608,14 +611,20 @@ format-full-suffix = "   "
 format-full-suffix-foreground = ${self.format-charging-underline}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
 ramp-capacity-foreground = ${self.format-charging-underline}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
 animation-charging-foreground = ${self.format-charging-underline}
 animation-charging-framerate = 750
 
