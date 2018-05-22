@@ -19,8 +19,10 @@ super + Return
 
 # Floating Terminal
 super + alt + Return
-       bspc rule -a \* -o state=floating &&  termite --name=floating
-
+        bspc rule -a \* -o state=floating &&  termite --name=floating
+# Suckless' Simple Terminal
+super + shift + Return
+        st
 # Gerenciador de arquivos cli
 super + a
         termite -e ranger
