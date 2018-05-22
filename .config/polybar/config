@@ -706,9 +706,9 @@ format-underline =  #AC7BE3
 
 [module/my-text-label]
 type = custom/text
-content = " %{F#7FFF00}  %{F-} SeraphyBR - Manjaro Linux  "
+content = " %{F#7df059}  %{F-} SeraphyBR - Manjaro Linux  "
 content-foreground = ${colors.white}
-content-underline = ${colors.white}
+content-underline = #7df059
 
 
 ################################################################################
