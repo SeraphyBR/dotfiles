@@ -23,7 +23,7 @@ caffeine-indicator || caffeine &
 # Notification Daemon
 dunst &
 # Welcome
-dunstify "Bem Vindo SeraphyBR"
+dunstify "Bem Vindo $USER!"
 
 
 
