@@ -471,15 +471,15 @@ format = <label> <bar>
 label = BL
 
 bar-width = 10
-bar-indicator = |
+bar-indicator = 
 bar-indicator-foreground = #ff
 bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
+bar-fill = ""
+bar-fill-font = 1
 bar-fill-foreground = #ffd60a
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = #ffffff
+bar-empty = ""
+bar-empty-font = 1
+bar-empty-foreground = ${colors.DavysGrey}
 
 ##############################################################################
 
@@ -582,13 +582,13 @@ bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.DeepSkyBlue}
 
 bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-indicator = 
+bar-volume-indicator-font = 0
+bar-volume-fill = ""
+bar-volume-fill-font = 1
+bar-volume-empty = ""
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.DavysGrey}
 
 ##########################################################
 
