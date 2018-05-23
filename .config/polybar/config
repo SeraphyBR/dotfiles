@@ -577,9 +577,11 @@ format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = #8FF6FF
 
+
 format-muted-suffix = "  "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = Som Mudo
+format-muted-foreground = #8FF6FF
+label-muted = " Som Mudo"
+format-muted-underline = #8FF6FF
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #8FF6FF
