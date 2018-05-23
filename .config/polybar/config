@@ -157,9 +157,9 @@ bottom = true
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Book:pixelsize=13;1
-font-1 = FontAwesome:pixelsize=13;1
-font-2 = MaterialIcons:pixelsize=13;1
+font-0 = "Dejavu Sans:pixelsize=13;1"
+font-1 = "FontAwesome:pixelsize=13;1"
+font-2 = "MaterialIcons:pixelsize=13;1"
 
 modules-left = mocp spotify
 modules-center = xwindow
@@ -300,7 +300,7 @@ label-empty-foreground = #55
 ;label-sticky-foreground = #fba922
 ;label-private = 
 ;label-private-foreground = #bd2c40
-
+###########################################################################
 [module/i3]
 type = internal/i3
 
@@ -662,9 +662,9 @@ ramp-foreground = ${colors.Crimson}
 type = custom/menu
 
 format-spacing = 1
-format-underline = ${colors.white}
+format-underline = 	#ff8247
 
-label-open = "Power Menu %{F#7FFF00}  %{F-} "
+label-open = "Power Menu %{F#ff8247}  %{F-} "
 
 label-open-foreground = ${colors.white}
 label-close = " Cancelar"
