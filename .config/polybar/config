@@ -575,14 +575,14 @@ type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
-label-volume-foreground = ${colors.DeepSkyBlue}
+label-volume-foreground = #8FF6FF
 
 format-muted-suffix = "  "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = Som Mudo
 
 bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.DeepSkyBlue}
+bar-volume-foreground-0 = #8FF6FF
 
 bar-volume-gradient = false
 bar-volume-indicator =  
