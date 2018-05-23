@@ -176,6 +176,10 @@ tray-background = ${colors.background}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:60:...%
+format-prefix = " "
+format-suffix = " "
+format-prefix-foreground = ${self.format-underline}
+format-suffix-foreground = ${self.format-underline}
 format-underline = ${colors.OrangeRed}
 
 ###############################################################################
