@@ -528,7 +528,7 @@ format-connected-underline = ${colors.DeepSkyBlue}
 
 label-connected = %essid%
 label-connected-maxlen = 12
-label-disconnected = "Wi-Fi não conectado"
+label-disconnected = "Sem Conexão"
 
 format-disconnected-suffix = "  "
 format-disconnected = <label-disconnected>
