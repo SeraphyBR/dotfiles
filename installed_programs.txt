@@ -39,7 +39,6 @@ c-ares
 cabextract
 caffeine-ng
 calibre
-catfish
 cava
 cdparanoia
 chmlib
@@ -80,7 +79,6 @@ dunstify
 dvdauthor
 e2fsprogs
 ecryptfs-utils
-electron
 etcher
 exfat-utils
 exo
@@ -179,7 +177,6 @@ java-runtime-common
 jdk8
 jdk8-openjdk
 jfsutils
-jgrasp
 jre8-openjdk
 jre8-openjdk-headless
 jre9-openjdk
@@ -561,7 +558,6 @@ s-nail
 samba
 sane
 sassc
-scratch2
 screenfetch
 screenkey
 scrot
