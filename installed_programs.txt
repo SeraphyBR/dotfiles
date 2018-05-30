@@ -677,7 +677,6 @@ xorg-xrandr
 xorg-xsetroot
 xorgproto
 xsel
-xterm
 yaourt
 yelp-tools
 yelp-xsl
