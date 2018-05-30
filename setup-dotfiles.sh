@@ -162,12 +162,6 @@ install() {
     echo
     echo
 
-    if [  !  -e ~/.atom/packages/sync-settings  ] 
-    then 
-        apm install sync-settings
-        echo "O plugin sync-settings do editor Atom foi instalado, use-o para restaurar um backup dos arquivos do Atom."
-    fi
-
     if [ ! -d /usr/share/oh-my-zsh/themes/powerlevel9k ]
     then 
         echo "Instalando PowerLevel9K theme for Zsh"
