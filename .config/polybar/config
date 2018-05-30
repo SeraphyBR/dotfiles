@@ -111,7 +111,7 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "Dejavu Sans:pixelsize=12;1"
+font-0 = "Dejavu Sans:size=12;1"
 font-1 = "FontAwesome:pixelsize=13;1"
 font-2 = "MaterialIcons:pixelsize=13;1"
 
