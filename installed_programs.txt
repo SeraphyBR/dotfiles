@@ -2,8 +2,6 @@ a52dec
 accountsservice
 acpi
 acpid
-adapta-black-breath-theme
-adapta-black-maia-theme
 adapta-breath-theme
 adapta-gtk-theme
 adapta-maia-theme
@@ -81,7 +79,7 @@ e2fsprogs
 ecryptfs-utils
 etcher
 exfat-utils
-exo
+exo-gtk3
 f2fs-tools
 fakeroot
 feh
@@ -139,7 +137,6 @@ gst-plugins-ugly
 gtk-doc
 gtk-engine-murrine
 gtk-engines
-gtk-xfce-engine
 gtkmm
 gtksourceview3
 gtkspell
@@ -386,6 +383,7 @@ nfs-utils
 nilfs-utils
 ninja
 nitrogen
+nm-connection-editor
 nodejs
 nodejs-material-design-icons
 npm
@@ -593,11 +591,11 @@ termite-terminfo
 texinfo
 texlive-core
 texlive-latexextra
-thunar
-thunar-archive-plugin
+thunar-archive-plugin-gtk3
+thunar-gtk3
 thunar-media-tags-plugin
 thunar-shares-plugin
-thunar-volman
+thunar-volman-gtk3
 tlp
 tlpui
 tmux
@@ -653,7 +651,6 @@ xf86-input-keyboard
 xf86-input-mouse
 xf86-video-intel
 xfburn
-xfconf
 xfsprogs
 xmlsec
 xorg-bdftopcf
@@ -682,4 +679,8 @@ zathura-pdf-mupdf
 zenity
 zip
 zsh
+zsh-autosuggestions
+zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
 zziplib
