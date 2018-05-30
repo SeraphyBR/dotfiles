@@ -89,7 +89,6 @@ fakeroot
 feh
 ffmpeg2.8
 file
-file-roller
 filesystem
 findutils
 firefox
@@ -644,6 +643,7 @@ wps-office
 wps-office-extension-portuguese-brazilian-dictionary
 wxgtk-common
 wxgtk2
+xarchiver
 xbitmaps
 xcb-util-cursor
 xcb-util-image
