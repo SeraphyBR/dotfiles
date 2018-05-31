@@ -5,7 +5,6 @@ acpid
 adapta-breath-theme
 adapta-gtk-theme
 adapta-maia-theme
-adobe-air-sdk
 alsa-plugins
 alsa-utils
 appstream-glib
@@ -114,9 +113,7 @@ glibc
 gnome-common
 gnome-disk-utility
 gnome-keyring
-gnu-netcat
 gobject-introspection
-google-breakpad-git
 gparted
 gperf
 gpick
@@ -166,8 +163,6 @@ intltool
 iproute2
 iptables
 iputils
-ipw2100-fw
-ipw2200-fw
 itstool
 java-environment-common
 java-runtime-common
@@ -204,8 +199,6 @@ lib32-glu
 lib32-gmp
 lib32-gnutls
 lib32-gst-plugins-base-libs
-lib32-gtk2
-lib32-gtk3
 lib32-harfbuzz
 lib32-keyutils
 lib32-krb5
@@ -234,14 +227,11 @@ lib32-libxcursor
 lib32-libxft
 lib32-libxi
 lib32-libxinerama
-lib32-libxrandr
 lib32-libxrender
 lib32-libxslt
 lib32-libxss
 lib32-libxtst
 lib32-nettle
-lib32-nspr
-lib32-nss
 lib32-nvidia-utils
 lib32-ocl-icd
 lib32-openssl
@@ -289,7 +279,6 @@ liblangtag
 libmad
 libmagick6
 libmatroska
-libmpdclient
 libmspub
 libmtp
 libmwaw
@@ -381,12 +370,9 @@ networkmanager
 networkmanager-dmenu
 nfs-utils
 nilfs-utils
-ninja
 nitrogen
 nm-connection-editor
 nodejs
-nodejs-material-design-icons
-npm
 ntfs-3g
 nvidia-utils
 obs-studio
@@ -670,7 +656,6 @@ xorg-xrandr
 xorg-xsetroot
 xorgproto
 xsel
-yaourt
 yelp-tools
 yelp-xsl
 youtube-dl
