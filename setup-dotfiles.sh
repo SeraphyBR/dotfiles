@@ -1,33 +1,32 @@
-#!/bin/sh
+#!/bin/bash
 
 Principal() {
-  echo   
-  echo "     SeraphyBR DotFiles "
-  echo "---------------------------------"
-  echo "Opções:"
-  echo
-  echo "1. Copiar arquivos para o sistema."
-  echo "2. Copiar os arquivos para o repositorio. (não implementado)"
-  echo "3. Instalar backup dos programas e configurar ambiente. (Demorado)"
-  echo "4. Remover programas não listados em installed_programs.txt (Faça por sua conta e risco!)"
-  echo "5. Sair do programa. "
-  echo
-  echo -n "Qual a opção desejada? "
-  read opcao
-  case $opcao in
-    1) op1  ;;
-    2) exit ;;
-    3) install  ;;
-    4) remove ;;
-    5) exit ;;
-    *) echo "Opção desconhecida." ; echo ; Principal ;;
-  esac
+    echo   
+    echo "     SeraphyBR DotFiles "
+    echo "---------------------------------"
+    echo "Opções:"
+    echo
+    echo "1. Copiar arquivos para o sistema."
+    echo "2. Copiar os arquivos para o repositorio. (não implementado)"
+    echo "3. Instalar backup dos programas e configurar ambiente. (Demorado)"
+    echo "4. Remover programas não listados em installed_programs.txt (Faça por sua conta e risco!)"
+    echo "5. Sair do programa. "
+    echo
+    echo -n "Qual a opção desejada? "
+    read opcao
+    case $opcao in
+        1) op1  ;;
+        2) exit ;;
+        3) install  ;;
+        4) remove ;;
+        5) exit ;;
+        *) echo "Opção desconhecida." ; echo ; Principal ;;
+    esac
 }
 
 
-op1() {
-
-if [ -d ~/DotFiles ]
+op1(){ 
+    if [ -d ~/DotFiles ]
     then 
         echo 'A pasta DotFiles já  existe, copiando arquivos.... '
         copy 
@@ -36,12 +35,10 @@ if [ -d ~/DotFiles ]
         git clone https://github.com/SeraphyBR/DotFiles.git
         echo 'Iniciando cópia...'
         copy 
-fi
-
+    fi
 }
 
-copy() {
-
+copy(){  
     cp -Rpv     ~/DotFiles/.config/                    ~/
     cp -Rv      ~/DotFiles/.vim/                       ~/
     sudo cp -v  ~/DotFiles/.vimrc                      ~/.vimrc
@@ -68,42 +65,42 @@ copy() {
             *) echo "Opção desconhecida." ; echo ; Principal ;; 
         esac 
     fi 
-    } 
+}
 
 
 gmail_module(){ 
- if [ -e ~/.config/polybar/gmail/auth.py ] 
- then 
-    if [ -e /bin/firefox ] 
-    then 
-        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código
-        para o terminal e de um enter."
-        sleep 10
-        python  ~/.config/polybar/gmail/auth.py
-        echo "Pronto"
-        echo 
-        sleep 2 
-        Principal 
+    if [ -e ~/.config/polybar/gmail/auth.py ] 
+        then 
+            if [ -e /bin/firefox ] 
+            then 
+                echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código
+                para o terminal e de um enter."
+                sleep 10
+                python  ~/.config/polybar/gmail/auth.py
+                echo "Pronto"
+                echo 
+                sleep 2 
+                Principal 
+            else 
+                echo "Navegador Firefox não encontrado, ele será instalado a seguir."
+                sudo pacman -S firefox 
+                echo 
+                echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código para o terminal e de um enter."
+                sleep 10
+                python  ~/.config/polybar/gmail/auth.py 
+                echo "Pronto"
+                sleep 2
+                Principal 
+            fi
     else 
-        echo "Navegador Firefox não encontrado, ele será instalado a seguir."
-        sudo pacman -S firefox 
+        echo "Arquivo não encontrado, faça a copia dos arquivos para proceder." 
         echo 
-        echo "Em seguida será aberto uma chave de autenticação do gmail no navegador, copie o código para o terminal e de um enter."
-        sleep 10
-        python  ~/.config/polybar/gmail/auth.py 
-        echo "Pronto"
         sleep 2
         Principal 
-    fi
-else 
-    echo "Arquivo não encontrado, faça a copia dos arquivos para proceder." 
-    echo 
-    sleep 2
-    Principal 
-fi 
-}    
+    fi 
+}   
 
-remove() {
+remove(){ 
     cd ~/DotFiles 
     pacman -Qqe > currently_installed.txt                  
                                                         
@@ -116,10 +113,9 @@ remove() {
     echo
     echo "Finalizado a remoção."
     rm currently_installed.txt 
-}
+} 
 
-install() {
-    
+install(){ 
     if [ -d ~/DotFiles ]
         then 
             cd ~/DotFiles 
@@ -133,24 +129,28 @@ install() {
     echo 
     echo "Iniciando instalação dos programas usados por seraphybr....."
     echo
-    echo "Adicionando key para instalação do linux-steam-integration..."
-    gpg --recv-keys 8876CC8EDAEC52CEAB7742E778E2387015C1205F 
 
     echo "Atualizando sistema para proceder com a instalação dos demais programas.... "
     sudo pacman -Syu --noconfirm 
     echo 
     # This topic solved my problem, to be able to run the same script in archlinux,
     # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
+    echo "Para qual distro será instalado?"
+    echo "1 - Manjaro(Notebook setup); 2 - ArchLinux(Desktop Setup)"
+    read distro
+    if   [ $distro -eq 1 ]; then cp installed_programs-Manjaro-Notebook.txt installed_programs.txt
+    elif [ $distro -eq 2 ]; then cp installed_programs-Arch-Desktop.txt     installed_programs.txt
+    fi 
     echo "Iniciando verificação dos programas presentes em installed_programs.txt, o que não estiver no sistema será instalado..."
     echo 
     sleep 4 
     for P in $( <installed_programs.txt )
     do 
-        if ! ( yaourt -Q | grep ${P} > /dev/null ) 
+        if ! ( trizen -Q | grep ${P} > /dev/null ) 
         then 
              echo
              echo "Verificando ${P} "
-             yaourt -S --needed --noconfirm ${P} 
+             trizen -S --needed --noconfirm ${P} 
              echo 
              echo
          else 
@@ -216,6 +216,6 @@ install() {
         *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
 
-}
+} 
 
 Principal    
