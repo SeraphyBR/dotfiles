@@ -135,12 +135,14 @@ install(){
     echo 
     # This topic solved my problem, to be able to run the same script in archlinux,
     # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
+   
     echo "Para qual distro será instalado?"
     echo "1 - Manjaro(Notebook setup); 2 - ArchLinux(Desktop Setup)"
     read distro
     if   [ $distro -eq 1 ]; then cp installed_programs-Manjaro-Notebook.txt installed_programs.txt
     elif [ $distro -eq 2 ]; then cp installed_programs-Arch-Desktop.txt     installed_programs.txt
     fi 
+   
     echo "Iniciando verificação dos programas presentes em installed_programs.txt, o que não estiver no sistema será instalado..."
     echo 
     sleep 4 
@@ -158,6 +160,8 @@ install(){
          fi
     done
 
+    rm installed_programs.txt
+
     sudo pip install --upgrade google-api-python-client 
     echo
     echo
@@ -170,7 +174,7 @@ install(){
         echo
     fi 
 
-    echo "Instalando o oh-my-zsh e setando o zsh como padrão no usuario root..."
+    echo "Instalando o oh-my-zsh e setando o zsh como padrão, para o usuario root..."
     sudo -H -u root sh -c "$(wget  https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -) ; exit "
     echo
     echo
