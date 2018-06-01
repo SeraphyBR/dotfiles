@@ -82,7 +82,6 @@ exo-gtk3
 f2fs-tools
 fakeroot
 feh
-ffmpeg2.8
 file
 filesystem
 findutils
@@ -419,13 +418,13 @@ perl-xml-namespacesupport
 perl-xml-parser
 perl-xml-sax
 perl-xml-sax-base
-pkg-config
+pkgconf
 pkgfile
 playerctl
 podofo
 polkit-gnome
 polkit-qt5
-polybar
+polybar-git
 popcorntime
 poppler
 poppler-data
