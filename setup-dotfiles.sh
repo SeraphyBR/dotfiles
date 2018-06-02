@@ -1,7 +1,7 @@
 #!/bin/bash
 
-Principal() {
-    echo   
+function Principal() {
+    echo
     echo "     SeraphyBR DotFiles "
     echo "---------------------------------"
     echo "Opções:"
@@ -25,7 +25,7 @@ Principal() {
 }
 
 
-op1(){ 
+function op1() { 
     if [ -d ~/DotFiles ]
     then 
         echo 'A pasta DotFiles já  existe, copiando arquivos.... '
@@ -38,7 +38,7 @@ op1(){
     fi
 }
 
-copy(){  
+function copy() {  
     cp -Rpv     ~/DotFiles/.config/                    ~/
     cp -Rv      ~/DotFiles/.vim/                       ~/
     sudo cp -v  ~/DotFiles/.vimrc                      ~/.vimrc
@@ -68,7 +68,7 @@ copy(){
 }
 
 
-gmail_module(){ 
+function gmail_module() { 
     if [ -e ~/.config/polybar/gmail/auth.py ] 
         then 
             if [ -e /bin/firefox ] 
@@ -100,7 +100,7 @@ gmail_module(){
     fi 
 }   
 
-remove(){ 
+function remove() { 
     cd ~/DotFiles 
     pacman -Qqe > currently_installed.txt                  
                                                         
@@ -115,14 +115,13 @@ remove(){
     rm currently_installed.txt 
 } 
 
-install(){ 
-    if [ -d ~/DotFiles ]
-        then 
-            cd ~/DotFiles 
-        else    
-            echo 'Clonando repositorio....'
-            git clone https://github.com/SeraphyBR/DotFiles.git
-            cd ~/DotFiles 
+function install() { 
+    if [ -d ~/DotFiles ]; then 
+        cd ~/DotFiles 
+    else    
+        echo 'Clonando repositorio....'
+        git clone https://github.com/SeraphyBR/DotFiles.git
+        cd ~/DotFiles 
     fi
  
     echo 
@@ -179,7 +178,6 @@ install(){
     echo
     echo
 
-
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
@@ -204,7 +202,6 @@ install(){
     betterlockscreen -u Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
     nitrogen --set-scaled Wallpapers/road_trees_top_view_119030_1920x1080.jpg 
 
-
     echo "instalação concluida.."
     echo 
     echo
@@ -219,7 +216,6 @@ install(){
         2) echo ; Principal ;; 
         *) echo "Opção desconhecida." ; echo ; Principal ;; 
     esac
-
 } 
 
-Principal    
+Principal;   
