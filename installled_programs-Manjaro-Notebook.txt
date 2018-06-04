@@ -2,9 +2,9 @@ a52dec
 accountsservice
 acpi
 acpid
-adapta-breath-theme
 adapta-gtk-theme
 adapta-maia-theme
+adobe-source-code-pro-fonts
 alsa-plugins
 alsa-utils
 appstream-glib
@@ -12,6 +12,7 @@ arandr
 archlinux-appstream-data
 aspell-pt
 audiofile
+aurman
 autoconf
 autoconf-archive
 automake
@@ -590,6 +591,8 @@ tslib
 ttf-dejavu-sans-mono-powerline
 ttf-font-awesome
 ttf-font-icons
+ttf-iosevka
+ttf-iosevka-term
 ttf-material-icons
 ttf-ms-fonts
 tumbler
