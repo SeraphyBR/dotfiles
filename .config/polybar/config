@@ -101,7 +101,6 @@ foreground = ${colors.foreground}
 underline-size = 3
 overline-size = 3
 
-
 border-size = 3
 border-color = ${colors.background}
 
@@ -118,7 +117,6 @@ font-2 = "MaterialIcons:pixelsize=13;2"
 modules-left = my-text-label bspwm i3
 #modules-center =
 modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wireless-network  date battery
-
 
 # tray-position =
 #tray-padding = 2
@@ -139,7 +137,6 @@ radius = 0.0
 fixed-center = true
 wm-restack = bspwm
 
-
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -147,7 +144,6 @@ line-size = 3
 
 border-size = 3
 border-color = ${colors.border}
-
 
 padding-left = 2
 padding-right = 2
@@ -169,7 +165,6 @@ tray-maxsize = 22
 tray-position = left
 tray-padding = 3
 tray-background = ${colors.background}
-
 
 ###############################################################################
 
@@ -202,7 +197,7 @@ enable-click = true
 
 ; Create scroll handlers used to cycle workspaces
 ; Default: true
-enable-scroll = true
+enable-scroll = false
 
 ; Set the scroll cycle direction
 ; Default: true
@@ -247,7 +242,6 @@ label-dimmed-focused-foreground = ${colors.Orange1}
 label-dimmed-focused-underline = ${colors.Orange1}
 label-dimmed-focused-background = ${self.label-focused-background}
 
-
 ; Available tokens:
 ;   %name%
 ;   %icon%
@@ -272,9 +266,9 @@ label-occupied-underline = ${colors.DavysGrey}
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
+label-urgent-foreground = ${colors.OrangeRed}
+label-urgent-background = #3f3f3f
+label-urgent-underline = ${colors.OrangeRed}
 
 ; Available tokens:
 ;   %name%
@@ -300,6 +294,7 @@ label-empty-foreground = #55
 ;label-sticky-foreground = #fba922
 ;label-private = 
 ;label-private-foreground = #bd2c40
+
 ###########################################################################
 [module/i3]
 type = internal/i3
@@ -414,6 +409,7 @@ label-urgent-padding = 2
 #label-separator = |
 #label-separator-padding = 1
 #label-separator-foreground = #ffb52a
+
 ###############################################################################
 
 [module/gmail]
@@ -452,6 +448,7 @@ click-right = mocp -r
 click-middle = mocp -G
 
 #############################################################################
+
 [module/spotify]
 type = custom/script
 interval = 1.5
@@ -581,7 +578,6 @@ format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = #8FF6FF
 
-
 format-muted-suffix = "  "
 format-muted-foreground = #8FF6FF
 label-muted = " Som Mudo"
@@ -645,7 +641,6 @@ format =  <label> <ramp>
 format-underline = ${colors.Crimson}
 format-warn = <label-warn> <ramp>
 format-warn-underline = ${self.format-underline}
-
 
 label = %temperature%
 label-warn = %temperature%
