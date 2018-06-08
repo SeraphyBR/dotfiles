@@ -30,7 +30,12 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Gtk theme =           Adapta-nokto-eta-maia (Manjaro repo)
 * Cursor theme =        Breeze Obsidian
 
-
+#### Main Fonts used in this Dotfiles:
+* [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts)
+* [Iosevka](https://be5invis.github.io/Iosevka/)
+* [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4)
+* [MaterialDesign](https://github.com/google/material-design-icons)
+* [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts)
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:
 * It should not work on arch linux because manjaro uses independent repository and some programs may not be found by pacman.

@@ -1,6 +1,6 @@
 [options]
 
-font = Source\ Code\ Pro\ 11
+font = Monospace 11
 
 scroll_on_output = false
 scroll_on_keystroke = true

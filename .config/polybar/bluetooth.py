@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # Esse script depende do tlp instalado
 
-
 import subprocess
 
 icon_enabled="  "
