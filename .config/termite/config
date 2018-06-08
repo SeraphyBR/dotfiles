@@ -1,6 +1,6 @@
 [options]
 
-font = Monospace 11
+font = DejavuSansMono 11
 
 scroll_on_output = false
 scroll_on_keystroke = true
