@@ -586,6 +586,7 @@ tlp
 tlpui
 tmux
 transmission-gtk
+trello
 trizen
 tslib
 ttf-dejavu-sans-mono-powerline
@@ -626,6 +627,7 @@ wps-office-extension-portuguese-brazilian-dictionary
 wxgtk-common
 wxgtk2
 xarchiver
+xautolock
 xbitmaps
 xcb-util-cursor
 xcb-util-image
