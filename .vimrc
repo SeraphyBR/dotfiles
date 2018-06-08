@@ -80,8 +80,6 @@ set shell=/bin/zsh
 set background=dark
 set termguicolors
 colorscheme material-monokai
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-
 "" Persistent Undo
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
@@ -107,7 +105,11 @@ set ruler	                " Show row and column ruler information
  
 set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
- 
+  
+"" AutoStart Commands : 
+
+"" Color HightLight by colorizer plugin:
+autocmd VimEnter * ColorHighlight 
 
 
 
