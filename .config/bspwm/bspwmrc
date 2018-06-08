@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 sxhkd &
 # Compositor
@@ -23,7 +23,9 @@ caffeine-indicator || caffeine &
 # Notification Daemon
 dunst &
 # Welcome
-dunstify "Bem Vindo $USER!"
+dunstify "Bem Vindo $USER!" 
+# Auto lockscreen
+xautolock -time 5 -locker 'betterlockscreen -l' & 
 
 
 
