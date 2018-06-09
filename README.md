@@ -21,7 +21,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * File Manager =         [Ranger](https://github.com/ranger/ranger) / Thunar
 * Image Viewer = [sxiv](https://github.com/muennich/sxiv)
 * Wallpaper Setter =    Nitrogen
-* Terminal Emulator =   [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://github.com/SeraphyBR/st)
+* Terminal Emulator =   [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://gitlab.com/SeraphyBR/st)
 * Shell =               Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)
 * Text Editor =         [Vim](https://github.com/vim/vim) (or [Neovim](https://github.com/neovim/neovim) with same config) / [VScode](https://github.com/Microsoft/vscode)
 * Power Manager =       [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html )
