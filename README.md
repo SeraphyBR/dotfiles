@@ -18,7 +18,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Music Player =        [MOC](http://moc.daper.net) and [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify))
 * Vídeo Player =        [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/)
 * Sound Visualizer =    [Cava](https://github.com/karlstav/cava)
-* File Manager =        Thunar / [Ranger](https://github.com/ranger/ranger)
+* File Manager =         [Ranger](https://github.com/ranger/ranger) / Thunar
+* Image Viewer = [sxiv](https://github.com/muennich/sxiv)
 * Wallpaper Setter =    Nitrogen
 * Terminal Emulator =   [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://github.com/SeraphyBR/st)
 * Shell =               Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)
@@ -31,11 +32,12 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * Cursor theme =        Breeze Obsidian
 
 #### Main Fonts used in this Dotfiles:
-* [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts)
-* [Iosevka](https://be5invis.github.io/Iosevka/)
-* [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4)
-* [MaterialDesign](https://github.com/google/material-design-icons)
-* [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts)
+* [Cantarell](https://github.com/GNOME/cantarell-fonts) (Gui Programs)
+* [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts) (Terminal & Polybar)
+* [Iosevka](https://be5invis.github.io/Iosevka/) (Dunst & VScode)
+* [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) (Polybar)
+* [MaterialDesign](https://github.com/google/material-design-icons) (Polybar)
+* [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts) (Zsh)
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:
 * It should not work on arch linux because manjaro uses independent repository and some programs may not be found by pacman.
