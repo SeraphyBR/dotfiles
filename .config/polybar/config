@@ -414,7 +414,7 @@ label-urgent-padding = 2
 
 [module/gmail]
 type = custom/script
-exec = ~/.config/polybar/gmail/launch.py --color '#00FF7F'
+exec = ~/.config/polybar/Scripts/gmail/launch.py --color '#00FF7F'
 tail = true
 click-left = xdg-open https://mail.google.com
 
@@ -425,7 +425,7 @@ type = custom/script
 interval = 5
 format-underline = ${colors.DeepSkyBlue}
 format-foreground = ${colors.DeepSkyBlue}
-exec = ~/.config/polybar/bluetooth.py
+exec = ~/.config/polybar/Scripts/bluetooth.py
 click-left = "gksudo bluetooth toggle"
 
 ###############################################################################
@@ -441,7 +441,7 @@ format-suffix = "  "
 format-prefix-foreground = ${colors.Orange1}
 format-suffix-foreground = ${colors.Orange1}
 format-underline = ${colors.Orange1}
-exec = ~/.config/polybar/player-moc.sh
+exec = ~/.config/polybar/Scripts/player-moc.sh
 
 click-left = mocp -f
 click-right = mocp -r
@@ -457,7 +457,7 @@ format-suffix = "  "
 format-prefix-foreground = #1db954
 format-suffix-foreground = #1db954
 format = <label>
-exec = python ~/.config/polybar/spotify_status.py -t 36
+exec = python ~/.config/polybar/Scripts/spotify_status.py -t 36
 
 click-left = playerctl next
 click-right = playerctl previous
@@ -707,7 +707,7 @@ menu-3-1-exec = menu-open-0
 [module/uptime]
 type = custom/script
 interval = 30
-exec = ~/.config/polybar/uptime.sh
+exec = ~/.config/polybar/Scripts/uptime.sh
 label = %output%
 format = <label>
 format-suffix = "  "
@@ -731,7 +731,7 @@ format = " <label> "
 format-prefix = " "
 format-underline = ${colors.chartreuse}
 click-left = "optirun -b none nvidia-settings -c :8"
-exec = ~/.config/polybar/bbswitch.sh
+exec = ~/.config/polybar/Scripts/bbswitch.sh
 
 ###########################################################################
 
