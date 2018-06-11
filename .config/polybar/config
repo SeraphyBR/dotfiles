@@ -573,7 +573,7 @@ label-font = 10
 #########################################################
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
@@ -643,8 +643,8 @@ format-underline = ${colors.Crimson}
 format-warn = <label-warn> <ramp>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.alert}
 
 ramp-0 =  
@@ -720,8 +720,9 @@ type = custom/script
 exec = ~/.config/polybar/Scripts/openweathermap-detailed.sh
 interval = 600
 format = " <label> "
-format-underline = #a9e9ba
-format-foreground = #a9e9ba
+format-underline = ${colors.white}
+format-foreground = ${colors.white}
+
 ###############################################################################
 
 [module/my-text-label]
