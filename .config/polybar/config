@@ -154,12 +154,13 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "Dejavu Sans:size=13;2"
-font-1 = "FontAwesome:pixelsize=13;2"
-font-2 = "MaterialIcons:pixelsize=13;2"
+font-1 = "Weather Icons:size=13;2"
+font-2 = "FontAwesome:pixelsize=13;2"
+font-3 = "MaterialIcons:pixelsize=13;2"
 
 modules-left = mocp spotify
 modules-center = xwindow
-modules-right = wired-network uptime powermenu
+modules-right = wired-network openweathermap-detailed uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
@@ -170,7 +171,7 @@ tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:60:...%
+label = %title:0:55:...%
 format-prefix = " "
 format-suffix = " "
 format-prefix-foreground = ${self.format-underline}
@@ -713,6 +714,13 @@ format = <label>
 format-suffix = "  "
 format-suffix-foreground =  #AC7BE3
 format-underline =  #AC7BE3
+###############################################################################
+
+[module/openweathermap-detailed]
+type = custom/script
+exec = ~/.config/polybar/Scripts/openweathermap-detailed.sh
+interval = 600
+format = <label>
 
 ###############################################################################
 
