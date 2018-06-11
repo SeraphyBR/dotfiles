@@ -10,7 +10,7 @@ super + Return
 #
 # Update 08/04/2018: solved using config for libinput https://wiki.archlinux.org/index.php/Libinput#libinput-gestures
 
-#alt + Left   
+#alt + Left   >
 #    xdotool click 1 # Left Click
 #alt + Up  
 #    xdotool click 2  # Middle click
@@ -80,8 +80,9 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	xbacklight -dec 10
 
-############################################################################################################
-# bspwm hotkeys
+############################################################
+#################### BSPWM HOTKEYS #########################
+############################################################
 
 # Sair do Bspwm Normalmente
 super + alt + Escape
@@ -90,8 +91,6 @@ super + alt + Escape
 # Fechar Janela
 alt + w
 	bspc node -c
-
-
 
 # alternate between the tiled and monocle layout ("Fullscreen")
 super + m
