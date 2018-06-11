@@ -158,9 +158,9 @@ font-1 = "Weather Icons:size=13;2"
 font-2 = "FontAwesome:pixelsize=13;2"
 font-3 = "MaterialIcons:pixelsize=13;2"
 
-modules-left = mocp spotify
+modules-left = openweathermap-detailed  mocp spotify
 modules-center = xwindow
-modules-right = wired-network openweathermap-detailed uptime powermenu
+modules-right = wired-network uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
@@ -542,7 +542,7 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #27a2ff
-format-connected-suffix = "  "
+format-connected-suffix = "%{T3}  %{T-}"
 format-connected-suffix-foreground = ${self.format-connected-underline}
 
 label-connected = %local_ip%
@@ -662,8 +662,7 @@ type = custom/menu
 format-spacing = 1
 format-underline = 	#ff8247
 
-label-open = "Power Menu %{F#ff8247}  %{F-} "
-
+label-open = "Power Menu %{T3}%{F#ff8247}  %{F-}%{T-} "
 label-open-foreground = ${colors.white}
 label-close = " Cancelar"
 label-close-foreground = ${colors.OrangeRed}

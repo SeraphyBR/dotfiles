@@ -25,9 +25,9 @@ get_icon() {
 }
 
 KEY="c58f0bfae5e205dcbf13f7166e8356a7"
-CITY="2950159"
-UNITS="centimeters"
-SYMBOL="°"
+CITY="6321162"
+UNITS="Metric"
+SYMBOL="°C"
 
 if [ ! -z $CITY ]; then
     weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID=$KEY&id=$CITY&units=$UNITS")
@@ -47,6 +47,36 @@ if [ ! -z "$weather" ]; then
     weather_desc=$(echo "$weather" | jq -r ".weather[0].description")
     weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
     weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
+
+    if [ "$weather_desc" = "shower rain" ]; then 
+        weather_desc="Chuva torrencial"
+    elif [ "$weather_desc" = "overcast clouds" ]; then 
+        weather_desc="Nublado"
+    elif [ "$weather_desc" = "scattered clouds" ]; then 
+        weather_desc="Nuvens esparsas"
+    elif [ "$weather_desc" = "thunderstorm" ]; then 
+        weather_desc="Trovoada"
+    elif [ "$weather_desc" = "thunderstorm with light rain" ]; then 
+        weather_desc="Trovoada com chuva fina"
+    elif [ "$weather_desc" = "few clouds" ]; then
+        weather_desc="Poucas nuvens"
+    elif [ "$weather_desc" = "broken clouds" ]; then 
+        weather_desc="Nuvens esparsas"
+    elif [ "$weather_desc" = "clear sky" ]; then 
+            weather_desc="Céu claro"
+    elif [ "$weather_desc" = "moderate rain" ]; then 
+        weather_desc="Chuva moderada"
+    elif [ "$weather_desc" = "thunderstorm with heavy rain" ]; then 
+        weather_desc="Trovoada com chuva pesada"
+    elif [ "$weather_desc" = "light rain" ]; then 
+        weather_desc="Chuva leve"
+    elif [ "$weather_desc" = "light intensity shower rain" ]; then 
+        weather_desc="Chuva leve"
+    elif [ "$weather_desc" = "mist" ]; then 
+        weather_desc="Névoa"
+    elif [ "$weather_desc" = "light intensity drizzle" ]; then
+        weather_desc="Chuvisco leve"
+    fi 
 
     echo "$(get_icon "$weather_icon")" "$weather_desc", "$weather_temp$SYMBOL"
 fi
