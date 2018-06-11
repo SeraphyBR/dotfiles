@@ -48,6 +48,7 @@ if [ ! -z "$weather" ]; then
     weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
     weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
 
+######################  Translate section  ##################################
     if [ "$weather_desc" = "shower rain" ]; then 
         weather_desc="Chuva torrencial"
     elif [ "$weather_desc" = "overcast clouds" ]; then 
@@ -77,6 +78,7 @@ if [ ! -z "$weather" ]; then
     elif [ "$weather_desc" = "light intensity drizzle" ]; then
         weather_desc="Chuvisco leve"
     fi 
+############################################################################
 
     echo "$(get_icon "$weather_icon")" "$weather_desc", "$weather_temp$SYMBOL"
 fi
