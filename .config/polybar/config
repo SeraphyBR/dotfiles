@@ -719,8 +719,9 @@ format-underline =  #AC7BE3
 type = custom/script
 exec = ~/.config/polybar/Scripts/openweathermap-detailed.sh
 interval = 600
-format = <label>
-
+format = " <label> "
+format-underline = #a9e9ba
+format-foreground = #a9e9ba
 ###############################################################################
 
 [module/my-text-label]
