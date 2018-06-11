@@ -164,14 +164,14 @@ modules-right = wired-network uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
-tray-padding = 3
+tray-padding = 2
 tray-background = ${colors.background}
 
 ###############################################################################
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:55:...%
+label = %title:0:46:...%
 format-prefix = " "
 format-suffix = " "
 format-prefix-foreground = ${self.format-underline}
@@ -458,7 +458,7 @@ format-suffix = "  "
 format-prefix-foreground = #1db954
 format-suffix-foreground = #1db954
 format = <label>
-exec = python ~/.config/polybar/Scripts/spotify_status.py -t 36
+exec = python ~/.config/polybar/Scripts/spotify_status.py -t 32
 
 click-left = playerctl next
 click-right = playerctl previous
