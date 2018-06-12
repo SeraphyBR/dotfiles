@@ -3,7 +3,7 @@
 
 # terminal emulator
 super + Return
-	termite
+		termite
 
 # Floating Terminal
 super + alt + Return
