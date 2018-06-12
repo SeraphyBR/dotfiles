@@ -111,8 +111,8 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "Dejavu Sans:size=12;2"
-font-1 = "FontAwesome:pixelsize=13;2"
-font-2 = "MaterialIcons:pixelsize=13;2"
+font-1 = "FontAwesome:pixelsize=14;2"
+font-2 = "MaterialIcons:pixelsize=14;2"
 
 modules-left = my-text-label bspwm i3
 #modules-center =
@@ -154,11 +154,11 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "Dejavu Sans:size=13;2"
-font-1 = "Weather Icons:size=13;2"
-font-2 = "FontAwesome:pixelsize=13;2"
-font-3 = "MaterialIcons:pixelsize=13;2"
+#font-1 = "Weather Icons:size=13;2"
+font-1 = "FontAwesome:pixelsize=14;2"
+font-2 = "MaterialIcons:pixelsize=14;2"
 
-modules-left = openweathermap-detailed  mocp spotify
+modules-left = mocp spotify
 modules-center = xwindow
 modules-right = wired-network uptime powermenu
 
@@ -662,44 +662,45 @@ type = custom/menu
 format-spacing = 1
 format-underline = 	#ff8247
 
-label-open = "Power Menu %{T3}%{F#ff8247}  %{F-}%{T-} "
+label-open = "%{T3}%{F#ff8247}  %{F-}%{T-} "
 label-open-foreground = ${colors.white}
-label-close = " Cancelar"
+label-close = "  "
 label-close-foreground = ${colors.OrangeRed}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = Reiniciar
+menu-0-0 = "  "
 menu-0-0-exec = menu-open-1
 
-menu-0-1 = Desligar
+menu-0-1 = "  "
 menu-0-1-exec = menu-open-2
 
-menu-0-2 = Suspender
+menu-0-2 = "  "
 menu-0-2-exec = menu-open-3
 
-menu-0-3 = Bloquear
+menu-0-3 =  "  " 
 menu-0-3-exec = betterlockscreen -l
 
-menu-0-4 = Sair |
+menu-0-4 = "  |"
 menu-0-4-exec = bspc quit; i3-msg exit
 
-menu-1-0 = Voltar
-menu-1-0-exec = menu-open-0
 
-menu-1-1 = Reiniciar |
-menu-1-1-exec = systemctl reboot
+menu-1-0 = Reiniciar 
+menu-1-0-exec = systemctl reboot
+
+menu-1-1 =  |
+menu-1-1-exec = menu-open-0
 
 menu-2-0 = Desligar
 menu-2-0-exec = systemctl poweroff
 
-menu-2-1 = Voltar |
+menu-2-1 =  |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
 menu-3-0-exec = betterlockscreen --suspend
 
-menu-3-1 = Voltar |
+menu-3-1 =  |
 menu-3-1-exec = menu-open-0
 
 ##############################################################################

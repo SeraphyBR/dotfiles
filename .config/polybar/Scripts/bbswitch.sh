@@ -4,7 +4,7 @@
 
     if grep -q "ON" /proc/acpi/bbswitch 
     then
-      echo "Nvidia = Ativo %{F#7FFF00}  %{F-}"
+      echo "Nvidia %{F#7FFF00}  %{F-}"
   else
-      echo "Nvidia = Inativo %{F#7FFF00}  %{F-}"  
+      echo "Nvidia %{F#7FFF00}  %{F-}"  
     fi
