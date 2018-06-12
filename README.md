@@ -38,6 +38,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) (Polybar)
 * [MaterialDesign](https://github.com/google/material-design-icons) (Polybar)
 * [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts) (Zsh)
+* [Weather-icons](https://erikflowers.github.io/weather-icons/) (Polybar)
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:
 * It should not work on arch linux because manjaro uses independent repository and some programs may not be found by pacman.
