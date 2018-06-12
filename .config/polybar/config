@@ -154,13 +154,13 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "Dejavu Sans:size=13;2"
-#font-1 = "Weather Icons:size=13;2"
 font-1 = "FontAwesome:pixelsize=14;2"
 font-2 = "MaterialIcons:pixelsize=14;2"
+font-3 = "Weather Icons:size=13;2"
 
 modules-left = mocp spotify
 modules-center = xwindow
-modules-right = wired-network uptime powermenu
+modules-right = openweathermap-detailed wired-network uptime powermenu
 
 tray-maxsize = 22
 tray-position = left
@@ -662,7 +662,6 @@ type = custom/menu
 format-spacing = 1
 format-underline = 	#ffa707
 
-
 label-open = "%{T3}%{F#ffa707}  %{F-}%{T-} "
 label-close = "  "
 label-close-foreground = ${colors.OrangeRed}
@@ -683,7 +682,6 @@ menu-0-3-exec = betterlockscreen -l
 
 menu-0-4 = "  |"
 menu-0-4-exec = bspc quit; i3-msg exit
-
 
 menu-1-0 = Reiniciar 
 menu-1-0-exec = systemctl reboot
@@ -721,7 +719,7 @@ type = custom/script
 exec = ~/.config/polybar/Scripts/openweathermap-detailed.sh
 interval = 600
 format = " <label> "
-format-underline = ${colors.white}
+format-underline = ${colors.DeepSkyBlue}
 format-foreground = ${colors.white}
 
 ###############################################################################

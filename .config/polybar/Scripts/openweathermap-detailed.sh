@@ -80,5 +80,10 @@ if [ ! -z "$weather" ]; then
     fi 
 ############################################################################
 
-    echo "$(get_icon "$weather_icon")" "$weather_desc", "$weather_temp$SYMBOL"
+# https://github.com/jaagr/polybar/wiki/Fonts 
+#; Using raw formatting tags, you can mix fonts.
+#; %{T3} tells the bar to use Noto Sans and %{T-} resets it to default.
+#label-inactive = %{T3}Inactive%{T-} %time%
+
+    echo  "$weather_desc", "$weather_temp$SYMBOL" "%{T4}%{F#00BFFF}$(get_icon "$weather_icon")%{F-}%{T-}"
 fi
