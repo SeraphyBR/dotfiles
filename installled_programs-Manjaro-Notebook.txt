@@ -10,12 +10,12 @@ appstream-glib
 arandr
 archlinux-appstream-data
 aspell-pt
+audacity
 audiofile
 aurman
 autoconf
 autoconf-archive
 automake
-awesome-terminal-fonts
 bash
 bash-completion
 bash-pipes
@@ -354,6 +354,7 @@ mpv
 nano
 neofetch
 neovim
+nerd-fonts-complete
 net-snmp
 networkmanager
 networkmanager-dmenu
@@ -580,6 +581,7 @@ trizen
 tslib
 ttf-dejavu-sans-mono-powerline
 ttf-font-awesome
+ttf-font-awesome-4
 ttf-font-icons
 ttf-iosevka
 ttf-iosevka-term
