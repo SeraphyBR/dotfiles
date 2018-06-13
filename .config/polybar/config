@@ -426,7 +426,7 @@ type = custom/script
 interval = 5
 format-underline = ${colors.DeepSkyBlue}
 format-foreground = ${colors.DeepSkyBlue}
-exec = ~/.config/polybar/Scripts/bluetooth.py
+exec = ~/.config/polybar/Scripts/bluetooth.sh
 click-left = "gksudo bluetooth toggle"
 
 ###############################################################################
