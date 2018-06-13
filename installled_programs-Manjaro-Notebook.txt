@@ -161,6 +161,7 @@ java-runtime-common
 jdk8
 jdk8-openjdk
 jfsutils
+jq
 jre8-openjdk
 jre8-openjdk-headless
 jre9-openjdk
@@ -584,6 +585,7 @@ ttf-iosevka
 ttf-iosevka-term
 ttf-material-icons
 ttf-ms-fonts
+ttf-weather-icons
 tumbler
 ufw
 unrar
