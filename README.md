@@ -37,7 +37,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 * [Iosevka](https://be5invis.github.io/Iosevka/) (Dunst & VScode)
 * [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) (Polybar)
 * [MaterialDesign](https://github.com/google/material-design-icons) (Polybar)
-* [awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts) (Zsh)
+* [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) (Zsh)
 * [Weather-icons](https://erikflowers.github.io/weather-icons/) (Polybar)
 
 #### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:

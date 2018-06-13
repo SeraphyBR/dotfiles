@@ -1,6 +1,6 @@
 [options]
 
-font = DejavuSansMono 11
+font = DejaVuSansMono Nerd Font 11
 
 scroll_on_output = false
 scroll_on_keystroke = true
