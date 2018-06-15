@@ -160,7 +160,7 @@ alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias root="sudo su - "
 ####################################
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+#PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
