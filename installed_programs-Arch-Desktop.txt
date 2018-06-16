@@ -10,7 +10,6 @@ aspell-pt
 audiofile
 autoconf
 automake
-awesome-terminal-fonts
 bash
 bash-completion
 bash-pipes
@@ -100,7 +99,7 @@ iproute2
 iputils
 jdk8-openjdk
 jfsutils
-jgrasp
+jq
 jre
 jre8-openjdk
 jre8-openjdk-headless
@@ -169,7 +168,6 @@ oh-my-zsh-git
 opencl-mesa
 openssh
 os-prober
-otf-font-awesome
 packup
 pacman
 pamac-aur
@@ -180,7 +178,7 @@ pciutils
 pcmciautils
 pepper-flash
 perl
-pkg-config
+pkgconf
 playerctl
 polybar
 popcorntime-bin
@@ -205,10 +203,8 @@ qutebrowser
 ranger
 redshift-gtk-git
 reiserfsprogs
-ristretto
 rofi
 rofi-dmenu
-ruby
 s-nail
 screenfetch
 screenkey
@@ -227,6 +223,7 @@ steam
 sudo
 supertuxkart
 sxhkd
+sxiv
 sysfsutils
 system-config-printer
 systemd
@@ -244,9 +241,11 @@ trizen
 ttf-dejavu
 ttf-font-awesome-4
 ttf-font-icons
+ttf-iosevka
 ttf-material-design-icons
 ttf-ms-fonts
 ttf-unifont
+ttf-weather-icons
 tty-clock
 tumbler
 udiskie-dmenu-git
