@@ -73,7 +73,7 @@ if [ ! -z "$weather" ]; then
         weather_desc="Chuva leve"
     elif [ "$weather_desc" = "light intensity shower rain" ]; then 
         weather_desc="Chuva leve"
-    elif [ "$weather_desc" = "mist" ]; then 
+    elif [ "$weather_desc" = "mist" -o "$weather_desc" = "fog" ]; then 
         weather_desc="Névoa"
     elif [ "$weather_desc" = "light intensity drizzle" ]; then
         weather_desc="Chuvisco leve"
