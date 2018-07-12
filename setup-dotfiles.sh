@@ -13,7 +13,7 @@ function Principal() {
     echo "5. Sair do programa. "
     echo
     echo -n "Qual a opção desejada? "
-    read opcao
+    read -r opcao
     case $opcao in
         1) op1  ;;
         2) exit ;;
@@ -58,7 +58,7 @@ function copy() {
         echo "Deseja configurar o modulo gmail para o polybar?"
         echo
         echo "Digite: 1 - Sim (recomendado) ou 2 - Não "
-        read opcao2 
+        read -r opcao2 
         case $opcao2 in 
             1) gmail_module ;; 
             2) echo ; Principal ;; 
@@ -101,7 +101,7 @@ function gmail_module() {
 }   
 
 function remove() { 
-    cd ~/DotFiles 
+    cd ~/DotFiles || echo "Erro!"; return 
     pacman -Qqe > currently_installed.txt                  
                                                         
     for R in $( <installed_programs.txt )                  
@@ -109,7 +109,7 @@ function remove() {
         sed -i "/\b\(${R}\)\b/d" currently_installed.txt        
     done                                                   
                                                         
-    sudo pacman -R $( <currently_installed.txt) 
+    sudo pacman -R "$( <currently_installed.txt)" 
     echo
     echo "Finalizado a remoção."
     rm currently_installed.txt 
@@ -117,11 +117,11 @@ function remove() {
 
 function install() { 
     if [ -d ~/DotFiles ]; then 
-        cd ~/DotFiles 
+        cd ~/DotFiles || return  
     else    
         echo 'Clonando repositorio....'
         git clone https://github.com/SeraphyBR/DotFiles.git
-        cd ~/DotFiles 
+        cd ~/DotFiles || echo "Erro"; return
     fi
  
     echo 
@@ -130,16 +130,16 @@ function install() {
     echo
 
     echo "Atualizando sistema para proceder com a instalação dos demais programas.... "
-    sudo pacman -Syu --noconfirm 
+    sh -c 'sudo pacman -Syu --noconfirm' 
     echo 
     # This topic solved my problem, to be able to run the same script in archlinux,
     # ignoring the installation of manjaro packages that were not found by pacman. https://bbs.archlinux.org/viewtopic.php?id=169480
    
     echo "Para qual distro será instalado?"
     echo "1 - Manjaro(Notebook setup); 2 - ArchLinux(Desktop Setup)"
-    read distro
-    if   [ $distro -eq 1 ]; then cp installed_programs-Manjaro-Notebook.txt installed_programs.txt
-    elif [ $distro -eq 2 ]; then cp installed_programs-Arch-Desktop.txt     installed_programs.txt
+    read -r distro
+    if   [ "$distro" -eq 1 ]; then cp installed_programs-Manjaro-Notebook.txt installed_programs.txt
+    elif [ "$distro" -eq 2 ]; then cp installed_programs-Arch-Desktop.txt     installed_programs.txt
     fi 
    
     echo "Iniciando verificação dos programas presentes em installed_programs.txt, o que não estiver no sistema será instalado..."
@@ -147,11 +147,11 @@ function install() {
     sleep 4 
     for P in $( <installed_programs.txt )
     do 
-        if ! ( trizen -Q | grep ${P} > /dev/null ) 
+        if ! ( trizen -Q | grep "${P}" > /dev/null ) 
         then 
              echo
              echo "Verificando ${P} "
-             trizen -S --needed --noconfirm ${P} 
+             trizen -S --needed --noconfirm "${P}" 
              echo 
              echo
          else 
@@ -161,7 +161,7 @@ function install() {
 
     rm installed_programs.txt
 
-    sudo pip install --upgrade google-api-python-client 
+    sh -c 'sudo pip install --upgrade google-api-python-client' 
     echo
     echo
 
@@ -169,7 +169,7 @@ function install() {
     then 
         echo "Instalando PowerLevel9K theme for Zsh"
         echo
-        sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k
+        sh -c 'sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/share/oh-my-zsh/themes/powerlevel9k'
         echo
     fi 
 
@@ -181,7 +181,7 @@ function install() {
     if [ -e /usr/share/xgreeters/lightdm-webkit2-greeter.desktop ]
     then 
         echo "Setando o lightdm-webkit-greeter...."
-        if [ "$(grep '#greeter-session=' /etc/lightdm/lightdm.conf)" ]
+        if [ "$(grep -q '#greeter-session=' /etc/lightdm/lightdm.conf)" ]
         then  
             sudo sed -i "s|^#greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g" /etc/lightdm/lightdm.conf
         else 
@@ -209,7 +209,7 @@ function install() {
     echo 
     echo "Digite:   1 - Sim ; 2 - Não "
     echo 
-    read opcao1 
+    read -r opcao1 
 
     case $opcao1 in 
         1) copy ;;
