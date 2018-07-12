@@ -45,14 +45,6 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | Zsh |
 | [Weather-icons](https://erikflowers.github.io/weather-icons/) | Polybar |
 
-#### Obs: I generated a list of my installed programs, you can try to use it in a fresh installation of manjaro with:
-* It should not work on arch linux because manjaro uses independent repository and some programs may not be found by pacman.
-
-
-> $ trizen -S [installed_programs-Manjaro-Notebook.txt](https://github.com/SeraphyBR/DotFiles/blob/master/installled_programs-Manjaro-Notebook.txt)
-
-#### Obs2: I also recently made a [setup script](https://github.com/SeraphyBR/DotFiles/blob/master/setup-dotfiles.sh), but it is available only in Brazilian Portuguese, made for my personal use. It works on Manjaro and Arch Linux.
-* It works on Arch Linux, but it will be reported that some packages were not found, since they are from the manjaro repository
 #### Touchpad Support: 
 * To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"
 
