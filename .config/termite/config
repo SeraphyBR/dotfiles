@@ -37,32 +37,34 @@ filter_unmatched_urls = true
 
 cursor = #00FF7F
 
-foreground = #dcdccc
-foreground_bold = #ffffff
+foreground = #ffffff
+foreground_bold = #dcdcdc
 background = rgba(38, 41, 39, 0.83)
-
-# if unset, will reverse foreground and background
-#highlight =  #299852
 
 # colors from color0 to color254 can be set
 color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #4b9454
-#color4 = #b5d79a
-color5 = #968cdc
-color6 = #8cd0d3
-color7 = #72d5a3
-color8 = #709080
-color9 = #dca3a3
-color10 = #72d5a3
-color11 = #38eb27
-color12 = #94f3b1
-color13 = #9398ec
-color14 = #93e0e3
-color15 = #ffffff
+color8 = #7ff146
 
+color1 = #f50f50
+color9 = #f50f50
+
+color2 = #ffa500
+color10 = #f18846
+
+color3 = #26a300
+color11 = #7ff145
+
+color4 = #7ff146
+color12 = #0f91f5
+
+color5 = #B981F4
+color13 = #B981F4
+
+color6 = #0f91f5
+color14 = #26c549
+
+color7 = #dcdcdc
+color15 = #ffffff
 
 [hints]
 #font = DejaVuSansMono 20

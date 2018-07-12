@@ -25,10 +25,10 @@ super + shift + a
 
 # Lançador de Programas
 super + d
-	rofi -modi run,drun,window -show drun -show-icons -scroll-method 1 -sidebar-mode
+	rofi -modi run,drun,window -show drun -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
 # Alternar janelas
 super + w
-	rofi -modi run,window,drun -show window -show-icons -scroll-method 1 -sidebar-mode
+	rofi -modi run,window,drun -show window -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
 
 # Recarregar o arquivo de configuração do sxhkd e polybar:
 super + Escape
@@ -57,9 +57,9 @@ XF86AudioMute
 
 # PrintScreen
 Print
-	scrot -cd2 -q80 '%Y-%m-%d_%H-%M-%S.png' -e 'mv -n $f ~/Imagens/Screenshots/' && dunstify "Screenshot: " "Salvo em ~/Imagens/Screenshots/"
+	flameshot full -p ~/Imagens/Screenshots/ 	    
 super + Print 
-        gnome-screenshot -i
+    flameshot gui 
 
 # Controles de brihlo
 XF86MonBrightnessUp

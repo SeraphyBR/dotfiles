@@ -13,12 +13,14 @@
    urgentcolor:       #FF4500;
 
    fgwhite:          #ffffff;
-   blackdarkest:     #1d1d1d;
+   blackdarkest:     #1d1d1d66;
+   blackdarkest2:    #1d1d1d;
    blackwidget:      #262626;
-   blackentry:       #292929;
-   blackselect:      #303030;
+   blackwidget2:      #26262666;
+   blackentry:       #29292966;
+   blackselect:      #30303066;
    darkgray:         #848484;
-   scrollbarcolor:   #505050;
+   scrollbarcolor:   #50505066;
    font: "DejaVu Sans Mono Regular 14";
    background-color: @blackdarkest;
 }
@@ -83,12 +85,12 @@
 
 #element.selected.urgent {
     background-color: @urgentcolor;
-    text-color:       @blackdarkest;
+    text-color:       @blackdarkest2;
 }
 
 #element.selected.active {
     background-color: @maincolor;
-    text-color:       @blackdarkest;
+    text-color:       @blackdarkest2;
 }
 
 #element.alternate.normal {
@@ -107,7 +109,7 @@
 }
 
 #scrollbar {
-   background-color: @blackwidget;
+   background-color: @blackwidget2;
    handle-color: @darkgray;
    handle-width: 15px;
 }
@@ -127,7 +129,7 @@
 }
 
 #inputbar {
-   background-color: @blackdarkest;
+   background-color: @blackdarkest2;
    spacing: 0px;
 }
 

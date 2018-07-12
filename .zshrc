@@ -1,11 +1,8 @@
-
-export TERM="xterm-termite"
-
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=/home/seraphybr-fun/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -60,25 +57,6 @@ plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-export EDITOR=/usr/bin/nvim 
-export VISUAL=/usr/bin/nvim 
-export GIT_EDITOR=/usr/bin/nvim 
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -90,6 +68,12 @@ export ARCHFLAGS="-arch x86_64"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Gentoo-zsh-completions
+autoload -U compinit promptinit
+compinit
+promptinit; prompt gentoo
+
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes
@@ -117,9 +101,9 @@ SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
  
 
-
 # Use autosuggestion
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# https://github.com/zsh-users/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
@@ -151,12 +135,11 @@ POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 alias clima="curl pt.wttr.in"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
-alias lc='colorls -a --sd'
 alias ls='ls --color=auto'
 alias svim='sudo vim'
-alias pacman='pacman --color auto'
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
+alias eix-sync="eix-sync -u"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias root="sudo su - "
 ####################################
@@ -170,5 +153,29 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-
-
+###################################################################################################
+# Ref: https://github.com/paulmillr/dotfiles/blob/master/home/.zshrc.sh#L282
+# Show how much RAM application uses.
+# Cole no terminal o codigo e aperte enter.
+# $ ram safari
+# # => safari uses 154.69 MBs of RAM.
+function ram() {
+  local sum
+  local items
+  local app="$1"
+  if [ -z "$app" ]; then
+    echo "First argument - pattern to grep from processes"
+  else
+    sum=0
+    for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'`; do
+      sum=$(($i + $sum))
+    done
+    sum=$(echo "scale=2; $sum / 1024.0" | bc)
+    if [[ $sum != "0" ]]; then
+      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+    else
+      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+    fi
+  fi
+}
+####################################################################################################
