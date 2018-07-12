@@ -111,12 +111,14 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "DejaVu Sans:size=12;2"
-font-1 = "FontAwesome:pixelsize=14;2"
-font-2 = "MaterialIcons:pixelsize=14;2"
+font-1 = "font\-logos:size=12"
+font-2 = "FontAwesome:size=14;2"
+font-3 = "MaterialIcons:size=14;2"
 
-modules-left = my-text-label bspwm i3
+
+modules-left = my-text-label bspwm
 #modules-center =
-modules-right = volume backlight-acpi gmail bbswitch_show memory cpu temperature bluetooth wireless-network  date battery
+modules-right = volume xbacklight bbswitch_show memory cpu temperature bluetooth wireless-network calendar clock battery
 
 # tray-position =
 #tray-padding = 2
@@ -154,8 +156,8 @@ module-margin-left = 2
 module-margin-right = 2
 
 font-0 = "Dejavu Sans:size=13;2"
-font-1 = "FontAwesome:pixelsize=14;2"
-font-2 = "MaterialIcons:pixelsize=14;2"
+font-1 = "FontAwesome:size=14;2"
+font-2 = "MaterialIcons:size=14;2"
 font-3 = "Weather Icons:size=13;2"
 
 modules-left = mocp spotify
@@ -296,121 +298,6 @@ label-empty-foreground = #55
 ;label-private = 
 ;label-private-foreground = #bd2c40
 
-###########################################################################
-[module/i3]
-type = internal/i3
-
-; Only show workspaces defined on the same output as the bar
-;
-; Useful if you want to show monitor specific workspaces
-; on different bars
-;
-; Default: false
-pin-workspaces = true
-
-; This will split the workspace name on ':'
-; Default: false
-strip-wsnumbers = false
-
-; Sort the workspaces by index instead of the default
-; sorting that groups the workspaces by output
-; Default: false
-index-sort = true
-
-; Create click handler used to focus workspace
-; Default: true
-enable-click = true
-
-; Create scroll handlers used to cycle workspaces
-; Default: true
-enable-scroll = false
-
-; Wrap around when reaching the first/last workspace
-; Default: true
-wrapping-scroll = false
-
-; Set the scroll cycle direction 
-; Default: true
-reverse-scroll = false
-
-; Use fuzzy (partial) matching on labels when assigning 
-; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces 
-; containing 'code' in the label
-; Default: false
-fuzzy-match = true
-
-; ws-icon-[0-9]+ = label;icon
-; NOTE: The label needs to match the name of the i3 workspace
-#ws-icon-0 = I;
-#ws-icon-1 = II;
-#ws-icon-2 = III;
-#ws-icon-3 = IV;
-#ws-icon-4 = V;
-#ws-icon-5 = VI;
-#ws-icon-6 = VII;
-#ws-icon-7 = VIII;
-#ws-icon-8 = IX;
-#ws-icon-9 = X;
-ws-icon-default = ""
-
-; Available tags:
-;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
-;   <label-mode> (default)
-format = <label-state> <label-mode>
-
-; Available tokens:
-;   %mode%
-; Default: %mode%
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = ${colors.SpringGreen}
-label-mode-foreground = ${colors.Black}
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-;   %output%
-; Default: %icon%  %name%
-label-focused = %name% 
-label-focused-foreground = ${colors.chartreuse}
-label-focused-background = #3f3f3f
-label-focused-underline = ${colors.primary}
-label-focused-padding = 2
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-unfocused = %name%
-label-unfocused-padding = 2
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-visible = %name%
-label-visible-underline = #555555
-label-visible-padding = 2
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-urgent = %name%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-padding = 2
-
-; Separator in between workspaces
-#label-separator = |
-#label-separator-padding = 1
-#label-separator-foreground = #ffb52a
-
 ###############################################################################
 
 [module/gmail]
@@ -469,6 +356,9 @@ format-underline = #1db954
 
 [module/xbacklight]
 type = internal/xbacklight
+card = intel_backlight
+output = eDP1
+enable-scroll = true 
 
 format = <label> <bar>
 label = 
@@ -484,13 +374,6 @@ bar-fill-foreground = #c8f059
 bar-empty = ""
 bar-empty-font = 1
 bar-empty-foreground = ${colors.DavysGrey}
-
-##############################################################################
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 #############################################################################
 
@@ -516,7 +399,7 @@ label = %percentage_used%%
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -537,7 +420,7 @@ format-disconnected-suffix-foreground = ${self.format-disconnected-underline}
 
 [module/wired-network]
 type = internal/network
-interface = enp1s0
+interface = eth0
 interval = 3.0
 
 format-connected = <label-connected>
@@ -551,29 +434,42 @@ label-disconnected =
 format-disconnected = <label-disconnected>
 #####################################################################
 
-[module/date]
+[module/clock]
 type = internal/date
 interval = 1
+#date = " %d-%m-%Y "
+#date-alt = " %d-%m-%Y "
+time = %H:%M:%S 
+time-alt = %H:%M
 
-date = " %d-%m-%Y "
-date-alt = " %d-%m-%Y "
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format = <label>
-format-suffix = "  "
+format = " <label>"
+format-suffix = "  "
 format-suffix-foreground = ${self.format-underline}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.SpringGreen}
 
-label = %date% %time%
+label = %time%
 label-font = 10
+
+##################################################################
+
+[module/calendar]
+type = custom/script
+exec = "date +%d-%m-%Y"
+interval = 600
+
+format = " <label>"
+format-suffix = "  "
+format-suffix-foreground = ${self.format-underline}
+format-foreground = ${colors.foreground}
+format-underline = ${colors.SpringGreen}
+
+click-left = gsimplecal &
 
 #########################################################
 
 [module/volume]
-type = internal/alsa
+type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
@@ -660,7 +556,7 @@ ramp-foreground = ${colors.Crimson}
 type = custom/menu
 
 format-spacing = 1
-format-underline = 	#ffa707
+format-underline =  #ffa707
 
 label-open = "%{T3}%{F#ffa707}  %{F-}%{T-} "
 label-close = "  "
@@ -684,19 +580,19 @@ menu-0-4 = "  |"
 menu-0-4-exec = bspc quit; i3-msg exit
 
 menu-1-0 = Reiniciar 
-menu-1-0-exec = systemctl reboot
+menu-1-0-exec = sudo shutdown -r now 
 
 menu-1-1 =  |
 menu-1-1-exec = menu-open-0
 
 menu-2-0 = Desligar
-menu-2-0-exec = systemctl poweroff
+menu-2-0-exec = sudo shutdown -h now
 
 menu-2-1 =  |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = betterlockscreen --suspend
+menu-3-0-exec = betterlockscreen -s 
 
 menu-3-1 =  |
 menu-3-1-exec = menu-open-0
@@ -726,7 +622,7 @@ format-foreground = ${colors.white}
 
 [module/my-text-label]
 type = custom/text
-content = " %{F#7df059}  %{F-} SeraphyBR - Manjaro Linux  "
+content = " %{F#7df059}  %{F-} SeraphyBR - Funtoo Linux  "
 content-foreground = ${colors.white}
 content-underline = #7df059
 
