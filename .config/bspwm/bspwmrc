@@ -20,6 +20,8 @@ redshift-gtk &
 # Update 08/04/2018: Adicionado o || para o uso em maquinas diferentes,
 # caffeine-indicator é usado no archlinux e caffeine no manjaro.
 caffeine-indicator || caffeine &
+# Thunar Daemom 
+thunar --daemon &
 # Notification Daemon
 dunst &
 # Welcome
