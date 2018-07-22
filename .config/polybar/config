@@ -115,21 +115,12 @@ font-1 = "font\-logos:size=12"
 font-2 = "FontAwesome:size=14;2"
 font-3 = "MaterialIcons:size=14;2"
 
-
 modules-left = my-text-label bspwm
-#modules-center =
 modules-right = volume xbacklight bbswitch_show memory cpu temperature bluetooth wireless-network calendar clock battery
-
-# tray-position =
-#tray-padding = 2
-#tray-transparent = true
-;tray-background = #0063ff
-;override-redirect = true
 
 ################################################################################
 
 [bar/seraphybr_bottom]
-
 monitor = ${env:MONITOR:eDP1} 
 width = 100%
 height = 28
@@ -168,6 +159,27 @@ tray-maxsize = 22
 tray-position = left
 tray-padding = 2
 tray-background = ${colors.background}
+
+###############################################################################
+[bar/seraphybr_menu]
+monitor = ${env:MONITOR:eDP1} 
+width = 300
+height = 28
+offset-x = 3
+offset-y = 38
+radius = 12
+fixed-center = true 
+wm-restack = bspwm
+
+background = ${colors.white}
+foreground = ${colors.foreground}
+
+font-0 = "Dejavu Sans:size=13;2"
+font-1 = "FontAwesome:size=14;2"
+font-2 = "MaterialIcons:size=14;2"
+font-3 = "Weather Icons:size=13;2"
+
+modules-center = powermenu
 
 ###############################################################################
 
@@ -577,7 +589,7 @@ menu-0-3 =  "  "
 menu-0-3-exec = betterlockscreen -l
 
 menu-0-4 = "  |"
-menu-0-4-exec = bspc quit; i3-msg exit
+menu-0-4-exec = bspc quit
 
 menu-1-0 = Reiniciar 
 menu-1-0-exec = sudo shutdown -r now 
@@ -625,7 +637,7 @@ type = custom/text
 content = " %{F#7df059}  %{F-} SeraphyBR - Funtoo Linux  "
 content-foreground = ${colors.white}
 content-underline = #7df059
-
+ 
 ################################################################################
 
 [module/bbswitch_show]
