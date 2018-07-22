@@ -57,7 +57,7 @@ bspc config urgent_border_color "#FF4500"
 bspc config presel_feedback_color "#18fe64"
 
 bspc rule -a '*:libreoffice' state=tiled
-bspc rule -a '*:soffice' state=floating 
+bspc rule -a '*:soffice' state=tiled 
 
 bspc rule -a Zathura state=tiled
 # Fix Java Windows
