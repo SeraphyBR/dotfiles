@@ -17,9 +17,7 @@ setxkbmap -model abnt2 -layout br -variant abnt2
 # Ajuste de temperatura da cor da tela
 redshift-gtk &
 # Plugin que desabilita escurecimento de tela
-# Update 08/04/2018: Adicionado o || para o uso em maquinas diferentes,
-# caffeine-indicator é usado no archlinux e caffeine no manjaro.
-caffeine-indicator || caffeine &
+caffeine-indicator &
 # Thunar Daemom 
 thunar --daemon &
 # Notification Daemon
@@ -58,7 +56,4 @@ bspc config presel_feedback_color "#18fe64"
 
 bspc rule -a '*:libreoffice' state=tiled
 bspc rule -a '*:soffice' state=tiled 
-
 bspc rule -a Zathura state=tiled
-# Fix Java Windows
-export _JAVA_AWT_WM_NONREPARENTING=1
