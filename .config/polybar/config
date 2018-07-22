@@ -161,27 +161,6 @@ tray-padding = 2
 tray-background = ${colors.background}
 
 ###############################################################################
-[bar/seraphybr_menu]
-monitor = ${env:MONITOR:eDP1} 
-width = 300
-height = 28
-offset-x = 3
-offset-y = 38
-radius = 12
-fixed-center = true 
-wm-restack = bspwm
-
-background = ${colors.white}
-foreground = ${colors.foreground}
-
-font-0 = "Dejavu Sans:size=13;2"
-font-1 = "FontAwesome:size=14;2"
-font-2 = "MaterialIcons:size=14;2"
-font-3 = "Weather Icons:size=13;2"
-
-modules-center = powermenu
-
-###############################################################################
 
 [module/xwindow]
 type = internal/xwindow
