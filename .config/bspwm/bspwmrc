@@ -10,7 +10,9 @@ nitrogen --restore &
 # Carrega arquivo de configuração X e carrega o tema de cursor.
 xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr
-# Polkit
+# Mapa de teclado brasileiro
+setxkbmap -model abnt2 -layout br -variant abnt2 
+#Polkit
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 # Ajuste de temperatura da cor da tela
 redshift-gtk &
