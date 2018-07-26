@@ -21,7 +21,7 @@ thunar --daemon &
 # Notification Daemon
 dunst &
 # Welcome
-dunstify "Bem Vindo $USER!" 
+dunstify "Bem Vindo ${USER^}!" 
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' & 
 
