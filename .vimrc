@@ -22,6 +22,7 @@ call plug#end()            " required
 " Airline status line
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -38,6 +39,8 @@ set textwidth=100	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
 set encoding=utf8
+set wildmenu
+set wildmode=full
 
 set hlsearch	           " Highlight all search results
 set smartcase	           " Enable smart-case search
@@ -81,14 +84,6 @@ set backspace=indent,eol,start	" Backspace behaviour
   
 
 "" AutoStart
-autocmd vimenter * NERDTree
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | endif
-
-
-
-
-
-
 
