@@ -1,42 +1,19 @@
 
-" Sessão Vundle
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'chrisbra/colorizer'
+Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/colorizer'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-
+call plug#end()            " required
 
 " Put your non-Plugin stuff after this line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,12 +68,8 @@ endif
 set undodir=~/.vim/undo-dir
 set undofile
 
-"" NERDtree Section ""
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeShowHidden=1
+"" NERDtree Section 
 map <C-n> :NERDTreeToggle<CR>
-
 "" Syntax
 syntax on
 
@@ -107,13 +80,12 @@ set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
   
 
+"" AutoStart
+autocmd vimenter * NERDTree
 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | endif
 
-
-"" AutoStart Commands : 
-
-"" Color HightLight by colorizer plugin:
-autocmd VimEnter * ColorHighlight 
 
 
 
