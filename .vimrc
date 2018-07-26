@@ -11,6 +11,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/colorizer'
+Plug 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -59,7 +60,11 @@ set shell=/bin/zsh
  
 set background=dark
 set termguicolors
-colorscheme material-monokai
+
+""Gruvbox Section
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+
 "" Persistent Undo
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
@@ -85,5 +90,4 @@ set backspace=indent,eol,start	" Backspace behaviour
 
 "" AutoStart
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | endif
 
