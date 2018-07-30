@@ -127,7 +127,7 @@ colors
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh  root_indicator background_jobs history time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs time)
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
 
 
