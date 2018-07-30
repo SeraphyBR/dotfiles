@@ -1,7 +1,9 @@
+
 export TERM="xterm-termite"
 export BROWSER=/usr/bin/firefox
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export EDITOR=/usr/bin/nvim 
-export VISUAL=/usr/bin/nvim 
-export GIT_EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim 
+export VISUAL=/usr/bin/vim 
+export GIT_EDITOR=/usr/bin/vim
 export _JAVA_AWT_WM_NONREPARENTING=1 
+
