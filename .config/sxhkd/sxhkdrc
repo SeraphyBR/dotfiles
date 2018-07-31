@@ -8,20 +8,30 @@ super + Return
 # Floating Terminal
 super + alt + Return
         bspc rule -a \* -o state=floating &&  termite --name=floating
+
 # Suckless' Simple Terminal
 super + shift + Return
         st
+
+# Qutebrowser
+super + q 
+        qutebrowser
+
+# Firefox
+super + shift + q
+        firefox
+
 # Gerenciador de arquivos cli
 super + a
         termite -e ranger
-
-# Editor de texto vim
-super + e
-        termite -e vim
-
+ 
 # Gerenciador de arquivos Thunar
 super + shift + a
         thunar
+ 
+# Editor de texto vim
+super + e
+        termite -e vim
 
 # Lançador de Programas
 super + d
@@ -34,9 +44,6 @@ super + w
 super + Escape
 	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
-# Wifi menu rofi
-super + n
-        networkmanager_dmenu
 # Localizar arquivos pelo rofi:
 super + f
         xdg-open "$(locate home media | rofi -threads 0 -width 60 -dmenu -i -p "locate:")"    
