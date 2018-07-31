@@ -127,10 +127,12 @@ colors
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
-
-
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 #### Sessão de Aliases   #############
 alias clima="curl pt.wttr.in"
 alias zshconfig="nano ~/.zshrc"
