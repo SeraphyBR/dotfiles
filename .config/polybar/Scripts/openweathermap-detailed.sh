@@ -67,6 +67,8 @@ if [ ! -z "$weather" ]; then
             weather_desc="Céu claro"
     elif [ "$weather_desc" = "moderate rain" ]; then 
         weather_desc="Chuva moderada"
+    elif [ "$weather_desc" = "thunderstorm with rain" ]; then
+        weather_desc="Trovoada com chuva"
     elif [ "$weather_desc" = "thunderstorm with heavy rain" ]; then 
         weather_desc="Trovoada com chuva pesada"
     elif [ "$weather_desc" = "light rain" ]; then 
