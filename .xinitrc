@@ -4,4 +4,4 @@
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec bspwm
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session bspwm
