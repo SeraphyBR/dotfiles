@@ -147,6 +147,7 @@ alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias ls='ls --color=auto'
 alias svim='sudo vim'
+ alias vim='vim --servername vim' #For vim-tex plugin works  
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias eix-sync="eix-sync -u"
