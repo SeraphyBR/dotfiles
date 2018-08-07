@@ -9,6 +9,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ![Screenshot-2](Screenshots/Screenshot2.png)
 
+### Vim:
+
+![Screenshot-3](Screenshots/Screenshot3.png)
+
 ## Setup Description:
 | Type | Program |
 |:--- | :---- |
@@ -38,12 +42,30 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Font | Usage |
 | :--- | :--- |
 | [Cantarell](https://github.com/GNOME/cantarell-fonts) | Gui Programs |
-| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts) | Terminal & Polybar |
+| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts) | Terminal (with patched version from Nerd Fonts) & Polybar |
 | [Iosevka](https://be5invis.github.io/Iosevka/) | Dunst & VScode |
 | [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) | Polybar |
 | [MaterialDesign](https://github.com/google/material-design-icons) | Polybar |
 | [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | Zsh |
 | [Weather-icons](https://erikflowers.github.io/weather-icons/) | Polybar |
+
+#### Vim Plugins:
+| Plugin | Usage |
+| :---   | :---  |
+| [vim-plug](https://github.com/junegunn/vim-plug) | Plugin manager |
+| [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
+| [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
+| [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |
+| [ALE](https://github.com/w0rp/ale) | Liting support |
+| [vimtex](https://github.com/lervag/vimtex) | LaTeX support | 
+| [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) | Code completion |
+| [NERDTree](https://github.com/scrooloose/nerdtree) | File explorer
+| [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) | Git status support for NERDTree |
+| [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git wrapper inside Vim |
+| [vim-devicons](https://github.com/ryanoasis/vim-devicons) | Icons for vim plugins |
+| [colorizer](https://github.com/chrisbra/Colorizer) | Hex colors Hightlight |
+| [gruvbox](https://github.com/morhetz/gruvbox) | Colorscheme | 
+
 
 #### Touchpad Support: 
 * To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"

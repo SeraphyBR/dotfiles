@@ -50,7 +50,7 @@ set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=100	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
-set encoding=utf8
+set encoding=utf-8
 set wildmenu
 set wildmode=full
 
