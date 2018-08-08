@@ -63,7 +63,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) | Git status support for NERDTree |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git wrapper inside Vim |
 | [vim-devicons](https://github.com/ryanoasis/vim-devicons) | Icons for vim plugins |
-| [colorizer](https://github.com/chrisbra/Colorizer) | Hex colors Hightlight |
+| [colorizer](https://github.com/chrisbra/Colorizer) | Hex colors Highlight |
 | [gruvbox](https://github.com/morhetz/gruvbox) | Colorscheme | 
 
 
