@@ -29,7 +29,7 @@ call plug#end()            " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-" Airline status line
+" Airline status line:
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
@@ -38,16 +38,14 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
 
-" Tmux-Line
-
-" General
+" General:
 
 set mouse=n                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
 set relativenumber
 set linebreak	           " Break lines at word (requires Wrap lines)
 set showbreak=+++ 	   " Wrap-broken line prefix
-set textwidth=100	   " Line wrap (number of cols)
+set textwidth=110	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
 set encoding=utf-8
@@ -72,11 +70,11 @@ set shell=/bin/zsh
 set background=dark
 set termguicolors
 
-""Gruvbox Section
+"" Gruvbox Section:
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
 
-"" Persistent Undo
+"" Persistent Undo:
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
@@ -87,18 +85,24 @@ endif
 set undodir=~/.vim/undo-dir
 set undofile
 
-"" NERDtree Section 
+"" NERDtree Section: 
 map <C-n> :NERDTreeToggle<CR>
 "" Syntax
 syntax on
 
-"" Advanced
+"" General Shortcuts:
+
+" Normal mode only:
+nnoremap <C-h> :new <bar> :Startify <CR>  " Abre uma janela horizontalmente e abre um menu inicial
+nnoremap <C-v> :vnew <bar> :Startify <CR> " Abre uma janela verticalmente e abre um menu inicial
+
+"" Advanced:
 set ruler	                " Show row and column ruler information
  
 set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
   
 
-"" AutoStart
+"" AutoStart:
 autocmd StdinReadPre * let s:std_in=1
 
