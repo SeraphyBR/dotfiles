@@ -165,29 +165,28 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-###################################################################################################
-# Ref: https://github.com/paulmillr/dotfiles/blob/master/home/.zshrc.sh#L282
-# Show how much RAM application uses.
-# Cole no terminal o codigo e aperte enter.
-# $ ram safari
-# # => safari uses 154.69 MBs of RAM.
-function ram() {
-  local sum
-  local items
-  local app="$1"
-  if [ -z "$app" ]; then
-    echo "First argument - pattern to grep from processes"
-  else
-    sum=0
-    for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'`; do
-      sum=$(($i + $sum))
-    done
-    sum=$(echo "scale=2; $sum / 1024.0" | bc)
-    if [[ $sum != "0" ]]; then
-      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
-    else
-      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
-    fi
-  fi
-}
-####################################################################################################
+
+#################################################################################################
+if [ "$TERM" = "linux" ]; then
+  /bin/echo -e "
+  \e]P03f3f3f
+  \e]P1f50f50
+  \e]P2ffa500
+  \e]P326a300
+  \e]P47ff146
+  \e]P5b981f4
+  \e]P60f91f5
+  \e]P7dcdcdc
+  \e]P87ff146
+  \e]P9f50f50
+  \e]PAf18846
+  \e]PB7ff145
+  \e]PC0f91f5
+  \e]PDb981f4
+  \e]PE26c549
+  \e]PFffffff
+  "
+  # get rid of artifacts
+  clear
+fi
+

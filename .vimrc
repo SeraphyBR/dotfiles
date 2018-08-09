@@ -92,9 +92,10 @@ syntax on
 
 "" General Shortcuts:
 
-" Normal mode only:
-nnoremap <C-h> :new <bar> :Startify <CR>  " Abre uma janela horizontalmente e abre um menu inicial
-nnoremap <C-v> :vnew <bar> :Startify <CR> " Abre uma janela verticalmente e abre um menu inicial
+" Abre uma janela horizontalmente e abre um menu inicial: 
+nnoremap <C-h> :new <bar> :Startify <CR>
+" Abre uma janela verticalmente e abre um menu inicial:  
+nnoremap <C-v> :vnew <bar> :Startify <CR>
 
 "" Advanced:
 set ruler	                " Show row and column ruler information
