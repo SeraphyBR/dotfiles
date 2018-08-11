@@ -1,5 +1,4 @@
 
-export TERM="xterm-termite"
 export BROWSER=/usr/bin/firefox
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export EDITOR=/usr/bin/vim 
