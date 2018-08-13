@@ -1,0 +1,31 @@
+[Added Associations]
+image/png=sxiv.desktop;mupdf.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
+application/x-shellscript=visual-studio-code-visual-studio-code.desktop;
+application/vnd.ms-powerpoint=libreoffice-impress.desktop;zathura-pdf-mupdf.desktop;
+application/pdf=zathura-pdf-mupdf.desktop;
+image/jpeg=sxiv.desktop;
+video/mp4=mpv.desktop;smplayer.desktop;smplayer_enqueue.desktop;
+text/plain=visual-studio-code-visual-studio-code.desktop;
+video/x-matroska=smplayer_enqueue.desktop;
+application/vnd.rn-realmedia=smplayer.desktop;
+application/vnd.rar=xarchiver.desktop;
+application/zip=xarchiver.desktop;
+text/css=visual-studio-code-visual-studio-code.desktop;
+application/json=visual-studio-code-visual-studio-code.desktop;
+application/javascript=visual-studio-code-visual-studio-code.desktop;
+video/x-ms-wmv=mpv.desktop;
+audio/mpeg=smplayer.desktop;
+application/x-compressed-tar=xarchiver.desktop;
+video/x-flv=smplayer_enqueue.desktop;
+application/x-tar=xarchiver.desktop;
+text/x-java=visual-studio-code-visual-studio-code.desktop;
+text/x-python=visual-studio-code-visual-studio-code.desktop;
+text/html=firefox.desktop;
+
+[Default Applications]
+application/x-shellscript=visual-studio-code-visual-studio-code.desktop
+image/png=sxiv.desktop
+image/jpeg=sxiv.desktop
+application/vnd.rn-realmedia=smplayer.desktop
