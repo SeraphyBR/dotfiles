@@ -48,7 +48,8 @@ set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=110	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
-set encoding=utf-8
+set encoding=utf-8         " Define o encoding exibido no terminal
+set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
 set wildmenu
 set wildmode=full
 
