@@ -1,5 +1,5 @@
 
-# Atalhos de teclado personalizados###
+# Atalhos de teclado personalizados
 
 # terminal emulator
 super + Return
@@ -50,30 +50,30 @@ super + f
 
 # Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
 alt + l
-	betterlockscreen -l
+    betterlockscreen -l
 
 # Controles de Volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +10%; pactl set-sink-volume 1 +10%
+    pactl set-sink-volume 0 +10%; pactl set-sink-volume 1 +10%
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -10%; pactl set-sink-volume 1 -10%
+    pactl set-sink-volume 0 -10%; pactl set-sink-volume 1 -10%
 
 XF86AudioMute
-	pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle
+    pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle
 
 # PrintScreen
 Print
-	flameshot full -p ~/Imagens/Screenshots/ 	    
+    flameshot full -c -d 2000 -p ~/Imagens/Screenshots/ 	    
 super + Print 
     flameshot gui 
 
 # Controles de brihlo
 XF86MonBrightnessUp
-	xbacklight -inc 10
+    xbacklight -inc 10
 
 XF86MonBrightnessDown
-	xbacklight -dec 10
+    xbacklight -dec 10
 
 ############################################################
 #################### BSPWM HOTKEYS #########################
