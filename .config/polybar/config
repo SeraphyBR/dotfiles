@@ -108,7 +108,7 @@ foreground = ${colors.foreground}
 underline-size = 3
 overline-size = 3
 
-border-size = 3
+border-size = 4
 border-color = ${colors.background}
 
 padding-left = 0
