@@ -109,7 +109,7 @@ super + t
 	bspc node -t {floating,tiled}
 
 # Define flags para a janela
-# Locked =
+# Locked = Não permite fechar a janela
 # Sticky = Irá se mover juntamente com a área de trabalho
 # Private = Irá manter sua posição no mosaico.
 super + ctrl + {x,y,z}
