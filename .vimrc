@@ -86,6 +86,14 @@ endif
 set undodir=~/.vim/undo-dir
 set undofile
 
+"" Template:
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.java 0r ~/.vim/templates/Skeleton.java
+  augroup END
+endif
+
+
 "" NERDtree Section: 
 map <C-n> :NERDTreeToggle<CR>
 "" Syntax
