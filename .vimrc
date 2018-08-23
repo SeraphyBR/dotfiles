@@ -12,6 +12,7 @@ Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
+Plug 'Yggdroot/indentline'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'valloric/youcompleteme'
@@ -38,6 +39,9 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
 
+" IndentLine
+let g:indentLine_char= '|'
+
 " General:
 
 set mouse=n                " Enable mouse. see :help mouse for info. 
@@ -61,15 +65,28 @@ set incsearch	           " Searches for strings incrementally
 set ve=all                 " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
 set expandtab	           " Use spaces instead of tabs
-set shiftwidth=4	   " Number of auto-indent spaces
+set shiftwidth=4	       " Number of auto-indent spaces
 set smartindent	           " Enable smart-indent
 set smarttab	           " Enable smart-tabs
-set softtabstop=4	   " Number of spaces per Tab
+set softtabstop=4	       " Number of spaces per Tab
 set clipboard=unnamedplus 
 set shell=/bin/zsh
  
 set background=dark
 set termguicolors
+
+set wildignore+=.git,.hg,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
+set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=*.swp,.lock,.DS_Store,._*
+
+
 
 "" Gruvbox Section:
 colorscheme gruvbox
