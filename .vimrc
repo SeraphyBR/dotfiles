@@ -40,7 +40,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
 
 " IndentLine
-let g:indentLine_char= '|'
+let g:indentLine_char= '┊'
 
 " General:
 
