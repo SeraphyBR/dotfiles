@@ -56,6 +56,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
 | [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
 | [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |
+| [indentline](https://github.com/Yggdroot/indentLine) | Display the indention levels with thin vertical lines |
 | [ALE](https://github.com/w0rp/ale) | Liting support |
 | [vimtex](https://github.com/lervag/vimtex) | LaTeX support | 
 | [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) | Code completion |
