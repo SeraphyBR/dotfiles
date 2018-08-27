@@ -42,6 +42,9 @@ let g:airline#extensions#ale#enabled = 1
 " IndentLine
 let g:indentLine_char= '┊'
 
+" Vimtex
+let g:vimtex_view_general_viewer = 'zathura'
+
 " General:
 
 set mouse=n                " Enable mouse. see :help mouse for info. 
