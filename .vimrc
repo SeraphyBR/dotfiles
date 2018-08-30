@@ -89,7 +89,14 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
+"" VimTex autocomplete with YouCompleteMe
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+  endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+"" Disable conceal in Latex files ("Hiding tag")
+let g:tex_conceal = ''
 
 "" Gruvbox Section:
 colorscheme gruvbox
