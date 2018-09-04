@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'Yggdroot/indentline'
+Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'valloric/youcompleteme'
@@ -101,7 +102,10 @@ let g:tex_conceal = ''
 "" Gruvbox Section:
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
-
+ 
+"" Syntax Hightlighting
+syntax on
+ 
 "" Persistent Undo:
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
@@ -123,8 +127,6 @@ endif
 
 "" NERDtree Section: 
 map <C-n> :NERDTreeToggle<CR>
-"" Syntax
-syntax on
 
 "" General Shortcuts:
 
