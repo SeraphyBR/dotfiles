@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'Yggdroot/indentline'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'valloric/youcompleteme'
@@ -134,7 +135,8 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-h> :new <bar> :Startify <CR>
 " Abre uma janela verticalmente e abre um menu inicial:  
 nnoremap <C-v> :vnew <bar> :Startify <CR>
-
+" Abre um painel com um historico de modificacoes
+nnoremap <F5> :UndotreeToggle<cr>
 "" Advanced:
 set ruler	                " Show row and column ruler information
  
