@@ -5,13 +5,9 @@
 # __ /  /----.----)   |   |  |  |  | |  |\  \----.|  `----.
 #(__)________|_______/    |__|  |__| | _| `._____| \______|
 #                                                          
-
+ 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
-
-if [ "$TERM" = "linux" ]; then
-    export TERM="xterm-256color"
-fi
 
 # Path to your oh-my-zsh installation.
 ZSH=/home/seraphybr-fun/.oh-my-zsh
@@ -19,9 +15,15 @@ ZSH=/home/seraphybr-fun/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel9k/powerlevel9k"
 
+if [ "$TERM" = "linux" ]; then
+    ZSH_THEME="rkj-repos"
+else 
+    POWERLEVEL9K_MODE='nerdfont-complete'
+    ZSH_THEME="powerlevel9k/powerlevel9k"
+fi
+ 
+     
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -137,21 +139,23 @@ colors
 ###### PowerLevel9K Section ###########
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+if [ "$TERM" != "linux" ]; then 
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+    POWERLEVEL9K_SHORTEN_DELIMITER=""
+    POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+fi
 #### Sessão de Aliases   #############
 alias clima="curl pt.wttr.in"
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias ls='ls --color=auto'
 alias svim='sudo vim'
- alias vim='vim --servername vim' #For vim-tex plugin works  
+alias vim='vim --servername vim' #For vim-tex plugin works  
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias eix-sync="eix-sync -u"
@@ -161,6 +165,10 @@ alias sxiv="sxiv -r . "
 ####################################
 #PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+#If powerlevel9k shows errors messages about mercurial...
+if [ ! -e "~/.hgrc" ];then
+    touch ~/.hgrc
+fi
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
