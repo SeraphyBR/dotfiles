@@ -9,6 +9,10 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
+if [ "$TERM" = "linux" ]; then
+    export TERM="xterm-256color"
+fi
+
 # Path to your oh-my-zsh installation.
 ZSH=/home/seraphybr-fun/.oh-my-zsh
 
@@ -167,26 +171,3 @@ source $ZSH/oh-my-zsh.sh
 
 
 #################################################################################################
-if [ "$TERM" = "linux" ]; then
-  /bin/echo -e "
-  \e]P03f3f3f
-  \e]P1f50f50
-  \e]P2ffa500
-  \e]P326a300
-  \e]P47ff146
-  \e]P5b981f4
-  \e]P60f91f5
-  \e]P7dcdcdc
-  \e]P87ff146
-  \e]P9f50f50
-  \e]PAf18846
-  \e]PB7ff145
-  \e]PC0f91f5
-  \e]PDb981f4
-  \e]PE26c549
-  \e]PFffffff
-  "
-  # get rid of artifacts
-  clear
-fi
-
