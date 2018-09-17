@@ -16,8 +16,9 @@ ZSH=/home/seraphybr-fun/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-if [ "$TERM" = "linux" ]; then
+if [ "$TERM" = "linux" ] || [ "$TERM" = "xterm-256color" ]; then
     ZSH_THEME="rkj-repos"
+    export TERM="xterm-256color"
 else 
     POWERLEVEL9K_MODE='nerdfont-complete'
     ZSH_THEME="powerlevel9k/powerlevel9k"

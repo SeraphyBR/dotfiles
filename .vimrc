@@ -100,9 +100,13 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 "" Disable conceal in Latex files ("Hiding tag")
 let g:tex_conceal = ''
 
-"" Gruvbox Section:
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
+"" Colorscheme Section:
+if empty($DISPLAY)
+    colorscheme default
+else
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard'
+endif 
  
 "" Syntax Hightlighting
 syntax on
@@ -125,6 +129,9 @@ if has("autocmd")
   augroup END
 endif
 
+"" ALE quick navigate between errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "" NERDtree Section: 
 map <C-n> :NERDTreeToggle<CR>
@@ -143,6 +150,8 @@ set ruler	                " Show row and column ruler information
 set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
   
+
+
 
 "" AutoStart:
 autocmd StdinReadPre * let s:std_in=1
