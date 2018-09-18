@@ -16,7 +16,7 @@ ZSH=/home/seraphybr-fun/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-if [ "$TERM" = "linux" ] || [ "$TERM" = "xterm-256color" ]; then
+if [ "$DISPLAY" = "" ]; then
     ZSH_THEME="rkj-repos"
     export TERM="xterm-256color"
 else 
@@ -140,7 +140,7 @@ colors
 ###### PowerLevel9K Section ###########
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-if [ "$TERM" != "linux" ]; then 
+if [ "$DISPLAY" != " " ]; then 
     POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
