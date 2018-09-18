@@ -67,8 +67,6 @@ if [ ! -z "$weather" ]; then
             weather_desc="Céu claro"
     elif [ "$weather_desc" = "moderate rain" ]; then 
         weather_desc="Chuva moderada"
-    elif [ "$weather_desc" = "thunderstorm with rain" ]; then
-        weather_desc="Trovoada com chuva"
     elif [ "$weather_desc" = "thunderstorm with heavy rain" ]; then 
         weather_desc="Trovoada com chuva pesada"
     elif [ "$weather_desc" = "light rain" ]; then 
@@ -77,6 +75,8 @@ if [ ! -z "$weather" ]; then
         weather_desc="Chuva leve"
     elif [ "$weather_desc" = "mist" ] || [ "$weather_desc" = "fog" ]; then 
         weather_desc="Névoa"
+    elif [ "$weather_desc" = "haze" ]; then
+        weather_desc="neblina"
     elif [ "$weather_desc" = "light intensity drizzle" ]; then
         weather_desc="Chuvisco leve"
     fi 
