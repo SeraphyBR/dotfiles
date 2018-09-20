@@ -33,12 +33,9 @@ super + shift + a
 super + e
         termite -e vim
 
-# Lançador de Programas
-super + d
-	rofi -modi run,drun,window -show drun -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
-# Alternar janelas
-super + w
-	rofi -modi run,window,drun -show window -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
+# Lançador de Programas / Alternador de janelas
+super + {d,w}
+    rofi -modi run,drun,window -show {drun,window} -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
 
 # Recarregar o arquivo de configuração do sxhkd e polybar:
 super + Escape
@@ -53,11 +50,8 @@ alt + l
     betterlockscreen -l
 
 # Controles de Volume
-XF86AudioRaiseVolume
-    pactl set-sink-volume 0 +10%; pactl set-sink-volume 1 +10%
-
-XF86AudioLowerVolume
-    pactl set-sink-volume 0 -10%; pactl set-sink-volume 1 -10%
+XF86Audio{Raise,Lower}Volume
+    pactl set-sink-volume 0 {+,-}10%; pactl set-sink-volume 1 {+,-}10%
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle
@@ -68,12 +62,9 @@ Print
 super + Print 
     flameshot gui -d 1000 
 
-# Controles de brihlo
-XF86MonBrightnessUp
-    xbacklight -inc 10
-
-XF86MonBrightnessDown
-    xbacklight -dec 10
+# Controles de brilho
+XF86MonBrightness{Up,Down}
+    xbacklight -{inc,dec} 10
 
 ############################################################
 #################### BSPWM HOTKEYS #########################

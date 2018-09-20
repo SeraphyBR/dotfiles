@@ -163,6 +163,9 @@ alias eix-sync="eix-sync -u"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias root="sudo su - "
 alias sxiv="sxiv -r . "
+alias install="sudo emerge -a -jobs "
+alias update="sudo ego sync"
+alias upgrade="sudo emerge -auvDN @world"
 ####################################
 #PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
