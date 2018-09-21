@@ -141,7 +141,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Rotaciona todas as janelas da area de trabalho
-super + alt + r
+super + shift + r
     bspc node @/ -R 90
  
 # focus all windows, can be use to move the entire workspace

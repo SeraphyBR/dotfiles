@@ -22,6 +22,8 @@ caffeine-indicator &
 thunar --daemon &
 # Notification Daemon
 dunst &
+# Music Player Daemon
+mpd &
 # Welcome
 dunstify "Bem Vindo ${USER^}!" 
 # Auto lockscreen
