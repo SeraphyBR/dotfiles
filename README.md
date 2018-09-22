@@ -16,11 +16,12 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 ## Setup Description:
 | Type | Program |
 |:--- | :---- |
-|Linux Distro | [Funtoo](https://www.funtoo.org/Welcome) |
+| Linux Distro | [Funtoo](https://www.funtoo.org/Welcome) |
 | Window Manager | [Bspwm](https://github.com/baskerville/bspwm) |
 | Web Browser | [Firefox](https://www.mozilla.org/pt-BR/firefox/new/) / [qutebrowser](https://qutebrowser.org/) |
 | Program Launcher | [Rofi](https://github.com/DaveDavenport/rofi) |
 | Status bar | [Polybar](https://github.com/jaagr/polybar) |
+| Music Player | [Ncmpcpp](https://rybczak.net/ncmpcpp/) + [Mpd](https://github.com/MusicPlayerDaemon/MPD) |
 | Music Player | [MOC](http://moc.daper.net) and [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify)) |
 | Vídeo Player | [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/) |
 | Sound Visualizer | [Cava](https://github.com/karlstav/cava) |
@@ -48,6 +49,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [MaterialDesign](https://github.com/google/material-design-icons) | Polybar |
 | [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | Zsh |
 | [Weather-icons](https://erikflowers.github.io/weather-icons/) | Polybar |
+| [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/) | Polybar (support for Asian letters) |
 
 #### Vim Plugins:
 | Plugin | Usage |
