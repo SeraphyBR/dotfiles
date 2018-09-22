@@ -158,7 +158,7 @@ font-1 = "FontAwesome:size=14;2"
 font-2 = "MaterialIcons:size=14;2"
 font-3 = "Weather Icons:size=13;2"
 
-modules-left = mocp spotify
+modules-left = mocp spotify mpd
 modules-center = xwindow
 modules-right = openweathermap-detailed wired-network uptime powermenu
 
@@ -335,6 +335,50 @@ click-middle = mocp -G
 
 #############################################################################
 
+[module/mpd]
+type = internal/mpd
+host = localhost
+port = 6600
+interval = 1
+
+format-online = ""
+format-playing = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:}%{F#53FF56}%{F-} <label-song> %{F#53FF56}%{F-}%{A A A}" 
+format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:}%{F#fba922}%{F-} <label-song> %{F#fba922}%{F-}%{A A A}"  
+;format-stopped = ${self.format-online}
+
+format-playing-underline = #53FF56
+format-paused-underline = ${colors.Orange1}
+
+; Available tags:
+;   <label-offline>
+format-offline = "%{F#69656F} %{F-} <label-offline> %{F#69656F} %{F-}"
+format-offline-underline = #69656F
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = "%title% - %album%"
+label-song-maxlen = 40
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+label-time = "%elapsed% / %total%"
+
+label-offline = "mpd is offline "
+
+; Only applies if <bar-progress> is used
+bar-progress-width = 10
+;bar-progress-indicator =
+bar-progress-fill = ""
+bar-progress-fill-foreground = #1db954
+bar-progress-empty = "" 
+##########################################################################
+ 
 [module/spotify]
 type = custom/script
 interval = 1.5
