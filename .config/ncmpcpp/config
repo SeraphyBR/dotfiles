@@ -472,7 +472,7 @@ mouse_support = yes
 #
 #search_engine_default_search_mode = 1
 #
-external_editor = vim
+external_editor = nvim
 #
 ## Note: set to yes if external editor is a console application.
 ##

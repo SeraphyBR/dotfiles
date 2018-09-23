@@ -31,7 +31,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | ScreenShooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
 | Terminal Emulator | [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://gitlab.com/SeraphyBR/st) |
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
-| Text Editor | [Vim](https://github.com/vim/vim) / [VScode](https://github.com/Microsoft/vscode) |
+| Text Editor | [Neovim](https://neovim.io/) / [VScode](https://github.com/Microsoft/vscode) |
 | Power Manager | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html) |
 | Monitor | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) |  
 | Lock Screen | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) |
@@ -51,10 +51,11 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [Weather-icons](https://erikflowers.github.io/weather-icons/) | Polybar |
 | [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/) | Polybar (support for Asian letters) |
 
-#### Vim Plugins:
+#### Vim/Neovim Plugins:
 | Plugin | Usage |
 | :---   | :---  |
 | [vim-plug](https://github.com/junegunn/vim-plug) | Plugin manager |
+| [gentoo-syntax](https://github.com/gentoo/gentoo-syntax) | Support for specific files related to portage |
 | [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
 | [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
 | [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |

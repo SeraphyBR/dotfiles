@@ -156,14 +156,14 @@ alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias ls='ls --color=auto'
 alias svim='sudo vim'
-alias vim='vim --servername vim' #For vim-tex plugin works  
+alias vim='nvim' 
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias eix-sync="eix-sync -u"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias root="sudo su - "
 alias sxiv="sxiv -r . "
-alias install="sudo emerge -a -jobs "
+alias addpkg="sudo emerge -a --jobs"
 alias update="sudo ego sync"
 alias upgrade="sudo emerge -auvDN @world"
 ####################################

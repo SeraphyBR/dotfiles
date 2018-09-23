@@ -1,3 +1,7 @@
 
 !--Cursor-Theme
 Xcursor.theme: Breeze_Obsidian
+
+!--Rofi
+rofi.run-command: zsh -c '{cmd}'
+
