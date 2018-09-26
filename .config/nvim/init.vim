@@ -17,7 +17,7 @@ Plug 'Yggdroot/indentline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'valloric/youcompleteme'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -50,7 +50,7 @@ let g:vimtex_view_general_viewer = 'zathura'
 
 " General:
 
-set mouse=n                " Enable mouse. see :help mouse for info. 
+set mouse=a                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
 set relativenumber
 set linebreak	           " Break lines at word (requires Wrap lines)
@@ -92,6 +92,12 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
+"" SpellCheck
+set spelllang=pt_br,en_us
+autocmd FileType tex setlocal spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType txt setlocal spell
+
 "" VimTex autocomplete with YouCompleteMe
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
@@ -123,7 +129,7 @@ set undofile
 "" Template:
 if has("autocmd")
   augroup templates
-    autocmd BufNewFile *.java 0r ~/.vim/templates/Skeleton.java
+    autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Skeleton.java
   augroup END
 endif
 
@@ -145,7 +151,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 "" Advanced:
 set ruler	                " Show row and column ruler information
  
-set undolevels=1000	        " Number of undo levels
+set undolevels=1500	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
   
 
