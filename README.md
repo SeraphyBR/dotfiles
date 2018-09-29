@@ -69,8 +69,46 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git wrapper inside Vim |
 | [vim-devicons](https://github.com/ryanoasis/vim-devicons) | Icons for vim plugins |
 | [colorizer](https://github.com/chrisbra/Colorizer) | Hex colors Highlight |
-| [gruvbox](https://github.com/morhetz/gruvbox) | Colorscheme | 
+| [markdown-preview](https://github.com/iamcco/markdown-preview.vim) | Markdown Live Preview |
+| [gruvbox](https://github.com/morhetz/gruvbox) | Color scheme | 
 
+
+#### Linux TTY Console:
+* In the folder [etc](etc), I have a file called [tty-colors](etc/tty-colors), this is a configuration file containing my color scheme used in the Console. 
+  This color scheme is loaded at the initialization of openrc by calling the [setcolors](https://github.com/SeraphyBR/linux-vt-setcolors) 
+  program that will apply colors to all TTY's, overriding the default values. 
+  I preferred to use this method of [setcolors](https://github.com/SeraphyBR/linux-vt-setcolors) than using echo.
+
+* To use in funtoo/gentoo openrc: 
+
+``` 
+git clone https://github.com/SeraphyBR/linux-vt-setcolors
+sudo make install
+```
+
+* After installing, copy the file [tty-colors](etc/tty-colors) or use one of the ones that are in the program's
+[example-colors](https://github.com/SeraphyBR/linux-vt-setcolors/tree/master/example-colors) directory, to /etc.
+
+* And then create the following script called "tty-colors.start" in [/etc/local.d/](https://wiki.gentoo.org/wiki//etc/local.d) :
+
+``` sh
+#!/bin/sh
+
+PROGRAM=/usr/local/bin/setcolors
+COLORS=/etc/tty-colors
+
+if [ -e "$PROGRAM" ] && [ -e $COLORS ]; then
+    $PROGRAM $COLORS
+fi
+
+```
+
+* And then run the following commands to make the file executable, and loaded by openrc at boot time:
+
+```
+sudo chmod +x /etc/local.d/tty-colors.start
+sudo rc-update add local default
+```
 
 #### Touchpad Support: 
 * To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"

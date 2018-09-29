@@ -24,6 +24,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/colorizer'
+Plug 'iamcco/markdown-preview.vim'
 Plug 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
@@ -97,6 +98,7 @@ set spelllang=pt_br,en_us
 autocmd FileType tex setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd FileType txt setlocal spell
+autocmd FileType markdown setlocal spell
 
 "" VimTex autocomplete with YouCompleteMe
 if !exists('g:ycm_semantic_triggers')
