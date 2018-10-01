@@ -56,16 +56,19 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | :---   | :---  |
 | [vim-plug](https://github.com/junegunn/vim-plug) | Plugin manager |
 | [gentoo-syntax](https://github.com/gentoo/gentoo-syntax) | Support for specific files related to portage |
+| [vim-syntax-extra](https://github.com/justinmk/vim-syntax-extra) | For better C syntax highlighting |
 | [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
 | [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
 | [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |
 | [indentline](https://github.com/Yggdroot/indentLine) | Display the indention levels with thin vertical lines |
 | [auto-pairs](https://github.com/jiangmiao/auto-pairs) | Insert or delete brackets, parens, quotes in pair |
+| [undotree](https://github.com/mbbill/undotree) | Undo history visualizer |
 | [ALE](https://github.com/w0rp/ale) | Liting support |
 | [vimtex](https://github.com/lervag/vimtex) | LaTeX support | 
 | [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) | Code completion |
 | [NERDTree](https://github.com/scrooloose/nerdtree) | File explorer
 | [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) | Git status support for NERDTree |
+| [vim-nerdtree-syntax-highlight](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight) | Extra syntax and highlight for nerdtree files |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git wrapper inside Vim |
 | [vim-devicons](https://github.com/ryanoasis/vim-devicons) | Icons for vim plugins |
 | [colorizer](https://github.com/chrisbra/Colorizer) | Hex colors Highlight |
