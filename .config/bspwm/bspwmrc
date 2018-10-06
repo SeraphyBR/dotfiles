@@ -2,7 +2,7 @@
 
 sxhkd &
 # Compositor
-compton &
+compton -b &
 # Wallpaper
 nitrogen --restore &
 # Paineis
