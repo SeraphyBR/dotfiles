@@ -5,9 +5,6 @@
 # __ /  /----.----)   |   |  |  |  | |  |\  \----.|  `----.
 #(__)________|_______/    |__|  |__| | _| `._____| \______|
 #                                                          
- 
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 ZSH=/home/seraphybr-fun/.oh-my-zsh
@@ -24,41 +21,24 @@ else
     ZSH_THEME="powerlevel9k/powerlevel9k"
 fi
  
-     
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# sensitive completion must be off. _ and - will be interchangeable
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment the following line to enable command auto-correction.
- ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -75,32 +55,34 @@ plugins=(git zsh-syntax-highlighting)
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Gentoo-zsh-completions
 autoload -U compinit promptinit
 compinit
 promptinit; prompt gentoo
 
 
-## Options section
-setopt correct                                                  # Auto correct mistakes
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
+############# Options section ####################################################
+
+# Auto correct mistakes
+setopt correct 
+# Extended globbing. Allows using regular expressions with *  
+setopt extendedglob                                            
+# Case insensitive globbing
+setopt nocaseglob                                              
+# Array expension with parameters  
+setopt rcexpandparam                                            
+# Dont warn about running processes when exiting  
+setopt nocheckjobs                                              
+# Sort filenames numerically when it makes sense  
+setopt numericglobsort                           
+# No beep
+setopt nobeep                                       
+# Immediately append history instead of overwriting  
+setopt appendhistory                                            
+# If a new command is a duplicate, remove the older one  
+setopt histignorealldups                                        
+# if only directory path is entered, cd there. 
+setopt autocd                                                   
  
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion    (different colors for dirs/files/etc)
@@ -114,7 +96,8 @@ HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
- 
+
+##################################################################################
 
 # Use autosuggestion
 # https://github.com/zsh-users/zsh-autosuggestions
@@ -122,22 +105,13 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-# Color man pages
-export LESS_TERMCAP_mb=$'\E[01;32m'
-export LESS_TERMCAP_md=$'\E[01;32m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r
 
 # Theming section
 autoload -U compinit colors zcalc
 compinit -d
 colors
 
-###### PowerLevel9K Section ###########
+###### PowerLevel9K Section #####################################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 if [ "$DISPLAY" != " " ]; then 
@@ -150,26 +124,71 @@ if [ "$DISPLAY" != " " ]; then
     POWERLEVEL9K_SHORTEN_DELIMITER=""
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 fi
-#### Sessão de Aliases   #############
+##############################################################################
+
+####  Sessão de Aliases   ############################################# 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+ 
 alias clima="curl pt.wttr.in"
-alias zshconfig="nano ~/.zshrc"
-alias ohmyzsh="nano ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ls='ls --color=auto'
-alias svim='sudo vim'
+alias cp='cp -R'
+alias rm='rm -Ivr'
+alias :q='exit'
+alias svim='sudo nvim'
 alias vim='nvim' 
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
-alias eix-sync="eix-sync -u"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias root="sudo su - "
 alias sxiv="sxiv -r . "
 alias addpkg="sudo emerge -a --jobs"
 alias update="sudo ego sync"
 alias upgrade="sudo emerge -auvDN @world"
-####################################
+##################################################################
+
+c() {
+    if [ $# -eq 0 ] ; then
+        clear
+    elif [ -d "$1" ] ; then
+        cd "$1"
+    elif [ -f "$1" ] ; then
+        cat "$1"
+    fi
+}
+ 
+# Extract a folder
+extract() {
+if [[ -f $1 ]]; then
+	case "$1" in
+		*.tar.bz2) tar xvjf "$1";;
+		*.tar.gz) tar xvzf "$1";;
+		*.tar.xz) tar xvf "$1";;
+		*.tar) tar xvf "$1";;
+		*.tgz) tar xvf "$1";;
+		*.xz) tar xvf "$1";;
+		*.gz) gunzip "$1";;
+		*.zip) unzip "$1";;
+		*.rar) unrar x "$1";;
+		*.tbz2) tar xvjf "$1" ;;
+		*.lzma) unlzma "$1" ;;
+		*.Z) uncompress "$1" ;;
+		*.7z) 7z x "$1" ;;
+		*.deb) ar x ./"$1" ;;
+		*) echo "'$1' cannot be extracted via extract."
+	esac
+else
+	echo "'$1' is not a valid file"
+fi
+}
+###############################################################
 #PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-#If powerlevel9k shows errors messages about mercurial...
+# If powerlevel9k shows errors messages about mercurial...
 if [ ! -e "~/.hgrc" ];then
     touch ~/.hgrc
 fi
@@ -182,4 +201,4 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 
-#################################################################################################
+###############################################################
