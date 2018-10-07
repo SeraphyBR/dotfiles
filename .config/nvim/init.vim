@@ -44,6 +44,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " IndentLine
 let g:indentLine_char= '┊'
@@ -61,7 +62,7 @@ set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=110	   " Line wrap (number of cols)
 set showmatch	           " Highlight matching brace
 set visualbell	           " Use visual bell (no beeping)
-set encoding=utf8         " Define o encoding exibido no terminal
+set encoding=utf-8         " Define o encoding exibido no terminal
 set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
 set wildmenu
 set wildmode=full
@@ -96,12 +97,9 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
-"" SpellCheck
+"" SpellCheck:
 set spelllang=pt_br,en_us
-autocmd FileType tex setlocal spell
-autocmd FileType gitcommit setlocal spell
-autocmd FileType txt setlocal spell
-autocmd FileType markdown setlocal spell
+autocmd FileType tex,gitcommit,txt,markdown setlocal spell
 
 "" VimTex autocomplete with YouCompleteMe:
 if !exists('g:ycm_semantic_triggers')
@@ -109,7 +107,7 @@ if !exists('g:ycm_semantic_triggers')
   endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
-"" Disable conceal in Latex files ("Hiding tag")
+"" Disable conceal in Latex files ("Hiding tag"):
 let g:tex_conceal = ''
 
 "" Colorscheme Section:
@@ -120,7 +118,7 @@ else
     let g:gruvbox_contrast_dark='hard'
 endif 
  
-"" Syntax Hightlighting
+"" Syntax Hightlighting:
 syntax on
  
 "" Persistent Undo:
@@ -187,6 +185,9 @@ nnoremap <F5> :UndotreeToggle<cr>
 " Substitui a palavra sobre o cursor com a ultima palavra copiada.
 " Para copiar uma palavra: yiw
 nnoremap CC diw"0P
+
+" Fix indentation on entire file
+map <F7> mzgg=G`z
 
 "" Advanced:
 set ruler	                " Show row and column ruler information

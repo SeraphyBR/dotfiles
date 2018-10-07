@@ -31,7 +31,7 @@ super + shift + a
  
 # Editor de texto vim
 super + e
-        termite -e vim
+        termite -e nvim
 
 # Lançador de Programas / Alternador de janelas
 super + {d,w}

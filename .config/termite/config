@@ -13,6 +13,7 @@ clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
 icon_name = terminal
+#geometry = 640x48
 
 # "system", "on" or "off"
 cursor_blink = off
@@ -24,7 +25,7 @@ cursor_shape = ibeam
 browser = firefox
 
 # set size hints for the window
-size_hints = true
+size_hints = false
 
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
