@@ -99,7 +99,7 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 
 "" SpellCheck:
 set spelllang=pt_br,en_us
-autocmd FileType tex,gitcommit,txt,markdown setlocal spell
+autocmd FileType tex,gitcommit,text,markdown setlocal spell
 
 "" VimTex autocomplete with YouCompleteMe:
 if !exists('g:ycm_semantic_triggers')
