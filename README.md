@@ -65,7 +65,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [undotree](https://github.com/mbbill/undotree) | Undo history visualizer |
 | [ALE](https://github.com/w0rp/ale) | Liting support |
 | [vimtex](https://github.com/lervag/vimtex) | LaTeX support | 
-| [YouCompleteMe](https://valloric.github.io/YouCompleteMe/) | Code completion |
+| [Deoplete](https://github.com/Shougo/deoplete.nvim) | Code completion |
+| [vim-javacomplete2](https://github.com/artur-shaik/vim-javacomplete2) | Java Completion |
 | [NERDTree](https://github.com/scrooloose/nerdtree) | File explorer
 | [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) | Git status support for NERDTree |
 | [vim-nerdtree-syntax-highlight](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight) | Extra syntax and highlight for nerdtree files |

@@ -19,7 +19,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'valloric/youcompleteme'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -35,6 +36,8 @@ call plug#end()            " required
 " Put your non-Plugin stuff after this line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"" Deocomplete
+let g:deoplete#enable_at_startup = 1
 
 " Airline status line:
 set laststatus=2
@@ -197,4 +200,5 @@ set backspace=indent,eol,start	" Backspace behaviour
   
 "" AutoStart:
 autocmd StdinReadPre * let s:std_in=1
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
  
