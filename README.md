@@ -76,6 +76,18 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [markdown-preview](https://github.com/iamcco/markdown-preview.vim) | Markdown Live Preview |
 | [gruvbox](https://github.com/morhetz/gruvbox) | Color scheme | 
 
+#### Rofi Theme:
+* To use my theme for Rofi, download one of the .rasi files from [here](Rofi/Themes) and run the command:
+
+``` 
+sudo cp theme-name.rasi /usr/share/rofi/themes/theme-name.rasi  
+```
+* And then run the `rofi-theme-selector` command to set the theme to be used.
+
+* My current theme is based on [flat-orange](https://github.com/DaveDavenport/rofi-themes/blob/master/User%20Themes/flat-orange.rasi).
+I found it in the [rofi-themes](https://github.com/DaveDavenport/rofi-themes/tree/master/User%20Themes) repository, 
+in that same place you can get other themes and modify them as I did. For more details on setting up an .rasi file, run the `man rofi-theme` command.
+
 
 #### Linux TTY Console:
 * In the folder [etc](etc), I have a file called [tty-colors](etc/tty-colors), this is a configuration file containing my color scheme used in the Console. 
