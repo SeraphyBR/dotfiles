@@ -1,6 +1,7 @@
 
 export BROWSER=/usr/bin/firefox
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export EDITOR=/usr/bin/nvim 
 export VISUAL=/usr/bin/nvim 
 export GIT_EDITOR=/usr/bin/nvim

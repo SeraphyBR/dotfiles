@@ -99,6 +99,7 @@ in that same place you can get other themes and modify them as I did. For more d
 
 ``` 
 git clone https://github.com/SeraphyBR/linux-vt-setcolors
+cd linux-vt-setcolors
 sudo make install
 ```
 
