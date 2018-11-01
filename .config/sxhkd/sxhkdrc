@@ -43,9 +43,9 @@ super + Escape
 
 # Localizar arquivos pelo rofi:
 super + f
-        xdg-open "$(locate home media | rofi -threads 0 -width 60 -dmenu -i -p "locate:")"    
+    xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 0 -width 60 -dmenu -i -p "Find: ")"
 
-# Bloqueio de tela (Betterlockscreen) Obs: Blurlock foi substituido.
+# Lock screen
 alt + l
     betterlockscreen -l
 

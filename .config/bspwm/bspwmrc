@@ -59,3 +59,5 @@ bspc config presel_feedback_color "#18fe64"
 bspc rule -a '*:libreoffice' state=tiled
 bspc rule -a '*:soffice' state=tiled 
 bspc rule -a Zathura state=tiled
+bspc rule -a Firefox state=floating
+bspc rule -a Firefox:Navigator state=tiled
