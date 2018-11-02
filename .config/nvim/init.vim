@@ -60,6 +60,7 @@ let g:vimtex_view_general_viewer = 'zathura'
 set mouse=a                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
 set relativenumber
+set cursorline             " Highlight cursor line 
 set linebreak	           " Break lines at word (requires Wrap lines)
 set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=110	   " Line wrap (number of cols)
@@ -75,7 +76,7 @@ set hlsearch	           " Highlight all search results
 set smartcase	           " Enable smart-case search
 set ignorecase	           " Always case-insensitive
 set incsearch	           " Searches for strings incrementally
- 
+
 set ve=all                 " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
 set expandtab	           " Use spaces instead of tabs
@@ -85,7 +86,7 @@ set smarttab	           " Enable smart-tabs
 set softtabstop=4	       " Number of spaces per Tab
 set clipboard=unnamedplus 
 set shell=/bin/zsh
- 
+
 set background=dark
 set termguicolors
 
@@ -107,7 +108,7 @@ autocmd FileType tex,gitcommit,text,markdown setlocal spell
 "" VimTex autocomplete with YouCompleteMe:
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
-  endif
+endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "" Disable conceal in Latex files ("Hiding tag"):
@@ -120,10 +121,10 @@ else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
 endif 
- 
+
 "" Syntax Hightlighting:
 syntax on
- 
+
 "" Persistent Undo:
 " Let's save undo info!
 if !isdirectory($HOME."/.config/nvim/undo-dir")
@@ -134,9 +135,9 @@ set undofile
 
 "" Template:
 if has("autocmd")
-  augroup templates
-    autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Skeleton.java
-  augroup END
+    augroup templates
+        autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Skeleton.java
+    augroup END
 endif
 
 "" ALE quick navigate between errors:
@@ -156,21 +157,21 @@ let g:startify_session_autoload = 1
 let g:startify_change_to_dir = 1
 let g:startify_fortune_use_unicode = 1
 let g:ascii = [
-	 \' _______                ___ ___  __ ',          
-         \'|    |  |.-----..-----.|   |   ||__|.--------. ',
-         \'|       ||  -__||  _  ||   |   ||  ||        |   ',
-         \'|__|____||_____||_____| \_____/ |__||__|__|__|   ',
-          \]
+            \' _______                ___ ___  __ ',          
+            \'|    |  |.-----..-----.|   |   ||__|.--------. ',
+            \'|       ||  -__||  _  ||   |   ||  ||        |   ',
+            \'|__|____||_____||_____| \_____/ |__||__|__|__|   ',
+            \]
 let g:startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\"   \".v:val")' 
 let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
 let g:startify_commands = [ {'t': ['Open a new Terminal', ':terminal']} ]
 let g:startify_lists = [
-    \ { 'type': 'files',     'header': ['   My most recently used files:'] },
-    \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
-    \ { 'type': 'sessions',  'header': ['   Sessions:']       },
-    \ { 'type': 'bookmarks', 'header': ['   Bookmarks:']      },
-    \ { 'type': 'commands',  'header': ['   Commands:']       },
-    \ ] 
+            \ { 'type': 'files',     'header': ['   My most recently used files:'] },
+            \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
+            \ { 'type': 'sessions',  'header': ['   Sessions:']       },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks:']      },
+            \ { 'type': 'commands',  'header': ['   Commands:']       },
+            \ ] 
 
 function! StartifyEntryFormat() 
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path' 
@@ -194,11 +195,11 @@ map <F7> mzgg=G`z
 
 "" Advanced:
 set ruler	                " Show row and column ruler information
- 
+
 set undolevels=1500	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
-  
+
 "" AutoStart:
 autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
- 
+
