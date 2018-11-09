@@ -4,7 +4,7 @@ sxhkd &
 # Compositor
 compton -b &
 # Wallpaper
-nitrogen --restore &
+hsetroot -center ~/DotFiles/Wallpapers/fern_leaf_plant_green_119970_1920x1080.jpg 
 # Paineis
 ~/.config/polybar/launch.sh
 # Carrega arquivo de configuração X e carrega o tema de cursor.

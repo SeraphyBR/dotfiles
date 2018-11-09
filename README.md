@@ -18,7 +18,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 |:--- | :---- |
 | Linux Distro | [Funtoo](https://www.funtoo.org/Welcome) |
 | Window Manager | [Bspwm](https://github.com/baskerville/bspwm) |
-| Web Browser | [Firefox](https://www.mozilla.org/pt-BR/firefox/new/) / [qutebrowser](https://qutebrowser.org/) |
+| Web Browser | [qutebrowser](https://qutebrowser.org/) |
 | Program Launcher | [Rofi](https://github.com/DaveDavenport/rofi) |
 | Status bar | [Polybar](https://github.com/jaagr/polybar) |
 | Music Player | [Ncmpcpp](https://rybczak.net/ncmpcpp/) + [Mpd](https://github.com/MusicPlayerDaemon/MPD) |
@@ -27,7 +27,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Sound Visualizer | [Cava](https://github.com/karlstav/cava) |
 | File Manager  | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons) / Thunar |
 | Image Viewer | [sxiv](https://github.com/muennich/sxiv) |
-| Wallpaper Setter | Nitrogen |
+| Wallpaper Setter | [hsetroot](https://github.com/himdel/hsetroot) |
 | ScreenShooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
 | Terminal Emulator | [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://gitlab.com/SeraphyBR/st) |
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
