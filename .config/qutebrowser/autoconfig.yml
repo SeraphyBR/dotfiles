@@ -4,11 +4,13 @@
 config_version: 2
 settings:
   fonts.completion.category:
-    global: DejaVuSans Mono
+    global: 12pt DejaVuSans Mono
   fonts.completion.entry:
-    global: DejaVuSans Mono
+    global: 12pt DejaVuSans Mono
   fonts.hints:
     global: DejaVuSans Mono
+  fonts.messages.error:
+    global: 10pt DejaVuSans Mono
   fonts.prompts:
     global: DejaVuSans Mono
   fonts.statusbar:
@@ -17,3 +19,6 @@ settings:
     global: DejaVuSans Mono
   qt.highdpi:
     global: false
+  url.searchengines:
+    global:
+      DEFAULT: https://www.google.com/search?hl=en&q={}
