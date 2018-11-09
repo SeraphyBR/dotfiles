@@ -83,7 +83,8 @@ set expandtab	           " Use spaces instead of tabs
 set shiftwidth=4	       " Number of auto-indent spaces
 set smartindent	           " Enable smart-indent
 set smarttab	           " Enable smart-tabs
-set softtabstop=4	       " Number of spaces per Tab
+set softtabstop=4	   " Number of spaces per Tab
+set scrolloff=3            " Always show N lines above/below the cursor    
 set clipboard=unnamedplus 
 set shell=/bin/zsh
 
