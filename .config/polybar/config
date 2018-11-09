@@ -399,10 +399,8 @@ format-underline = #1db954
 ###############################################################################
 
 [module/xbacklight]
-type = internal/xbacklight
+type = internal/backlight
 card = intel_backlight
-output = eDP1
-enable-scroll = true 
 
 format = <label> <bar>
 label = 
@@ -513,7 +511,8 @@ click-left = gsimplecal &
 #########################################################
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
+
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
