@@ -1,5 +1,15 @@
+#  ____   __  __  _   _   _  __  ____  
+# / ___|  \ \/ / | | | | | |/ / |  _ \ 
+# \___ \   \  /  | |_| | | ' /  | | | |
+#  ___) |  /  \  |  _  | | . \  | |_| |
+# |____/  /_/\_\ |_| |_| |_|\_\ |____/ 
+#                                      
+# Simple X hotkey daemon
+# https://github.com/baskerville/sxhkd
 
-# Atalhos de teclado personalizados
+####################################################
+####### Atalhos de teclado personalizados  #########
+####################################################
 
 # terminal emulator
 super + Return
@@ -16,10 +26,6 @@ super + shift + Return
 # Qutebrowser
 super + q 
         qutebrowser
-
-# Firefox
-super + shift + q
-        firefox
 
 # Gerenciador de arquivos cli
 super + a
