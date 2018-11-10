@@ -36,7 +36,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Monitor | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) |  
 | Lock Screen | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) |
 | Notification Daemon | [Dunst](https://github.com/dunst-project/dunst) / libnotify |
-| Gtk theme | Adapta-nokto-eta |
+| Gtk theme | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes) |
 | Cursor theme | Breeze Obsidian |
 
 #### Main Fonts used in this Dotfiles:
