@@ -1,6 +1,6 @@
 [options]
 
-font = DejaVuSansMono Nerd Font 11
+font = DejaVuSansMono Nerd Font 12
 
 scroll_on_output = false
 scroll_on_keystroke = true
@@ -22,7 +22,7 @@ cursor_blink = off
 cursor_shape = ibeam
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-browser = firefox
+browser = qutebrowser
 
 # set size hints for the window
 size_hints = false
