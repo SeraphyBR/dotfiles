@@ -4,14 +4,14 @@ sxhkd &
 # Compositor
 compton -b &
 # Wallpaper
-hsetroot -center ~/DotFiles/Wallpapers/fern_leaf_plant_green_119970_1920x1080.jpg 
+hsetroot -center ~/DotFiles/Wallpapers/fern_leaf_plant_green_119970_1920x1080.jpg & 
 # Paineis
-~/.config/polybar/launch.sh
+~/.config/polybar/launch.sh &
 # Carrega arquivo de configuração X e carrega o tema de cursor.
 xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr
 # Mapa de teclado brasileiro
-setxkbmap -model abnt2 -layout br -variant abnt2 
+setxkbmap -model abnt2 -layout br -variant abnt2 &
 #Polkit
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 # Ajuste de temperatura da cor da tela
@@ -22,10 +22,11 @@ caffeine-indicator &
 thunar --daemon &
 # Notification Daemon
 dunst &
+~/DotFiles/Scripts/battery-status.sh &
 # Music Player Daemon
 mpd &
 # Welcome
-dunstify "Bem Vindo ${USER^}!" 
+dunstify "Bem Vindo ${USER^}!" & 
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' & 
 
