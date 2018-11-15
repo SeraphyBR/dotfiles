@@ -1,0 +1,13 @@
+*/*::eroen
+*/*::jorgicio
+*/*::abendbrot
+*/*::quarks
+*/*::seeds
+*/*::libressl
+>=x11-drivers/nvidia-drivers-391.0.0
+>=x11-misc/polybar-9999
+>=app-emulation/libvirt-4.6.0-r1
+>=dev-python/libvirt-python-4.6.0
+>=app-emulation/libvirt-glib-1.0.0-r1
+dev-libs/openssl
+

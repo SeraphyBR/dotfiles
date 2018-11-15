@@ -1,0 +1,110 @@
+# required by x11-terms/termite-13::eroen
+# required by x11-terms/termite (argument)
+# /etc/portage/package.mask:
+=x11-libs/vte-0.48.4
+# required by x11-terms/termite (argument)
+# /etc/portage/package.mask:
+=x11-terms/termite-13
+# required by papirus-icon-theme (argument)
+# /etc/portage/package.mask:
+=x11-themes/papirus-icon-theme-9999
+# required by adapta-gtk-theme (argument)
+# /etc/portage/package.mask:
+=x11-themes/adapta-gtk-theme-3.93.0.193
+# required by app-laptop/tlp (argument)
+# /etc/portage/package.mask:
+=app-laptop/tlp-0.4.1
+
+# required by nerd-fonts (argument)
+# /etc/portage/package.mask:
+=media-fonts/nerd-fonts-2.0.0
+# required by net-im/telegram (argument)
+# /etc/portage/package.mask:
+=net-im/telegram-1.3.7
+# required by qtstyleplugins (argument)
+# /etc/portage/package.mask:
+=x11-themes/qtstyleplugins-1.0_pre20170311
+# required by cava (argument)
+# /etc/portage/package.mask:
+=media-sound/cava-0.6.0
+# required by i3lock-color (argument)
+# /etc/portage/package.mask:
+=x11-misc/i3lock-color-9999
+# required by x11-misc/caffeine-2.9.4::seeds
+# required by caffeine (argument)
+# /etc/portage/package.mask:
+=dev-python/ewmh-0.1.6
+# required by caffeine (argument)
+# /etc/portage/package.mask:
+=x11-misc/caffeine-2.9.4
+# required by x11-libs/libxcb-1.12-r2::xorg-kit
+# required by x11-apps/xbacklight-1.2.1-r1::xorg-kit
+# required by x11-base/xorg-x11-7.4-r2::xorg-kit
+# required by @selected
+# required by @world (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/funtoo/kits/python-kit/3.4-prime/package.mask/funtoo-kit-python:
+=dev-lang/python-3.5.3-r1
+# required by popcorntime-bin (argument)
+# /etc/portage/package.mask:
+=media-tv/popcorntime-bin-0.3.10
+# required by compton-conf (argument)
+# /etc/portage/package.mask:
+=x11-apps/compton-conf-0.3.0
+# required by kotlin-bin (argument)
+# /etc/portage/package.mask:
+=dev-lang/kotlin-bin-1.2.41
+# required by lightdm-gtk-greeter-settings (argument)
+# /etc/portage/package.mask:
+=x11-misc/lightdm-gtk-greeter-settings-1.2.2
+# required by flameshot (argument)
+# /etc/portage/package.mask:
+=media-gfx/flameshot-0.5.1
+# required by onlyoffice (argument)
+# /etc/portage/package.mask:
+=app-office/onlyoffice-4.8.7.392
+# required by app-emulation/wine-1.7.34-r2::eroen[multislot]
+# required by wine (argument)
+# /etc/portage/package.mask:
+=app-admin/eselect-wine-0.2
+# required by wine (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/package.mask/00-gentoo:
+# Michał Górny <mgorny@gentoo.org> (28 Nov 2017)
+# Replaced by split packages. Please install one of:
+# - app-emulation/wine-vanilla (the only choice for stable)
+# - app-emulation/wine-staging
+# - app-emulation/wine-d3d9
+# - app-emulation/wine-any
+# For more information, please read the news item:
+# https://www.gentoo.org/support/news-items/2017-04-10-split-and-slotted-wine.html
+# If you really need the old ebuilds, you can use the 'wine' repository.
+# Removal in 30 days.
+=app-emulation/wine-1.7.34-r2
+# required by app-emulation/wine-1.7.34-r2::eroen[multislot]
+# required by wine (argument)
+# 
+# required by x11-misc/polybar::seraphybr-overlay (argument)
+# /etc/portage/package.mask:
+=x11-misc/polybar-9999
+# required by x11-libs/pango-1.40.14::gnome-kit
+# required by media-libs/gegl-0.4.8-r1::media-kit
+# required by media-gfx/gimp-2.10.2::media-kit
+# required by @selected
+# required by @world (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/package.mask/funtoo-fixes:
+# FL-2803, also note FL-2885 - a pango rebuild may be required after downgrade
+=media-libs/fontconfig-2.12.4
+# required by =net-misc/iputils-20180629::seraphybr-overlay (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/package.mask/funtoo-staging-oleg:
+# FL-3261: keep newest iputils masked.
+=net-misc/iputils-20180629
+# required by =net-misc/iputils-20171016_pre::seraphybr-overlay (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/package.mask/funtoo-staging-oleg:
+# FL-3261: keep newest iputils masked.
+=net-misc/iputils-20171016_pre
+# required by =net-misc/iputils-20171016_pre-r1::seraphybr-overlay (argument)
+# /var/git/meta-repo/kits/core-kit/profiles/package.mask/funtoo-staging-oleg:
+# FL-3261: keep newest iputils masked.
+=net-misc/iputils-20171016_pre-r1
+# required by =media-video/ffmpeg-3.4.4 (argument)
+# /etc/portage/package.mask:
+=media-video/ffmpeg-3.4.4

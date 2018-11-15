@@ -1,0 +1,171 @@
+# required by app-editors/neovim-0.2.2-r1::editors-kit
+# required by dev-python/neovim-python-client-0.2.4::python-modules-kit
+>=dev-lua/mpack-1.0.4 luajit
+# required by app-editors/neovim-0.2.2-r1::editors-kit
+# required by dev-python/neovim-python-client-0.2.4::python-modules-kit
+>=dev-lua/lpeg-1.0.1 luajit
+# required by app-misc/neofetch-3.4.0::nokit[X]
+# required by neofetch (argument)
+>=www-client/w3m-0.5.3_p20180125 imlib
+# required by x11-libs/libxkbcommon-0.7.2::xorg-kit[X]
+# required by media-libs/glfw-3.2.1::media-kit
+# required by app-text/mupdf-1.12.0::text-kit[-static-libs,opengl]
+# required by net-print/cups-filters-1.20.3::net-kit[pdf]
+# required by net-print/cups-2.2.7::net-kit
+# required by app-text/ghostscript-gpl-9.21::text-kit[cups]
+# required by media-libs/libwmf-0.2.8.4-r6::media-kit
+# required by media-gfx/imagemagick-7.0.7.6::media-kit[wmf]
+# required by app-misc/neofetch-3.4.0::nokit[X]
+# required by neofetch (argument)
+>=x11-libs/libxcb-1.12-r2 xkb
+x11-misc/rofi windowmode
+# required by x11-misc/rofi-1.4.2::desktop-kit
+# required by x11-misc/rofi (argument)
+>=x11-libs/cairo-1.14.8 xcb
+# required by dev-qt/qtcore-5.9.4-r2::kde-kit
+# required by dev-qt/qtnetwork-5.9.4::kde-kit
+# required by media-video/smplayer-17.10.0::media-kit
+# required by smplayer (argument)
+>=dev-libs/libpcre2-10.30 pcre16
+app-laptop/tlp tlp_suggests bluetooth pm-utils
+x11-misc/polybar network curl mpd 
+x11-misc/dunst dunstify
+x11-misc/redshift appindicator geoclue
+# required by dev-libs/libappindicator-12.10.0-r301::dev-kit
+# required by x11-misc/redshift-1.11-r1::desktop-kit[appindicator]
+# required by redshift (argument)
+>=dev-libs/libdbusmenu-16.04.0 gtk3
+# required by sys-power/suspend-1.0_p20150810::nokit[crypt]
+# required by suspend (argument)
+>=dev-libs/libgcrypt-1.8.2 static-libs
+# required by sys-power/suspend-1.0_p20150810::nokit[lzo]
+# required by suspend (argument)
+>=dev-libs/lzo-2.10 static-libs
+# required by sys-power/suspend-1.0_p20150810::nokit[crypt]
+# required by suspend (argument)
+>=dev-libs/libgpg-error-1.29 static-libs
+# required by media-gfx/inkscape-0.92.1-r1::media-kit
+# required by media-gfx/inkscape (argument)
+>=app-text/poppler-0.52.0-r2 cairo
+# required by app-office/libreoffice-6.0.2.1::kde-kit
+# required by libreoffice (argument)
+>=dev-libs/xmlsec-1.2.24-r1 nss
+dev-python/PyQt5 webengine widgets webchannel
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-python/PyQt5-5.10.1-r1 network gui declarative sql printsupport
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-qt/qtwebengine-5.9.4 widgets
+# required by dev-qt/qtwebengine-5.9.4::kde-kit
+# required by dev-python/PyQt5-5.10.1-r1::python-modules-kit[webengine]
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=media-libs/libvpx-1.6.1 svc
+# required by dev-python/pypeg2-2.15.2::python-modules-kit
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-python/lxml-4.2.0 python_targets_python3_6
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-python/jinja-2.10 python_targets_python3_6
+# required by dev-python/attrs-17.4.0::python-modules-kit
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-python/zope-interface-4.4.3 python_targets_python3_6
+# required by dev-qt/qtwebengine-5.9.4::kde-kit
+# required by dev-python/PyQt5-5.10.1-r1::python-modules-kit[webengine]
+# required by www-client/qutebrowser-1.3.2::net-kit
+# required by qutebrowser (argument)
+>=dev-qt/qtwebchannel-5.9.4 qml
+# required by media-gfx/gimp-2.9.6::media-kit
+# required by gimp (argument)
+>=media-libs/libmypaint-1.3.0 gegl
+# required by media-gfx/gimp-2.9.6::media-kit
+# required by gimp (argument)
+>=media-libs/gegl-0.3.20 cairo
+www-plugins/adobe-flash nsplugin
+games-util/steam-games-meta *
+media-libs/libtxc_dxtn abi_x86_32
+# required by x11-misc/primus-0.2::desktop-kit
+# required by x11-misc/bumblebee-3.2.1_p20170123::xorg-kit
+# required by bumblebee (argument)
+>=x11-drivers/nvidia-drivers-396.24-r1 compat
+x11-misc/virtualgl abi_x86_32
+# required by x11-misc/virtualgl-2.5.2::desktop-kit
+# required by virtualgl (argument)
+>=x11-libs/libXv-1.0.11 abi_x86_32
+# required by x11-libs/libXv-1.0.11::xorg-kit
+# required by x11-misc/virtualgl-2.5.2::desktop-kit
+# required by virtualgl (argument)
+>=x11-proto/videoproto-2.3.3 abi_x86_32
+x11-misc/primus abi_x86_32
+# required by x11-misc/primus-0.2::desktop-kit
+# required by primus (argument)
+>=x11-drivers/nvidia-drivers-390.67 compat
+app-text/asciidoc python_single_target_python2_7
+# required by sys-boot/os-prober-1.76-r1::core-kit
+# required by os-prober (argument)
+>=sys-boot/grub-2.02-r1 mount
+>=media-video/ffmpeg-3.4.1 xcb
+>=media-video/ffmpeg-3.4.4 openssl 
+# required by sys-devel/prelink-20151030::nokit
+# required by app-emulation/wine-1.7.34-r2::eroen[prelink]
+# required by wine (argument)
+>=dev-libs/elfutils-0.170-r1 static-libs
+xfce-base/thunar -trash-panel-plugin
+# required by x11-libs/libxcb-1.13::xorg-kit
+# required by x11-apps/xbacklight-1.2.2::xorg-kit
+# required by @selected
+# required by @world (argument)
+>=x11-base/xcb-proto-1.13 abi_x86_32
+# required by kde-apps/kdenlive-17.12.3::kde-kit
+# required by kdenlive (argument)
+>=media-libs/mlt-6.4.1-r6 kdenlive melt sdl qt5
+# required by kde-apps/kdenlive-17.12.3::kde-kit
+# required by kdenlive (argument)
+>=virtual/ffmpeg-9-r2 sdl
+# required by virtual/ffmpeg-9-r2::media-kit
+# required by kde-apps/kdenlive-17.12.3::kde-kit
+# required by kdenlive (argument)
+>=media-video/ffmpeg-3.4.1 sdl
+media-gfx/fontforge python_single_target_python3_5 python_targets_python3_5
+>=net-print/hplip-3.18.6 qt5 scanner
+>=media-sound/ncmpcpp-0.8.1 clock visualizer outputs
+>=media-sound/mpd-0.20.20 libmpdclient
+# required by www-client/qutebrowser-1.5.1::net-kit
+# required by @selected
+# required by @world (argument)
+=dev-python/PyQt5-5.10.1 multimedia network declarative printsupport sql
+# required by dev-python/PyQt5-5.10.1::kde-kit[multimedia]
+# required by net-print/hplip-3.18.6-r2::net-kit[qt5,-minimal]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtmultimedia-5.9.4-r1 widgets
+# required by app-emulation/virt-manager-1.5.1-r1::nokit[gtk]
+# required by virt-manager (argument)
+>=net-misc/spice-gtk-0.35 usbredir
+# required by app-emulation/libvirt-4.6.0-r1::nokit[virt-network]
+# required by app-emulation/libvirt-glib-1.0.0-r1::nokit
+# required by app-emulation/virt-manager-1.5.1-r1::nokit
+# required by virt-manager (argument)
+>=net-dns/dnsmasq-2.80 script
+>=app-emulation/qemu-3.0.0 spice vte ssh bluetooth virgl virtfs
+# required by app-text/calibre-3.15.0::text-kit
+# required by calibre (argument)
+>=dev-python/PyQt5-5.10.1 webkit
+# required by dev-python/PyQt5-5.10.1::kde-kit[webkit]
+# required by app-text/calibre-3.15.0::text-kit
+# required by calibre (argument)
+>=dev-qt/qtwebkit-5.9.1 printsupport
+# required by x11-misc/virtualgl-2.5.2::desktop-kit[libressl,ssl]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libressl-2.6.4 abi_x86_32
+>=sys-block/gparted-0.29.0 -hfs -xfs -btrfs -jfs -reiserfs
+>=net-misc/iputils-20180629 gcrypt
+>=x11-base/xorg-server-1.19.3 -ipv6
+>=dev-python/certifi-2018.4.16 python_targets_python3_5 
+>=dev-python/setuptools-40.0.0 python_targets_python3_5
+net-print/cups-filters -pdf
+
