@@ -1,4 +1,4 @@
-#!/bin/python 
+#!/usr/bin/env python
 # by https://github.com/Jvanrhijn/polybar-spotify
 
 import sys
