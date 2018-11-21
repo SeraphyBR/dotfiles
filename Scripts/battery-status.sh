@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 ICON=/usr/share/icons/Papirus/48x48/devices/battery.svg
 
@@ -6,9 +6,13 @@ while true
 do
     battery_level=$(acpi -b | grep -P -o '[0-9]+(?=%)')
     if on_ac_power; then
-        if [ "$battery_level" -ge 80 ]; then
+
+        if [ "$battery_level" -eq 100 ]; then
+            notify-send -i $ICON "Bateria está carrega!" "Pode remover da tomada!"
+            sleep 60
+        elif [ "$battery_level" -ge 85 ]; then
             notify-send -i $ICON "Bateria está carregando acima de 80%!" "Por favor tire-o da tomada!"
-            sleep 20
+            sleep 40
         fi
     else
         if [ "$battery_level" -le 15 ]; then
@@ -21,4 +25,5 @@ do
     fi
 
     sleep 300 # 300 seconds or 5 minutes
+
 done
