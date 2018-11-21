@@ -1,10 +1,15 @@
-#!/usr/bin/env sh
-# script criado para ser usado como modulo para o polybar,
+#!/usr/bin/env bash
+
+# Script criado para ser usado como modulo para o polybar,
 # vai dizer se a placa nvidia está em uso ou não.
 
-if grep -q "ON" /proc/acpi/bbswitch 
+
+if [ -e /proc/acpi/bbswitch ]
 then
-    echo "Nvidia %{F#7FFF00}  %{F-}"
-else
-    echo "Nvidia %{F#7FFF00}  %{F-}"  
+    if grep -qs "ON" /proc/acpi/bbswitch
+    then
+        echo " Nvidia %{F#7FFF00}  %{F-} "
+    else
+        echo " Nvidia %{F#7FFF00}  %{F-} "  
+    fi
 fi

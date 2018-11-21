@@ -673,9 +673,8 @@ content-underline = #7df059
 
 [module/bbswitch_show]
 type = custom/script
-interval = 1
-format = " <label> "
-format-prefix = " "
+interval = 2
+format = <label>
 format-underline = ${colors.chartreuse}
 click-left = "optirun -b none nvidia-settings -c :8"
 exec = ~/.config/polybar/Scripts/bbswitch.sh
