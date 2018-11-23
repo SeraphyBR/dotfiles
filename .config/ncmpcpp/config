@@ -1,31 +1,13 @@
 
+# General ..
 ncmpcpp_directory = ~/.config/ncmpcpp
 mpd_host = localhost
 mpd_port = 6600
 #mpd_connection_timeout = 5
-mpd_music_dir = "/home/Storage/Música"
+mpd_music_dir = "/home/seraphybr-fun/Música"
 mpd_crossfade_time = 12
-visualizer_fifo_path = /tmp/mpd.fifo
-visualizer_output_name = "Visualizer feed"
-visualizer_in_stereo = yes
-visualizer_sync_interval = 10
-visualizer_type = "spectrum" (spectrum/wave)
-visualizer_look = "▋▋"
-execute_on_song_change = notify-send -u low "MPD" "$(mpc current)"
-#execute_on_player_state_change = "notify-send 'MPD' '$(mpc current)'"
-browser_display_mode = classic
-search_engine_display_mode = classic
-playlist_editor_display_mode = classic
-
-user_interface = alternative
-## Available values: artist, album_artist, date, genre, composer, performer.
-media_library_primary_tag = album_artist
-
-clock_display_seconds = yes
 external_editor = nvim
 use_console_editor = yes
-
-###############################################################################
 
 # Display ..
 song_list_format = " $8{%t}|{%f} $R $0{%26b}|{%a} $3%l "
@@ -33,17 +15,33 @@ song_columns_list_format = "(3)[]{} (40)[white]{t|f}  (49)[blue]{b}   (4)[green]
 song_status_format = " $3%t $0 $1%a "
 playlist_display_mode = "columns" (classic/columns)
 volume_color = "7_1"
-display_volume_level = yes
+clock_display_seconds = yes
+display_remaining_time = "yes"
+display_volume_level = yes 
+browser_display_mode = classic
+search_engine_display_mode = classic
+playlist_editor_display_mode = classic
+display_bitrate = "yes"
+autocenter_mode = "yes" 
+user_interface = alternative             
+media_library_primary_tag = album_artist
+current_item_prefix = " $7 "
 
 # Now Playing ..
-now_playing_prefix = " $7"
+now_playing_prefix = " $3 " 
 now_playing_suffix = "$8$/b"
 
 # Playlist ..
 browser_playlist_prefix = "$2  $0 "
 
 # Visualizer
-visualizer_color = "5_0"
+visualizer_color = "5_0" 
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = "Visualizer feed"
+visualizer_in_stereo = yes
+visualizer_sync_interval = 30
+visualizer_type = "spectrum" (spectrum/wave)
+visualizer_look = "▋▋"   
 
 # Progress Bar ..
 progressbar_look = "━━─"
@@ -60,13 +58,11 @@ main_window_color = "5_1"
 header_window_color = "1_1"
 
 # Misc ..   
-display_bitrate = "yes"
-autocenter_mode = "yes"
+execute_on_song_change = notify-send -i "/usr/share/icons/Papirus/48x48/categories/audio-player.svg" -u low "MPD" "$(mpc current)"
 centered_cursor = "yes"
 titles_visibility = "no"
 statusbar_visibility = "yes"
 mouse_support = "yes"
 header_visibility = "no"
-display_remaining_time = "yes"
 ask_before_clearing_playlists = "yes"
 discard_colors_if_item_is_selected = "yes"
