@@ -108,3 +108,4 @@
 # required by =media-video/ffmpeg-3.4.4 (argument)
 # /etc/portage/package.mask:
 =media-video/ffmpeg-3.4.4
+=net-libs/nodejs-9.11.2::libressl
