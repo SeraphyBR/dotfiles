@@ -33,7 +33,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
 | Text Editor | [Neovim](https://neovim.io/) / [VScode](https://github.com/Microsoft/vscode) |
 | Power Manager | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html) |
-| Monitor | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) |  
+| Monitor | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) | 
+| Run program as another user | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo) |
 | Lock Screen | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) |
 | Notification Daemon | [Dunst](https://github.com/dunst-project/dunst) / libnotify |
 | Gtk theme | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes) |
