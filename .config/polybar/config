@@ -623,13 +623,13 @@ menu-0-4 = "  |"
 menu-0-4-exec = bspc quit
 
 menu-1-0 = Reiniciar 
-menu-1-0-exec = sudo shutdown -r now 
+menu-1-0-exec = doas shutdown -r now 
 
 menu-1-1 =  |
 menu-1-1-exec = menu-open-0
 
 menu-2-0 = Desligar
-menu-2-0-exec = sudo shutdown -h now
+menu-2-0-exec = doas shutdown -h now
 
 menu-2-1 =  |
 menu-2-1-exec = menu-open-0
