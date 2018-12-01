@@ -82,7 +82,10 @@ setopt appendhistory
 # If a new command is a duplicate, remove the older one  
 setopt histignorealldups                                        
 # if only directory path is entered, cd there. 
-setopt autocd                                                   
+setopt autocd
+# Remove command lines from the history list when the first character on the line is a space.
+setopt HIST_IGNORE_SPACE
+
  
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion    (different colors for dirs/files/etc)
@@ -139,16 +142,15 @@ alias ls='ls --color=auto'
 alias cp='cp -R'
 alias rm='rm -Ivr'
 alias :q='exit'
-alias svim='sudo nvim'
+alias svim='doas nvim'
 alias vim='nvim' 
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
-alias root="sudo su - "
 alias sxiv="sxiv -r . "
-alias addpkg="sudo emerge -a --jobs"
-alias update="sudo ego sync"
-alias upgrade="sudo emerge -auvDN @world"
+alias addpkg="doas emerge -a --jobs"
+alias update="doas ego sync"
+alias upgrade="doas emerge -auvDN @world"
 ##################################################################
 
 c() {
