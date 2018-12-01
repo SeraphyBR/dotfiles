@@ -40,7 +40,6 @@ foreground = #ffffff
 foreground_bold = #dcdcdc
 background = rgba(38, 41, 39, 0.83)
 
-
 # black
 color0  = #3f3f3f
 color8  = #4ff146
@@ -71,7 +70,7 @@ color14 = #26aac5
 
 # white
 color7  = #dcdcdc
-color15 = #ffffff
+color15 = #ffffff 
 
 [hints]
 #font = DejaVuSansMono 20
