@@ -36,11 +36,10 @@ def fix_string(string):
     else:
         return string.encode('utf-8')
 
-
 # Default parameters
 output = fix_string(u'{play_pause} {artist}: {song}')
 trunclen = 25
-play_pause = fix_string(u'\u25B6,\u23F8')  # first character is play, second is paused
+play_pause = fix_string(u'\u25B6,\u23F8') # first character is play, second is paused
 
 # parameters can be overwritten by args
 if args.trunclen is not None:
@@ -79,9 +78,10 @@ try:
 
     if len(song) > trunclen:
         song = song[0:trunclen]
-        song += '...'
+        song += '...' 
         if ('(' in song) and (')' not in song):
             song += ')'
+    
     print(output.format(artist=artist, song=song, play_pause=play_pause))
 
 except Exception as e:
