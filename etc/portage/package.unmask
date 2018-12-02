@@ -109,3 +109,6 @@
 # /etc/portage/package.mask:
 =media-video/ffmpeg-3.4.4
 =net-libs/nodejs-9.11.2::libressl
+# required by papirus-libreoffice-theme (argument)
+# /etc/portage/package.mask:
+=x11-themes/papirus-libreoffice-theme-20170228

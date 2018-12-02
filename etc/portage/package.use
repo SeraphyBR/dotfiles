@@ -162,10 +162,12 @@ media-gfx/fontforge python_single_target_python3_5 python_targets_python3_5
 # required by @selected
 # required by @world (argument)
 >=dev-libs/libressl-2.6.4 abi_x86_32
->=sys-block/gparted-0.29.0 -hfs -xfs -btrfs -jfs -reiserfs
+>=sys-block/gparted-0.29.0 -hfs -xfs -jfs -reiserfs
 >=net-misc/iputils-20180629 gcrypt
 >=x11-base/xorg-server-1.19.3 -ipv6
 >=dev-python/certifi-2018.4.16 python_targets_python3_5 
 >=dev-python/setuptools-40.0.0 python_targets_python3_5
 net-print/cups-filters -pdf
+=net-libs/nodejs-9.11.2::libressl bundled-ssl
+app-office/libreoffice googledrive
 
