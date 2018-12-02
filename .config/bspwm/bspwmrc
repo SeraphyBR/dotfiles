@@ -8,8 +8,8 @@ hsetroot -center ~/DotFiles/Wallpapers/fern_leaf_plant_green_119970_1920x1080.jp
 # Paineis
 ~/.config/polybar/launch.sh &
 # Carrega arquivo de configuração X e carrega o tema de cursor.
-xrdb ~/.Xresources
-xsetroot -cursor_name left_ptr
+xrdb ~/.Xresources &
+xsetroot -cursor_name left_ptr &
 # Mapa de teclado brasileiro
 setxkbmap -model abnt2 -layout br -variant abnt2 &
 #Polkit
@@ -40,13 +40,13 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
 bspc config focus_follows_pointer true
-bspc config border_width         4
-bspc config window_gap          12
+bspc config border_width         5
+bspc config window_gap          14
 
 #bspc config remove_disabled_monitors true
 #bspc config remove_unplugged_monitors true
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 

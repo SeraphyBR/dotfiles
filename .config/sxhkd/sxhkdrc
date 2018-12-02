@@ -19,10 +19,6 @@ super + Return
 super + alt + Return
         bspc rule -a \* -o state=floating &&  termite --name=floating
 
-# Suckless' Simple Terminal
-super + shift + Return
-        st
-
 # Qutebrowser
 super + q 
         qutebrowser

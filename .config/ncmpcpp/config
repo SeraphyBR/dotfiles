@@ -58,7 +58,7 @@ main_window_color = "5_1"
 header_window_color = "1_1"
 
 # Misc ..   
-execute_on_song_change = notify-send -i "/usr/share/icons/Papirus/48x48/categories/audio-player.svg" -u low "MPD" "$(mpc current)"
+execute_on_song_change = notify-send -i "/usr/share/icons/Papirus/48x48/categories/audio-player.svg"  "Now Playing" "$(mpc current)"
 centered_cursor = "yes"
 titles_visibility = "no"
 statusbar_visibility = "yes"

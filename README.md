@@ -22,16 +22,16 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Program Launcher | [Rofi](https://github.com/DaveDavenport/rofi) |
 | Status bar | [Polybar](https://github.com/jaagr/polybar) |
 | Music Player | [Ncmpcpp](https://rybczak.net/ncmpcpp/) + [Mpd](https://github.com/MusicPlayerDaemon/MPD) |
-| Music Player | [MOC](http://moc.daper.net) and [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify)) |
+| Music Player | [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify)) |
 | Vídeo Player | [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/) |
 | Sound Visualizer | [Cava](https://github.com/karlstav/cava) |
 | File Manager  | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons) / Thunar |
 | Image Viewer | [sxiv](https://github.com/muennich/sxiv) |
 | Wallpaper Setter | [hsetroot](https://github.com/himdel/hsetroot) |
 | ScreenShooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
-| Terminal Emulator | [Termite](https://github.com/thestinger/termite) and [Suckless' Simple Terminal](https://gitlab.com/SeraphyBR/st) |
+| Terminal Emulator | [Termite](https://github.com/thestinger/termite) |
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
-| Text Editor | [Neovim](https://neovim.io/) / [VScode](https://github.com/Microsoft/vscode) |
+| Text Editor | [Neovim](https://neovim.io/) |
 | Power Manager | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html) |
 | Monitor | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) | 
 | Run program as another user | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo) |
@@ -44,8 +44,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Font | Usage |
 | :--- | :--- |
 | [Cantarell](https://github.com/GNOME/cantarell-fonts) | Gui Programs |
-| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts) | Terminal (with patched version from Nerd Fonts) & Polybar |
-| [Iosevka](https://be5invis.github.io/Iosevka/) | Dunst & VScode |
+| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts) | Terminal (patched version from Nerd Fonts) and Polybar |
+| [Iosevka](https://be5invis.github.io/Iosevka/) | Dunst |
 | [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) | Polybar |
 | [MaterialDesign](https://github.com/google/material-design-icons) | Polybar |
 | [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | Zsh |
@@ -65,9 +65,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [auto-pairs](https://github.com/jiangmiao/auto-pairs) | Insert or delete brackets, parens, quotes in pair |
 | [undotree](https://github.com/mbbill/undotree) | Undo history visualizer |
 | [ALE](https://github.com/w0rp/ale) | Liting support |
-| [vimtex](https://github.com/lervag/vimtex) | LaTeX support | 
+| [vimtex](https://github.com/lervag/vimtex) | LaTeX support |
+| [LanguageClient-neovim](https://github.com/autozimu/LanguageClient-neovim) | Language Server Protocol support |
 | [Deoplete](https://github.com/Shougo/deoplete.nvim) | Code completion |
-| [vim-javacomplete2](https://github.com/artur-shaik/vim-javacomplete2) | Java Completion |
+| [echodoc](https://github.com/Shougo/echodoc.vim) | Print infos in echo area |
 | [NERDTree](https://github.com/scrooloose/nerdtree) | File explorer
 | [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) | Git status support for NERDTree |
 | [vim-nerdtree-syntax-highlight](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight) | Extra syntax and highlight for nerdtree files |

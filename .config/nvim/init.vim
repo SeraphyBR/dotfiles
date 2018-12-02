@@ -19,8 +19,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'artur-shaik/vim-javacomplete2'
+Plug 'Shougo/echodoc.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -34,11 +35,33 @@ Plug 'morhetz/gruvbox'
 call plug#end()            " required
 
 " Put your non-Plugin stuff after this line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" Deocomplete
+" Deoplete section:
 let g:deoplete#enable_at_startup = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LanguageClient-neovim and related:
+
+" https://github.com/MaskRay/ccls
+" https://github.com/palantir/python-language-server
+
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/home/seraphybr-fun/.local/bin/pyls'],
+    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
+    \ }
+let g:LanguageClient_hasSnippetSupport = 0 
+let g:LanguageClient_loadSettings = 1 
+
+let g:ale_linters = {
+    \ 'python': ['pyls']
+    \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline status line:
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -59,8 +82,10 @@ let g:vimtex_view_general_viewer = 'zathura'
 
 set mouse=a                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
+set hidden
 set relativenumber
-set cursorline             " Highlight cursor line 
+set cursorline             " Highlight cursor line
+set noshowmode
 set linebreak	           " Break lines at word (requires Wrap lines)
 set showbreak=+++ 	   " Wrap-broken line prefix
 set textwidth=110	   " Line wrap (number of cols)
@@ -105,12 +130,6 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 "" SpellCheck:
 set spelllang=pt_br,en_us
 autocmd FileType tex,gitcommit,text,markdown setlocal spell
-
-"" VimTex autocomplete with YouCompleteMe:
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "" Disable conceal in Latex files ("Hiding tag"):
 let g:tex_conceal = ''
