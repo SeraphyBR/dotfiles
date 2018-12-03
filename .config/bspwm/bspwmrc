@@ -41,7 +41,7 @@ bspc config pointer_action3 resize_corner
 
 bspc config focus_follows_pointer true
 bspc config border_width         5
-bspc config border_radius        2
+bspc config border_radius       10
 bspc config window_gap          14
 
 #bspc config remove_disabled_monitors true
