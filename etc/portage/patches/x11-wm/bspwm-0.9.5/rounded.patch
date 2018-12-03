@@ -1,0 +1,2950 @@
+From f8617fac3c03321981d611a2f835405721ee3634 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Wed, 25 Apr 2018 10:33:17 +0200
+Subject: [PATCH 01/19] Mention that receptacles can be killed
+
+---
+ doc/bspwm.1          | 6 +++---
+ doc/bspwm.1.asciidoc | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 8dbaf75..43bfc5e 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 04/08/2018
++.\"      Date: 04/25/2018
+ .\"    Manual: Bspwm Manual
+ .\"    Source: Bspwm 0.9.5
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "04/08/2018" "Bspwm 0\&.9\&.5" "Bspwm Manual"
++.TH "BSPWM" "1" "04/25/2018" "Bspwm 0\&.9\&.5" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -573,7 +573,7 @@ There\(cqs three stacking layers: BELOW, NORMAL and ABOVE\&.
+ In each layer, the window are orderered as follow: tiled & pseudo\-tiled < fullscreen < floating\&.
+ .SH "RECEPTACLES"
+ .sp
+-A leaf node that doesn\(cqt hold any window is called a receptacle\&. When a node is inserted on a receptacle in automatic mode, it will replace the receptacle\&. A receptacle can be inserted on a node and preselected\&. Receptacles can therefore be used to build a tree whose leaves are receptacles\&. Using the appropriate rules, one can then send windows on the leaves of this tree\&. This feature is used in \fIexamples/receptacles\fR to store and recreate layouts\&.
++A leaf node that doesn\(cqt hold any window is called a receptacle\&. When a node is inserted on a receptacle in automatic mode, it will replace the receptacle\&. A receptacle can be inserted on a node, preselected and killed\&. Receptacles can therefore be used to build a tree whose leaves are receptacles\&. Using the appropriate rules, one can then send windows on the leaves of this tree\&. This feature is used in \fIexamples/receptacles\fR to store and recreate layouts\&.
+ .SH "DOMAINS"
+ .SS "Node"
+ .sp
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index de09414..48f0769 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -360,7 +360,7 @@ In each layer, the window are orderered as follow: tiled & pseudo-tiled < fullsc
+ Receptacles
+ -----------
+ 
+-A leaf node that doesn't hold any window is called a receptacle. When a node is inserted on a receptacle in automatic mode, it will replace the receptacle. A receptacle can be inserted on a node and preselected. Receptacles can therefore be used to build a tree whose leaves are receptacles. Using the appropriate rules, one can then send windows on the leaves of this tree. This feature is used in 'examples/receptacles' to store and recreate layouts.
++A leaf node that doesn't hold any window is called a receptacle. When a node is inserted on a receptacle in automatic mode, it will replace the receptacle. A receptacle can be inserted on a node, preselected and killed. Receptacles can therefore be used to build a tree whose leaves are receptacles. Using the appropriate rules, one can then send windows on the leaves of this tree. This feature is used in 'examples/receptacles' to store and recreate layouts.
+ 
+ 
+ Domains
+-- 
+2.19.2
+
+
+From 89c89ae7ff631b18c2c58bfd8be33908324078ae Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Mon, 14 May 2018 20:47:48 +0200
+Subject: [PATCH 02/19] Properly handle node references
+
+Fixes #804.
+---
+ src/query.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/src/query.c b/src/query.c
+index bf28afa..61da3a9 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -482,15 +482,7 @@ int node_from_desc(char *desc, coordinates_t *ref, coordinates_t *dst)
+ 	char *desc_copy = copy_string(desc, strlen(desc));
+ 	desc = desc_copy;
+ 
+-	char *hash = NULL;
+-	char *path = strrchr(desc, '@');
+-	if (path == NULL) {
+-		hash = strrchr(desc, '#');
+-	} else {
+-		if (path != desc && *(path - 1) == '#') {
+-			hash = path - 1;
+-		}
+-	}
++	char *hash = strrchr(desc, '#');
+ 
+ 	if (hash != NULL) {
+ 		*hash = '\0';
+-- 
+2.19.2
+
+
+From db5b0cd329694776dd362363a4aeb65609a69390 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Tue, 15 May 2018 15:55:59 +0200
+Subject: [PATCH 03/19] NODE_SEL: Discard hashes inside a DESKTOP_SEL
+
+---
+ src/query.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/query.c b/src/query.c
+index 61da3a9..f679593 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -483,6 +483,18 @@ int node_from_desc(char *desc, coordinates_t *ref, coordinates_t *dst)
+ 	desc = desc_copy;
+ 
+ 	char *hash = strrchr(desc, '#');
++	char *path = strrchr(desc, '@');
++	char *colon = strrchr(desc, ':');
++
++	/* Discard hashes inside a DESKTOP_SEL */
++	if (hash != NULL && colon != NULL && path != NULL &&
++	    path < hash && hash < colon) {
++		if (path > desc && *(path - 1) == '#') {
++			hash = path - 1;
++		} else {
++			hash = NULL;
++		}
++	}
+ 
+ 	if (hash != NULL) {
+ 		*hash = '\0';
+@@ -497,7 +509,6 @@ int node_from_desc(char *desc, coordinates_t *ref, coordinates_t *dst)
+ 	}
+ 
+ 	node_select_t sel = make_node_select();
+-	char *colon = strrchr(desc, ':');
+ 
+ 	if (!parse_node_modifiers(colon != NULL ? colon : desc, &sel)) {
+ 		free(desc_copy);
+-- 
+2.19.2
+
+
+From 336095739e2de94109e55e544c806770316c822c Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Tue, 19 Jun 2018 10:14:09 +0200
+Subject: [PATCH 04/19] Add node descriptor: `smallest`
+
+Fixes #815.
+---
+ contrib/zsh_completion |  2 +-
+ doc/bspwm.1            | 19 ++++++++++++-------
+ doc/bspwm.1.asciidoc   | 11 +++++++----
+ src/query.c            |  4 +++-
+ src/tree.c             | 14 ++++++++++----
+ src/tree.h             |  2 +-
+ src/types.h            |  5 +++++
+ 7 files changed, 39 insertions(+), 18 deletions(-)
+
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index 3e92a01..d66b9b2 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -134,7 +134,7 @@ _bspc() {
+ 		dir=(north west south east) \
+ 		cycle_dir=(next prev)
+ 	local -a jump=($dir first second brother parent 1 2) \
+-		node_desc=($dir $cycle_dir any last newest older newer focused pointed biggest) \
++		node_desc=($dir $cycle_dir any last newest older newer focused pointed biggest smallest) \
+ 		node_mod=($node_state $flag $layer focused automatic local \
+ 		active leaf window same_class descendant_of ancestor_of) \
+ 		desktop_desc=($cycle_dir any last newest older newer focused) \
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 43bfc5e..ca04ae6 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 04/25/2018
++.\"      Date: 06/19/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5
++.\"    Source: Bspwm 0.9.5-3-gdb5b0cd
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "04/25/2018" "Bspwm 0\&.9\&.5" "Bspwm Manual"
++.TH "BSPWM" "1" "06/19/2018" "Bspwm 0\&.9\&.5\-3\-gdb5b0cd" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -101,10 +101,10 @@ Select a node\&.
+ .\}
+ .nf
+ NODE_SEL := [NODE_SEL#](DIR|CYCLE_DIR|PATH|any|last|newest|
+-                        older|newer|focused|pointed|
+-                        biggest|<node_id>)[\&.[!]focused][\&.[!]automatic][\&.[!]local][\&.[!]active]
+-                                          [\&.[!]leaf][\&.[!]window][\&.[!]STATE][\&.[!]FLAG][\&.[!]LAYER]
+-                                          [\&.[!]same_class][\&.[!]descendant_of][\&.[!]ancestor_of]
++                        older|newer|focused|pointed|biggest|smallest
++                        <node_id>)[\&.[!]focused][\&.[!]automatic][\&.[!]local][\&.[!]active]
++                                  [\&.[!]leaf][\&.[!]window][\&.[!]STATE][\&.[!]FLAG][\&.[!]LAYER]
++                                  [\&.[!]same_class][\&.[!]descendant_of][\&.[!]ancestor_of]
+ 
+ STATE := tiled|pseudo_tiled|floating|fullscreen
+ 
+@@ -183,6 +183,11 @@ biggest
+ Selects the biggest window\&.
+ .RE
+ .PP
++smallest
++.RS 4
++Selects the smallest window\&.
++.RE
++.PP
+ <node_id>
+ .RS 4
+ Selects the node with the given ID\&.
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 48f0769..18b3264 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -75,10 +75,10 @@ Select a node.
+ 
+ ----
+ NODE_SEL := [NODE_SEL#](DIR|CYCLE_DIR|PATH|any|last|newest|
+-                        older|newer|focused|pointed|
+-                        biggest|<node_id>)[.[!]focused][.[!]automatic][.[!]local][.[!]active]
+-                                          [.[!]leaf][.[!]window][.[!]STATE][.[!]FLAG][.[!]LAYER]
+-                                          [.[!]same_class][.[!]descendant_of][.[!]ancestor_of]
++                        older|newer|focused|pointed|biggest|smallest
++                        <node_id>)[.[!]focused][.[!]automatic][.[!]local][.[!]active]
++                                  [.[!]leaf][.[!]window][.[!]STATE][.[!]FLAG][.[!]LAYER]
++                                  [.[!]same_class][.[!]descendant_of][.[!]ancestor_of]
+ 
+ STATE := tiled|pseudo_tiled|floating|fullscreen
+ 
+@@ -127,6 +127,9 @@ pointed::
+ biggest::
+ 	Selects the biggest window.
+ 
++smallest::
++	Selects the smallest window.
++
+ <node_id>::
+ 	Selects the node with the given ID.
+ 
+diff --git a/src/query.c b/src/query.c
+index f679593..3d99a17 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -533,7 +533,9 @@ int node_from_desc(char *desc, coordinates_t *ref, coordinates_t *dst)
+ 	} else if (streq("newest", desc)) {
+ 		history_find_newest_node(ref, dst, &sel);
+ 	} else if (streq("biggest", desc)) {
+-		find_biggest(ref, dst, &sel);
++		find_by_area(AREA_BIGGEST, ref, dst, &sel);
++	} else if (streq("smallest", desc)) {
++		find_by_area(AREA_SMALLEST, ref, dst, &sel);
+ 	} else if (streq("pointed", desc)) {
+ 		xcb_window_t win = XCB_NONE;
+ 		query_pointer(&win, NULL);
+diff --git a/src/tree.c b/src/tree.c
+index 2d0cc98..3af5b66 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -25,6 +25,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
++#include <limits.h>
+ #include "bspwm.h"
+ #include "desktop.h"
+ #include "ewmh.h"
+@@ -1042,9 +1043,14 @@ int tiled_count(node_t *n)
+ 	return cnt;
+ }
+ 
+-void find_biggest(coordinates_t *ref, coordinates_t *dst, node_select_t *sel)
++void find_by_area(area_peak_t ap, coordinates_t *ref, coordinates_t *dst, node_select_t *sel)
+ {
+-	unsigned int b_area = 0;
++	unsigned int p_area;
++	if (ap == AREA_BIGGEST) {
++		p_area = 0;
++	} else {
++		p_area = UINT_MAX;
++	}
+ 
+ 	for (monitor_t *m = mon_head; m != NULL; m = m->next) {
+ 		for (desktop_t *d = m->desk_head; d != NULL; d = d->next) {
+@@ -1054,9 +1060,9 @@ void find_biggest(coordinates_t *ref, coordinates_t *dst, node_select_t *sel)
+ 					continue;
+ 				}
+ 				unsigned int f_area = node_area(d, f);
+-				if (f_area > b_area) {
++				if ((ap == AREA_BIGGEST && f_area > p_area) || (ap == AREA_SMALLEST && f_area < p_area)) {
+ 					*dst = loc;
+-					b_area = f_area;
++					p_area = f_area;
+ 				}
+ 			}
+ 		}
+diff --git a/src/tree.h b/src/tree.h
+index 05501f4..8e0293a 100644
+--- a/src/tree.h
++++ b/src/tree.h
+@@ -71,7 +71,7 @@ bool find_any_node_in(monitor_t *m, desktop_t *d, node_t *n, coordinates_t *ref,
+ void find_nearest_neighbor(coordinates_t *ref, coordinates_t *dst, direction_t dir, node_select_t *sel);
+ unsigned int node_area(desktop_t *d, node_t *n);
+ int tiled_count(node_t *n);
+-void find_biggest(coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
++void find_by_area(area_peak_t ap, coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
+ void rotate_tree(node_t *n, int deg);
+ void rotate_tree_rec(node_t *n, int deg);
+ void rotate_brother(node_t *n);
+diff --git a/src/types.h b/src/types.h
+index 1703d21..4f936b5 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -144,6 +144,11 @@ typedef enum {
+ 	TIGHTNESS_HIGH,
+ } tightness_t;
+ 
++typedef enum {
++	AREA_BIGGEST,
++	AREA_SMALLEST,
++} area_peak_t;
++
+ typedef enum {
+ 	STATE_TRANSITION_ENTER = 1 << 0,
+ 	STATE_TRANSITION_EXIT = 1 << 1,
+-- 
+2.19.2
+
+
+From 229b6fd878b33d3759196c2653378d7b3f9a45dd Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Mon, 25 Jun 2018 18:16:38 +0200
+Subject: [PATCH 05/19] Add missing pipe
+
+---
+ doc/bspwm.1          | 8 ++++----
+ doc/bspwm.1.asciidoc | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index ca04ae6..404006b 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 06/19/2018
++.\"      Date: 06/25/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5-3-gdb5b0cd
++.\"    Source: Bspwm 0.9.5-4-g3360957
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "06/19/2018" "Bspwm 0\&.9\&.5\-3\-gdb5b0cd" "Bspwm Manual"
++.TH "BSPWM" "1" "06/25/2018" "Bspwm 0\&.9\&.5\-4\-g3360957" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -101,7 +101,7 @@ Select a node\&.
+ .\}
+ .nf
+ NODE_SEL := [NODE_SEL#](DIR|CYCLE_DIR|PATH|any|last|newest|
+-                        older|newer|focused|pointed|biggest|smallest
++                        older|newer|focused|pointed|biggest|smallest|
+                         <node_id>)[\&.[!]focused][\&.[!]automatic][\&.[!]local][\&.[!]active]
+                                   [\&.[!]leaf][\&.[!]window][\&.[!]STATE][\&.[!]FLAG][\&.[!]LAYER]
+                                   [\&.[!]same_class][\&.[!]descendant_of][\&.[!]ancestor_of]
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 18b3264..70f1919 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -75,7 +75,7 @@ Select a node.
+ 
+ ----
+ NODE_SEL := [NODE_SEL#](DIR|CYCLE_DIR|PATH|any|last|newest|
+-                        older|newer|focused|pointed|biggest|smallest
++                        older|newer|focused|pointed|biggest|smallest|
+                         <node_id>)[.[!]focused][.[!]automatic][.[!]local][.[!]active]
+                                   [.[!]leaf][.[!]window][.[!]STATE][.[!]FLAG][.[!]LAYER]
+                                   [.[!]same_class][.[!]descendant_of][.[!]ancestor_of]
+-- 
+2.19.2
+
+
+From 4e32d3b892acfbfc8bcb520e0c472bcd49067b44 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Wed, 11 Jul 2018 19:57:01 +0200
+Subject: [PATCH 06/19] Generalize history_add to handle activation
+
+Fixes #819.
+---
+ src/desktop.c |  2 ++
+ src/history.c | 61 ++++++++++++++++++++++++++++++++++++++++++++++-----
+ src/history.h |  4 +++-
+ src/restore.c |  2 +-
+ src/tree.c    |  4 ++--
+ 5 files changed, 64 insertions(+), 9 deletions(-)
+
+diff --git a/src/desktop.c b/src/desktop.c
+index d99325f..bf9aada 100644
+--- a/src/desktop.c
++++ b/src/desktop.c
+@@ -80,6 +80,8 @@ bool activate_desktop(monitor_t *m, desktop_t *d)
+ 
+ 	m->desk = d;
+ 
++	history_add(m, d, NULL, false);
++
+ 	put_status(SBSC_MASK_DESKTOP_ACTIVATE, "desktop_activate 0x%08X 0x%08X\n", m->id, d->id);
+ 	put_status(SBSC_MASK_REPORT);
+ 
+diff --git a/src/history.c b/src/history.c
+index 141bcdb..c96b725 100644
+--- a/src/history.c
++++ b/src/history.c
+@@ -27,6 +27,7 @@
+ #include "bspwm.h"
+ #include "tree.h"
+ #include "query.h"
++#include "history.h"
+ 
+ history_t *make_history(monitor_t *m, desktop_t *d, node_t *n)
+ {
+@@ -37,29 +38,79 @@ history_t *make_history(monitor_t *m, desktop_t *d, node_t *n)
+ 	return h;
+ }
+ 
+-void history_add(monitor_t *m, desktop_t *d, node_t *n)
++void history_add(monitor_t *m, desktop_t *d, node_t *n, bool focused)
+ {
+ 	if (!record_history) {
+ 		return;
+ 	}
+-	history_needle = NULL;
++
++	if (focused) {
++		history_needle = NULL;
++	}
++
+ 	history_t *h = make_history(m, d, n);
++
+ 	if (history_head == NULL) {
+ 		history_head = history_tail = h;
+ 	} else if ((n != NULL && history_tail->loc.node != n) || (n == NULL && d != history_tail->loc.desktop)) {
++		history_t *ip = focused ? history_tail : NULL;
++
+ 		for (history_t *hh = history_tail; hh != NULL; hh = hh->prev) {
+ 			if ((n != NULL && hh->loc.node == n) || (n == NULL && d == hh->loc.desktop)) {
+ 				hh->latest = false;
+ 			}
++			if (ip == NULL && ((n != NULL && hh->loc.desktop == d) || (n == NULL && hh->loc.monitor == m))) {
++				ip = hh;
++			}
++		}
++
++		if (ip != NULL) {
++			history_insert_after(h, ip);
++		} else {
++			ip = history_head;
++			if (n != NULL) {
++				for (history_t *hh = history_head; hh != NULL; hh = hh->next) {
++					if (hh->latest && hh->loc.monitor == m) {
++						ip = hh;
++						break;
++					}
++				}
++			}
++			history_insert_before(h, ip);
+ 		}
+-		history_tail->next = h;
+-		h->prev = history_tail;
+-		history_tail = h;
+ 	} else {
+ 		free(h);
+ 	}
+ }
+ 
++// Inserts `a` after `b`.
++void history_insert_after(history_t *a, history_t *b)
++{
++	a->next = b->next;
++	if (b->next != NULL) {
++		b->next->prev = a;
++	}
++	b->next = a;
++	a->prev = b;
++	if (history_tail == b) {
++		history_tail = a;
++	}
++}
++
++// Inserts `a` before `b`.
++void history_insert_before(history_t *a, history_t *b)
++{
++	a->prev = b->prev;
++	if (b->prev != NULL) {
++		b->prev->next = a;
++	}
++	b->prev = a;
++	a->next = b;
++	if (history_head == b) {
++		history_head = a;
++	}
++}
++
+ void history_remove(desktop_t *d, node_t *n, bool deep)
+ {
+ 	/* removing from the newest to the oldest is required */
+diff --git a/src/history.h b/src/history.h
+index 253f8e5..06a9cd3 100644
+--- a/src/history.h
++++ b/src/history.h
+@@ -28,7 +28,9 @@
+ #include "types.h"
+ 
+ history_t *make_history(monitor_t *m, desktop_t *d, node_t *n);
+-void history_add(monitor_t *m, desktop_t *d, node_t *n);
++void history_add(monitor_t *m, desktop_t *d, node_t *n, bool focused);
++void history_insert_after(history_t *a, history_t *b);
++void history_insert_before(history_t *a, history_t *b);
+ void history_remove(desktop_t *d, node_t *n, bool deep);
+ void empty_history(void);
+ node_t *history_last_node(desktop_t *d, node_t *n);
+diff --git a/src/restore.c b/src/restore.c
+index c943a39..26c342a 100644
+--- a/src/restore.c
++++ b/src/restore.c
+@@ -544,7 +544,7 @@ void restore_history(jsmntok_t **t, char *json)
+ 		coordinates_t loc = {NULL, NULL, NULL};
+ 		restore_coordinates(&loc, t, json);
+ 		if (loc.monitor != NULL && loc.desktop != NULL) {
+-			history_add(loc.monitor, loc.desktop, loc.node);
++			history_add(loc.monitor, loc.desktop, loc.node, true);
+ 		}
+ 	}
+ }
+diff --git a/src/tree.c b/src/tree.c
+index 3af5b66..4e9929f 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -467,7 +467,7 @@ bool activate_node(monitor_t *m, desktop_t *d, node_t *n)
+ 	}
+ 
+ 	d->focus = n;
+-	history_add(m, d, n);
++	history_add(m, d, n, false);
+ 
+ 	put_status(SBSC_MASK_REPORT);
+ 
+@@ -587,7 +587,7 @@ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
+ 
+ 	d->focus = n;
+ 	ewmh_update_active_window();
+-	history_add(m, d, n);
++	history_add(m, d, n, true);
+ 
+ 	put_status(SBSC_MASK_REPORT);
+ 
+-- 
+2.19.2
+
+
+From 4be63b64856d0d3848d33ff56a472a9e2e7e247e Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Tue, 17 Jul 2018 11:26:34 +0200
+Subject: [PATCH 07/19] single_monocle: include receptacles
+
+---
+ src/helpers.h | 2 +-
+ src/tree.c    | 9 +++++----
+ src/tree.h    | 2 +-
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/helpers.h b/src/helpers.h
+index 82bad85..771bbdc 100644
+--- a/src/helpers.h
++++ b/src/helpers.h
+@@ -40,7 +40,7 @@
+ #define IS_FLOATING(c)    (c->state == STATE_FLOATING)
+ #define IS_FULLSCREEN(c)  (c->state == STATE_FULLSCREEN)
+ #define IS_RECEPTACLE(n)  (is_leaf(n) && n->client == NULL)
+-#define IS_MONOCLE(d)     (d->layout == LAYOUT_MONOCLE || (single_monocle && tiled_count(d->root) <= 1))
++#define IS_MONOCLE(d)     (d->layout == LAYOUT_MONOCLE || (single_monocle && tiled_count(d->root, true) <= 1))
+ 
+ #define BOOL_STR(A)       ((A) ? "true" : "false")
+ #define ON_OFF_STR(A)     ((A) ? "on" : "off")
+diff --git a/src/tree.c b/src/tree.c
+index 4e9929f..93993bd 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -48,7 +48,7 @@ void arrange(monitor_t *m, desktop_t *d)
+ 
+ 	layout_t l = d->layout;
+ 
+-	if (single_monocle && tiled_count(d->root) <= 1) {
++	if (single_monocle && tiled_count(d->root, true) <= 1) {
+ 		l = LAYOUT_MONOCLE;
+ 	}
+ 
+@@ -1029,14 +1029,15 @@ unsigned int node_area(desktop_t *d, node_t *n)
+ 	return area(get_rectangle(NULL, d, n));
+ }
+ 
+-int tiled_count(node_t *n)
++int tiled_count(node_t *n, bool include_receptacles)
+ {
+ 	if (n == NULL) {
+ 		return 0;
+ 	}
+ 	int cnt = 0;
+ 	for (node_t *f = first_extrema(n); f != NULL; f = next_leaf(f, n)) {
+-		if (!f->hidden && f->client != NULL && IS_TILED(f->client)) {
++		if (!f->hidden && ((include_receptacles && f->client == NULL) ||
++		                   (f->client != NULL && IS_TILED(f->client)))) {
+ 			cnt++;
+ 		}
+ 	}
+@@ -1559,7 +1560,7 @@ bool find_closest_node(coordinates_t *ref, coordinates_t *dst, cycle_dir_t dir,
+ 
+ void circulate_leaves(monitor_t *m, desktop_t *d, node_t *n, circulate_dir_t dir)
+ {
+-	if (tiled_count(n) < 2) {
++	if (tiled_count(n, false) < 2) {
+ 		return;
+ 	}
+ 	node_t *p = d->focus->parent;
+diff --git a/src/tree.h b/src/tree.h
+index 8e0293a..8c82b24 100644
+--- a/src/tree.h
++++ b/src/tree.h
+@@ -70,7 +70,7 @@ void find_any_node(coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
+ bool find_any_node_in(monitor_t *m, desktop_t *d, node_t *n, coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
+ void find_nearest_neighbor(coordinates_t *ref, coordinates_t *dst, direction_t dir, node_select_t *sel);
+ unsigned int node_area(desktop_t *d, node_t *n);
+-int tiled_count(node_t *n);
++int tiled_count(node_t *n, bool include_receptacles);
+ void find_by_area(area_peak_t ap, coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
+ void rotate_tree(node_t *n, int deg);
+ void rotate_tree_rec(node_t *n, int deg);
+-- 
+2.19.2
+
+
+From 0c16c1ca65bcf997ce6929cb6f60a8b4c300de12 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Tue, 17 Jul 2018 11:48:21 +0200
+Subject: [PATCH 08/19] Use the focus history as a fallback
+
+---
+ src/desktop.c |  5 ++++-
+ src/tree.c    | 20 ++++++++++++++++----
+ 2 files changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/src/desktop.c b/src/desktop.c
+index bf9aada..c461312 100644
+--- a/src/desktop.c
++++ b/src/desktop.c
+@@ -61,7 +61,10 @@ bool activate_desktop(monitor_t *m, desktop_t *d)
+ 	}
+ 
+ 	if (d == NULL) {
+-		d = history_last_desktop(m, NULL);
++		d = m->desk;
++		if (d == NULL) {
++			d = history_last_desktop(m, NULL);
++		}
+ 		if (d == NULL) {
+ 			d = m->desk_head;
+ 		}
+diff --git a/src/tree.c b/src/tree.c
+index 93993bd..3f31514 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -441,7 +441,10 @@ void insert_receptacle(monitor_t *m, desktop_t *d, node_t *n)
+ bool activate_node(monitor_t *m, desktop_t *d, node_t *n)
+ {
+ 	if (n == NULL && d->root != NULL) {
+-		n = history_last_node(d, NULL);
++		n = d->focus;
++		if (n == NULL) {
++			n = history_last_node(d, NULL);
++		}
+ 		if (n == NULL) {
+ 			n = first_focusable_leaf(d->root);
+ 		}
+@@ -501,7 +504,10 @@ void transfer_sticky_nodes(monitor_t *m, desktop_t *ds, desktop_t *dd, node_t *n
+ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
+ {
+ 	if (m == NULL) {
+-		m = history_last_monitor(NULL);
++		m = mon;
++		if (m == NULL) {
++			m = history_last_monitor(NULL);
++		}
+ 		if (m == NULL) {
+ 			m = mon_head;
+ 		}
+@@ -512,7 +518,10 @@ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
+ 	}
+ 
+ 	if (d == NULL) {
+-		d = history_last_desktop(m, NULL);
++		d = m->desk;
++		if (d == NULL) {
++			d = history_last_desktop(m, NULL);
++		}
+ 		if (d == NULL) {
+ 			d = m->desk_head;
+ 		}
+@@ -525,7 +534,10 @@ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
+ 	bool guess = (n == NULL);
+ 
+ 	if (n == NULL && d->root != NULL) {
+-		n = history_last_node(d, NULL);
++		n = d->focus;
++		if (n == NULL) {
++			n = history_last_node(d, NULL);
++		}
+ 		if (n == NULL) {
+ 			n = first_focusable_leaf(d->root);
+ 		}
+-- 
+2.19.2
+
+
+From b5d1d85bd26ba817bd87df0256a1e502fb383392 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Sun, 22 Jul 2018 21:08:59 +0200
+Subject: [PATCH 09/19] Postpone events on windows of pending rules
+
+Fixes #822.
+---
+ src/bspwm.c  |  6 +++++-
+ src/events.c | 15 ++++++++++++++-
+ src/rule.c   | 38 +++++++++++++++++++++++++++++++++-----
+ src/rule.h   |  9 ++++++++-
+ src/types.h  |  9 +++++++++
+ src/window.c |  6 ++++--
+ src/window.h |  2 +-
+ 7 files changed, 74 insertions(+), 11 deletions(-)
+
+diff --git a/src/bspwm.c b/src/bspwm.c
+index 41735e8..e938b53 100644
+--- a/src/bspwm.c
++++ b/src/bspwm.c
+@@ -155,7 +155,11 @@ int main(int argc, char *argv[])
+ 			while (pr != NULL) {
+ 				pending_rule_t *next = pr->next;
+ 				if (FD_ISSET(pr->fd, &descriptors)) {
+-					manage_window(pr->win, pr->csq, pr->fd);
++					if (manage_window(pr->win, pr->csq, pr->fd)) {
++						for (event_queue_t *eq = pr->event_head; eq != NULL; eq = eq->next) {
++							handle_event(&eq->event);
++						}
++					}
+ 					remove_pending_rule(pr);
+ 				}
+ 				pr = next;
+diff --git a/src/events.c b/src/events.c
+index 4de3fa6..dc06963 100644
+--- a/src/events.c
++++ b/src/events.c
+@@ -32,6 +32,7 @@
+ #include "tree.h"
+ #include "window.h"
+ #include "pointer.h"
++#include "rule.h"
+ #include "events.h"
+ 
+ void handle_event(xcb_generic_event_t *evt)
+@@ -273,7 +274,13 @@ void property_notify(xcb_generic_event_t *evt)
+ 
+ 	coordinates_t loc;
+ 	if (!locate_window(e->window, &loc)) {
+-			return;
++		for (pending_rule_t *pr = pending_rule_head; pr != NULL; pr = pr->next) {
++			if (pr->win == e->window) {
++				postpone_event(pr, evt);
++				break;
++			}
++		}
++		return;
+ 	}
+ 
+ 	if (e->atom == XCB_ATOM_WM_HINTS) {
+@@ -303,6 +310,12 @@ void client_message(xcb_generic_event_t *evt)
+ 
+ 	coordinates_t loc;
+ 	if (!locate_window(e->window, &loc)) {
++		for (pending_rule_t *pr = pending_rule_head; pr != NULL; pr = pr->next) {
++			if (pr->win == e->window) {
++				postpone_event(pr, evt);
++				break;
++			}
++		}
+ 		return;
+ 	}
+ 
+diff --git a/src/rule.c b/src/rule.c
+index e4b1171..2dc4a5d 100644
+--- a/src/rule.c
++++ b/src/rule.c
+@@ -118,6 +118,7 @@ pending_rule_t *make_pending_rule(int fd, xcb_window_t win, rule_consequence_t *
+ {
+ 	pending_rule_t *pr = calloc(1, sizeof(pending_rule_t));
+ 	pr->prev = pr->next = NULL;
++	pr->event_head = pr->event_tail = NULL;
+ 	pr->fd = fd;
+ 	pr->win = win;
+ 	pr->csq = csq;
+@@ -159,9 +160,36 @@ void remove_pending_rule(pending_rule_t *pr)
+ 	}
+ 	close(pr->fd);
+ 	free(pr->csq);
++	event_queue_t *eq = pr->event_head;
++	while (eq != NULL) {
++		event_queue_t *next = eq->next;
++		free(eq);
++		eq = next;
++	}
+ 	free(pr);
+ }
+ 
++void postpone_event(pending_rule_t *pr, xcb_generic_event_t *evt)
++{
++	event_queue_t *eq = make_event_queue(evt);
++	if (pr->event_tail == NULL) {
++		pr->event_head = pr->event_tail = eq;
++	} else {
++		pr->event_tail->next = eq;
++		eq->prev = pr->event_tail;
++		pr->event_tail = eq;
++	}
++}
++
++event_queue_t *make_event_queue(xcb_generic_event_t *evt)
++{
++	event_queue_t *eq = calloc(1, sizeof(event_queue_t));
++	eq->prev = eq->next = NULL;
++	eq->event = *evt;
++	return eq;
++}
++
++
+ #define SET_CSQ_STATE(val) \
+ 	do { \
+ 		if (csq->state == NULL) { \
+@@ -178,7 +206,7 @@ void remove_pending_rule(pending_rule_t *pr)
+ 		*(csq->layer) = (val); \
+ 	} while (0)
+ 
+-static void _apply_window_type(xcb_window_t win, rule_consequence_t *csq)
++void _apply_window_type(xcb_window_t win, rule_consequence_t *csq)
+ {
+ 	xcb_ewmh_get_atoms_reply_t win_type;
+ 	if (xcb_ewmh_get_wm_window_type_reply(ewmh, xcb_ewmh_get_wm_window_type(ewmh, win), &win_type, NULL) == 1) {
+@@ -203,7 +231,7 @@ static void _apply_window_type(xcb_window_t win, rule_consequence_t *csq)
+ 	}
+ }
+ 
+-static void _apply_window_state(xcb_window_t win, rule_consequence_t *csq)
++void _apply_window_state(xcb_window_t win, rule_consequence_t *csq)
+ {
+ 	xcb_ewmh_get_atoms_reply_t win_state;
+ 	if (xcb_ewmh_get_wm_state_reply(ewmh, xcb_ewmh_get_wm_state(ewmh, win), &win_state, NULL) == 1) {
+@@ -223,7 +251,7 @@ static void _apply_window_state(xcb_window_t win, rule_consequence_t *csq)
+ 	}
+ }
+ 
+-static void _apply_transient(xcb_window_t win, rule_consequence_t *csq)
++void _apply_transient(xcb_window_t win, rule_consequence_t *csq)
+ {
+ 	xcb_window_t transient_for = XCB_NONE;
+ 	xcb_icccm_get_wm_transient_for_reply(dpy, xcb_icccm_get_wm_transient_for(dpy, win), &transient_for, NULL);
+@@ -232,7 +260,7 @@ static void _apply_transient(xcb_window_t win, rule_consequence_t *csq)
+ 	}
+ }
+ 
+-static void _apply_hints(xcb_window_t win, rule_consequence_t *csq)
++void _apply_hints(xcb_window_t win, rule_consequence_t *csq)
+ {
+ 	xcb_size_hints_t size_hints;
+ 	if (xcb_icccm_get_wm_normal_hints_reply(dpy, xcb_icccm_get_wm_normal_hints(dpy, win), &size_hints, NULL) == 1) {
+@@ -243,7 +271,7 @@ static void _apply_hints(xcb_window_t win, rule_consequence_t *csq)
+ 	}
+ }
+ 
+-static void _apply_class(xcb_window_t win, rule_consequence_t *csq)
++void _apply_class(xcb_window_t win, rule_consequence_t *csq)
+ {
+ 	xcb_icccm_get_wm_class_reply_t reply;
+ 	if (xcb_icccm_get_wm_class_reply(dpy, xcb_icccm_get_wm_class(dpy, win), &reply, NULL) == 1) {
+diff --git a/src/rule.h b/src/rule.h
+index b9ac162..89f559c 100644
+--- a/src/rule.h
++++ b/src/rule.h
+@@ -37,10 +37,17 @@ rule_consequence_t *make_rule_conquence(void);
+ pending_rule_t *make_pending_rule(int fd, xcb_window_t win, rule_consequence_t *csq);
+ void add_pending_rule(pending_rule_t *pr);
+ void remove_pending_rule(pending_rule_t *pr);
++void postpone_event(pending_rule_t *pr, xcb_generic_event_t *evt);
++event_queue_t *make_event_queue(xcb_generic_event_t *evt);
++void _apply_window_type(xcb_window_t win, rule_consequence_t *csq);
++void _apply_window_state(xcb_window_t win, rule_consequence_t *csq);
++void _apply_transient(xcb_window_t win, rule_consequence_t *csq);
++void _apply_hints(xcb_window_t win, rule_consequence_t *csq);
++void _apply_class(xcb_window_t win, rule_consequence_t *csq);
++void parse_keys_values(char *buf, rule_consequence_t *csq);
+ void apply_rules(xcb_window_t win, rule_consequence_t *csq);
+ bool schedule_rules(xcb_window_t win, rule_consequence_t *csq);
+ void parse_rule_consequence(int fd, rule_consequence_t *csq);
+-void parse_keys_values(char *buf, rule_consequence_t *csq);
+ void parse_key_value(char *key, char *value, rule_consequence_t *csq);
+ void list_rules(FILE *rsp);
+ 
+diff --git a/src/types.h b/src/types.h
+index 4f936b5..fb8952d 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -311,6 +311,13 @@ struct stacking_list_t {
+ 	stacking_list_t *next;
+ };
+ 
++typedef struct event_queue_t event_queue_t;
++struct event_queue_t {
++	xcb_generic_event_t event;
++	event_queue_t *prev;
++	event_queue_t *next;
++};
++
+ typedef struct subscriber_list_t subscriber_list_t;
+ struct subscriber_list_t {
+ 	int fd;
+@@ -360,6 +367,8 @@ struct pending_rule_t {
+ 	int fd;
+ 	xcb_window_t win;
+ 	rule_consequence_t *csq;
++	event_queue_t *event_head;
++	event_queue_t *event_tail;
+ 	pending_rule_t *prev;
+ 	pending_rule_t *next;
+ };
+diff --git a/src/window.c b/src/window.c
+index 7cfcd6e..56f41ee 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -69,7 +69,7 @@ void schedule_window(xcb_window_t win)
+ 	}
+ }
+ 
+-void manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
++bool manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ {
+ 	monitor_t *m = mon;
+ 	desktop_t *d = mon->desk;
+@@ -87,7 +87,7 @@ void manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ 		free(csq->layer);
+ 		free(csq->state);
+ 		window_show(win);
+-		return;
++		return false;
+ 	}
+ 
+ 	if (csq->node_desc[0] != '\0') {
+@@ -209,6 +209,8 @@ void manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ 	ewmh_update_client_list(false);
+ 	free(csq->layer);
+ 	free(csq->state);
++
++	return true;
+ }
+ 
+ void set_window_state(xcb_window_t win, xcb_icccm_wm_state_t state)
+diff --git a/src/window.h b/src/window.h
+index 7b5376e..414ebea 100644
+--- a/src/window.h
++++ b/src/window.h
+@@ -32,7 +32,7 @@
+ #include "types.h"
+ 
+ void schedule_window(xcb_window_t win);
+-void manage_window(xcb_window_t win, rule_consequence_t *csq, int fd);
++bool manage_window(xcb_window_t win, rule_consequence_t *csq, int fd);
+ void set_window_state(xcb_window_t win, xcb_icccm_wm_state_t state);
+ void unmanage_window(xcb_window_t win);
+ bool is_presel_window(xcb_window_t win);
+-- 
+2.19.2
+
+
+From 336bc861a7428f1247a7de0e76d23e48a6d2f543 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Sat, 25 Aug 2018 20:52:44 +0200
+Subject: [PATCH 10/19] Add new setting: cancel_birth_rotation
+
+Fixes #832.
+---
+ contrib/bash_completion |  2 +-
+ contrib/fish_completion |  2 +-
+ contrib/zsh_completion  |  2 +-
+ doc/bspwm.1             | 11 ++++++++---
+ doc/bspwm.1.asciidoc    |  3 +++
+ src/messages.c          |  2 ++
+ src/settings.c          |  1 +
+ src/settings.h          |  2 ++
+ src/tree.c              |  7 ++-----
+ src/window.c            |  6 ++++++
+ 10 files changed, 27 insertions(+), 11 deletions(-)
+
+diff --git a/contrib/bash_completion b/contrib/bash_completion
+index 35c1f29..8659788 100644
+--- a/contrib/bash_completion
++++ b/contrib/bash_completion
+@@ -1,7 +1,7 @@
+ _bspc() {
+ 	local commands='node desktop monitor query rule wm subscribe config quit'
+ 
+-	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+ 
+ 	COMPREPLY=()
+ 
+diff --git a/contrib/fish_completion b/contrib/fish_completion
+index 940ad07..ff99ff3 100644
+--- a/contrib/fish_completion
++++ b/contrib/fish_completion
+@@ -11,4 +11,4 @@ function __fish_bspc_using_command
+ end
+ 
+ complete -f -c bspc -n '__fish_bspc_needs_command' -a 'node desktop monitor query rule wm subscribe config quit'
+-complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index d66b9b2..711833b 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -315,7 +315,7 @@ _bspc() {
+ 			local -a look behaviour input
+ 			# Boolean settings are identified by index!
+ 			look=(borderless_monocle gapless_monocle {normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
+-			behaviour=(single_monocle mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors status_prefix external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
++			behaviour=(single_monocle mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors status_prefix external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
+ 			input=({swallow_first_click,focus_follows_pointer,pointer_follows_{focus,monitor}} click_to_focus pointer_motion_interval pointer_modifier pointer_action{1,2,3} )
+ 			if [[ "$CURRENT" == (2|3) ]];then
+ 				_arguments \
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 404006b..44d6a73 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 06/25/2018
++.\"      Date: 08/25/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5-4-g3360957
++.\"    Source: Bspwm 0.9.5-9-gb5d1d85
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "06/25/2018" "Bspwm 0\&.9\&.5\-4\-g3360957" "Bspwm Manual"
++.TH "BSPWM" "1" "08/25/2018" "Bspwm 0\&.9\&.5\-9\-gb5d1d85" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -1292,6 +1292,11 @@ Center pseudo tiled windows into their tiling rectangles\&. Defaults to
+ Apply ICCCM window size hints\&.
+ .RE
+ .PP
++\fIcancel_birth_rotation\fR
++.RS 4
++When a node is unlinked from a tree, cancel the tree rotation that was applied during its insertion\&.
++.RE
++.PP
+ \fIremove_disabled_monitors\fR
+ .RS 4
+ Consider disabled monitors as disconnected\&.
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 70f1919..c5404a6 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -736,6 +736,9 @@ Global Settings
+ 'honor_size_hints'::
+ 	Apply ICCCM window size hints.
+ 
++'cancel_birth_rotation'::
++	When a node is unlinked from a tree, cancel the tree rotation that was applied during its insertion.
++
+ 'remove_disabled_monitors'::
+ 	Consider disabled monitors as disconnected.
+ 
+diff --git a/src/messages.c b/src/messages.c
+index 0ed0866..0043255 100644
+--- a/src/messages.c
++++ b/src/messages.c
+@@ -1652,6 +1652,7 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 		SET_BOOL(ignore_ewmh_focus)
+ 		SET_BOOL(center_pseudo_tiled)
+ 		SET_BOOL(honor_size_hints)
++		SET_BOOL(cancel_birth_rotation)
+ #undef SET_BOOL
+ #define SET_MON_BOOL(s) \
+ 	} else if (streq(#s, name)) { \
+@@ -1770,6 +1771,7 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 	GET_BOOL(ignore_ewmh_focus)
+ 	GET_BOOL(center_pseudo_tiled)
+ 	GET_BOOL(honor_size_hints)
++	GET_BOOL(cancel_birth_rotation)
+ 	GET_BOOL(remove_disabled_monitors)
+ 	GET_BOOL(remove_unplugged_monitors)
+ 	GET_BOOL(merge_overlapping_monitors)
+diff --git a/src/settings.c b/src/settings.c
+index f8390b8..eeea41f 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -81,6 +81,7 @@ void load_settings(void)
+ 
+ 	center_pseudo_tiled = CENTER_PSEUDO_TILED;
+ 	honor_size_hints = HONOR_SIZE_HINTS;
++	cancel_birth_rotation = CANCEL_BIRTH_ROTATION;
+ 
+ 	remove_disabled_monitors = REMOVE_DISABLED_MONITORS;
+ 	remove_unplugged_monitors = REMOVE_UNPLUGGED_MONITORS;
+diff --git a/src/settings.h b/src/settings.h
+index 4c15644..c29a24a 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -57,6 +57,7 @@
+ 
+ #define CENTER_PSEUDO_TILED         true
+ #define HONOR_SIZE_HINTS            false
++#define CANCEL_BIRTH_ROTATION       false
+ #define MAPPING_EVENTS_COUNT        1
+ 
+ #define REMOVE_DISABLED_MONITORS    false
+@@ -98,6 +99,7 @@ state_transition_t ignore_ewmh_fullscreen;
+ 
+ bool center_pseudo_tiled;
+ bool honor_size_hints;
++bool cancel_birth_rotation;
+ 
+ bool remove_disabled_monitors;
+ bool remove_unplugged_monitors;
+diff --git a/src/tree.c b/src/tree.c
+index 3f31514..0d645a1 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -376,8 +376,8 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 					c->second_child = n;
+ 					rot = 270;
+ 				}
+-				n->birth_rotation = rot;
+ 				if (!n->vacant) {
++					n->birth_rotation = rot;
+ 					rotate_tree(p, rot);
+ 				}
+ 			}
+@@ -1208,7 +1208,7 @@ void unlink_node(monitor_t *m, desktop_t *d, node_t *n)
+ 		node_t *b = brother_tree(n);
+ 		node_t *g = p->parent;
+ 
+-		if (!n->vacant) {
++		if (!n->vacant && cancel_birth_rotation) {
+ 			unrotate_tree(b, n->birth_rotation);
+ 		}
+ 
+@@ -1625,10 +1625,7 @@ void set_vacant_local(monitor_t *m, desktop_t *d, node_t *n, bool value)
+ 	n->vacant = value;
+ 
+ 	if (value) {
+-		unrotate_brother(n);
+ 		cancel_presel(m, d, n);
+-	} else {
+-		rotate_brother(n);
+ 	}
+ }
+ 
+diff --git a/src/window.c b/src/window.c
+index 56f41ee..41bf15a 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -158,9 +158,15 @@ bool manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ 	snprintf(c->class_name, sizeof(c->class_name), "%s", csq->class_name);
+ 	snprintf(c->instance_name, sizeof(c->instance_name), "%s", csq->instance_name);
+ 
++	if ((csq->state != NULL && (*(csq->state) == STATE_FLOATING || *(csq->state) == STATE_FULLSCREEN)) || csq->hidden) {
++		n->vacant = true;
++	}
++
+ 	f = insert_node(m, d, n, f);
+ 	clients_count++;
+ 
++	n->vacant = false;
++
+ 	put_status(SBSC_MASK_NODE_ADD, "node_add 0x%08X 0x%08X 0x%08X 0x%08X\n", m->id, d->id, f!=NULL?f->id:0, win);
+ 
+ 	if (f != NULL && f->client != NULL && csq->state != NULL && *(csq->state) == STATE_FLOATING) {
+-- 
+2.19.2
+
+
+From 74bc33c784eb0465a9cf3949a01fadd1f7386d58 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Tue, 28 Aug 2018 20:08:19 +0200
+Subject: [PATCH 11/19] Remove setting: cancel_birth_rotation
+
+Get rid of this concept once and for all. The layout that result from a
+node removal needs to be predictable.
+---
+ contrib/bash_completion |  2 +-
+ contrib/fish_completion |  2 +-
+ contrib/zsh_completion  |  2 +-
+ doc/bspwm.1             | 11 +++--------
+ doc/bspwm.1.asciidoc    |  3 ---
+ src/messages.c          |  2 --
+ src/query.c             |  1 -
+ src/restore.c           |  1 -
+ src/settings.c          |  1 -
+ src/settings.h          |  2 --
+ src/tree.c              | 32 --------------------------------
+ src/tree.h              |  3 ---
+ src/types.h             |  1 -
+ 13 files changed, 6 insertions(+), 57 deletions(-)
+
+diff --git a/contrib/bash_completion b/contrib/bash_completion
+index 8659788..35c1f29 100644
+--- a/contrib/bash_completion
++++ b/contrib/bash_completion
+@@ -1,7 +1,7 @@
+ _bspc() {
+ 	local commands='node desktop monitor query rule wm subscribe config quit'
+ 
+-	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+ 
+ 	COMPREPLY=()
+ 
+diff --git a/contrib/fish_completion b/contrib/fish_completion
+index ff99ff3..940ad07 100644
+--- a/contrib/fish_completion
++++ b/contrib/fish_completion
+@@ -11,4 +11,4 @@ function __fish_bspc_using_command
+ end
+ 
+ complete -f -c bspc -n '__fish_bspc_needs_command' -a 'node desktop monitor query rule wm subscribe config quit'
+-complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index 711833b..d66b9b2 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -315,7 +315,7 @@ _bspc() {
+ 			local -a look behaviour input
+ 			# Boolean settings are identified by index!
+ 			look=(borderless_monocle gapless_monocle {normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
+-			behaviour=(single_monocle mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints cancel_birth_rotation remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors status_prefix external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
++			behaviour=(single_monocle mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors status_prefix external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
+ 			input=({swallow_first_click,focus_follows_pointer,pointer_follows_{focus,monitor}} click_to_focus pointer_motion_interval pointer_modifier pointer_action{1,2,3} )
+ 			if [[ "$CURRENT" == (2|3) ]];then
+ 				_arguments \
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 44d6a73..f545bd1 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 08/25/2018
++.\"      Date: 08/28/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5-9-gb5d1d85
++.\"    Source: Bspwm 0.9.5-10-g336bc86
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "08/25/2018" "Bspwm 0\&.9\&.5\-9\-gb5d1d85" "Bspwm Manual"
++.TH "BSPWM" "1" "08/28/2018" "Bspwm 0\&.9\&.5\-10\-g336bc86" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -1292,11 +1292,6 @@ Center pseudo tiled windows into their tiling rectangles\&. Defaults to
+ Apply ICCCM window size hints\&.
+ .RE
+ .PP
+-\fIcancel_birth_rotation\fR
+-.RS 4
+-When a node is unlinked from a tree, cancel the tree rotation that was applied during its insertion\&.
+-.RE
+-.PP
+ \fIremove_disabled_monitors\fR
+ .RS 4
+ Consider disabled monitors as disconnected\&.
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index c5404a6..70f1919 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -736,9 +736,6 @@ Global Settings
+ 'honor_size_hints'::
+ 	Apply ICCCM window size hints.
+ 
+-'cancel_birth_rotation'::
+-	When a node is unlinked from a tree, cancel the tree rotation that was applied during its insertion.
+-
+ 'remove_disabled_monitors'::
+ 	Consider disabled monitors as disconnected.
+ 
+diff --git a/src/messages.c b/src/messages.c
+index 0043255..0ed0866 100644
+--- a/src/messages.c
++++ b/src/messages.c
+@@ -1652,7 +1652,6 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 		SET_BOOL(ignore_ewmh_focus)
+ 		SET_BOOL(center_pseudo_tiled)
+ 		SET_BOOL(honor_size_hints)
+-		SET_BOOL(cancel_birth_rotation)
+ #undef SET_BOOL
+ #define SET_MON_BOOL(s) \
+ 	} else if (streq(#s, name)) { \
+@@ -1771,7 +1770,6 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 	GET_BOOL(ignore_ewmh_focus)
+ 	GET_BOOL(center_pseudo_tiled)
+ 	GET_BOOL(honor_size_hints)
+-	GET_BOOL(cancel_birth_rotation)
+ 	GET_BOOL(remove_disabled_monitors)
+ 	GET_BOOL(remove_unplugged_monitors)
+ 	GET_BOOL(merge_overlapping_monitors)
+diff --git a/src/query.c b/src/query.c
+index 3d99a17..dfdee88 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -117,7 +117,6 @@ void query_node(node_t *n, FILE *rsp)
+ 		fprintf(rsp, "\"id\":%u,", n->id);
+ 		fprintf(rsp, "\"splitType\":\"%s\",", SPLIT_TYPE_STR(n->split_type));
+ 		fprintf(rsp, "\"splitRatio\":%lf,", n->split_ratio);
+-		fprintf(rsp, "\"birthRotation\":%i,", n->birth_rotation);
+ 		fprintf(rsp, "\"vacant\":%s,", BOOL_STR(n->vacant));
+ 		fprintf(rsp, "\"hidden\":%s,", BOOL_STR(n->hidden));
+ 		fprintf(rsp, "\"sticky\":%s,", BOOL_STR(n->sticky));
+diff --git a/src/restore.c b/src/restore.c
+index 26c342a..7f291f9 100644
+--- a/src/restore.c
++++ b/src/restore.c
+@@ -353,7 +353,6 @@ node_t *restore_node(jsmntok_t **t, char *json)
+ 				sscanf(json + (*t)->start, "%u", &n->id);
+ 			RESTORE_ANY(splitType, &n->split_type, parse_split_type)
+ 			RESTORE_DOUBLE(splitRatio, &n->split_ratio)
+-			RESTORE_INT(birthRotation, &n->birth_rotation)
+ 			RESTORE_BOOL(vacant, &n->vacant)
+ 			RESTORE_BOOL(hidden, &n->hidden)
+ 			RESTORE_BOOL(sticky, &n->sticky)
+diff --git a/src/settings.c b/src/settings.c
+index eeea41f..f8390b8 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -81,7 +81,6 @@ void load_settings(void)
+ 
+ 	center_pseudo_tiled = CENTER_PSEUDO_TILED;
+ 	honor_size_hints = HONOR_SIZE_HINTS;
+-	cancel_birth_rotation = CANCEL_BIRTH_ROTATION;
+ 
+ 	remove_disabled_monitors = REMOVE_DISABLED_MONITORS;
+ 	remove_unplugged_monitors = REMOVE_UNPLUGGED_MONITORS;
+diff --git a/src/settings.h b/src/settings.h
+index c29a24a..4c15644 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -57,7 +57,6 @@
+ 
+ #define CENTER_PSEUDO_TILED         true
+ #define HONOR_SIZE_HINTS            false
+-#define CANCEL_BIRTH_ROTATION       false
+ #define MAPPING_EVENTS_COUNT        1
+ 
+ #define REMOVE_DISABLED_MONITORS    false
+@@ -99,7 +98,6 @@ state_transition_t ignore_ewmh_fullscreen;
+ 
+ bool center_pseudo_tiled;
+ bool honor_size_hints;
+-bool cancel_birth_rotation;
+ 
+ bool remove_disabled_monitors;
+ bool remove_unplugged_monitors;
+diff --git a/src/tree.c b/src/tree.c
+index 0d645a1..a33feed 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -334,7 +334,6 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 			p = f->parent;
+ 		}
+ 		n->parent = c;
+-		c->birth_rotation = f->birth_rotation;
+ 		if (f->presel == NULL) {
+ 			if (p == NULL) {
+ 				if (initial_polarity == FIRST_CHILD) {
+@@ -377,7 +376,6 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 					rot = 270;
+ 				}
+ 				if (!n->vacant) {
+-					n->birth_rotation = rot;
+ 					rotate_tree(p, rot);
+ 				}
+ 			}
+@@ -392,7 +390,6 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 			c->split_ratio = f->presel->split_ratio;
+ 			c->parent = p;
+ 			f->parent = c;
+-			f->birth_rotation = 0;
+ 			switch (f->presel->split_dir) {
+ 				case DIR_WEST:
+ 					c->split_type = TYPE_VERTICAL;
+@@ -677,7 +674,6 @@ node_t *make_node(uint32_t id)
+ 	n->vacant = n->hidden = n->sticky = n->private = n->locked = n->marked = false;
+ 	n->split_ratio = split_ratio;
+ 	n->split_type = TYPE_VERTICAL;
+-	n->birth_rotation = 0;
+ 	n->constraints = (constraints_t) {MIN_WIDTH, MIN_HEIGHT};
+ 	n->presel = NULL;
+ 	n->client = NULL;
+@@ -1117,24 +1113,6 @@ void rotate_tree_rec(node_t *n, int deg)
+ 	rotate_tree_rec(n->second_child, deg);
+ }
+ 
+-void rotate_brother(node_t *n)
+-{
+-	rotate_tree(brother_tree(n), n->birth_rotation);
+-}
+-
+-void unrotate_tree(node_t *n, int rot)
+-{
+-	if (rot == 0) {
+-		return;
+-	}
+-	rotate_tree(n, 360 - rot);
+-}
+-
+-void unrotate_brother(node_t *n)
+-{
+-	unrotate_tree(brother_tree(n), n->birth_rotation);
+-}
+-
+ void flip_tree(node_t *n, flip_t flp)
+ {
+ 	if (n == NULL || is_leaf(n)) {
+@@ -1208,10 +1186,6 @@ void unlink_node(monitor_t *m, desktop_t *d, node_t *n)
+ 		node_t *b = brother_tree(n);
+ 		node_t *g = p->parent;
+ 
+-		if (!n->vacant && cancel_birth_rotation) {
+-			unrotate_tree(b, n->birth_rotation);
+-		}
+-
+ 		b->parent = g;
+ 
+ 		if (g != NULL) {
+@@ -1224,8 +1198,6 @@ void unlink_node(monitor_t *m, desktop_t *d, node_t *n)
+ 			d->root = b;
+ 		}
+ 
+-		b->birth_rotation = p->birth_rotation;
+-
+ 		free(p);
+ 		n->parent = NULL;
+ 
+@@ -1322,8 +1294,6 @@ bool swap_nodes(monitor_t *m1, desktop_t *d1, node_t *n1, monitor_t *m2, desktop
+ 	node_t *pn2 = n2->parent;
+ 	bool n1_first_child = is_first_child(n1);
+ 	bool n2_first_child = is_first_child(n2);
+-	int br1 = n1->birth_rotation;
+-	int br2 = n2->birth_rotation;
+ 	bool n1_held_focus = is_descendant(d1->focus, n1);
+ 	bool n2_held_focus = is_descendant(d2->focus, n2);
+ 	node_t *last_d1_focus = d1->focus;
+@@ -1347,8 +1317,6 @@ bool swap_nodes(monitor_t *m1, desktop_t *d1, node_t *n1, monitor_t *m2, desktop
+ 
+ 	n1->parent = pn2;
+ 	n2->parent = pn1;
+-	n1->birth_rotation = br2;
+-	n2->birth_rotation = br1;
+ 
+ 	propagate_flags_upward(m2, d2, n1);
+ 	propagate_flags_upward(m1, d1, n2);
+diff --git a/src/tree.h b/src/tree.h
+index 8c82b24..0609d52 100644
+--- a/src/tree.h
++++ b/src/tree.h
+@@ -74,9 +74,6 @@ int tiled_count(node_t *n, bool include_receptacles);
+ void find_by_area(area_peak_t ap, coordinates_t *ref, coordinates_t *dst, node_select_t *sel);
+ void rotate_tree(node_t *n, int deg);
+ void rotate_tree_rec(node_t *n, int deg);
+-void rotate_brother(node_t *n);
+-void unrotate_tree(node_t *n, int rot);
+-void unrotate_brother(node_t *n);
+ void flip_tree(node_t *n, flip_t flp);
+ void equalize_tree(node_t *n);
+ int balance_tree(node_t *n);
+diff --git a/src/types.h b/src/types.h
+index fb8952d..2b43a35 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -233,7 +233,6 @@ struct node_t {
+ 	uint32_t id;
+ 	split_type_t split_type;
+ 	double split_ratio;
+-	int birth_rotation;
+ 	presel_t *presel;
+ 	xcb_rectangle_t rectangle;
+ 	constraints_t constraints;
+-- 
+2.19.2
+
+
+From dc08efbc6f30156215dda21873ca0c34f3f783a6 Mon Sep 17 00:00:00 2001
+From: Junak <vlypak@gmail.com>
+Date: Tue, 28 Aug 2018 01:44:01 +0300
+Subject: [PATCH 12/19] Minor fixes to zsh completions
+
+---
+ contrib/zsh_completion | 33 +++++++++++++++++++--------------
+ 1 file changed, 19 insertions(+), 14 deletions(-)
+
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index d66b9b2..5b663f7 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -98,6 +98,8 @@ _bspc_selector() {
+ 				-- completions $@ -S '.' -r ". \n:#${quote}\-" -J ${sel_type}
+ 			fi
+ 			;|
++		(node*@*'#'*)
++			;;
+ 		(node*@*)
+ 			_bspc_selector desktop -S ':' -qr ".#\-\n ${quote}"
+ 			;;
+@@ -312,11 +314,13 @@ _bspc() {
+ 				_describe 'match window class' completions -q -S ':'
+ 			;;
+ 		(config)
+-			local -a look behaviour input
+-			# Boolean settings are identified by index!
+-			look=(borderless_monocle gapless_monocle {normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
+-			behaviour=(single_monocle mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors status_prefix external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
+-			input=({swallow_first_click,focus_follows_pointer,pointer_follows_{focus,monitor}} click_to_focus pointer_motion_interval pointer_modifier pointer_action{1,2,3} )
++			local -a {look,behaviour,input}{_bool,}
++			look_bool=(borderless_monocle gapless_monocle)
++			look=({normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
++			behaviour_bool=(single_monocle ignore_ewmh_focus center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors)
++			behaviour=(mapping_events_count ignore_ewmh_fullscreen external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
++			input_bool=(swallow_first_click focus_follows_pointer pointer_follows_{focus,monitor})
++			input=(click_to_focus pointer_motion_interval pointer_modifier pointer_action{1,2,3})
+ 			if [[ "$CURRENT" == (2|3) ]];then
+ 				_arguments \
+ 					'-d[Set settings for the selected desktop]: :_bspc_selector -- desktop'\
+@@ -326,18 +330,19 @@ _bspc() {
+ 			if [[ "${words[2]}" == -* ]] ;then
+ 				(( CURRENT == 3 )) && return
+ 				if (( CURRENT > 3 )) ;then
+-					((CURRENT-=$#words))
+-					words=('config' "${(@)words[4,-1]}")
+-					((CURRENT+=$#words))
++					compset -n 3
+ 				fi
+ 			fi
+ 			if ((CURRENT==2)) ;then
+-				_describe 'look' look -J look
+-				_describe 'input' input -J input
+-				_describe 'behaviour' behaviour -J behaviour
++				_describe 'look' look -J look -- look_bool -J look
++				_describe 'input' input -J input -- input_bool -J input
++				_describe 'behaviour' behaviour -J behaviour -- behaviour_bool -J behaviour
+ 			elif ((CURRENT==3)) ;then
+ 				setting=$words[2]
+ 				case $setting in
++					(ignore_ewmh_fullscreen)
++						_values -S "," "set $setting" all none "enter:: :(exit)" "exit:: :(enter)"
++						;;
+ 					(initial_polarity)
+ 						_values "set $setting" first_child second_child
+ 						;;
+@@ -354,9 +359,9 @@ _bspc() {
+ 						_values "set $setting" any button1 button2 button3 none
+ 						;;
+ 					(*)
+-						((look[(i)$setting] <= 2)) ||
+-							((behaviour[(i)$setting] <= 7)) ||
+-							((input[(i)$setting] <= 4)) &&
++						[[ -n $look_bool[(r)$setting] ]] ||
++							[[ -n $behaviour_bool[(r)$setting] ]] ||
++							[[ -n $input_bool[(r)$setting] ]] &&
+ 							_values "set $setting" true false
+ 						;;
+ 				esac
+-- 
+2.19.2
+
+
+From 3b96688d13ebc75e1a2883eda6efa74223359b37 Mon Sep 17 00:00:00 2001
+From: Aelspire <aelspire@gmail.com>
+Date: Thu, 3 May 2018 14:38:03 +0200
+Subject: [PATCH 13/19] Pass any input from presel window to window below
+
+---
+ Makefile     | 2 +-
+ src/window.c | 8 +++++---
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9f49aaf..23aea6e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@ VERSION := $(shell $(VERCMD) || cat VERSION)
+ CPPFLAGS += -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\"
+ CFLAGS   += -std=c99 -pedantic -Wall -Wextra
+ LDFLAGS  ?=
+-LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama
++LDLIBS    = $(LDFLAGS) -lm -lxcb -lxcb-util -lxcb-keysyms -lxcb-icccm -lxcb-ewmh -lxcb-randr -lxcb-xinerama -lxcb-shape
+ 
+ PREFIX    ?= /usr/local
+ BINPREFIX ?= $(PREFIX)/bin
+diff --git a/src/window.c b/src/window.c
+index 41bf15a..1229a07 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -26,6 +26,7 @@
+ #include <stdlib.h>
+ #include <stdbool.h>
+ #include <string.h>
++#include <xcb/shape.h>
+ #include "bspwm.h"
+ #include "ewmh.h"
+ #include "monitor.h"
+@@ -262,13 +263,14 @@ void initialize_presel_feedback(node_t *n)
+ 	}
+ 
+ 	xcb_window_t win = xcb_generate_id(dpy);
+-	uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_SAVE_UNDER | XCB_CW_EVENT_MASK;
+-	uint32_t values[] = {get_color_pixel(presel_feedback_color), 1, focus_follows_pointer ? XCB_EVENT_MASK_ENTER_WINDOW : 0};
++	uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_SAVE_UNDER;
++	uint32_t values[] = {get_color_pixel(presel_feedback_color), 1};
+ 	xcb_create_window(dpy, XCB_COPY_FROM_PARENT, win, root, 0, 0, 1, 1, 0, XCB_WINDOW_CLASS_INPUT_OUTPUT,
+ 			          XCB_COPY_FROM_PARENT, mask, values);
+ 
+ 	xcb_icccm_set_wm_class(dpy, win, sizeof(PRESEL_FEEDBACK_IC), PRESEL_FEEDBACK_IC);
+-	window_grab_buttons(win);
++	/* Make presel window's input shape NULL to pass any input to window below */
++	xcb_shape_rectangles(dpy, XCB_SHAPE_SO_SET, XCB_SHAPE_SK_INPUT, XCB_CLIP_ORDERING_UNSORTED, win, 0, 0, 0, NULL);
+ 	stacking_list_t *s = stack_tail;
+ 	while (s != NULL && !IS_TILED(s->node->client)) {
+ 		s = s->prev;
+-- 
+2.19.2
+
+
+From 56ad57c95295b02cbe8f3b515d0120951ceff3c0 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Wed, 29 Aug 2018 16:53:55 +0200
+Subject: [PATCH 14/19] Extend the scope of initial_polarity
+
+Of course, a better approach to avoid all the situations where the
+vacant nodes (hidden or in the floating or fullscreen state) get in the
+way, would be to take them out of the tree and maintain a list of such
+nodes for each desktop.
+
+Fixes #791.
+---
+ src/tree.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/src/tree.c b/src/tree.c
+index a33feed..2e262dd 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -329,13 +329,20 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 				presel_dir(m, d, f, (rect.width >= rect.height ? DIR_EAST : DIR_SOUTH));
+ 			}
+ 		}
+-		while (f->presel == NULL && p != NULL && (f->vacant || brother_tree(f)->vacant)) {
+-			f = p;
+-			p = f->parent;
+-		}
+ 		n->parent = c;
+ 		if (f->presel == NULL) {
+-			if (p == NULL) {
++			if (p == NULL || (f->client != NULL && IS_TILED(f->client) && tiled_count(d->root, true) == 1)) {
++				if (p != NULL) {
++					if (is_first_child(f)) {
++						p->first_child = c;
++					} else {
++						p->second_child = c;
++					}
++				} else {
++					d->root = c;
++				}
++				c->parent = p;
++				f->parent = c;
+ 				if (initial_polarity == FIRST_CHILD) {
+ 					c->first_child = n;
+ 					c->second_child = f;
+@@ -348,8 +355,6 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 				} else {
+ 					c->split_type = TYPE_HORIZONTAL;
+ 				}
+-				f->parent = c;
+-				d->root = c;
+ 			} else {
+ 				node_t *g = p->parent;
+ 				c->parent = g;
+-- 
+2.19.2
+
+
+From 385f73e576d4e5fdb09e5f6e77293503e01adf88 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Fri, 31 Aug 2018 11:33:00 +0200
+Subject: [PATCH 15/19] Add new setting: automatic_scheme
+
+Fixes #764.
+---
+ README.md                                     | 126 ++++++++++++------
+ contrib/bash_completion                       |   2 +-
+ contrib/fish_completion                       |   2 +-
+ contrib/zsh_completion                        |   2 +-
+ doc/bspwm.1                                   |  13 +-
+ doc/bspwm.1.asciidoc                          |   3 +
+ .../pseudo_automatic_mode/README.md           |   1 -
+ .../pseudo_automatic_mode/external_rules      |  15 ---
+ src/helpers.h                                 |   1 +
+ src/messages.c                                |  10 ++
+ src/parse.c                                   |  12 ++
+ src/parse.h                                   |   1 +
+ src/settings.c                                |   7 +-
+ src/settings.h                                |   4 +-
+ src/tree.c                                    |   4 +-
+ src/types.h                                   |   5 +
+ tests/run                                     |   3 +
+ 17 files changed, 139 insertions(+), 72 deletions(-)
+ delete mode 100644 examples/external_rules/pseudo_automatic_mode/README.md
+ delete mode 100755 examples/external_rules/pseudo_automatic_mode/external_rules
+
+diff --git a/README.md b/README.md
+index a4e586b..a5d0cd5 100644
+--- a/README.md
++++ b/README.md
+@@ -51,49 +51,7 @@ When *bspwm* receives a new window, it inserts it into a window tree at the spec
+ 
+ The insertion mode tells *bspwm* how it should alter the tree in order to insert new windows on a given insertion point.
+ 
+-By default the insertion point is the focused window and its default insertion mode is *automatic*.
+-
+-### Automatic Mode
+-
+-The *automatic* mode, as opposed to the *manual* mode, doesn't require any user choice: the new window will *take the space* of the insertion point.
+-
+-For example, let's consider the following scenario:
+-
+-```
+-             a                          a                          a
+-            / \                        / \                        / \
+-           1   b         --->         1   c         --->         1   d
+-              / \                        / \                        / \
+-             2   3                      4   b                      5   c
+-             ^                          ^  / \                     ^  / \
+-                                          3   2                      b   4
+-                                                                    / \ 
+-                                                                   3   2
+-
+- +-----------------------+  +-----------------------+  +-----------------------+
+- |           |           |  |           |           |  |           |           |
+- |           |     2     |  |           |     4     |  |           |     5     |
+- |           |     ^     |  |           |     ^     |  |           |     ^     |
+- |     1     |-----------|  |     1     |-----------|  |     1     |-----------|
+- |           |           |  |           |     |     |  |           |  3  |     |
+- |           |     3     |  |           |  3  |  2  |  |           |-----|  4  |
+- |           |           |  |           |     |     |  |           |  2  |     |
+- +-----------------------+  +-----------------------+  +-----------------------+
+-
+-              X                         Y                          Z 
+-```
+-
+-In state *X*, the insertion point, *2* is in automatic mode.
+-
+-When we add a new window, *4*, the whole tree rooted at *b* is reattached, as the second child of a new internal node, *c*.
+-
+-The splitting parameters of *b* (type: *horizontal*, ratio: *½*) are copied to *c* and *b* is rotated by 90° clockwise.
+-
+-The tiling rectangle of *4* in state *Y* is equal to the tiling rectangle of *2* in state *X*.
+-
+-Then the insertion of *5*, with *4* as insertion point, leads to *Z*.
+-
+-The automatic mode generates window spirals that rotate clockwise (resp. anti-clockwise) if the insertion point is the first (resp. second) child of its parent.
++By default the insertion point is the focused window and its insertion mode is *automatic*.
+ 
+ ### Manual Mode
+ 
+@@ -103,7 +61,7 @@ The *DIR* argument allows to specify how the insertion point should be split (ho
+ 
+ After doing so the insertion point goes into *manual* mode.
+ 
+-For example, let's consider the following scenario:
++Let's consider the following scenario:
+ 
+ ```
+             a                          a                          a
+@@ -138,6 +96,86 @@ Finally we send another message: *node -p west* and add window *5*.
+ 
+ The ratio of the preselection (that ends up being the ratio of the split of the new internal node) can be changed with the *node -o|--presel-ratio* message.
+ 
++### Automatic Mode
++
++The *automatic* mode, as opposed to the *manual* mode, doesn't require any user choice. The way the new window is inserted is determined by the value of the automatic scheme and the initial polarity settings.
++
++#### Longest side
++
++When the value of the automatic scheme is `longest_side`, the window will be attached as if the insertion point was in manual mode and the split direction was choosen based on the dimensions of the tiling rectangle and the initial polarity.
++
++Let's consider the following scenario, where the initial polarity is set to `second_child`:
++
++```
++             1                          a                          a
++             ^                         / \                        / \
++                         --->         1   2         --->         1   b
++                                          ^                         / \
++                                                                   2   3
++                                                                       ^
++
++ +-----------------------+  +-----------------------+  +-----------------------+
++ |                       |  |           |           |  |           |           |
++ |                       |  |           |           |  |           |     2     |
++ |                       |  |           |           |  |           |           |
++ |           1           |  |     1     |     2     |  |     1     |-----------|
++ |           ^           |  |           |     ^     |  |           |           |
++ |                       |  |           |           |  |           |     3     |
++ |                       |  |           |           |  |           |     ^     |
++ +-----------------------+  +-----------------------+  +-----------------------+
++
++             X                          Y                          Z
++```
++
++In state *X*, a new window is added.
++
++Since *1* is wide, it gets split vertically and *2* is added as *a*'s second child given the initial polarity.
++
++This leads to *Y* where we insert window *3*. *2* is tall and is therefore split horizontally. *3* is once again added as *b*'s second child.
++
++#### Spiral
++
++When the value of the automatic scheme is `spiral`, the window will *take the space* of the insertion point.
++
++Let's dive into the details with the following scenario:
++
++```
++             a                          a                          a
++            / \                        / \                        / \
++           1   b         --->         1   c         --->         1   d
++              / \                        / \                        / \
++             2   3                      4   b                      5   c
++             ^                          ^  / \                     ^  / \
++                                          3   2                      b   4
++                                                                    / \
++                                                                   3   2
++
++ +-----------------------+  +-----------------------+  +-----------------------+
++ |           |           |  |           |           |  |           |           |
++ |           |     2     |  |           |     4     |  |           |     5     |
++ |           |     ^     |  |           |     ^     |  |           |     ^     |
++ |     1     |-----------|  |     1     |-----------|  |     1     |-----------|
++ |           |           |  |           |     |     |  |           |  3  |     |
++ |           |     3     |  |           |  3  |  2  |  |           |-----|  4  |
++ |           |           |  |           |     |     |  |           |  2  |     |
++ +-----------------------+  +-----------------------+  +-----------------------+
++
++             X                          Y                          Z
++```
++
++In state *X*, the insertion point, *2* is in automatic mode.
++
++When we add a new window, *4*, the whole tree rooted at *b* is reattached, as the second child of a new internal node, *c*.
++
++The splitting parameters of *b* (type: *horizontal*, ratio: *½*) are copied to *c* and *b* is rotated by 90° clockwise.
++
++The tiling rectangle of *4* in state *Y* is equal to the tiling rectangle of *2* in state *X*.
++
++Then the insertion of *5*, with *4* as insertion point, leads to *Z*.
++
++The *spiral* automatic scheme generates window spirals that rotate clockwise (resp. anti-clockwise) if the insertion point is the first (resp. second) child of its parent.
++
++
+ ## Supported protocols and standards
+ 
+ - The RandR and Xinerama protocols.
+diff --git a/contrib/bash_completion b/contrib/bash_completion
+index 35c1f29..ab57d02 100644
+--- a/contrib/bash_completion
++++ b/contrib/bash_completion
+@@ -1,7 +1,7 @@
+ _bspc() {
+ 	local commands='node desktop monitor query rule wm subscribe config quit'
+ 
+-	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+ 
+ 	COMPREPLY=()
+ 
+diff --git a/contrib/fish_completion b/contrib/fish_completion
+index 940ad07..a79c483 100644
+--- a/contrib/fish_completion
++++ b/contrib/fish_completion
+@@ -11,4 +11,4 @@ function __fish_bspc_using_command
+ end
+ 
+ complete -f -c bspc -n '__fish_bspc_needs_command' -a 'node desktop monitor query rule wm subscribe config quit'
+-complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index 5b663f7..3f94bfd 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -318,7 +318,7 @@ _bspc() {
+ 			look_bool=(borderless_monocle gapless_monocle)
+ 			look=({normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
+ 			behaviour_bool=(single_monocle ignore_ewmh_focus center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors)
+-			behaviour=(mapping_events_count ignore_ewmh_fullscreen external_rules_command split_ratio initial_polarity directional_focus_tightness status_prefix)
++			behaviour=(mapping_events_count ignore_ewmh_fullscreen external_rules_command split_ratio automatic_scheme initial_polarity directional_focus_tightness status_prefix)
+ 			input_bool=(swallow_first_click focus_follows_pointer pointer_follows_{focus,monitor})
+ 			input=(click_to_focus pointer_motion_interval pointer_modifier pointer_action{1,2,3})
+ 			if [[ "$CURRENT" == (2|3) ]];then
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index f545bd1..0b59b74 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 08/28/2018
++.\"      Date: 08/31/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5-10-g336bc86
++.\"    Source: Bspwm 0.9.5-14-g56ad57c
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "08/28/2018" "Bspwm 0\&.9\&.5\-10\-g336bc86" "Bspwm Manual"
++.TH "BSPWM" "1" "08/31/2018" "Bspwm 0\&.9\&.5\-14\-g56ad57c" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -1151,6 +1151,13 @@ External command used to retrieve rule consequences\&. The command will receive
+ command)\&.
+ .RE
+ .PP
++\fIautomatic_scheme\fR
++.RS 4
++The insertion scheme used when the insertion point is in automatic mode\&. Accept the following values:
++\fBlongest_side\fR,
++\fBspiral\fR\&.
++.RE
++.PP
+ \fIinitial_polarity\fR
+ .RS 4
+ On which child should a new window be attached when adding a window on a single window tree in automatic mode\&. Accept the following values:
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 70f1919..29a455b 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -677,6 +677,9 @@ Global Settings
+ 'external_rules_command'::
+ 	External command used to retrieve rule consequences. The command will receive the following arguments: window ID, class name, instance name, and intermediate consequences. The output of that command must have the following format: *key1=value1 key2=value2 ...* (the valid key/value pairs are given in the description of the 'rule' command).
+ 
++'automatic_scheme'::
++	The insertion scheme used when the insertion point is in automatic mode. Accept the following values: *longest_side*, *spiral*.
++
+ 'initial_polarity'::
+ 	On which child should a new window be attached when adding a window on a single window tree in automatic mode. Accept the following values: *first_child*, *second_child*.
+ 
+diff --git a/examples/external_rules/pseudo_automatic_mode/README.md b/examples/external_rules/pseudo_automatic_mode/README.md
+deleted file mode 100644
+index 26284fc..0000000
+--- a/examples/external_rules/pseudo_automatic_mode/README.md
++++ /dev/null
+@@ -1 +0,0 @@
+-`wattr` belongs to [wmutils](https://github.com/wmutils/core).
+diff --git a/examples/external_rules/pseudo_automatic_mode/external_rules b/examples/external_rules/pseudo_automatic_mode/external_rules
+deleted file mode 100755
+index b8fe0e6..0000000
+--- a/examples/external_rules/pseudo_automatic_mode/external_rules
++++ /dev/null
+@@ -1,15 +0,0 @@
+-#! /bin/sh
+-
+-fwid=$(bspc query -N -n focused.automatic)
+-
+-if [ -n "$fwid" ] ; then
+-	wattr wh $fwid | {
+-		read width height
+-		if [ $width -gt $height ] ; then
+-			echo "split_dir=west"
+-		else
+-			echo "split_dir=south"
+-		fi
+-		echo "split_ratio=0.5"
+-	}
+-fi
+diff --git a/src/helpers.h b/src/helpers.h
+index 771bbdc..8b933be 100644
+--- a/src/helpers.h
++++ b/src/helpers.h
+@@ -47,6 +47,7 @@
+ #define LAYOUT_STR(A)     ((A) == LAYOUT_TILED ? "tiled" : "monocle")
+ #define LAYOUT_CHR(A)     ((A) == LAYOUT_TILED ? 'T' : 'M')
+ #define CHILD_POL_STR(A)  ((A) == FIRST_CHILD ? "first_child" : "second_child")
++#define AUTO_SCM_STR(A)   ((A) == SCHEME_LONGEST_SIDE ? "longest_side" : "spiral")
+ #define TIGHTNESS_STR(A)  ((A) == TIGHTNESS_HIGH ? "high" : "low")
+ #define SPLIT_TYPE_STR(A) ((A) == TYPE_HORIZONTAL ? "horizontal" : "vertical")
+ #define SPLIT_MODE_STR(A) ((A) == MODE_AUTOMATIC ? "automatic" : "manual")
+diff --git a/src/messages.c b/src/messages.c
+index 0ed0866..e12b382 100644
+--- a/src/messages.c
++++ b/src/messages.c
+@@ -1555,6 +1555,14 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
+ 			return;
+ 		}
++	} else if (streq("automatic_scheme", name)) {
++		automatic_scheme_t a;
++		if (parse_automatic_scheme(value, &a)) {
++			automatic_scheme = a;
++		} else {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++			return;
++		}
+ 	} else if (streq("mapping_events_count", name)) {
+ 		if (sscanf(value, "%" SCNi8, &mapping_events_count) != 1) {
+ 			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
+@@ -1731,6 +1739,8 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 		fprintf(rsp, "%s", status_prefix);
+ 	} else if (streq("initial_polarity", name)) {
+ 		fprintf(rsp, "%s", CHILD_POL_STR(initial_polarity));
++	} else if (streq("automatic_scheme", name)) {
++		fprintf(rsp, "%s", AUTO_SCM_STR(automatic_scheme));
+ 	} else if (streq("mapping_events_count", name)) {
+ 		fprintf(rsp, "%" PRIi8, mapping_events_count);
+ 	} else if (streq("directional_focus_tightness", name)) {
+diff --git a/src/parse.c b/src/parse.c
+index f7dc1d8..886f944 100644
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -267,6 +267,18 @@ bool parse_child_polarity(char *s, child_polarity_t *p)
+ 	return false;
+ }
+ 
++bool parse_automatic_scheme(char *s, automatic_scheme_t *a)
++{
++	if (streq("longest_side", s)) {
++		*a = SCHEME_LONGEST_SIDE;
++		return true;
++	} else if (streq("spiral", s)) {
++		*a = SCHEME_SPIRAL;
++		return true;
++	}
++	return false;
++}
++
+ bool parse_state_transition(char *s, state_transition_t *m)
+ {
+ 	if (streq("none", s)) {
+diff --git a/src/parse.h b/src/parse.h
+index 370c08f..89ba6e1 100644
+--- a/src/parse.h
++++ b/src/parse.h
+@@ -25,6 +25,7 @@ bool parse_modifier_mask(char *s, uint16_t *m);
+ bool parse_button_index(char *s, int8_t *b);
+ bool parse_pointer_action(char *s, pointer_action_t *a);
+ bool parse_child_polarity(char *s, child_polarity_t *p);
++bool parse_automatic_scheme(char *s, automatic_scheme_t *a);
+ bool parse_state_transition(char *s, state_transition_t *m);
+ bool parse_tightness(char *s, tightness_t *t);
+ bool parse_degree(char *s, int *d);
+diff --git a/src/settings.c b/src/settings.c
+index f8390b8..923d9ac 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -56,15 +56,16 @@ void load_settings(void)
+ 	window_gap = WINDOW_GAP;
+ 	border_width = BORDER_WIDTH;
+ 	split_ratio = SPLIT_RATIO;
+-	initial_polarity = FIRST_CHILD;
++	initial_polarity = SECOND_CHILD;
++	automatic_scheme = SCHEME_LONGEST_SIDE;
+ 	directional_focus_tightness = TIGHTNESS_HIGH;
++
+ 	pointer_modifier = POINTER_MODIFIER;
+ 	pointer_motion_interval = POINTER_MOTION_INTERVAL;
+-	mapping_events_count = MAPPING_EVENTS_COUNT;
+-
+ 	pointer_actions[0] = ACTION_MOVE;
+ 	pointer_actions[1] = ACTION_RESIZE_SIDE;
+ 	pointer_actions[2] = ACTION_RESIZE_CORNER;
++	mapping_events_count = MAPPING_EVENTS_COUNT;
+ 
+ 	borderless_monocle = BORDERLESS_MONOCLE;
+ 	gapless_monocle = GAPLESS_MONOCLE;
+diff --git a/src/settings.h b/src/settings.h
+index 4c15644..c4dcd27 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -41,6 +41,7 @@
+ #define WINDOW_GAP           6
+ #define BORDER_WIDTH         1
+ #define SPLIT_RATIO          0.5
++#define AUTOMATIC_SCHEME     SCHEME_LONGEST_SIDE
+ 
+ #define BORDERLESS_MONOCLE          false
+ #define GAPLESS_MONOCLE             false
+@@ -75,9 +76,10 @@ padding_t padding;
+ int window_gap;
+ unsigned int border_width;
+ double split_ratio;
+-
+ child_polarity_t initial_polarity;
++automatic_scheme_t automatic_scheme;
+ tightness_t directional_focus_tightness;
++
+ uint16_t pointer_modifier;
+ uint32_t pointer_motion_interval;
+ pointer_action_t pointer_actions[3];
+diff --git a/src/tree.c b/src/tree.c
+index 2e262dd..9518c2e 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -331,7 +331,7 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 		}
+ 		n->parent = c;
+ 		if (f->presel == NULL) {
+-			if (p == NULL || (f->client != NULL && IS_TILED(f->client) && tiled_count(d->root, true) == 1)) {
++			if (p == NULL || automatic_scheme == SCHEME_LONGEST_SIDE || (f->client != NULL && IS_TILED(f->client) && tiled_count(d->root, true) == 1)) {
+ 				if (p != NULL) {
+ 					if (is_first_child(f)) {
+ 						p->first_child = c;
+@@ -350,7 +350,7 @@ node_t *insert_node(monitor_t *m, desktop_t *d, node_t *n, node_t *f)
+ 					c->first_child = f;
+ 					c->second_child = n;
+ 				}
+-				if (m->rectangle.width > m->rectangle.height) {
++				if (f->rectangle.width > f->rectangle.height) {
+ 					c->split_type = TYPE_VERTICAL;
+ 				} else {
+ 					c->split_type = TYPE_HORIZONTAL;
+diff --git a/src/types.h b/src/types.h
+index 2b43a35..1aebc77 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -44,6 +44,11 @@ typedef enum {
+ 	MODE_MANUAL
+ } split_mode_t;
+ 
++typedef enum {
++	SCHEME_LONGEST_SIDE,
++	SCHEME_SPIRAL
++} automatic_scheme_t;
++
+ typedef enum {
+ 	STATE_TILED,
+ 	STATE_PSEUDO_TILED,
+diff --git a/tests/run b/tests/run
+index 90cca7c..1b3babc 100755
+--- a/tests/run
++++ b/tests/run
+@@ -2,10 +2,13 @@
+ 
+ focus_follows_pointer=$(bspc config focus_follows_pointer)
+ initial_polarity=$(bspc config initial_polarity)
++automatic_scheme=$(bspc config automatic_scheme)
++bspc config automatic_scheme spiral
+ bspc config initial_polarity first_child
+ bspc config focus_follows_pointer false
+ 
+ cleanup () {
++	bspc config automatic_scheme "$automatic_scheme"
+ 	bspc config initial_polarity "$initial_polarity"
+ 	bspc config focus_follows_pointer "$focus_follows_pointer"
+ }
+-- 
+2.19.2
+
+
+From fcb53ac711a7167bf2df70f4901f09619e0ca7d6 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Fri, 31 Aug 2018 11:50:03 +0200
+Subject: [PATCH 16/19] Be consistent when naming headers
+
+---
+ README.md | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/README.md b/README.md
+index a5d0cd5..490e773 100644
+--- a/README.md
++++ b/README.md
+@@ -43,9 +43,7 @@ A split is defined by two parameters: the type (horizontal or vertical) and the
+ 
+ Each leaf node holds exactly one window.
+ 
+-## Insertion Modes
+-
+-### Prelude
++## Insertion modes
+ 
+ When *bspwm* receives a new window, it inserts it into a window tree at the specified insertion point (a leaf) using the insertion mode specified for that insertion point.
+ 
+@@ -53,7 +51,7 @@ The insertion mode tells *bspwm* how it should alter the tree in order to insert
+ 
+ By default the insertion point is the focused window and its insertion mode is *automatic*.
+ 
+-### Manual Mode
++### Manual mode
+ 
+ The user can specify a region in the insertion point where the next new window should appear by sending a *node -p|--presel-dir DIR* message to *bspwm*.
+ 
+@@ -96,11 +94,11 @@ Finally we send another message: *node -p west* and add window *5*.
+ 
+ The ratio of the preselection (that ends up being the ratio of the split of the new internal node) can be changed with the *node -o|--presel-ratio* message.
+ 
+-### Automatic Mode
++### Automatic mode
+ 
+ The *automatic* mode, as opposed to the *manual* mode, doesn't require any user choice. The way the new window is inserted is determined by the value of the automatic scheme and the initial polarity settings.
+ 
+-#### Longest side
++#### Longest side scheme
+ 
+ When the value of the automatic scheme is `longest_side`, the window will be attached as if the insertion point was in manual mode and the split direction was choosen based on the dimensions of the tiling rectangle and the initial polarity.
+ 
+@@ -133,7 +131,7 @@ Since *1* is wide, it gets split vertically and *2* is added as *a*'s second chi
+ 
+ This leads to *Y* where we insert window *3*. *2* is tall and is therefore split horizontally. *3* is once again added as *b*'s second child.
+ 
+-#### Spiral
++#### Spiral scheme
+ 
+ When the value of the automatic scheme is `spiral`, the window will *take the space* of the insertion point.
+ 
+-- 
+2.19.2
+
+
+From 8573b269a58d8561cc466cf3af32715df5d1485e Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Sun, 9 Sep 2018 18:03:10 +0200
+Subject: [PATCH 17/19] Don't try to activate an active desktop
+
+Fixes #844.
+---
+ src/desktop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/desktop.c b/src/desktop.c
+index c461312..19f0cb1 100644
+--- a/src/desktop.c
++++ b/src/desktop.c
+@@ -70,7 +70,7 @@ bool activate_desktop(monitor_t *m, desktop_t *d)
+ 		}
+ 	}
+ 
+-	if (d == NULL) {
++	if (d == NULL || d == m->desk) {
+ 		return false;
+ 	}
+ 
+-- 
+2.19.2
+
+
+From bc3649fc372e043f5e64ee76bc633d0ab13ea775 Mon Sep 17 00:00:00 2001
+From: Bastien Dejean <nihilhill@gmail.com>
+Date: Sat, 29 Sep 2018 18:57:05 +0200
+Subject: [PATCH 18/19] Monocle: add cumulative padding settings
+
+Fixes #855.
+---
+ contrib/bash_completion |  2 +-
+ contrib/fish_completion |  2 +-
+ contrib/zsh_completion  |  2 +-
+ doc/bspwm.1             | 10 +++++-----
+ doc/bspwm.1.asciidoc    |  7 +++++--
+ src/messages.c          | 26 ++++++++++++++++++++++++--
+ src/settings.c          |  2 +-
+ src/settings.h          |  4 ++--
+ src/tree.c              | 15 ++++++++++-----
+ 9 files changed, 50 insertions(+), 20 deletions(-)
+
+diff --git a/contrib/bash_completion b/contrib/bash_completion
+index ab57d02..11e855a 100644
+--- a/contrib/bash_completion
++++ b/contrib/bash_completion
+@@ -1,7 +1,7 @@
+ _bspc() {
+ 	local commands='node desktop monitor query rule wm subscribe config quit'
+ 
+-	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++	local settings='external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding top_monocle_padding right_monocle_padding bottom_monocle_padding left_monocle_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+ 
+ 	COMPREPLY=()
+ 
+diff --git a/contrib/fish_completion b/contrib/fish_completion
+index a79c483..87c05eb 100644
+--- a/contrib/fish_completion
++++ b/contrib/fish_completion
+@@ -11,4 +11,4 @@ function __fish_bspc_using_command
+ end
+ 
+ complete -f -c bspc -n '__fish_bspc_needs_command' -a 'node desktop monitor query rule wm subscribe config quit'
+-complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
++complete -f -c bspc -n '__fish_bspc_using_command config' -a 'external_rules_command status_prefix normal_border_color active_border_color focused_border_color presel_feedback_color border_width window_gap top_padding right_padding bottom_padding left_padding top_monocle_padding right_monocle_padding bottom_monocle_padding left_monocle_padding split_ratio automatic_scheme initial_polarity directional_focus_tightness borderless_monocle gapless_monocle single_monocle pointer_motion_interval pointer_modifier pointer_action1 pointer_action2 pointer_action3 click_to_focus swallow_first_click focus_follows_pointer pointer_follows_focus pointer_follows_monitor mapping_events_count ignore_ewmh_focus ignore_ewmh_fullscreen center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors'
+diff --git a/contrib/zsh_completion b/contrib/zsh_completion
+index 3f94bfd..e16fbc8 100644
+--- a/contrib/zsh_completion
++++ b/contrib/zsh_completion
+@@ -316,7 +316,7 @@ _bspc() {
+ 		(config)
+ 			local -a {look,behaviour,input}{_bool,}
+ 			look_bool=(borderless_monocle gapless_monocle)
+-			look=({normal,active,focused}_border_color {top,right,bottom,left}_padding presel_feedback_color border_width window_gap)
++			look=({normal,active,focused}_border_color {top,right,bottom,left}_padding {top,right,bottom,left}_monocle_padding presel_feedback_color border_width window_gap)
+ 			behaviour_bool=(single_monocle ignore_ewmh_focus center_pseudo_tiled honor_size_hints remove_disabled_monitors remove_unplugged_monitors merge_overlapping_monitors)
+ 			behaviour=(mapping_events_count ignore_ewmh_fullscreen external_rules_command split_ratio automatic_scheme initial_polarity directional_focus_tightness status_prefix)
+ 			input_bool=(swallow_first_click focus_follows_pointer pointer_follows_{focus,monitor})
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 0b59b74..7611c77 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -2,12 +2,12 @@
+ .\"     Title: bspwm
+ .\"    Author: [see the "Author" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+-.\"      Date: 08/31/2018
++.\"      Date: 09/29/2018
+ .\"    Manual: Bspwm Manual
+-.\"    Source: Bspwm 0.9.5-14-g56ad57c
++.\"    Source: Bspwm 0.9.5-17-g8573b26
+ .\"  Language: English
+ .\"
+-.TH "BSPWM" "1" "08/31/2018" "Bspwm 0\&.9\&.5\-14\-g56ad57c" "Bspwm Manual"
++.TH "BSPWM" "1" "09/29/2018" "Bspwm 0\&.9\&.5\-17\-g8573b26" "Bspwm Manual"
+ .\" -----------------------------------------------------------------
+ .\" * Define some portability stuff
+ .\" -----------------------------------------------------------------
+@@ -1188,9 +1188,9 @@ Remove gaps of tiled windows for the
+ desktop layout\&.
+ .RE
+ .PP
+-\fIpaddingless_monocle\fR
++\fItop_monocle_padding\fR, \fIright_monocle_padding\fR, \fIbottom_monocle_padding\fR, \fIleft_monocle_padding\fR
+ .RS 4
+-Remove padding space for the
++Padding space added at the sides of the screen for the
+ \fBmonocle\fR
+ desktop layout\&.
+ .RE
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 29a455b..7b57f42 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -692,8 +692,11 @@ Global Settings
+ 'gapless_monocle'::
+ 	Remove gaps of tiled windows for the *monocle* desktop layout.
+ 
+-'paddingless_monocle'::
+-	Remove padding space for the *monocle* desktop layout.
++'top_monocle_padding'::
++'right_monocle_padding'::
++'bottom_monocle_padding'::
++'left_monocle_padding'::
++	Padding space added at the sides of the screen for the *monocle* desktop layout.
+ 
+ 'single_monocle'::
+ 	Set the desktop layout to *monocle* if there's only one tiled window in the tree.
+diff --git a/src/messages.c b/src/messages.c
+index e12b382..cd4b2f0 100644
+--- a/src/messages.c
++++ b/src/messages.c
+@@ -1515,6 +1515,22 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 		}
+ 		SET_DEF_MON_DESK(padding.left, lp)
+ #undef SET_DEF_MON_DESK
++	} else if (streq("top_monocle_padding", name)) {
++		if (sscanf(value, "%i", &monocle_padding.top) != 1) {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++		}
++	} else if (streq("right_monocle_padding", name)) {
++		if (sscanf(value, "%i", &monocle_padding.right) != 1) {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++		}
++	} else if (streq("bottom_monocle_padding", name)) {
++		if (sscanf(value, "%i", &monocle_padding.bottom) != 1) {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++		}
++	} else if (streq("left_monocle_padding", name)) {
++		if (sscanf(value, "%i", &monocle_padding.left) != 1) {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++		}
+ #define SET_STR(s) \
+ 	} else if (streq(#s, name)) { \
+ 		if (snprintf(s, sizeof(s), "%s", value) < 0) { \
+@@ -1652,7 +1668,6 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 		}
+ 		SET_BOOL(borderless_monocle)
+ 		SET_BOOL(gapless_monocle)
+-		SET_BOOL(paddingless_monocle)
+ 		SET_BOOL(single_monocle)
+ 		SET_BOOL(swallow_first_click)
+ 		SET_BOOL(pointer_follows_focus)
+@@ -1733,6 +1748,14 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 	} else if (streq("left_padding", name)) {
+ 		GET_DEF_MON_DESK(padding.left)
+ #undef GET_DEF_MON_DESK
++	} else if (streq("top_monocle_padding", name)) {
++		fprintf(rsp, "%i", monocle_padding.top);
++	} else if (streq("right_monocle_padding", name)) {
++		fprintf(rsp, "%i", monocle_padding.right);
++	} else if (streq("bottom_monocle_padding", name)) {
++		fprintf(rsp, "%i", monocle_padding.bottom);
++	} else if (streq("left_monocle_padding", name)) {
++		fprintf(rsp, "%i", monocle_padding.left);
+ 	} else if (streq("external_rules_command", name)) {
+ 		fprintf(rsp, "%s", external_rules_command);
+ 	} else if (streq("status_prefix", name)) {
+@@ -1771,7 +1794,6 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 		fprintf(rsp, "%s", BOOL_STR(s));
+ 	GET_BOOL(borderless_monocle)
+ 	GET_BOOL(gapless_monocle)
+-	GET_BOOL(paddingless_monocle)
+ 	GET_BOOL(single_monocle)
+ 	GET_BOOL(swallow_first_click)
+ 	GET_BOOL(focus_follows_pointer)
+diff --git a/src/settings.c b/src/settings.c
+index 923d9ac..3a5021c 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -53,6 +53,7 @@ void load_settings(void)
+ 	snprintf(presel_feedback_color, sizeof(presel_feedback_color), "%s", PRESEL_FEEDBACK_COLOR);
+ 
+ 	padding = (padding_t) PADDING;
++	monocle_padding = (padding_t) MONOCLE_PADDING;
+ 	window_gap = WINDOW_GAP;
+ 	border_width = BORDER_WIDTH;
+ 	split_ratio = SPLIT_RATIO;
+@@ -69,7 +70,6 @@ void load_settings(void)
+ 
+ 	borderless_monocle = BORDERLESS_MONOCLE;
+ 	gapless_monocle = GAPLESS_MONOCLE;
+-	paddingless_monocle = PADDINGLESS_MONOCLE;
+ 	single_monocle = SINGLE_MONOCLE;
+ 
+ 	focus_follows_pointer = FOCUS_FOLLOWS_POINTER;
+diff --git a/src/settings.h b/src/settings.h
+index c4dcd27..4968a3c 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -38,6 +38,7 @@
+ #define PRESEL_FEEDBACK_COLOR         "#f4d775"
+ 
+ #define PADDING              {0, 0, 0, 0}
++#define MONOCLE_PADDING      {0, 0, 0, 0}
+ #define WINDOW_GAP           6
+ #define BORDER_WIDTH         1
+ #define SPLIT_RATIO          0.5
+@@ -45,7 +46,6 @@
+ 
+ #define BORDERLESS_MONOCLE          false
+ #define GAPLESS_MONOCLE             false
+-#define PADDINGLESS_MONOCLE         false
+ #define SINGLE_MONOCLE              false
+ 
+ #define FOCUS_FOLLOWS_POINTER       false
+@@ -73,6 +73,7 @@ char focused_border_color[MAXLEN];
+ char presel_feedback_color[MAXLEN];
+ 
+ padding_t padding;
++padding_t monocle_padding;
+ int window_gap;
+ unsigned int border_width;
+ double split_ratio;
+@@ -87,7 +88,6 @@ int8_t mapping_events_count;
+ 
+ bool borderless_monocle;
+ bool gapless_monocle;
+-bool paddingless_monocle;
+ bool single_monocle;
+ 
+ bool focus_follows_pointer;
+diff --git a/src/tree.c b/src/tree.c
+index 9518c2e..2e61078 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -54,11 +54,16 @@ void arrange(monitor_t *m, desktop_t *d)
+ 
+ 	xcb_rectangle_t rect = m->rectangle;
+ 
+-	if (!paddingless_monocle || l != LAYOUT_MONOCLE) {
+-		rect.x += m->padding.left + d->padding.left;
+-		rect.y += m->padding.top + d->padding.top;
+-		rect.width -= m->padding.left + d->padding.left + d->padding.right + m->padding.right;
+-		rect.height -= m->padding.top + d->padding.top + d->padding.bottom + m->padding.bottom;
++	rect.x += m->padding.left + d->padding.left;
++	rect.y += m->padding.top + d->padding.top;
++	rect.width -= m->padding.left + d->padding.left + d->padding.right + m->padding.right;
++	rect.height -= m->padding.top + d->padding.top + d->padding.bottom + m->padding.bottom;
++
++	if (l == LAYOUT_MONOCLE) {
++		rect.x += monocle_padding.left;
++		rect.y += monocle_padding.top;
++		rect.width -= monocle_padding.left + monocle_padding.right;
++		rect.height -= monocle_padding.top + monocle_padding.bottom;
+ 	}
+ 
+ 	if (!gapless_monocle || l != LAYOUT_MONOCLE) {
+-- 
+2.19.2
+
+
+From 7b0cf3dd2624cf2c390e8f823cdede929a9bb721 Mon Sep 17 00:00:00 2001
+From: Javier Pollak <javi.po.123@gmail.com>
+Date: Thu, 13 Sep 2018 09:47:03 -0400
+Subject: [PATCH 19/19] New feature: Rounded corners
+
+squashed commits:
+
+First attempt: Make rounded win corners
+
+Fix Bad argument order to xcb_shape-mask
+
+Find proper arc dimensions
+
+Add setting & Fix round border recalc
+
+Fix window content covered by border
+
+Tidy up code & remove redundant GCs
+
+Fix rounding unmanaged windows' borders
+
+Round presel feedback's corners
+
+Fix monocle & fullscreen rounded boder rules
+
+Don't set shape on windows setting their own shape
+
+Remove redundant header include
+
+Remove xcb-shape extension runtime check
+
+https://github.com/baskerville/bspwm/issues/848#issuecomment-425730913
+
+Fix indentation (use tabs)
+
+Remove window_border_radius()
+
+This function is redundant and used only in one place
+
+Add documentation for border_width
+---
+ doc/bspwm.1          |   5 +++
+ doc/bspwm.1.asciidoc |   3 ++
+ src/messages.c       |  22 +++++++++
+ src/query.c          |   3 ++
+ src/settings.c       |   1 +
+ src/settings.h       |   2 +
+ src/tree.c           |  10 +++++
+ src/types.h          |   5 +++
+ src/window.c         | 104 +++++++++++++++++++++++++++++++++++++++++++
+ src/window.h         |   1 +
+ 10 files changed, 156 insertions(+)
+
+diff --git a/doc/bspwm.1 b/doc/bspwm.1
+index 7611c77..f8ac890 100644
+--- a/doc/bspwm.1
++++ b/doc/bspwm.1
+@@ -1331,6 +1331,11 @@ Size of the gap that separates windows\&.
+ .RS 4
+ Window border width\&.
+ .RE
++.PP
++\fIborder_radius\fR
++.RS 4
++Window border radius\&.
++.RE
+ .SH "POINTER BINDINGS"
+ .PP
+ \fIclick_to_focus\fR
+diff --git a/doc/bspwm.1.asciidoc b/doc/bspwm.1.asciidoc
+index 7b57f42..11f1d17 100644
+--- a/doc/bspwm.1.asciidoc
++++ b/doc/bspwm.1.asciidoc
+@@ -772,6 +772,9 @@ Node Settings
+ 'border_width'::
+ 	Window border width.
+ 
++'border_radius'::
++	Window border radius.
++
+ Pointer Bindings
+ ----------------
+ 
+diff --git a/src/messages.c b/src/messages.c
+index cd4b2f0..fe0d12c 100644
+--- a/src/messages.c
++++ b/src/messages.c
+@@ -1449,6 +1449,13 @@ void set_setting(coordinates_t loc, char *name, char *value, FILE *rsp)
+ 			return;
+ 		}
+ 		SET_DEF_DEFMON_DEFDESK_WIN(border_width, bw)
++	} else if (streq("border_radius", name)) {
++		unsigned int br;
++		if (sscanf(value, "%u", &br) != 1) {
++			fail(rsp, "config: %s: Invalid value: '%s'.\n", name, value);
++			return;
++		}
++		SET_DEF_DEFMON_DEFDESK_WIN(border_radius, br)
+ #undef SET_DEF_DEFMON_DEFDESK_WIN
+ #define SET_DEF_DEFMON_DESK(k, v) \
+ 		if (loc.desktop != NULL) { \
+@@ -1723,6 +1730,21 @@ void get_setting(coordinates_t loc, char *name, FILE* rsp)
+ 		} else {
+ 			fprintf(rsp, "%u", border_width);
+ 		}
++	} else if (streq("border_radius", name)) {
++		if (loc.node != NULL) {
++			for (node_t *n = first_extrema(loc.node); n != NULL; n = next_leaf(n, loc.node)) {
++				if (n->client != NULL) {
++					fprintf(rsp, "%u", n->client->border_radius);
++					break;
++				}
++			}
++		} else if (loc.desktop != NULL) {
++			fprintf(rsp, "%u", loc.desktop->border_radius);
++		} else if (loc.monitor != NULL) {
++			fprintf(rsp, "%u", loc.monitor->border_radius);
++		} else {
++			fprintf(rsp, "%u", border_radius);
++		}
+ 	} else if (streq("window_gap", name)) {
+ 		if (loc.desktop != NULL) {
+ 			fprintf(rsp, "%i", loc.desktop->window_gap);
+diff --git a/src/query.c b/src/query.c
+index dfdee88..2cd186e 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -72,6 +72,7 @@ void query_monitor(monitor_t *m, FILE *rsp)
+ 	fprintf(rsp, "\"stickyCount\":%i,", m->sticky_count);
+ 	fprintf(rsp, "\"windowGap\":%i,", m->window_gap);
+ 	fprintf(rsp, "\"borderWidth\":%u,", m->border_width);
++	fprintf(rsp, "\"borderRadius\":%u,", m->border_radius);
+ 	fprintf(rsp, "\"focusedDesktopId\":%u,", m->desk->id);
+ 	fprintf(rsp, "\"padding\":");
+ 	query_padding(m->padding, rsp);
+@@ -99,6 +100,7 @@ void query_desktop(desktop_t *d, FILE *rsp)
+ 	fprintf(rsp, "\"layout\":\"%s\",", LAYOUT_STR(d->layout));
+ 	fprintf(rsp, "\"windowGap\":%i,", d->window_gap);
+ 	fprintf(rsp, "\"borderWidth\":%u,", d->border_width);
++	fprintf(rsp, "\"borderRadius\":%u,", d->border_radius);
+ 	fprintf(rsp, "\"focusedNodeId\":%u,", d->focus != NULL ? d->focus->id : 0);
+ 	fprintf(rsp, "\"padding\":");
+ 	query_padding(d->padding, rsp);
+@@ -162,6 +164,7 @@ void query_client(client_t *c, FILE *rsp)
+ 		fprintf(rsp, "\"className\":\"%s\",", c->class_name);
+ 		fprintf(rsp, "\"instanceName\":\"%s\",", c->instance_name);
+ 		fprintf(rsp, "\"borderWidth\":%u,", c->border_width);
++		fprintf(rsp, "\"borderRadius\":%u,", c->border_radius);
+ 		fprintf(rsp, "\"state\":\"%s\",", STATE_STR(c->state));
+ 		fprintf(rsp, "\"lastState\":\"%s\",", STATE_STR(c->last_state));
+ 		fprintf(rsp, "\"layer\":\"%s\",", LAYER_STR(c->layer));
+diff --git a/src/settings.c b/src/settings.c
+index 3a5021c..e787ba6 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -56,6 +56,7 @@ void load_settings(void)
+ 	monocle_padding = (padding_t) MONOCLE_PADDING;
+ 	window_gap = WINDOW_GAP;
+ 	border_width = BORDER_WIDTH;
++	border_radius = BORDER_RADIUS;
+ 	split_ratio = SPLIT_RATIO;
+ 	initial_polarity = SECOND_CHILD;
+ 	automatic_scheme = SCHEME_LONGEST_SIDE;
+diff --git a/src/settings.h b/src/settings.h
+index 4968a3c..6547ba6 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -41,6 +41,7 @@
+ #define MONOCLE_PADDING      {0, 0, 0, 0}
+ #define WINDOW_GAP           6
+ #define BORDER_WIDTH         1
++#define BORDER_RADIUS        0
+ #define SPLIT_RATIO          0.5
+ #define AUTOMATIC_SCHEME     SCHEME_LONGEST_SIDE
+ 
+@@ -76,6 +77,7 @@ padding_t padding;
+ padding_t monocle_padding;
+ int window_gap;
+ unsigned int border_width;
++unsigned int border_radius;
+ double split_ratio;
+ child_polarity_t initial_polarity;
+ automatic_scheme_t automatic_scheme;
+diff --git a/src/tree.c b/src/tree.c
+index 2e61078..b4d5341 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -96,6 +96,7 @@ void apply_layout(monitor_t *m, desktop_t *d, node_t *n, layout_t l, xcb_rectang
+ 	}
+ 
+ 	if (is_leaf(n)) {
++		unsigned int br = 0;
+ 
+ 		if (n->client == NULL) {
+ 			return;
+@@ -132,9 +133,12 @@ void apply_layout(monitor_t *m, desktop_t *d, node_t *n, layout_t l, xcb_rectang
+ 				}
+ 			}
+ 			n->client->tiled_rectangle = r;
++			if (!gapless_monocle || l != LAYOUT_MONOCLE)
++				br = n->client->border_radius;
+ 		/* floating clients */
+ 		} else if (s == STATE_FLOATING) {
+ 			r = n->client->floating_rectangle;
++			br = n->client->border_radius;
+ 		/* fullscreen clients */
+ 		} else {
+ 			r = m->rectangle;
+@@ -145,6 +149,7 @@ void apply_layout(monitor_t *m, desktop_t *d, node_t *n, layout_t l, xcb_rectang
+ 
+ 		if (!rect_eq(r, cr)) {
+ 			window_move_resize(n->id, r.x, r.y, r.width, r.height);
++			window_rounded_border(n);
+ 			if (!grabbing) {
+ 				put_status(SBSC_MASK_NODE_GEOMETRY, "node_geometry 0x%08X 0x%08X 0x%08X %ux%u+%i+%i\n", m->id, d->id, n->id, r.width, r.height, r.x, r.y);
+ 			}
+@@ -152,6 +157,9 @@ void apply_layout(monitor_t *m, desktop_t *d, node_t *n, layout_t l, xcb_rectang
+ 
+ 		window_border_width(n->id, bw);
+ 
++		n->client->drawn_border_radius = br;
++		window_rounded_border(n);
++
+ 	} else {
+ 		xcb_rectangle_t first_rect;
+ 		xcb_rectangle_t second_rect;
+@@ -698,8 +706,10 @@ client_t *make_client(void)
+ 	snprintf(c->class_name, sizeof(c->class_name), "%s", MISSING_VALUE);
+ 	snprintf(c->instance_name, sizeof(c->instance_name), "%s", MISSING_VALUE);
+ 	c->border_width = border_width;
++	c->border_radius = border_radius;
+ 	c->urgent = false;
+ 	c->shown = false;
++	c->sets_own_shape = false;
+ 	c->wm_flags = 0;
+ 	c->icccm_props.input_hint = true;
+ 	c->icccm_props.take_focus = false;
+diff --git a/src/types.h b/src/types.h
+index 1aebc77..b3ea6df 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -207,8 +207,11 @@ typedef struct {
+ 	char class_name[3 * SMALEN / 2];
+ 	char instance_name[3 * SMALEN / 2];
+ 	unsigned int border_width;
++	unsigned int border_radius;
++	unsigned int drawn_border_radius;
+ 	bool urgent;
+ 	bool shown;
++	bool sets_own_shape;
+ 	client_state_t state;
+ 	client_state_t last_state;
+ 	stack_layer_t layer;
+@@ -273,6 +276,7 @@ struct desktop_t {
+ 	padding_t padding;
+ 	int window_gap;
+ 	unsigned int border_width;
++	unsigned int border_radius;
+ };
+ 
+ typedef struct monitor_t monitor_t;
+@@ -286,6 +290,7 @@ struct monitor_t {
+ 	unsigned int sticky_count;
+ 	int window_gap;
+ 	unsigned int border_width;
++	unsigned int border_radius;
+ 	xcb_rectangle_t rectangle;
+ 	desktop_t *desk;
+ 	desktop_t *desk_head;
+diff --git a/src/window.c b/src/window.c
+index 1229a07..e72e4cd 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -137,10 +137,21 @@ bool manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ 	node_t *n = make_node(win);
+ 	client_t *c = make_client();
+ 	c->border_width = csq->border ? d->border_width : 0;
++	c->border_radius = d->border_radius;
+ 	n->client = c;
+ 	initialize_client(n);
+ 	initialize_floating_rectangle(n);
+ 
++	xcb_shape_query_extents_reply_t* ext = xcb_shape_query_extents_reply(dpy, xcb_shape_query_extents(dpy, n->id), NULL);
++
++	n->client->sets_own_shape = false;
++	if (ext != NULL) {
++		n->client->sets_own_shape = ext->bounding_shaped || ext->clip_shaped;
++
++		free(ext);
++	}
++	fprintf(stderr, "sets shape: %d\n", n->client->sets_own_shape);
++
+ 	if (csq->rect != NULL) {
+ 		c->floating_rectangle = *csq->rect;
+ 		free(csq->rect);
+@@ -212,6 +223,8 @@ bool manage_window(xcb_window_t win, rule_consequence_t *csq, int fd)
+ 		draw_border(n, false, (m == mon));
+ 	}
+ 
++	window_rounded_border(n);
++
+ 	ewmh_set_wm_desktop(n, d);
+ 	ewmh_update_client_list(false);
+ 	free(csq->layer);
+@@ -319,6 +332,7 @@ void draw_presel_feedback(monitor_t *m, desktop_t *d, node_t *n)
+ 
+ 	window_move_resize(p->feedback, n->rectangle.x + presel_rect.x, n->rectangle.y + presel_rect.y,
+ 	                   presel_rect.width, presel_rect.height);
++	window_rounded_border(n);
+ 
+ 	if (!exists && m->desk == d) {
+ 		window_show(p->feedback);
+@@ -412,6 +426,95 @@ void draw_border(node_t *n, bool focused_node, bool focused_monitor)
+ 	}
+ }
+ 
++void window_rounded_border(node_t *n)
++{
++	xcb_window_t win = n->id;
++	unsigned int radius = n->client->drawn_border_radius;
++
++	if (n->client->sets_own_shape) return;
++
++	// get geometry
++	xcb_get_geometry_reply_t *geo = xcb_get_geometry_reply(dpy, xcb_get_geometry(dpy, win), NULL);
++	if (geo == NULL) return;
++
++	uint16_t x  = geo->x;
++	uint16_t y  = geo->y;
++	uint16_t w  = geo->width;
++	uint16_t h  = geo->height;
++	uint16_t bw = geo->border_width;
++	uint16_t ow  = w+2*bw;
++	uint16_t oh  = h+2*bw;
++
++	free(geo);
++
++	xcb_pixmap_t bpid = xcb_generate_id(dpy);
++	xcb_pixmap_t cpid = xcb_generate_id(dpy);
++
++	xcb_create_pixmap(dpy, 1, bpid, win, ow, oh);
++	xcb_create_pixmap(dpy, 1, cpid, win, w, h);
++
++	xcb_gcontext_t black = xcb_generate_id(dpy);
++	xcb_gcontext_t white = xcb_generate_id(dpy);
++
++	xcb_create_gc(dpy, black, bpid, XCB_GC_FOREGROUND, (uint32_t[]){0, 0});
++	xcb_create_gc(dpy, white, bpid, XCB_GC_FOREGROUND, (uint32_t[]){1, 0});
++
++	int32_t rad, dia;
++	rad = radius;
++
++	rad += bw; dia = rad*2-1;
++
++	xcb_arc_t barcs[] = {
++		{ -1,     -1,     dia, dia, 0, 360 << 6 },
++		{ -1,     oh-dia, dia, dia, 0, 360 << 6 },
++		{ ow-dia, -1,     dia, dia, 0, 360 << 6 },
++		{ ow-dia, oh-dia, dia, dia, 0, 360 << 6 },
++	};
++	xcb_rectangle_t brects[] = {
++		{ rad, 0, ow-dia, oh },
++		{ 0, rad, ow, oh-dia },
++	};
++
++	rad -= bw; dia = rad*2-1;
++
++	xcb_arc_t carcs[] = {
++		{ -1,    -1,    dia, dia, 0, 360 << 6 },
++		{ -1,    h-dia, dia, dia, 0, 360 << 6 },
++		{ w-dia, -1,    dia, dia, 0, 360 << 6 },
++		{ w-dia, h-dia, dia, dia, 0, 360 << 6 },
++	};
++	xcb_rectangle_t crects[] = {
++		{ rad, 0, w-dia, h },
++		{ 0, rad, w, h-dia },
++	};
++
++	xcb_rectangle_t bounding = {0, 0, w+2*bw, h+2*bw};
++	xcb_poly_fill_rectangle(dpy, bpid, black, 1, &bounding);
++	xcb_poly_fill_rectangle(dpy, bpid, white, 2, brects);
++	xcb_poly_fill_arc(dpy, bpid, white, 4, barcs);
++
++	xcb_rectangle_t clipping = {0, 0, w, h};
++	xcb_poly_fill_rectangle(dpy, cpid, black, 1, &clipping);
++	xcb_poly_fill_rectangle(dpy, cpid, white, 2, crects);
++	xcb_poly_fill_arc(dpy, cpid, white, 4, carcs);
++
++	xcb_shape_mask(dpy, XCB_SHAPE_SO_SET, XCB_SHAPE_SK_BOUNDING,  win, -bw, -bw, bpid);
++	xcb_shape_mask(dpy, XCB_SHAPE_SO_SET, XCB_SHAPE_SK_CLIP, win, 0, 0, cpid);
++
++	if (n->presel != NULL && n->presel != XCB_NONE) {
++		xcb_window_t fb = n->presel->feedback;
++		xcb_get_geometry_reply_t *fb_geo = xcb_get_geometry_reply(dpy, xcb_get_geometry(dpy, fb), NULL);
++
++		if (fb_geo != NULL) {
++			xcb_shape_mask(dpy, XCB_SHAPE_SO_SET, XCB_SHAPE_SK_BOUNDING, fb, x-fb_geo->x, y-fb_geo->y, bpid);
++			free(fb_geo);
++		}
++	}
++
++	xcb_free_pixmap(dpy, bpid);
++	xcb_free_pixmap(dpy, cpid);
++}
++
+ void window_draw_border(xcb_window_t win, uint32_t border_color_pxl)
+ {
+ 	xcb_change_window_attributes(dpy, win, XCB_CW_BORDER_PIXEL, &border_color_pxl);
+@@ -612,6 +715,7 @@ bool resize_client(coordinates_t *loc, resize_handle_t rh, int dx, int dy, bool
+ 		n->client->floating_rectangle = (xcb_rectangle_t) {x, y, width, height};
+ 		if (n->client->state == STATE_FLOATING) {
+ 			window_move_resize(n->id, x, y, width, height);
++			window_rounded_border(n);
+ 
+ 			if (!grabbing) {
+ 				put_status(SBSC_MASK_NODE_GEOMETRY, "node_geometry 0x%08X 0x%08X 0x%08X %ux%u+%i+%i\n", loc->monitor->id, loc->desktop->id, loc->node->id, width, height, x, y);
+diff --git a/src/window.h b/src/window.h
+index 414ebea..79805cb 100644
+--- a/src/window.h
++++ b/src/window.h
+@@ -44,6 +44,7 @@ void hide_presel_feedbacks(monitor_t *m, desktop_t *d, node_t *n);
+ void update_colors(void);
+ void update_colors_in(node_t *n, desktop_t *d, monitor_t *m);
+ void draw_border(node_t *n, bool focused_node, bool focused_monitor);
++void window_rounded_border(node_t *n);
+ void window_draw_border(xcb_window_t win, uint32_t border_color_pxl);
+ void adopt_orphans(void);
+ uint32_t get_border_color(bool focused_node, bool focused_monitor);
+-- 
+2.19.2
+
