@@ -17,7 +17,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Type | Program |
 |:--- | :---- |
 | Linux Distro | [Funtoo](https://www.funtoo.org/Welcome) |
-| Window Manager | [Bspwm](https://github.com/baskerville/bspwm) |
+| Window Manager | [Bspwm](https://github.com/baskerville/bspwm) (with Rounded Corners patch)  |
 | Web Browser | [qutebrowser](https://qutebrowser.org/) |
 | Program Launcher | [Rofi](https://github.com/DaveDavenport/rofi) |
 | Status bar | [Polybar](https://github.com/jaagr/polybar) |
