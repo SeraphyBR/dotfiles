@@ -11,7 +11,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ### GTK/QT Look:
 
-![Screenshot-3](Screenshots/Screenshot4.png)
+![Screenshot-3](Screenshots/Screenshot3.png)
 
 ## Setup Description:
 | Type | Program |
