@@ -6,21 +6,22 @@ mpd_port = 6600
 #mpd_connection_timeout = 5
 mpd_music_dir = "/home/seraphybr-fun/Música"
 mpd_crossfade_time = 12
-external_editor = nvim
+external_editor = /usr/bin/nvim
 use_console_editor = yes
+regular_expressions = basic
 
 # Display ..
-song_list_format = " $8{%t}|{%f} $R $0{%26b}|{%a} $3%l "
+song_list_format = " $8{%t}|{%f} $R $0{%26b}|{%a} $4%l "
 song_columns_list_format = "(3)[]{} (40)[white]{t|f}  (49)[blue]{b}   (4)[green]{l}"
-song_status_format = " $3%t $0 $1%a "
+song_status_format = " $2%t  $6%a "
 playlist_display_mode = "columns" (classic/columns)
-volume_color = "7"
+volume_color = "2"
 clock_display_seconds = yes
 display_remaining_time = "yes"
 display_volume_level = yes 
-browser_display_mode = classic
-search_engine_display_mode = classic
-playlist_editor_display_mode = classic
+browser_display_mode = columns
+search_engine_display_mode = columns
+playlist_editor_display_mode = columns
 display_bitrate = "yes"
 autocenter_mode = "yes" 
 user_interface = alternative             
@@ -35,7 +36,7 @@ now_playing_suffix = "$8$/b"
 browser_playlist_prefix = "$2  $0 "
 
 # Visualizer
-visualizer_color = "5" 
+visualizer_color = "3" 
 visualizer_fifo_path = /tmp/mpd.fifo
 visualizer_output_name = "Visualizer feed"
 visualizer_in_stereo = yes
@@ -46,14 +47,14 @@ visualizer_look = "▋▋"
 # Progress Bar ..
 progressbar_look = "━━─"
 progressbar_color = "1"
-progressbar_elapsed_color = "3"
+progressbar_elapsed_color = "4"
 
 # Colors ..
 colors_enabled = "yes"
 empty_tag_color = "6"
 statusbar_color = "5"
 state_line_color = "1"
-state_flags_color = "5"
+state_flags_color = "4"
 main_window_color = "5"
 header_window_color = "5"
 
