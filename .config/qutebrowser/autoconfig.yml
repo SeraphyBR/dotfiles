@@ -3,6 +3,19 @@
 
 config_version: 2
 settings:
+  backend:
+    global: webengine
+  bindings.commands:
+    global:
+      normal:
+        M: hint links spawn mpv {hint-url}
+        m: spawn mpv {url}
+  content.images:
+    global: true
+  content.javascript.can_open_tabs_automatically:
+    global: true
+  content.plugins:
+    global: true
   fonts.completion.category:
     global: 12pt DejaVuSans Mono
   fonts.completion.entry:
