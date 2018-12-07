@@ -27,6 +27,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Sound Visualizer | [Cava](https://github.com/karlstav/cava) |
 | File Manager  | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons) / Thunar |
 | Image Viewer | [sxiv](https://github.com/muennich/sxiv) |
+| PDF Viewer | [zathura](https://github.com/pwmt/zathura) |
 | Wallpaper Setter | [hsetroot](https://github.com/himdel/hsetroot) |
 | ScreenShooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
 | Terminal Emulator | [Termite](https://github.com/thestinger/termite) |
