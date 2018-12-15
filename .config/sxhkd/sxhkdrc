@@ -37,7 +37,7 @@ super + e
 
 # Lançador de Programas / Alternador de janelas
 super + {d,w}
-    rofi -modi run,drun,window -show {drun,window} -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode
+    rofi -modi run,drun,window -show {drun,window} -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode -matching fuzzy
 
 # Recarregar o arquivo de configuração do sxhkd e polybar:
 super + Escape
