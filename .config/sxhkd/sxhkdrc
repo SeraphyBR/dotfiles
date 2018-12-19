@@ -41,7 +41,7 @@ super + {d,w}
 
 # Recarregar o arquivo de configuração do sxhkd e polybar:
 super + Escape
-	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
+	pkill -USR1 -x sxhkd
 
 # Localizar arquivos pelo rofi:
 super + f
