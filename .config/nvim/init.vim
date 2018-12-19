@@ -19,15 +19,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh',}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'Shougo/echodoc.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
-Plug 'chrisbra/colorizer'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'morhetz/gruvbox'
 
@@ -37,25 +35,12 @@ call plug#end()            " required
 " Put your non-Plugin stuff after this line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Deoplete section:
-let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LanguageClient-neovim and related:
+" Language servers related:
 
 " https://github.com/MaskRay/ccls
 " https://github.com/palantir/python-language-server
-
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/home/seraphybr-fun/.local/bin/pyls'],
-    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-    \ }
-let g:LanguageClient_hasSnippetSupport = 0 
-let g:LanguageClient_loadSettings = 1 
 
 let g:ale_linters = {
     \ 'python': ['pyls']
@@ -215,7 +200,6 @@ map <F7> mzgg=G`z
 
 "" Advanced:
 set ruler	                " Show row and column ruler information
-
 set undolevels=1500	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
