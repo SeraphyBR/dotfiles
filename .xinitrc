@@ -4,4 +4,6 @@
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session bspwm
+if [ "$2" = "bspwm" ] || [ "$2" = "" ]; then
+    exec ck-launch-session dbus-launch --sh-syntax --exit-with-session bspwm
+fi
