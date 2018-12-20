@@ -13,7 +13,7 @@ ZSH=/home/seraphybr-fun/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-if [ "$DISPLAY" = "" ]; then
+if [ -z "$DISPLAY" ]; then
     ZSH_THEME="rkj-repos"
     export TERM="xterm-256color"
 else 
@@ -117,7 +117,7 @@ colors
 ###### PowerLevel9K Section #####################################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-if [ "$DISPLAY" != " " ]; then 
+if [ ! -z "$DISPLAY" ]; then 
     POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
@@ -151,6 +151,9 @@ alias sxiv="sxiv -r . "
 alias addpkg="doas emerge -a --jobs"
 alias update="doas ego sync"
 alias upgrade="doas emerge -auvDN @world"
+alias .='cd ../'
+alias ..='cd ../../'
+
 ##################################################################
 
 c() {
@@ -180,7 +183,6 @@ if [[ -f $1 ]]; then
 		*.lzma) unlzma "$1" ;;
 		*.Z) uncompress "$1" ;;
 		*.7z) 7z x "$1" ;;
-		*.deb) ar x ./"$1" ;;
 		*) echo "'$1' cannot be extracted via extract."
 	esac
 else
@@ -196,11 +198,11 @@ if [ ! -e "~/.hgrc" ];then
 fi
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
+if [ ! -d $ZSH_CACHE_DIR ]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
 source $ZSH/oh-my-zsh.sh
 
-
 ###############################################################
+
