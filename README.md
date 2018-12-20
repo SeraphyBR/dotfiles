@@ -110,7 +110,7 @@ sudo make install
 * And then create the following script called "tty-colors.start" in [/etc/local.d/](https://wiki.gentoo.org/wiki//etc/local.d) :
 
 ``` sh
-#!/bin/sh
+#!/usr/bin/env sh
 
 PROGRAM=/usr/local/bin/setcolors
 COLORS=/etc/tty-colors
