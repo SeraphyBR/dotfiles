@@ -7,7 +7,7 @@
 #                                                          
 
 # Path to your oh-my-zsh installation.
-ZSH=/home/seraphybr-fun/.oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -64,7 +64,7 @@ promptinit; prompt gentoo
 ############# Options section ####################################################
 
 # Auto correct mistakes
-setopt correct 
+#setopt correct 
 # Extended globbing. Allows using regular expressions with *  
 setopt extendedglob                                            
 # Case insensitive globbing
@@ -94,8 +94,8 @@ zstyle ':completion:*' rehash true                              # automatically 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
+zstyle ':completion:*' cache-path $HOME/.zsh/cache
+HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
@@ -104,10 +104,9 @@ WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider
 
 # Use autosuggestion
 # https://github.com/zsh-users/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-
 
 # Theming section
 autoload -U compinit colors zcalc
@@ -190,7 +189,6 @@ else
 fi
 }
 ###############################################################
-#PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # If powerlevel9k shows errors messages about mercurial...
 if [ ! -e "~/.hgrc" ];then
