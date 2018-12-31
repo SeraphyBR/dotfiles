@@ -44,44 +44,12 @@
 # required by @world (argument)
 # /var/git/meta-repo/kits/core-kit/profiles/funtoo/kits/python-kit/3.4-prime/package.mask/funtoo-kit-python:
 =dev-lang/python-3.5.3-r1
-# required by popcorntime-bin (argument)
-# /etc/portage/package.mask:
-=media-tv/popcorntime-bin-0.3.10
-# required by compton-conf (argument)
-# /etc/portage/package.mask:
-=x11-apps/compton-conf-0.3.0
-# required by kotlin-bin (argument)
-# /etc/portage/package.mask:
-=dev-lang/kotlin-bin-1.2.41
-# required by lightdm-gtk-greeter-settings (argument)
-# /etc/portage/package.mask:
-=x11-misc/lightdm-gtk-greeter-settings-1.2.2
 # required by flameshot (argument)
 # /etc/portage/package.mask:
 =media-gfx/flameshot-0.5.1
 # required by onlyoffice (argument)
 # /etc/portage/package.mask:
 =app-office/onlyoffice-4.8.7.392
-# required by app-emulation/wine-1.7.34-r2::eroen[multislot]
-# required by wine (argument)
-# /etc/portage/package.mask:
-=app-admin/eselect-wine-0.2
-# required by wine (argument)
-# /var/git/meta-repo/kits/core-kit/profiles/package.mask/00-gentoo:
-# Michał Górny <mgorny@gentoo.org> (28 Nov 2017)
-# Replaced by split packages. Please install one of:
-# - app-emulation/wine-vanilla (the only choice for stable)
-# - app-emulation/wine-staging
-# - app-emulation/wine-d3d9
-# - app-emulation/wine-any
-# For more information, please read the news item:
-# https://www.gentoo.org/support/news-items/2017-04-10-split-and-slotted-wine.html
-# If you really need the old ebuilds, you can use the 'wine' repository.
-# Removal in 30 days.
-=app-emulation/wine-1.7.34-r2
-# required by app-emulation/wine-1.7.34-r2::eroen[multislot]
-# required by wine (argument)
-# 
 # required by x11-misc/polybar::seraphybr-overlay (argument)
 # /etc/portage/package.mask:
 =x11-misc/polybar-9999
@@ -105,10 +73,13 @@
 # /var/git/meta-repo/kits/core-kit/profiles/package.mask/funtoo-staging-oleg:
 # FL-3261: keep newest iputils masked.
 =net-misc/iputils-20171016_pre-r1
-# required by =media-video/ffmpeg-3.4.4 (argument)
-# /etc/portage/package.mask:
-=media-video/ffmpeg-3.4.4
-=net-libs/nodejs-9.11.2::libressl
 # required by papirus-libreoffice-theme (argument)
 # /etc/portage/package.mask:
 =x11-themes/papirus-libreoffice-theme-20170228
+# required by =flameshot-0.6.0 (argument)
+# /etc/portage/package.mask:
+=media-gfx/flameshot-0.6.0
+
+# required by zeronet (argument)
+# /etc/portage/package.mask:
+=net-vpn/zeronet-0.6.4-r1

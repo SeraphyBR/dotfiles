@@ -3,11 +3,15 @@
 */*::abendbrot
 */*::quarks
 */*::seeds
-*/*::libressl
+*/*::raiagent
 >=x11-drivers/nvidia-drivers-391.0.0
+>x11-drivers/nvidia-drivers-390.77-r1
 >=x11-misc/polybar-9999
 >=app-emulation/libvirt-4.6.0-r1
 >=dev-python/libvirt-python-4.6.0
 >=app-emulation/libvirt-glib-1.0.0-r1
-dev-libs/openssl
+>app-text/zathura-pdf-poppler-0.2.7
+>app-text/zathura-0.3.7 
+>=dev-libs/girara-0.2.8
+>=media-sound/spotify-1.0.81
 
