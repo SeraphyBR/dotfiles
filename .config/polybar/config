@@ -18,74 +18,38 @@
 ;==============================================================
 
 [colors]
-# Para transparencia usa-se o padrão RGBA ou AARRGGBB (Nesse arquivo de configuração) .
-# Segue a tabela com os valores HEX para AA, de acordo com o nivel de transparencia.
-# 100% — FF
-# 95% — F2
-# 90% — E6
-# 85% — D9
-# 80% — CC
-# 75% — BF
-# 70% — B3
-# 65% — A6
-# 60% — 99
-# 55% — 8C
-# 50% — 80
-# 45% — 73
-# 40% — 66
-# 35% — 59
-# 30% — 4D
-# 25% — 40
-# 20% — 33
-# 15% — 26
-# 10% — 1A
-# 5% — 0D
-# 0% — 00
 
-## Colors: Red, Orange, Yellow... [Hot colors]:
-
-Orange1 = #fba922
-Crimson = #DC143C
-Yellow = #FFFF00
-OrangeRed = #FF4500
-Gold = #FFD700
-Red = #FF0000
-
-## Colors: Blue, Green and Brown:
-
-blue = #0000FF
-DeepSkyBlue = #00BFFF
-SteelBlue = #4682B4
-
-violet = #9400D3
-
-green2 = #253d2d
-chartreuse = #7FFF00
-SpringGreen = #00FF7F
-DarkOliveGreen = #556B2F
-
-SaddleBrown = #8B4513
-
-## White, Black and Gray:
-
-TrueBlack = #000000
-Black = #222
-DarkSlateGray = #2F2828
-GitHubBlack = #24292e
-DimGray = #696969
-DavysGrey = #555
-white = #FFFFFF
-
-#### General Colors:
-
-background = ${self.GitHubBlack}
-background-alt = #73444444
+background = #24292E
+foreground = #FFFFFF
 border = ${self.background}
-foreground = ${self.white}
-foreground-alt = #ffffff
-primary = #00FF00
-secondary = #006400
-alert = ${self.Red}
+alert = #FF0000
+empty = #555555
+
+# Modules colors
+bspwm = #7FFF00
+bspwm-alert = #FF4500
+bspwm-background = #3f3f3f
+bspwm-dimmed = #FBA922
+user = #7DF059
+volume = #8FF6FF
+xbacklight = #c8f059 
+nvidia = #7FFF00
+ram = #D6AA3F
+cpu = #D6AA3F
+temperature = #DC143C
+bluetooth = #00BFFF
+wifi = #00BFFF
+ethernet = #27A2FF
+calendar = #00FF7F
+clock = #00FF7F
+battery = #FFFF00
+mocp = #fba922
+spotify = #1db954
+xwindow = #FF4500
+weather = #00BFFF
+uptime = #9B78F1
+powermenu = #FFA707
+powermenu-close = #FF4500
 
 ################################################################################
 
@@ -174,11 +138,11 @@ tray-background = ${colors.background}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:46:...%
+format-underline = ${colors.xwindow}
 format-prefix = " "
 format-suffix = " "
 format-prefix-foreground = ${self.format-underline}
 format-suffix-foreground = ${self.format-underline}
-format-underline = ${colors.OrangeRed}
 
 ###############################################################################
 
@@ -241,8 +205,8 @@ label-monitor = %name%
 ;   label-dimmed-occupied
 ;   label-dimmed-urgent
 ;   label-dimmed-empty
-label-dimmed-focused-foreground = ${colors.Orange1}
-label-dimmed-focused-underline = ${colors.Orange1}
+label-dimmed-focused-foreground = ${colors.bspwm-dimmed}
+label-dimmed-focused-underline = ${colors.bspwm-dimmed}
 label-dimmed-focused-background = ${self.label-focused-background}
 
 ; Available tokens:
@@ -251,9 +215,9 @@ label-dimmed-focused-background = ${self.label-focused-background}
 ;   %index%
 ; Default: %icon%  %name%
 label-focused = %icon%
-label-focused-foreground = ${colors.chartreuse}
-label-focused-background = #3f3f3f
-label-focused-underline = ${colors.primary}
+label-focused-foreground = ${colors.bspwm}
+label-focused-background = ${colors.bspwm-background}
+label-focused-underline = ${colors.bspwm}
 
 ; Available tokens:
 ;   %name%
@@ -261,7 +225,7 @@ label-focused-underline = ${colors.primary}
 ;   %index%
 ; Default: %icon%  %name%
 label-occupied = %icon%
-label-occupied-underline = ${colors.DavysGrey}
+label-occupied-underline = ${colors.empty}
 
 ; Available tokens:
 ;   %name%
@@ -269,9 +233,9 @@ label-occupied-underline = ${colors.DavysGrey}
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %icon%
-label-urgent-foreground = ${colors.OrangeRed}
-label-urgent-background = #3f3f3f
-label-urgent-underline = ${colors.OrangeRed}
+label-urgent-foreground = ${colors.bspwm-alert}
+label-urgent-background = ${colors.bspwm-background}
+label-urgent-underline = ${colors.bspwm-alert}
 
 ; Available tokens:
 ;   %name%
@@ -279,7 +243,7 @@ label-urgent-underline = ${colors.OrangeRed}
 ;   %index%
 ; Default: %icon%  %name%
 label-empty = %icon%
-label-empty-foreground = #55
+label-empty-foreground = ${colors.empty}
 
 ; The following labels will be used to indicate the layout/mode
 ; for the focused workspace. Requires <label-mode>
@@ -298,23 +262,15 @@ label-empty-foreground = #55
 ;label-private = 
 ;label-private-foreground = #bd2c40
 
-###############################################################################
-
-[module/gmail]
-type = custom/script
-exec = ~/.config/polybar/Scripts/gmail/launch.py --color '#00FF7F'
-tail = true
-click-left = xdg-open https://mail.google.com
-
 ##############################################################################
 
 [module/bluetooth]
 type = custom/script
 interval = 5
-format-underline = ${colors.DeepSkyBlue}
-format-foreground = ${colors.DeepSkyBlue}
+format-foreground = ${colors.bluetooth}
+format-underline = ${self.format-foreground}
 exec = ~/.config/polybar/Scripts/bluetooth.sh
-click-left = "gksudo bluetooth toggle"
+click-left = "doas bluetooth toggle"
 
 ###############################################################################
 
@@ -326,9 +282,9 @@ format = <label>
 label-maxlen = 40
 format-prefix = "  "
 format-suffix = "  "
-format-prefix-foreground = ${colors.Orange1}
-format-suffix-foreground = ${colors.Orange1}
-format-underline = ${colors.Orange1}
+format-prefix-foreground = ${colors.mocp}
+format-suffix-foreground = ${colors.mocp}
+format-underline = ${colors.mocp}
 exec = ~/.config/polybar/Scripts/player-moc.sh
 
 click-left = mocp -f
@@ -349,7 +305,7 @@ format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:}%{F#fba922}%{F-} 
 ;format-stopped = ${self.format-online}
 
 format-playing-underline = #53FF56
-format-paused-underline = ${colors.Orange1}
+format-paused-underline = #fba922
 
 ; Available tags:
 ;   <label-offline>
@@ -386,8 +342,8 @@ type = custom/script
 interval = 1.5
 format-prefix = "  "
 format-suffix = "  "
-format-prefix-foreground = #1db954
-format-suffix-foreground = #1db954
+format-prefix-foreground = ${colors.spotify}
+format-suffix-foreground = ${colors.spotify}
 format = <label>
 exec = python ~/.config/polybar/Scripts/spotify_status.py -f '{song} by {artist}' -t 32
 
@@ -395,7 +351,7 @@ click-left = playerctl next
 click-right = playerctl previous
 click-middle = playerctl play-pause && notify-send -u low "Spotify: $(playerctl status)"
 
-format-underline = #1db954
+format-underline = ${colors.spotify}
 ###############################################################################
 
 [module/xbacklight]
@@ -404,7 +360,7 @@ card = intel_backlight
 
 format = <label> <bar>
 label = 
-label-foreground = #c8f059
+label-foreground = ${colors.xbacklight}
 
 bar-width = 10
 bar-indicator = 
@@ -412,19 +368,19 @@ bar-indicator-foreground = #ff
 bar-indicator-font = 2
 bar-fill = ""
 bar-fill-font = 1
-bar-fill-foreground = #c8f059
+bar-fill-foreground = ${colors.xbacklight}
 bar-empty = ""
 bar-empty-font = 1
-bar-empty-foreground = ${colors.DavysGrey}
+bar-empty-foreground = ${colors.empty}
 
 #############################################################################
 
 [module/cpu]
 type = internal/cpu
 interval = 2
+format-underline =  ${colors.cpu}
 format-suffix = "  "
 format-suffix-foreground = ${self.format-underline}
-format-underline =  #D6AA3F
 label = %percentage%%
 
 ##############################################################################
@@ -432,9 +388,9 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
+format-underline =  ${colors.ram}
 format-suffix = "  "
 format-suffix-foreground = ${self.format-underline}
-format-underline =  #D6AA3F
 label = %percentage_used%%
 
 ###################################################################
@@ -447,7 +403,7 @@ interval = 3.0
 format-connected = <label-connected>
 format-connected-suffix = "  "
 format-connected-suffix-foreground = ${self.format-connected-underline}
-format-connected-underline = ${colors.DeepSkyBlue}
+format-connected-underline = ${colors.wifi}
 
 label-connected = %essid%
 label-connected-maxlen = 12
@@ -466,7 +422,7 @@ interface = eth0
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-underline = #27a2ff
+format-connected-underline = ${colors.ethernet}
 format-connected-suffix = "%{T3}  %{T-}"
 format-connected-suffix-foreground = ${self.format-connected-underline}
 
@@ -485,10 +441,10 @@ time = %H:%M:%S
 time-alt = %H:%M
 
 format = " <label>"
+format-underline = ${colors.clock}
 format-suffix = "  "
 format-suffix-foreground = ${self.format-underline}
 format-foreground = ${colors.foreground}
-format-underline = ${colors.SpringGreen}
 
 label = %time%
 label-font = 10
@@ -501,10 +457,10 @@ exec = "date +%d-%m-%Y"
 interval = 600
 
 format = " <label>"
+format-underline = ${colors.calendar}
 format-suffix = "  "
 format-suffix-foreground = ${self.format-underline}
 format-foreground = ${colors.foreground}
-format-underline = ${colors.SpringGreen}
 
 click-left = gsimplecal &
 
@@ -516,15 +472,15 @@ type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
-label-volume-foreground = #8FF6FF
+label-volume-foreground = ${colors.volume}
 
 format-muted-suffix = "  "
-format-muted-foreground = #8FF6FF
+format-muted-foreground = ${colors.volume}
 label-muted = " Som Mudo"
-format-muted-underline = #8FF6FF
+format-muted-underline = ${colors.volume}
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #8FF6FF
+bar-volume-foreground-0 = ${colors.volume}
 
 bar-volume-gradient = false
 bar-volume-indicator =  
@@ -533,7 +489,7 @@ bar-volume-fill = ""
 bar-volume-fill-font = 1
 bar-volume-empty = ""
 bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.DavysGrey}
+bar-volume-empty-foreground = ${colors.empty}
 
 ##########################################################
 
@@ -544,7 +500,7 @@ adapter = ADP0
 full-at = 98
 
 format-charging =  <label-charging> <animation-charging>
-format-charging-underline = ${colors.Yellow}
+format-charging-underline = ${colors.battery}
 
 format-discharging = <label-discharging> <ramp-capacity>
 format-discharging-underline = ${self.format-charging-underline}
@@ -578,7 +534,7 @@ thermal-zone = 0
 warn-temperature = 65
 
 format =  <label> <ramp>
-format-underline = ${colors.Crimson}
+format-underline = ${colors.temperature}
 format-warn = <label-warn> <ramp>
 format-warn-underline = ${self.format-underline}
 
@@ -591,7 +547,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-3 = 
 ramp-4 = 
-ramp-foreground = ${colors.Crimson}
+ramp-foreground = ${colors.temperature}
 
 #########################################################
 
@@ -599,13 +555,14 @@ ramp-foreground = ${colors.Crimson}
 type = custom/menu
 
 format-spacing = 1
-format-underline =  #ffa707
+format-underline =  ${colors.powermenu}
 
-label-open = "%{T3}%{F#ffa707}  %{F-}%{T-} "
+label-open = "%{T3}  %{T-} "
+label-open-foreground = ${colors.powermenu}
 label-close = "  "
-label-close-foreground = ${colors.OrangeRed}
+label-close-foreground = ${colors.powermenu-close}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
 
 menu-0-0 = "  "
 menu-0-0-exec = menu-open-1
@@ -649,8 +606,8 @@ exec = ~/.config/polybar/Scripts/uptime.sh
 label = %output%
 format = <label>
 format-suffix = "  "
-format-suffix-foreground =  #9b78f1
-format-underline =  #9b78f1
+format-suffix-foreground =  ${colors.uptime}
+format-underline =  ${colors.uptime}
 ###############################################################################
 
 [module/openweathermap-detailed]
@@ -658,16 +615,20 @@ type = custom/script
 exec = ~/.config/polybar/Scripts/openweathermap-detailed.sh
 interval = 600
 format = " <label> "
-format-underline = ${colors.DeepSkyBlue}
-format-foreground = ${colors.white}
+format-underline = ${colors.weather}
+format-foreground = ${colors.foreground}
 
 ###############################################################################
 
 [module/my-text-label]
 type = custom/text
-content = " %{F#7df059}  %{F-} SeraphyBR - Funtoo Linux  "
-content-foreground = ${colors.white}
-content-underline = #7df059
+content = "SeraphyBR - Funtoo Linux"
+content-prefix = "    "
+content-suffix = "   "
+content-prefix-foreground = ${colors.user}
+content-suffix-foreground = ${colors.foreground}
+content-foreground = ${colors.foreground}
+content-underline = ${colors.user}
  
 ################################################################################
 
@@ -675,7 +636,7 @@ content-underline = #7df059
 type = custom/script
 interval = 2
 format = <label>
-format-underline = ${colors.chartreuse}
+format-underline = ${colors.nvidia}
 click-left = "optirun -b none nvidia-settings -c :8"
 exec = ~/.config/polybar/Scripts/bbswitch.sh
 
