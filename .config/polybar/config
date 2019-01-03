@@ -44,6 +44,9 @@ calendar = #00FF7F
 clock = #00FF7F
 battery = #FFFF00
 mocp = #fba922
+mpd-playing = #53FF56
+mpd-paused = #FBA922
+mpd-offline = #69656F
 spotify = #1db954
 xwindow = #FF4500
 weather = #00BFFF
@@ -299,18 +302,27 @@ host = localhost
 port = 6600
 interval = 1
 
-;format-online =
-format-playing = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:}%{F#53FF56}%{F-} <label-song> %{F#53FF56}%{F-}%{A A A}" 
-format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:}%{F#fba922}%{F-} <label-song> %{F#fba922}%{F-}%{A A A}"  
-;format-stopped = ${self.format-online}
+format-playing = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:} <label-song> %{A A A}"
+format-playing-prefix =  
+format-playing-prefix-foreground = ${colors.mpd-playing}
+format-playing-suffix =  
+format-playing-suffix-foreground = ${colors.mpd-playing}
+format-playing-underline = ${colors.mpd-playing}
 
-format-playing-underline = #53FF56
-format-paused-underline = #fba922
+format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:} <label-song> %{A A A}"   
+format-paused-prefix =  
+format-paused-prefix-foreground = ${colors.mpd-paused}
+format-paused-suffix =  
+format-paused-suffix-foreground = ${colors.mpd-paused}  
+format-paused-underline = ${colors.mpd-paused}
 
-; Available tags:
-;   <label-offline>
-format-offline = "%{F#69656F}%{F-} <label-offline> %{F#69656F}%{F-}"
-format-offline-underline = #69656F
+format-offline = " <label-offline> "
+format-offline-prefix =  
+format-offline-prefix-foreground = ${colors.mpd-offline}
+format-offline-suffix =  
+format-offline-suffix-foreground = ${colors.mpd-offline}
+format-offline-underline = ${colors.mpd-offline}
+
 ; Available tokens:
 ;   %artist%
 ;   %album-artist%
