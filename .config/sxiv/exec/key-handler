@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+while read -r file
+do
+    case "$1" in
+        "r")
+            convert -rotate 90 "$file" "$file" ;;
+        "c")
+            echo "$file" | xclip -selection clipboard ;;
+        "w")
+            hsetroot -center "$file" ;;
+    esac
+done
