@@ -29,7 +29,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Image Viewer | [sxiv](https://github.com/muennich/sxiv) |
 | PDF Viewer | [zathura](https://github.com/pwmt/zathura) |
 | Wallpaper Setter | [hsetroot](https://github.com/himdel/hsetroot) |
-| ScreenShooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
+| Screen Shooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
 | Terminal Emulator | [Termite](https://github.com/thestinger/termite) |
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
 | Text Editor | [Neovim](https://neovim.io/) |
@@ -38,7 +38,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Run program as another user | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo) |
 | Lock Screen | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) |
 | Notification Daemon | [Dunst](https://github.com/dunst-project/dunst) / libnotify |
-| Gtk theme | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes) |
+| GTK theme | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes) |
 | Cursor theme | Breeze Obsidian |
 
 #### Main Fonts used in this Dotfiles:
@@ -52,6 +52,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | Zsh |
 | [Weather-icons](https://erikflowers.github.io/weather-icons/) | Polybar |
 | [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/) | Polybar (support for Asian letters) |
+| [font-logos](https://github.com/lukas-w/font-logos) | Distro logo in Polybar |
 
 #### Vim/Neovim Plugins:
 | Plugin | Usage |
