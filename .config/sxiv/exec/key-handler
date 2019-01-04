@@ -5,7 +5,7 @@ do
         "r")
             convert -rotate 90 "$file" "$file" ;;
         "c")
-            echo "$file" | xclip -selection clipboard ;;
+            xclip -selection clipboard -t image/png -i "$file" ;;
         "w")
             hsetroot -center "$file" ;;
     esac
