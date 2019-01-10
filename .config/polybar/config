@@ -18,6 +18,8 @@
 ;==============================================================
 
 [colors]
+; #RRGGBB ~ RGB 
+; #AARRGGBB ~ RGBA
 
 background = #24292E
 foreground = #FFFFFF
@@ -28,11 +30,11 @@ empty = #555555
 # Modules colors
 bspwm = #7FFF00
 bspwm-alert = #FF4500
-bspwm-background = #3f3f3f
+bspwm-background = #3F3F3F
 bspwm-dimmed = #FBA922
 user = #7DF059
 volume = #8FF6FF
-xbacklight = #c8f059 
+xbacklight = #C8F059 
 nvidia = #7FFF00
 ram = #D6AA3F
 cpu = #D6AA3F
@@ -43,11 +45,11 @@ ethernet = #27A2FF
 calendar = #00FF7F
 clock = #00FF7F
 battery = #FFFF00
-mocp = #fba922
+mocp = #FBA922
 mpd-playing = #53FF56
 mpd-paused = #FBA922
 mpd-offline = #69656F
-spotify = #1db954
+spotify = #1DB954
 xwindow = #FF4500
 weather = #00BFFF
 uptime = #9B78F1
@@ -89,7 +91,7 @@ font-1 = "font\-logos:size=12"
 font-2 = "FontAwesome:size=14;2"
 font-3 = "MaterialIcons:size=14;2"
 
-modules-left = my-text-label bspwm
+modules-left = user bspwm
 modules-right = volume xbacklight bbswitch_show memory cpu temperature bluetooth wireless-network calendar clock battery
 
 ################################################################################
@@ -331,7 +333,7 @@ format-offline-underline = ${colors.mpd-offline}
 ;   %title%
 ; Default: %artist% - %title%
 label-song = "%title% - %album%"
-label-song-maxlen = 40
+label-song-maxlen = 46
 
 ; Available tokens:
 ;   %elapsed%
@@ -361,7 +363,7 @@ exec = python ~/.config/polybar/Scripts/spotify_status.py -f '{song} by {artist}
 
 click-left = playerctl next
 click-right = playerctl previous
-click-middle = playerctl play-pause && notify-send -u low "Spotify: $(playerctl status)"
+click-middle = playerctl play-pause
 
 format-underline = ${colors.spotify}
 ###############################################################################
@@ -376,7 +378,7 @@ label-foreground = ${colors.xbacklight}
 
 bar-width = 10
 bar-indicator = 
-bar-indicator-foreground = #ff
+bar-indicator-foreground = ${colors.xbacklight}
 bar-indicator-font = 2
 bar-fill = ""
 bar-fill-font = 1
@@ -632,8 +634,9 @@ format-foreground = ${colors.foreground}
 
 ###############################################################################
 
-[module/my-text-label]
+[module/user]
 type = custom/text
+#content = ${env:USER:Tux}
 content = "SeraphyBR - Funtoo Linux"
 content-prefix = "    "
 content-suffix = "   "
@@ -652,19 +655,33 @@ format-underline = ${colors.nvidia}
 click-left = "optirun -b none nvidia-settings -c :8"
 exec = ~/.config/polybar/Scripts/bbswitch.sh
 
-###########################################################################
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-compositing-border = source
-
 ##############################################################################
 
 [global/wm]
+; Adjust the _NET_WM_STRUT_PARTIAL top value
+;   Used for bottom aligned bars
 margin-top = 4
+
+; Adjust the _NET_WM_STRUT_PARTIAL bottom value
+;   Used for top aligned bars
 margin-bottom = 4
+
+###########################################################################
+
+[settings]
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+
+; @see: https://www.cairographics.org/manual/cairo-cairo-t.html#cairo-operator-t
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = true 
+
 
 ; vim:ft=dosini
