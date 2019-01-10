@@ -6,6 +6,9 @@
 #(__)________|_______/    |__|  |__| | _| `._____| \______|
 #                                                          
 
+
+################## Oh-my-zsh Section ########################################################
+
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
 
@@ -21,13 +24,24 @@ else
     ZSH_THEME="powerlevel9k/powerlevel9k"
 fi
  
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=1
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -38,7 +52,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -47,21 +61,48 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting extract)
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [ ! -d $ZSH_CACHE_DIR ]; then
+  mkdir $ZSH_CACHE_DIR
+fi    
+
+# Use autosuggestion
+# https://github.com/zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8' 
 
 
-# User configuration
+######################## PowerLevel9K Section #####################################################
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+if [ ! -z "$DISPLAY" ]; then 
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs )
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs virtualenv)
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
+    POWERLEVEL9K_SHORTEN_DELIMITER=""
+    POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+fi
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# If powerlevel9k shows errors messages about mercurial...
+if [ ! -e "~/.hgrc" ];then
+    touch ~/.hgrc
+fi
 
-# Gentoo-zsh-completions
-autoload -U compinit promptinit
-compinit
-promptinit; prompt gentoo
+############################################################################################### 
+
+# Start oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+###################### End of Oh-my-zsh section ##########################################################
 
 
-############# Options section ####################################################
+
+#################### User settings below this line ########################################################
 
 # Auto correct mistakes
 #setopt correct 
@@ -84,51 +125,12 @@ setopt histignorealldups
 # if only directory path is entered, cd there. 
 setopt autocd
 # Remove command lines from the history list when the first character on the line is a space.
-setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_SPACE                 
 
+################## Completion section ###########################################################
  
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion    (different colors for dirs/files/etc)
-zstyle ':completion:*' rehash true                              # automatically find new executables in path
 
-# Speed up completions
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $HOME/.zsh/cache
-HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain         +++characters part of the word
-
-##################################################################################
-
-# Use autosuggestion
-# https://github.com/zsh-users/zsh-autosuggestions
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-
-# Theming section
-autoload -U compinit colors zcalc
-compinit -d
-colors
-
-###### PowerLevel9K Section #####################################################
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-if [ ! -z "$DISPLAY" ]; then 
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs)
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
-    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-    POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-    POWERLEVEL9K_SHORTEN_DELIMITER=""
-    POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-fi
-##############################################################################
-
-####  Sessão de Aliases   ############################################# 
+#################################  Aliases section  ############################################# 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -153,7 +155,7 @@ alias upgrade="doas emerge -auvDN @world"
 alias .='cd ../'
 alias ..='cd ../../'
 
-##################################################################
+####################### Custom functions ###############################
 
 c() {
     if [ $# -eq 0 ] ; then
@@ -165,42 +167,6 @@ c() {
     fi
 }
  
-# Extract a folder
-extract() {
-if [[ -f $1 ]]; then
-	case "$1" in
-		*.tar.bz2) tar xvjf "$1";;
-		*.tar.gz) tar xvzf "$1";;
-		*.tar.xz) tar xvf "$1";;
-		*.tar) tar xvf "$1";;
-		*.tgz) tar xvf "$1";;
-		*.xz) tar xvf "$1";;
-		*.gz) gunzip "$1";;
-		*.zip) unzip "$1";;
-		*.rar) unrar x "$1";;
-		*.tbz2) tar xvjf "$1" ;;
-		*.lzma) unlzma "$1" ;;
-		*.Z) uncompress "$1" ;;
-		*.7z) 7z x "$1" ;;
-		*) echo "'$1' cannot be extracted via extract."
-	esac
-else
-	echo "'$1' is not a valid file"
-fi
-}
 ###############################################################
 
-# If powerlevel9k shows errors messages about mercurial...
-if [ ! -e "~/.hgrc" ];then
-    touch ~/.hgrc
-fi
-
-ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
-if [ ! -d $ZSH_CACHE_DIR ]; then
-  mkdir $ZSH_CACHE_DIR
-fi
-
-source $ZSH/oh-my-zsh.sh
-
-###############################################################
 
