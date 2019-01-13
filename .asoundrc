@@ -1,0 +1,53 @@
+defaults.ctl.!card 2
+
+pcm.!default {
+	type asym
+	playback.pcm {
+		type plug
+		slave.pcm "dmixer"
+	}
+	#capture.pcm {
+	#	type plug
+	#	slave.pcm "hw:2,0"
+	#}
+ }
+
+pcm.dmixer  {
+	type dmix
+	ipc_key 1024
+	slave {
+		pcm "hw:2,0"
+		period_time 0
+		period_size 1024
+		buffer_size 4096
+		rate 44100
+		channels 2
+	}
+	bindings {
+		0 0
+		1 1
+	}
+}
+
+ctl.dmixer {
+	type hw
+	card 0
+}
+
+#pcm.dsnooper {
+#	type dsnoop
+#	ipc_key 2048
+#	ipc_perm 0666
+#	slave.pcm "snd_card"
+#	slave
+#	{
+#		period_time 0
+#		period_size 1024
+#		buffer_size 4096
+#		channels 2
+#	}
+#	bindings {
+#		0 0
+#		1 1
+#	}
+#}
