@@ -481,24 +481,7 @@ click-left = gsimplecal &
 #########################################################
 
 [module/volume]
-type = internal/alsa
-
-; Soundcard to be used
-; Usually in the format hw:# where # is the card number
-; You can find the different card numbers in `/proc/asound/cards`
-master-soundcard = hw:2
-speaker-soundcard = default
-headphone-soundcard = default
-
-; Name of the master, speaker and headphone mixers
-; Use the following command to list available mixer controls:
-; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
-; If master, speaker or headphone-soundcard isn't the default, 
-; use `amixer -c # scontrols` instead where # is the number 
-; of the master, speaker or headphone soundcard respectively
-;
-; Default: Master
-master-mixer = Master
+type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = 
