@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-# Esse script depende do tlp instalado
+# Depends on TLP
+# https://github.com/linrunner/TLP
 
 if [ "$(bluetooth)" = "bluetooth = on" ]
 then
