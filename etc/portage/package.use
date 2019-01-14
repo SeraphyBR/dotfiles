@@ -86,20 +86,11 @@ dev-python/PyQt5 webengine widgets webchannel
 >=media-libs/gegl-0.3.20 cairo
 www-plugins/adobe-flash nsplugin
 games-util/steam-games-meta *
-media-libs/libtxc_dxtn abi_x86_32
-# required by x11-misc/primus-0.2::desktop-kit
-# required by x11-misc/bumblebee-3.2.1_p20170123::xorg-kit
-# required by bumblebee (argument)
->=x11-drivers/nvidia-drivers-396.24-r1 compat
-x11-misc/virtualgl abi_x86_32
 # required by x11-misc/virtualgl-2.5.2::desktop-kit
 # required by virtualgl (argument)
->=x11-libs/libXv-1.0.11 abi_x86_32
 # required by x11-libs/libXv-1.0.11::xorg-kit
 # required by x11-misc/virtualgl-2.5.2::desktop-kit
 # required by virtualgl (argument)
->=x11-proto/videoproto-2.3.3 abi_x86_32
-x11-misc/primus abi_x86_32
 # required by x11-misc/primus-0.2::desktop-kit
 # required by primus (argument)
 >=x11-drivers/nvidia-drivers-390.67 compat
@@ -107,30 +98,17 @@ app-text/asciidoc python_single_target_python2_7
 # required by sys-boot/os-prober-1.76-r1::core-kit
 # required by os-prober (argument)
 >=sys-boot/grub-2.02-r1 mount
->=media-video/ffmpeg-3.4.1 xcb
->=media-video/ffmpeg-3.4.4 openssl 
+media-video/ffmpeg sdl  xcb  openssl
 # required by sys-devel/prelink-20151030::nokit
 # required by app-emulation/wine-1.7.34-r2::eroen[prelink]
 # required by wine (argument)
 >=dev-libs/elfutils-0.170-r1 static-libs
 xfce-base/thunar -trash-panel-plugin
-# required by x11-libs/libxcb-1.13::xorg-kit
-# required by x11-apps/xbacklight-1.2.2::xorg-kit
-# required by @selected
-# required by @world (argument)
->=x11-base/xcb-proto-1.13 abi_x86_32
 # required by kde-apps/kdenlive-17.12.3::kde-kit
 # required by kdenlive (argument)
 >=media-libs/mlt-6.4.1-r6 kdenlive melt sdl qt5
-# required by kde-apps/kdenlive-17.12.3::kde-kit
-# required by kdenlive (argument)
->=virtual/ffmpeg-9-r2 sdl
-# required by virtual/ffmpeg-9-r2::media-kit
-# required by kde-apps/kdenlive-17.12.3::kde-kit
-# required by kdenlive (argument)
->=media-video/ffmpeg-3.4.1 sdl
-media-gfx/fontforge python_single_target_python3_5 python_targets_python3_5
->=net-print/hplip-3.18.6 qt5 scanner
+media-gfx/fontforge python_single_target_python3_6 python_targets_python3_6
+>=net-print/hplip-3.18.6 qt5 scanner 
 >=media-sound/ncmpcpp-0.8.1 clock visualizer outputs
 >=media-sound/mpd-0.20.20 libmpdclient
 # required by www-client/qutebrowser-1.5.1::net-kit
@@ -158,16 +136,95 @@ media-gfx/fontforge python_single_target_python3_5 python_targets_python3_5
 # required by app-text/calibre-3.15.0::text-kit
 # required by calibre (argument)
 >=dev-qt/qtwebkit-5.9.1 printsupport
-# required by x11-misc/virtualgl-2.5.2::desktop-kit[libressl,ssl]
-# required by @selected
-# required by @world (argument)
->=dev-libs/libressl-2.6.4 abi_x86_32
 >=sys-block/gparted-0.29.0 -hfs -xfs -jfs -reiserfs
->=net-misc/iputils-20180629 gcrypt
 >=x11-base/xorg-server-1.19.3 -ipv6
 >=dev-python/certifi-2018.4.16 python_targets_python3_5 
 >=dev-python/setuptools-40.0.0 python_targets_python3_5
 net-print/cups-filters -pdf
-=net-libs/nodejs-9.11.2::libressl bundled-ssl
 app-office/libreoffice googledrive
 
+# required by media-gfx/simple-scan-3.26.2::gnome-kit
+# required by simple-scan (argument)
+>=dev-libs/libgusb-0.2.11 vala
+# required by media-gfx/simple-scan-3.26.2::gnome-kit[colord]
+# required by simple-scan (argument)
+>=x11-misc/colord-1.3.5 vala
+# required by media-gfx/graphviz-2.40.1-r1::media-kit
+# required by dev-lang/vala-0.38.4::gnome-kit
+# required by media-gfx/simple-scan-3.26.2::gnome-kit
+# required by @selected
+# required by @world (argument)
+>=media-libs/gd-2.2.5 fontconfig
+# required by x11-misc/virtualgl-2.5.2::desktop-kit[-libressl,ssl]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/openssl-1.0.2q abi_x86_32
+sys-fs/cryptsetup -gcrypt openssl
+net-misc/networkmanager consolekit -elogind
+# required by www-client/qutebrowser-1.5.2::net-kit
+# required by @selected
+# required by @world (argument)
+>=dev-python/PyQt5-5.10.1-r1 multimedia
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/minitest-5.11.3::ruby-kit[ruby_targets_ruby25]
+# required by dev-lang/ruby-2.3.8::ruby-kit
+# required by dev-ruby/net-telnet-0.2.0::ruby-kit[ruby_targets_ruby23]
+# required by dev-lang/ruby-2.4.5::ruby-kit
+# required by dev-ruby/power_assert-1.1.3::ruby-kit[ruby_targets_ruby24]
+# required by dev-ruby/test-unit-3.2.8::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/did_you_mean-1.2.1 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/minitest-5.11.3 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/net-telnet-0.2.0 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/power_assert-1.1.3 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/rake-12.3.1 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/test-unit-3.2.8 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/xmlrpc-0.3.0 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/json-2.1.0 ruby_targets_ruby25
+# required by dev-lang/ruby-2.5.3::ruby-kit[rdoc]
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/rdoc-6.0.4 ruby_targets_ruby25
+# required by dev-ruby/rdoc-6.0.4::ruby-kit[ruby_targets_ruby25]
+# required by dev-lang/ruby-2.3.8::ruby-kit[rdoc]
+# required by dev-ruby/minitest-5.11.3::ruby-kit[ruby_targets_ruby23]
+# required by dev-lang/ruby-2.4.5::ruby-kit
+# required by dev-ruby/net-telnet-0.2.0::ruby-kit[ruby_targets_ruby24]
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/kpeg-1.1.0-r1 ruby_targets_ruby25
+# required by dev-ruby/rdoc-6.0.4::ruby-kit[ruby_targets_ruby25]
+# required by dev-lang/ruby-2.3.8::ruby-kit[rdoc]
+# required by dev-ruby/minitest-5.11.3::ruby-kit[ruby_targets_ruby23]
+# required by dev-lang/ruby-2.4.5::ruby-kit
+# required by dev-ruby/net-telnet-0.2.0::ruby-kit[ruby_targets_ruby24]
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-ruby/did_you_mean-1.2.1::ruby-kit[ruby_targets_ruby25]
+>=dev-ruby/racc-1.4.14 ruby_targets_ruby25
+# required by dev-ruby/power_assert-1.1.3::ruby-kit[ruby_targets_ruby25,-test]
+# required by dev-lang/ruby-2.5.3::ruby-kit
+# required by dev-qt/qtwebkit-5.212.0_pre20180120::core-ui-kit
+# required by dev-python/PyQt5-5.10.1-r1::core-ui-kit[webkit]
+# required by net-print/hplip-3.18.10::net-kit[-minimal,qt5]
+# required by @selected
+# required by @world (argument)
+>=virtual/rubygems-14 ruby_targets_ruby25
+# required by virtual/rubygems-14::ruby-kit[ruby_targets_ruby25]
+# required by dev-qt/qtwebkit-5.212.0_pre20180120::core-ui-kit
+# required by dev-python/PyQt5-5.10.1-r1::core-ui-kit[webkit]
+# required by net-print/hplip-3.18.10::net-kit[-minimal,qt5]
+# required by @selected
+# required by @world (argument)
+>=dev-ruby/rubygems-2.7.8 ruby_targets_ruby25

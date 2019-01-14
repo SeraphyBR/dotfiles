@@ -1,2 +1,3 @@
 # required by =ranger-9999 (argument)
 =app-misc/ranger-9999 **
+net-vpn/zeronet

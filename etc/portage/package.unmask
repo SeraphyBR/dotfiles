@@ -83,3 +83,10 @@
 # required by zeronet (argument)
 # /etc/portage/package.mask:
 =net-vpn/zeronet-0.6.4-r1
+# required by media-sound/mellowplayer-3.4.0::jorgicio[widevine]
+# required by mellowplayer (argument)
+# /etc/portage/package.mask:
+=dev-qt/qtwebengine-widevine-66.0.3359.181
+# required by twemoji-color-font (argument)
+# /etc/portage/package.mask:
+=media-fonts/twemoji-color-font-11.2.0

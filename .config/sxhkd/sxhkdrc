@@ -41,7 +41,7 @@ super + {d,w}
 
 # Recarregar o arquivo de configuração do sxhkd e polybar:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
 # Localizar arquivos pelo rofi:
 super + f
@@ -63,6 +63,7 @@ Print
     flameshot full -c -d 2000 -p ~/Imagens/Screenshots/ 	    
 super + Print 
     flameshot gui -d 1000 
+#maim -s -c "0.5,0.8,0.6,1" -n 2 -m 1 -b 4 | xclip -selection clipboard -t image/png
 
 # Controles de brilho
 XF86MonBrightness{Up,Down}
