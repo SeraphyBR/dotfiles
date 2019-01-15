@@ -1,17 +1,17 @@
-![Dotfiles](logo.png)
+![Dotfiles](Images/logo.png)
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
 ## Screenshots:
 
-![Screenshot-1](Screenshots/Screenshot1.png)
+![Screenshot-1](Images/Screenshots/Screenshot1.png)
 
 ### Rofi:
 
-![Screenshot-2](Screenshots/Screenshot2.png)
+![Screenshot-2](Images/Screenshots/Screenshot2.png)
 
 ### GTK/QT Look:
 
-![Screenshot-3](Screenshots/Screenshot3.png)
+![Screenshot-3](Images/Screenshots/Screenshot3.png)
 
 ## Setup Description:
 | Type | Program |
