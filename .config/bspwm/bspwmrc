@@ -4,7 +4,7 @@ sxhkd &
 # Compositor
 compton -b &
 # Wallpaper
-hsetroot -center ~/DotFiles/Wallpapers/road_trees_top_view_119030_1920x1080.jpg & 
+hsetroot -center ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg & 
 # Paineis
 ~/.config/polybar/launch.sh &
 # Carrega arquivo de configuração X e carrega o tema de cursor.
@@ -30,8 +30,12 @@ dunstify "Bem Vindo ${USER^}!" &
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' & 
 
-bspc monitor eDP-1  -d I II III IV V VI VII VIII IX X
-#bspc monitor HDMI-1 -d VI VII VIII IX X
+if [ "$(xrandr --query | grep -c " connected")" -eq 2 ]; then
+    bspc monitor eDP-1  -d I II III IV V 
+    bspc monitor HDMI-1 -d VI VII VIII IX X
+else 
+    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+fi
 
 #bspc config click_to_focus true
 bspc config pointer_modifier mod4 # Super key to mouse actions
@@ -45,7 +49,7 @@ bspc config border_radius       10
 bspc config window_gap          14
 
 #bspc config remove_disabled_monitors true
-#bspc config remove_unplugged_monitors true
+bspc config remove_unplugged_monitors true
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
