@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 #################### User settings below this line ########################################################
 
 # Auto correct mistakes
-#setopt correct 
+unsetopt correct 
 # Extended globbing. Allows using regular expressions with *  
 setopt extendedglob                                            
 # Case insensitive globbing

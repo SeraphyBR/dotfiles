@@ -8,42 +8,46 @@
 # https://github.com/baskerville/sxhkd
 
 ####################################################
-####### Atalhos de teclado personalizados  #########
+####### Custom keyboard shortcuts  #########
 ####################################################
 
-# terminal emulator
+# Terminal emulator
 super + Return
-		termite
+    termite
 
 # Floating Terminal
 super + alt + Return
-        bspc rule -a \* -o state=floating &&  termite --name=floating
+    bspc rule -a \* -o state=floating &&  termite --name=floating
 
 # Qutebrowser
 super + q 
-        qutebrowser
+    qutebrowser
 
-# Gerenciador de arquivos cli
+# File Manager
 super + a
-        termite -e ranger
+    termite -e ranger
  
-# Gerenciador de arquivos Thunar
+# File Manager Thunar
 super + shift + a
-        thunar
+    thunar
  
-# Editor de texto vim
+# Text Editor Neovim
 super + e
-        termite -e nvim
+    termite -e nvim
 
-# Lançador de Programas / Alternador de janelas
+# Music Player
+alt + m 
+    termite -e ncmpcpp
+
+# Programs Launcher / Window alternator
 super + {d,w}
     rofi -modi run,drun,window -show {drun,window} -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode -matching fuzzy
 
-# Recarregar o arquivo de configuração do sxhkd e polybar:
+# Reload sxhkd and polybar:
 super + Escape
 	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
-# Localizar arquivos pelo rofi:
+# Find files with rofi:
 super + f
     xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 0 -width 60 -dmenu -i -p "Find: ")"
 
@@ -51,7 +55,7 @@ super + f
 alt + l
     betterlockscreen -l
 
-# Controles de Volume
+# Volume Controls
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume 0 {+,-}10%; pactl set-sink-volume 1 {+,-}10%
 
@@ -65,7 +69,7 @@ super + Print
     flameshot gui -d 1000 
 #maim -s -c "0.5,0.8,0.6,1" -n 2 -m 1 -b 4 | xclip -selection clipboard -t image/png
 
-# Controles de brilho
+# Brightness Control
 XF86MonBrightness{Up,Down}
     xbacklight -{inc,dec} 10
 
@@ -89,7 +93,7 @@ super + m
 super + y
 	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
 
-# Troca a janela atual pela janela de maior tamanho (independente da localização)
+# Swap the current window through the largest window (regardless of location)
 super + g
 	bspc node -s biggest
 
@@ -102,10 +106,10 @@ super + g
 super + t
 	bspc node -t {floating,tiled}
 
-# Define flags para a janela
-# Locked = Não permite fechar a janela
-# Sticky = Irá se mover juntamente com a área de trabalho
-# Private = Irá manter sua posição no mosaico.
+# Sets flags to the window
+# Locked = Does not allow closing the window
+# Sticky = Will move along with desktop
+# Private = It will keep its position in the mosaic.
 super + ctrl + {x,y,z}
 	bspc node -g {locked,sticky,private}
 
