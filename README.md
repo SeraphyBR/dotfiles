@@ -13,6 +13,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ![Screenshot-3](Images/Screenshots/Screenshot3.png)
 
+### TTY Look:
+
+![Screenshot-4](Images/tty.png)
+
 ## Setup Description:
 | Type | Program |
 |:--- | :---- |
