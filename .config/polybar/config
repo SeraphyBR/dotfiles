@@ -477,6 +477,7 @@ format-suffix-foreground = ${self.format-underline}
 format-foreground = ${colors.foreground}
 
 click-left = gsimplecal &
+#click-left = notify-send "$(cal)"
 
 #########################################################
 
