@@ -18,7 +18,6 @@ ZSH=$HOME/.oh-my-zsh
 
 if [ -z "$DISPLAY" ]; then
     ZSH_THEME="rkj-repos"
-    export TERM="xterm-256color"
 else 
     POWERLEVEL9K_MODE='nerdfont-complete'
     ZSH_THEME="powerlevel9k/powerlevel9k"
