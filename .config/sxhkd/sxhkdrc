@@ -13,7 +13,7 @@
 
 # Terminal emulator
 super + Return
-    termite
+    alacritty
 
 # Floating Terminal
 super + alt + Return
@@ -25,7 +25,7 @@ super + q
 
 # File Manager
 super + a
-    termite -e ranger
+    alacritty -e ranger
  
 # File Manager Thunar
 super + shift + a
@@ -33,11 +33,11 @@ super + shift + a
  
 # Text Editor Neovim
 super + e
-    termite -e nvim
+    alacritty -e nvim
 
 # Music Player
 alt + m 
-    termite -e ncmpcpp
+    alacritty -e ncmpcpp
 
 # Programs Launcher / Window alternator
 super + {d,w}
