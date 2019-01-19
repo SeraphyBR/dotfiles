@@ -41,7 +41,13 @@ alt + m
 
 # Programs Launcher / Window alternator
 super + {d,w}
-    rofi -modi run,drun,window -show {drun,window} -show-icons -drun-icon-theme Papirus -scroll-method 1 -sidebar-mode -matching fuzzy
+    rofi -modi run,drun,window \
+         -show {drun,window} \
+         -show-icons \
+         -drun-icon-theme Papirus \
+         -scroll-method 1 \
+         -sidebar-mode \
+         -matching fuzzy 
 
 # Reload sxhkd and polybar:
 super + Escape

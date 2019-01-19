@@ -54,8 +54,8 @@ source = auto
 ; method = alsa
 ; source = hw:Loopback,0
 
-method = fifo
-source = /tmp/mpd.fifo
+;method = fifo
+;source = /tmp/mpd.fifo
 
 
 
