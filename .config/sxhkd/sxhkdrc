@@ -14,10 +14,9 @@
 # Terminal emulator
 super + Return
     alacritty
-
-# Floating Terminal
-super + alt + Return
-    bspc rule -a \* -o state=floating &&  termite --name=floating
+# Floating Terminal with selection (Slop programs is needed)
+alt + Return
+    bspc rule -a \* -o state=floating rectangle=$(slop -f "%g") && alacritty
 
 # Qutebrowser
 super + q 
