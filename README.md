@@ -33,7 +33,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Image Viewer | [sxiv](https://github.com/muennich/sxiv) |
 | PDF Viewer | [zathura](https://github.com/pwmt/zathura) |
 | Wallpaper Setter | [hsetroot](https://github.com/himdel/hsetroot) |
-| Screen Shooter | [Flameshot](https://github.com/lupoDharkael/flameshot) |
+| Screen Shooter | [Maim + Slop](https://github.com/naelstrof/maim) |
 | Terminal Emulator | [Alacritty](https://github.com/jwilm/alacritty) and [Termite](https://github.com/thestinger/termite) |
 | Shell | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme) |
 | Text Editor | [Neovim](https://neovim.io/) |

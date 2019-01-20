@@ -70,11 +70,8 @@ XF86AudioMute
     pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle
 
 # PrintScreen
-Print
-    flameshot full -c -d 2000 -p ~/Imagens/Screenshots/ 	    
-super + Print 
-    flameshot gui -d 1000 
-#maim -s -c "0.5,0.8,0.6,1" -n 2 -m 1 -b 4 | xclip -selection clipboard -t image/png
+Print + {_,super} 
+    ~/DotFiles/Scripts/screenshot.sh {_,-s}
 
 # Brightness Control
 XF86MonBrightness{Up,Down}
