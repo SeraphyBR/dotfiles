@@ -14,9 +14,11 @@
 # Terminal emulator
 super + Return
     alacritty
+
 # Floating Terminal with selection (Slop programs is needed)
 alt + Return
-    bspc rule -a \* -o state=floating rectangle=$(slop -f "%g") && alacritty
+    bspc rule -a \* -o state=floating \
+    rectangle=$(slop -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && alacritty
 
 # Qutebrowser
 super + q 
