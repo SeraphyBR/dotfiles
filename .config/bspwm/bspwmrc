@@ -5,9 +5,9 @@ sxhkd &
 compton -b &
 # Wallpaper
 hsetroot -center ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg & 
-# Paineis
+# Painels
 ~/.config/polybar/launch.sh &
-# Carrega arquivo de configuração X e carrega o tema de cursor.
+# Read Xresources and Fix cursor on bspwm
 xrdb ~/.Xresources &
 xsetroot -cursor_name left_ptr &
 # Mapa de teclado brasileiro
@@ -15,11 +15,10 @@ setxkbmap -model abnt2 -layout br -variant abnt2 &
 #Polkit
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 # Ajuste de temperatura da cor da tela
+/usr/libexec/geoclue-2.0/demos/agent &
 redshift-gtk &
 # Plugin que desabilita escurecimento de tela
 caffeine-indicator &
-# Thunar Daemom 
-thunar --daemon &
 # Notification Daemon
 dunst &
 ~/DotFiles/Scripts/battery-status.sh &
