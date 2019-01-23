@@ -143,7 +143,8 @@ alias cp='cp -R'
 alias rm='rm -Ivr'
 alias :q='exit'
 alias svim='doas nvim'
-alias vim='nvim' 
+alias vim='nvim'
+alias tvim='nvim -u ~/.config/nvim/init-tty.vim '
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
@@ -151,6 +152,7 @@ alias sxiv="sxiv -r . "
 alias addpkg="doas emerge -a --jobs"
 alias update="doas ego sync"
 alias upgrade="doas emerge -auvDN @world"
+alias smtp="doas simple-mtpfs -o allow_other -o enable-move "
 alias .='cd ../'
 alias ..='cd ../../'
 
@@ -165,7 +167,7 @@ c() {
         cat "$1"
     fi
 }
- 
+
 ###############################################################
 
 
