@@ -126,8 +126,6 @@ setopt autocd
 # Remove command lines from the history list when the first character on the line is a space.
 setopt HIST_IGNORE_SPACE                 
 
-################## Completion section ###########################################################
- 
 
 #################################  Aliases section  ############################################# 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
