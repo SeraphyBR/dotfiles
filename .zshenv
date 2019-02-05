@@ -6,7 +6,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/usr/sbin:$PATH
 
 export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
+export PATH="$HOME/.cargo/bin:$PATH"
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
