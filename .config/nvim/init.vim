@@ -97,11 +97,11 @@ set splitbelow
 set ve=all                 " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
 set expandtab	           " Use spaces instead of tabs
-set shiftwidth=4	       " Number of auto-indent spaces
+set shiftwidth=4	   " Number of auto-indent spaces
 set smartindent	           " Enable smart-indent
 set smarttab	           " Enable smart-tabs
 set softtabstop=4	   " Number of spaces per Tab
-set scrolloff=3            " Always show N lines above/below the cursor    
+set scrolloff=3            " Always show N lines above/below the cursor
 set clipboard=unnamedplus 
 set shell=/bin/zsh
 
@@ -125,6 +125,10 @@ autocmd FileType tex,gitcommit,text,markdown setlocal spell
 
 "" Disable conceal in Latex files ("Hiding tag"):
 let g:tex_conceal = ''
+
+"" Disable IndentLine for certain files
+"" Obs: IndentLine forces 'conceallevel' to 2 for work
+let g:indentLine_fileTypeExclude = ['markdown']
 
 "" Colorscheme Section:
 if empty($DISPLAY)
