@@ -10,7 +10,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'gentoo/gentoo-syntax'
-Plug 'justinmk/vim-syntax-extra'
+Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -57,6 +57,12 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+" if you want to disable auto detect, comment out those two lines
+"let g:airline#extensions#disable_rtp_load = 1
+"let g:airline_extensions = ['branch', 'hunks', 'coc']
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
 " IndentLine
 let g:indentLine_char= '┊'
 
@@ -86,6 +92,7 @@ set hlsearch	           " Highlight all search results
 set smartcase	           " Enable smart-case search
 set ignorecase	           " Always case-insensitive
 set incsearch	           " Searches for strings incrementally
+set splitbelow
 
 set ve=all                 " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
