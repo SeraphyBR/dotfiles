@@ -63,7 +63,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | :---   | :---  |
 | [vim-plug](https://github.com/junegunn/vim-plug) | Plugin manager |
 | [gentoo-syntax](https://github.com/gentoo/gentoo-syntax) | Support for specific files related to portage |
-| [vim-syntax-extra](https://github.com/justinmk/vim-syntax-extra) | For better C syntax highlighting |
+| [vim-polyglot](https://github.com/sheerun/vim-polyglot) | For better syntax highlighting |
 | [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
 | [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
 | [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |
