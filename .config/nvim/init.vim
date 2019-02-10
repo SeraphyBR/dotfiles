@@ -7,6 +7,14 @@
 " 
 " ~SeraphyBR Neovim Config
 "================================================================
+
+" Auto install vim-plug and Plugins
+ if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'gentoo/gentoo-syntax'
@@ -47,7 +55,7 @@ let g:ale_linters = {
     \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline status line:
+"" Airline status line:
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
@@ -63,8 +71,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-" IndentLine
+"" IndentLine
 let g:indentLine_char= '┊'
+let g:indentLine_fileTypeExclude = ['markdown']  
 
 " Vimtex
 let g:vimtex_view_general_viewer = 'zathura'
@@ -126,9 +135,6 @@ autocmd FileType tex,gitcommit,text,markdown setlocal spell
 "" Disable conceal in Latex files ("Hiding tag"):
 let g:tex_conceal = ''
 
-"" Disable IndentLine for certain files
-"" Obs: IndentLine forces 'conceallevel' to 2 for work
-let g:indentLine_fileTypeExclude = ['markdown']
 
 "" Colorscheme Section:
 if empty($DISPLAY)
