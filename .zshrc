@@ -10,7 +10,16 @@
 ################## Oh-my-zsh Section ########################################################
 
 # Path to your oh-my-zsh installation.
-ZSH=$HOME/.oh-my-zsh
+ZSH="$HOME/.oh-my-zsh"
+
+if [ ! -d "$ZSH" ]; then
+    git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+    git clone https://github.com/bhilburn/powerlevel9k.git $ZSH/custom/themes/powerlevel9k
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/plugins/zsh-syntax-highlighting
+    chsh -s /bin/zsh
+fi
+
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -53,9 +62,6 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -72,6 +78,9 @@ fi
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8' 
 
+# zsh-syntax-highlighting settings
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_REGEXP+=("(.*?)\(\)\{\1(\|\1&?)?\}\|\1" "bg=9,bold,fg=0")
 
 ######################## PowerLevel9K Section #####################################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -127,16 +136,18 @@ setopt autocd
 setopt HIST_IGNORE_SPACE                 
 
 
+
 #################################  Aliases section  ############################################# 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
  
-alias clima="curl pt.wttr.in"
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias clima='curl pt.wttr.in'
+alias zshconfig='nvim ~/.zshrc'
+alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias ls='ls --color=auto'
+alias lc='colorls --dark'
 alias cp='cp -R'
 alias rm='rm -Ivr'
 alias :q='exit'
