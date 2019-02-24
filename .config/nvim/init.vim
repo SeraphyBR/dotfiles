@@ -20,10 +20,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'gentoo/gentoo-syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
+Plug 'aperezdc/vim-template'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentline'
-Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -40,9 +40,10 @@ Plug 'morhetz/gruvbox'
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
-" Put your non-Plugin stuff after this line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+" :CocInstall coc-highlight coc-java coc-pairs coc-pyls coc-rls coc-json
 
+" Put your non-Plugin stuff after this line
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Language servers related:
@@ -154,13 +155,6 @@ if !isdirectory($HOME."/.config/nvim/undo-dir")
 endif
 set undodir=~/.config/nvim/undo-dir
 set undofile
-
-"" Template:
-if has("autocmd")
-    augroup templates
-        autocmd BufNewFile *.java 0r ~/.config/nvim/templates/Skeleton.java
-    augroup END
-endif
 
 "" ALE quick navigate between errors:
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

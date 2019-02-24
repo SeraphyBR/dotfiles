@@ -18,7 +18,7 @@ super + Return
 # Floating Terminal with selection (Slop programs is needed)
 alt + Return
     bspc rule -a \* -o state=floating \
-    rectangle=$(slop -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && alacritty
+    rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && alacritty
 
 # Qutebrowser
 super + q 
@@ -47,8 +47,7 @@ super + {d,w}
          -show-icons \
          -drun-icon-theme Papirus \
          -scroll-method 1 \
-         -sidebar-mode \
-         -matching fuzzy 
+         -sidebar-mode  
 
 # Reload sxhkd and polybar:
 super + Escape
@@ -66,6 +65,7 @@ alt + l
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume 0 {+,-}10%; pactl set-sink-volume 1 {+,-}10%
 
+# Volume Mute
 XF86AudioMute
     pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle
 

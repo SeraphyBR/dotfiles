@@ -65,6 +65,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [gentoo-syntax](https://github.com/gentoo/gentoo-syntax) | Support for specific files related to portage |
 | [vim-polyglot](https://github.com/sheerun/vim-polyglot) | For better syntax highlighting |
 | [vim-startify](https://github.com/mhinz/vim-startify) | Start Screen for Vim |
+| [vim-template](https://github.com/aperezdc/vim-template) | Templates |
 | [vim-airline](https://github.com/vim-airline/vim-airline) | Status Line |
 | [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Themes for vim-airline |
 | [indentline](https://github.com/Yggdroot/indentLine) | Display the indention levels with thin vertical lines |

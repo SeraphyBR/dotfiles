@@ -571,7 +571,7 @@ type = custom/menu
 format-spacing = 1
 format-underline =  ${colors.powermenu}
 
-label-open = "%{T3}  %{T-} "
+label-open = "%{T3}  %{T-}"
 label-open-foreground = ${colors.powermenu}
 label-close = "  "
 label-close-foreground = ${colors.powermenu-close}
