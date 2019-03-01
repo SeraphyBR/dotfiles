@@ -27,8 +27,8 @@ Plug 'Yggdroot/indentline'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
 Plug 'Shougo/echodoc.vim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
