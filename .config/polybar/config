@@ -359,7 +359,7 @@ format-suffix = "  "
 format-prefix-foreground = ${colors.spotify}
 format-suffix-foreground = ${colors.spotify}
 format = <label>
-exec = python ~/.config/polybar/Scripts/spotify_status.py -f '{song} by {artist}' -t 32
+exec = python ~/.config/polybar/Scripts/polybar-spotify/spotify_status.py -f '{song} by {artist}' -t 32
 
 click-left = playerctl next
 click-right = playerctl previous
