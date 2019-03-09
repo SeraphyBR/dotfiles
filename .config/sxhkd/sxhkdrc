@@ -57,6 +57,10 @@ super + Escape
 super + f
     xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 0 -width 60 -dmenu -i -p "Find: ")"
 
+# Show Keybindings
+alt + h 
+    ~/DotFiles/Scripts/rofi-sxhkd.sh
+
 # Lock screen
 alt + l
     betterlockscreen -l
@@ -118,15 +122,15 @@ ctrl + shift + {less,greater}
 # state/flags
 #
 
-# set the window state
 # super + {t,shift + t,s,f}
+# set the window state
 super + t
 	bspc node -t {floating,tiled}
 
-# Sets flags to the window
 # Locked = Does not allow closing the window
 # Sticky = Will move along with desktop
 # Private = It will keep its position in the mosaic.
+# Sets flags to the window
 super + ctrl + {x,y,z}
 	bspc node -g {locked,sticky,private}
 
