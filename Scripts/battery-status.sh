@@ -9,10 +9,10 @@ do
 
         if [ "$battery_level" -eq 100 ]; then
             notify-send -i $ICON "Bateria está carrega!" "Pode remover da tomada!"
-            sleep 60
+            sleep 120
         elif [ "$battery_level" -ge 85 ]; then
             notify-send -i $ICON "Bateria está carregando acima de 80%!" "Por favor tire-o da tomada!"
-            sleep 40
+            sleep 120
         fi
     else
         if [ "$battery_level" -le 15 ]; then

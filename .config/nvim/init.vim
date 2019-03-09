@@ -41,7 +41,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()            " required
 
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-" :CocInstall coc-highlight coc-java coc-pairs coc-pyls coc-rls coc-json
+" :CocInstall coc-highlight coc-css coc-vimtex coc-java coc-pairs coc-pyls coc-rls coc-json coc-html
 
 " Put your non-Plugin stuff after this line
 
@@ -133,8 +133,9 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 set spelllang=pt_br,en_us
 autocmd FileType tex,gitcommit,text,markdown setlocal spell
 
-"" Disable conceal in Latex files ("Hiding tag"):
+"" Disable conceal ("Hiding tag"):
 let g:tex_conceal = ''
+let g:vim_markdown_conceal = 0
 
 
 "" Colorscheme Section:
