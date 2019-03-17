@@ -120,12 +120,12 @@ set termguicolors
 
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class,*.jar,*.iso
 set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
 set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
 set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
-set wildignore+=*.eot,*.otf,*.ttf,*.woff
-set wildignore+=*.doc,*.pdf,*.cbr,*.cbz
+set wildignore+=*.eot,*.otf,*.ttf,*.woff    
+set wildignore+=*.doc,*.pdf,*.cbr,*.cbz,*.docx,*.ppt,*.odt
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
@@ -166,6 +166,7 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeWinPos = "right"
 let NERDTreeWinSize = 42
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:NERDTreeRespectWildIgnore = 1
 
 "" Startify Section:
 let g:startify_files_number = 8
@@ -218,4 +219,8 @@ set backspace=indent,eol,start	" Backspace behaviour
 "" AutoStart:
 autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
+autocmd VimEnter *
+                \   if !argc()
+                \ |   setlocal nowrap
+                \ |   Startify
+                \ | endif     
