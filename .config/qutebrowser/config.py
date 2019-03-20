@@ -65,6 +65,12 @@ c.content.plugins = True
 # Type: String
 c.hints.border = '1px solid #282a36'
 
+# Leave insert mode when starting a new page load. Patterns may be
+# unreliable on this setting, and they may match the url you are
+# navigating to, or the URL you are navigating from.
+# Type: Bool
+c.input.insert_mode.leave_on_load = False
+
 # Padding (in pixels) for the statusbar.
 # Type: Padding
 c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
