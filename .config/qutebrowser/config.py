@@ -143,7 +143,7 @@ c.colors.completion.item.selected.border.top = '#44475a'
 c.colors.completion.item.selected.border.bottom = '#44475a'
 
 # Foreground color of the matched text in the completion.
-# Type: QssColor
+# Type: QtColor
 c.colors.completion.match.fg = '#ffb86c'
 
 # Color of the scrollbar handle in the completion view.
@@ -290,7 +290,7 @@ c.colors.statusbar.private.bg = '#282a36'
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = '#ff79c6'
+c.colors.statusbar.command.fg = '#00FF7F'
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
@@ -410,7 +410,7 @@ c.colors.tabs.selected.even.bg = '#282a36'
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
 # Type: Font
-c.fonts.monospace = 'Menlo, Terminus, Monaco, Monospace'
+c.fonts.monospace = '"DejaVu Sans Mono", monospace'
 
 # Font used in the completion widget.
 # Type: Font
@@ -426,15 +426,15 @@ c.fonts.debug_console = '10pt monospace'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = '10pt monospace'
+c.fonts.downloads = '10pt DejaVuSans Mono'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = 'DejaVuSans Mono'
+c.fonts.hints = '12pt DejaVuSans Mono'
 
 # Font used in the keyhint widget.
 # Type: Font
-c.fonts.keyhint = '10pt monospace'
+c.fonts.keyhint = '10pt DejaVuSans Mono'
 
 # Font used for error messages.
 # Type: Font
@@ -450,7 +450,7 @@ c.fonts.messages.warning = '10pt monospace'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = 'DejaVuSans Mono'
+c.fonts.prompts = '10pt DejaVuSansMono'
 
 # Font used in the statusbar.
 # Type: Font
