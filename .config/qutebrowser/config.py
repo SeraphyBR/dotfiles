@@ -27,6 +27,16 @@ c.backend = 'webengine'
 # Type: Bool
 c.qt.highdpi = False
 
+# When to send the Referer header. The Referer header tells websites
+# from which website you were coming from when visiting them. No restart
+# is needed with QtWebKit.
+# Type: String
+# Valid values:
+#   - always: Always send the Referer.
+#   - never: Never send the Referer. This is not recommended, as some sites may break.
+#   - same-domain: Only send the Referer for the same domain. This will still protect your privacy, but shouldn't break any sites. With QtWebEngine, the referer will still be sent for other domains, but with stripped path information.
+c.content.headers.referer = 'same-domain'
+
 # Load images automatically in web pages.
 # Type: Bool
 c.content.images = True
@@ -51,6 +61,27 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Type: Bool
 c.content.plugins = True
 
+# CSS border value for hints.
+# Type: String
+c.hints.border = '1px solid #282a36'
+
+# Padding (in pixels) for the statusbar.
+# Type: Padding
+c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
+
+# Scaling factor for favicons in the tab bar. The tab size is unchanged,
+# so big favicons also require extra `tabs.padding`.
+# Type: Float
+c.tabs.favicons.scale = 1
+
+# Padding (in pixels) around text for tabs.
+# Type: Padding
+c.tabs.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
+
+# Width (in pixels) of the progress indicator (0 to disable).
+# Type: Int
+c.tabs.indicator.width = 1
+
 # Search engines which can be used via the address bar. Maps a search
 # engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
 # placeholder. The placeholder will be replaced by the search term, use
@@ -69,302 +100,317 @@ c.url.start_pages = ['https://www.google.com/']
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
 # Type: List of QtColor, or QtColor
-c.colors.completion.fg = '#ffffff'
+c.colors.completion.fg = '#f8f8f2'
 
 # Background color of the completion widget for odd rows.
 # Type: QssColor
-c.colors.completion.odd.bg = '#3f3f3f'
+c.colors.completion.odd.bg = '#282a36'
 
 # Background color of the completion widget for even rows.
 # Type: QssColor
-c.colors.completion.even.bg = '#3f3f3f'
+c.colors.completion.even.bg = '#282a36'
 
 # Foreground color of completion widget category headers.
 # Type: QtColor
-c.colors.completion.category.fg = '#ffa500'
+c.colors.completion.category.fg = '#f8f8f2'
 
 # Background color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.bg = '#3f3f3f'
+c.colors.completion.category.bg = '#282a36'
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.top = '#3f3f3f'
+c.colors.completion.category.border.top = '#282a36'
 
 # Bottom border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.bottom = '#3f3f3f'
+c.colors.completion.category.border.bottom = '#282a36'
 
 # Foreground color of the selected completion item.
 # Type: QtColor
-c.colors.completion.item.selected.fg = '#ffffff'
+c.colors.completion.item.selected.fg = '#f8f8f2'
 
 # Background color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.bg = '#26c549'
+c.colors.completion.item.selected.bg = '#44475a'
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.item.selected.border.top = '#26c549'
+c.colors.completion.item.selected.border.top = '#44475a'
 
 # Bottom border color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#26c549'
+c.colors.completion.item.selected.border.bottom = '#44475a'
 
 # Foreground color of the matched text in the completion.
 # Type: QssColor
-c.colors.completion.match.fg = '#B981F4'
+c.colors.completion.match.fg = '#ffb86c'
 
 # Color of the scrollbar handle in the completion view.
 # Type: QssColor
-c.colors.completion.scrollbar.fg = '#ffffff'
+c.colors.completion.scrollbar.fg = '#f8f8f2'
 
 # Color of the scrollbar in the completion view.
 # Type: QssColor
-c.colors.completion.scrollbar.bg = '#3f3f3f'
+c.colors.completion.scrollbar.bg = '#282a36'
 
 # Background color for the download bar.
 # Type: QssColor
-c.colors.downloads.bar.bg = '#3f3f3f'
-
-# Color gradient start for download text.
-# Type: QtColor
-c.colors.downloads.start.fg = '#3f3f3f'
-
-# Color gradient start for download backgrounds.
-# Type: QtColor
-c.colors.downloads.start.bg = '#ffa500'
-
-# Color gradient end for download text.
-# Type: QtColor
-c.colors.downloads.stop.fg = '#3f3f3f'
+c.colors.downloads.bar.bg = '#282a36'
 
 # Color gradient stop for download backgrounds.
 # Type: QtColor
-c.colors.downloads.stop.bg = '#0f91f5'
+c.colors.downloads.stop.bg = '#282a36'
+
+# Color gradient interpolation system for download backgrounds.
+# Type: ColorSystem
+# Valid values:
+#   - rgb: Interpolate in the RGB color system.
+#   - hsv: Interpolate in the HSV color system.
+#   - hsl: Interpolate in the HSL color system.
+#   - none: Don't show a gradient.
+c.colors.downloads.system.bg = 'none'
 
 # Foreground color for downloads with errors.
 # Type: QtColor
-c.colors.downloads.error.fg = '#f50f50'
+c.colors.downloads.error.fg = '#ff5555'
+
+# Background color for downloads with errors.
+# Type: QtColor
+c.colors.downloads.error.bg = '#282a36'
 
 # Font color for hints.
 # Type: QssColor
-c.colors.hints.fg = '#3f3f3f'
+c.colors.hints.fg = '#bd93f9'
 
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
 # Type: QssColor
-c.colors.hints.bg = '#ffa500'
+c.colors.hints.bg = '#282a36'
 
 # Font color for the matched part of hints.
 # Type: QssColor
-c.colors.hints.match.fg = '#ffffff'
+c.colors.hints.match.fg = '#e0e0e0'
 
 # Text color for the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.fg = '#ffffff'
+c.colors.keyhint.fg = '#bd93f9'
 
 # Highlight color for keys to complete the current keychain.
 # Type: QssColor
-c.colors.keyhint.suffix.fg = '#ffffff'
+c.colors.keyhint.suffix.fg = '#44475a'
 
 # Background color of the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.bg = '#3f3f3f'
+c.colors.keyhint.bg = '#282a36'
 
 # Foreground color of an error message.
 # Type: QssColor
-c.colors.messages.error.fg = '#3f3f3f'
+c.colors.messages.error.fg = '#ff5555'
 
 # Background color of an error message.
 # Type: QssColor
-c.colors.messages.error.bg = '#7ff145'
+c.colors.messages.error.bg = '#282a36'
 
 # Border color of an error message.
 # Type: QssColor
-c.colors.messages.error.border = '#7ff145'
+c.colors.messages.error.border = '#282a36'
 
 # Foreground color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.fg = '#3f3f3f'
+c.colors.messages.warning.fg = '#ff5555'
 
 # Background color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.bg = '#B981F4'
+c.colors.messages.warning.bg = '#282a36'
 
 # Border color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.border = '#B981F4'
+c.colors.messages.warning.border = '#282a36'
 
 # Foreground color of an info message.
 # Type: QssColor
-c.colors.messages.info.fg = '#ffffff'
+c.colors.messages.info.fg = '#6272a4'
 
 # Background color of an info message.
 # Type: QssColor
-c.colors.messages.info.bg = '#3f3f3f'
+c.colors.messages.info.bg = '#282a36'
 
 # Border color of an info message.
 # Type: QssColor
-c.colors.messages.info.border = '#3f3f3f'
+c.colors.messages.info.border = '#282a36'
 
 # Foreground color for prompts.
 # Type: QssColor
-c.colors.prompts.fg = '#ffffff'
+c.colors.prompts.fg = '#8be9fd'
 
 # Border used around UI elements in prompts.
 # Type: String
-c.colors.prompts.border = '#3f3f3f'
+c.colors.prompts.border = '1px solid #282a36'
 
 # Background color for prompts.
 # Type: QssColor
-c.colors.prompts.bg = '#3f3f3f'
+c.colors.prompts.bg = '#282a36'
 
 # Background color for the selected item in filename prompts.
 # Type: QssColor
-c.colors.prompts.selected.bg = '#0f91f5'
+c.colors.prompts.selected.bg = '#44475a'
 
 # Foreground color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.fg = '#7ff145'
+c.colors.statusbar.normal.fg = '#f8f8f2'
 
 # Background color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.bg = '#3f3f3f'
+c.colors.statusbar.normal.bg = '#282a36'
 
 # Foreground color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.fg = '#3f3f3f'
+c.colors.statusbar.insert.fg = '#ffffff'
 
 # Background color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.bg = '#B981F4'
+c.colors.statusbar.insert.bg = '#181920'
 
 # Foreground color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.fg = '#3f3f3f'
+c.colors.statusbar.passthrough.fg = '#ffb86c'
 
 # Background color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.bg = '#0f91f5'
+c.colors.statusbar.passthrough.bg = '#282a36'
 
 # Foreground color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.fg = '#3f3f3f'
+c.colors.statusbar.private.fg = '#e0e0e0'
 
 # Background color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.bg = '#3f3f3f'
+c.colors.statusbar.private.bg = '#282a36'
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = '#ffffff'
+c.colors.statusbar.command.fg = '#ff79c6'
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.bg = '#3f3f3f'
+c.colors.statusbar.command.bg = '#282a36'
 
 # Foreground color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.fg = '#ffffff'
+c.colors.statusbar.command.private.fg = '#e0e0e0'
 
 # Background color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.bg = '#3f3f3f'
+c.colors.statusbar.command.private.bg = '#282a36'
 
 # Foreground color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.fg = '#3f3f3f'
+c.colors.statusbar.caret.fg = '#ffb86c'
 
 # Background color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.bg = '#26c549'
+c.colors.statusbar.caret.bg = '#282a36'
 
 # Foreground color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.fg = '#3f3f3f'
+c.colors.statusbar.caret.selection.fg = '#ffb86c'
 
 # Background color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.bg = '#B981F4'
+c.colors.statusbar.caret.selection.bg = '#282a36'
 
 # Background color of the progress bar.
 # Type: QssColor
-c.colors.statusbar.progress.bg = '#B981F4'
+c.colors.statusbar.progress.bg = '#282a36'
 
 # Default foreground color of the URL in the statusbar.
 # Type: QssColor
-c.colors.statusbar.url.fg = '#ffffff'
+c.colors.statusbar.url.fg = '#f8f8f2'
 
 # Foreground color of the URL in the statusbar on error.
 # Type: QssColor
-c.colors.statusbar.url.error.fg = '#7ff145'
+c.colors.statusbar.url.error.fg = '#ff5555'
 
 # Foreground color of the URL in the statusbar for hovered links.
 # Type: QssColor
-c.colors.statusbar.url.hover.fg = '#ffffff'
+c.colors.statusbar.url.hover.fg = '#8be9fd'
 
 # Foreground color of the URL in the statusbar on successful load
 # (http).
 # Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#0f91f5'
+c.colors.statusbar.url.success.http.fg = '#50fa7b'
 
 # Foreground color of the URL in the statusbar on successful load
 # (https).
 # Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#7ff145'
+c.colors.statusbar.url.success.https.fg = '#50fa7b'
 
 # Foreground color of the URL in the statusbar when there's a warning.
 # Type: QssColor
-c.colors.statusbar.url.warn.fg = '#ffa500'
+c.colors.statusbar.url.warn.fg = '#f1fa8c'
 
 # Background color of the tab bar.
 # Type: QtColor
-c.colors.tabs.bar.bg = '#3f3f3f'
+c.colors.tabs.bar.bg = '#44475a'
 
 # Color gradient start for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.start = '#B981F4'
+c.colors.tabs.indicator.start = '#ffb86c'
 
 # Color gradient end for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.stop = '#0f91f5'
+c.colors.tabs.indicator.stop = '#50fa7b'
 
 # Color for the tab indicator on errors.
 # Type: QtColor
-c.colors.tabs.indicator.error = '#f50f50'
+c.colors.tabs.indicator.error = '#ff5555'
+
+# Color gradient interpolation system for the tab indicator.
+# Type: ColorSystem
+# Valid values:
+#   - rgb: Interpolate in the RGB color system.
+#   - hsv: Interpolate in the HSV color system.
+#   - hsl: Interpolate in the HSL color system.
+#   - none: Don't show a gradient.
+c.colors.tabs.indicator.system = 'none'
 
 # Foreground color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.fg = '#ffffff'
+c.colors.tabs.odd.fg = '#f8f8f2'
 
 # Background color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.bg = '#3f3f3f'
+c.colors.tabs.odd.bg = '#44475a'
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.fg = '#ffffff'
+c.colors.tabs.even.fg = '#f8f8f2'
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = '#3f3f3f'
+c.colors.tabs.even.bg = '#44475a'
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.fg = '#3f3f3f'
+c.colors.tabs.selected.odd.fg = '#f8f8f2'
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = '#ffffff'
+c.colors.tabs.selected.odd.bg = '#282a36'
 
 # Foreground color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.fg = '#3f3f3f'
+c.colors.tabs.selected.even.fg = '#f8f8f2'
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = '#ffffff'
+c.colors.tabs.selected.even.bg = '#282a36'
+
+# Default monospace fonts. Whenever "monospace" is used in a font
+# setting, it's replaced with the fonts listed here.
+# Type: Font
+c.fonts.monospace = 'Menlo, Terminus, Monaco, Monospace'
 
 # Font used in the completion widget.
 # Type: Font
@@ -374,13 +420,33 @@ c.fonts.completion.entry = '12pt DejaVuSans Mono'
 # Type: Font
 c.fonts.completion.category = '12pt DejaVuSans Mono'
 
+# Font used for the debugging console.
+# Type: QtFont
+c.fonts.debug_console = '10pt monospace'
+
+# Font used for the downloadbar.
+# Type: Font
+c.fonts.downloads = '10pt monospace'
+
 # Font used for the hints.
 # Type: Font
 c.fonts.hints = 'DejaVuSans Mono'
 
+# Font used in the keyhint widget.
+# Type: Font
+c.fonts.keyhint = '10pt monospace'
+
 # Font used for error messages.
 # Type: Font
 c.fonts.messages.error = '10pt DejaVuSans Mono'
+
+# Font used for info messages.
+# Type: Font
+c.fonts.messages.info = '10pt monospace'
+
+# Font used for warning messages.
+# Type: Font
+c.fonts.messages.warning = '10pt monospace'
 
 # Font used for prompts.
 # Type: Font
@@ -388,11 +454,52 @@ c.fonts.prompts = 'DejaVuSans Mono'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = 'DejaVuSans Mono'
+c.fonts.statusbar = '12pt DejaVuSans Mono'
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs = 'DejaVuSans Mono'
+c.fonts.tabs = '12pt DejaVuSans Mono'
+
+# Font family for standard fonts.
+# Type: FontFamily
+c.fonts.web.family.standard = ''
+
+# Font family for fixed fonts.
+# Type: FontFamily
+c.fonts.web.family.fixed = ''
+
+# Font family for serif fonts.
+# Type: FontFamily
+c.fonts.web.family.serif = ''
+
+# Font family for sans-serif fonts.
+# Type: FontFamily
+c.fonts.web.family.sans_serif = ''
+
+# Font family for cursive fonts.
+# Type: FontFamily
+c.fonts.web.family.cursive = ''
+
+# Font family for fantasy fonts.
+# Type: FontFamily
+c.fonts.web.family.fantasy = ''
+
+# Default font size (in pixels) for regular text.
+# Type: Int
+c.fonts.web.size.default = 16
+
+# Default font size (in pixels) for fixed-pitch text.
+# Type: Int
+c.fonts.web.size.default_fixed = 13
+
+# Hard minimum font size (in pixels).
+# Type: Int
+c.fonts.web.size.minimum = 0
+
+# Minimum logical font size (in pixels) that is applied when zooming
+# out.
+# Type: Int
+c.fonts.web.size.minimum_logical = 6
 
 # Bindings for normal mode
 config.bind('M', 'hint links spawn mpv {hint-url}')
