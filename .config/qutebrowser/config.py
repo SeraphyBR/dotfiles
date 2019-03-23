@@ -80,6 +80,11 @@ c.hints.border = '1px solid #24292E'
 # Type: Bool
 c.input.insert_mode.leave_on_load = False
 
+# Enable smooth scrolling for web pages. Note smooth scrolling does not
+# work with the `:scroll-px` command.
+# Type: Bool
+c.scrolling.smooth = False
+
 # Padding (in pixels) for the statusbar.
 # Type: Padding
 c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
@@ -87,7 +92,7 @@ c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
 # Type: Float
-c.tabs.favicons.scale = 1
+c.tabs.favicons.scale = 1.4
 
 # Padding (in pixels) around text for tabs.
 # Type: Padding
@@ -147,7 +152,7 @@ c.colors.completion.item.selected.fg = '#f8f8f2'
 
 # Background color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.bg = '#44475a'
+c.colors.completion.item.selected.bg = '#555555'
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
@@ -367,7 +372,7 @@ c.colors.statusbar.url.warn.fg = '#f1fa8c'
 
 # Background color of the tab bar.
 # Type: QtColor
-c.colors.tabs.bar.bg = '#3F3F3F'
+c.colors.tabs.bar.bg = '#24292E'
 
 # Color gradient start for the tab indicator.
 # Type: QtColor
@@ -396,7 +401,7 @@ c.colors.tabs.odd.fg = '#f8f8f2'
 
 # Background color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.bg = '#3F3F3F'
+c.colors.tabs.odd.bg = '#24292E'
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
@@ -404,7 +409,7 @@ c.colors.tabs.even.fg = '#f8f8f2'
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = '#3F3F3F'
+c.colors.tabs.even.bg = '#24292E'
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
@@ -412,7 +417,7 @@ c.colors.tabs.selected.odd.fg = '#f8f8f2'
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = '#24292E'
+c.colors.tabs.selected.odd.bg = '#4B7251'
 
 # Foreground color of selected even tabs.
 # Type: QtColor
@@ -420,7 +425,7 @@ c.colors.tabs.selected.even.fg = '#f8f8f2'
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = '#24292E'
+c.colors.tabs.selected.even.bg = '#4B7251'
 
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
