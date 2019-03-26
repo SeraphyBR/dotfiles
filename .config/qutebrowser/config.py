@@ -80,6 +80,10 @@ c.hints.border = '1px solid #24292E'
 # Type: Bool
 c.input.insert_mode.leave_on_load = False
 
+# Include hyperlinks in the keyboard focus chain when tabbing.
+# Type: Bool
+c.input.links_included_in_focus_chain = False
+
 # Enable smooth scrolling for web pages. Note smooth scrolling does not
 # work with the `:scroll-px` command.
 # Type: Bool
@@ -88,6 +92,10 @@ c.scrolling.smooth = False
 # Padding (in pixels) for the statusbar.
 # Type: Padding
 c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
+
+# Open new tabs (middleclick/ctrl+click) in the background.
+# Type: Bool
+c.tabs.background = True
 
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
