@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sxhkd -c ~/.config/sxhkd/sxhkdrc.bspwm &
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
 # Compositor
 compton -b &
 # Wallpaper
