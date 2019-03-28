@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-sxhkd &
+sxhkd -c ~/.config/sxhkd/sxhkdrc.bspwm &
 # Compositor
 compton -b &
 # Wallpaper
-hsetroot -center ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg & 
+hsetroot -center ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg &
 # Painels
 ~/.config/polybar/launch.sh &
 # Read Xresources and Fix cursor on bspwm
@@ -36,6 +36,7 @@ else
     bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 fi
 
+
 #bspc config click_to_focus true
 bspc config pointer_modifier mod4 # Super key to mouse actions
 bspc config pointer_action1 move
@@ -50,6 +51,7 @@ bspc config window_gap          14
 #bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
+bspc config automatic_scheme longest_side
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
@@ -66,3 +68,4 @@ bspc rule -a '*:soffice' state=tiled
 bspc rule -a Zathura state=tiled
 bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
+

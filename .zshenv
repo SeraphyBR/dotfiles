@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/usr/sbin:$PATH
+export PATH="$HOME/bin:/usr/local/bin:$HOME/.local/bin:/usr/sbin:$PATH"
 #export PATH=$PATH:/usr/bin/go/bin
 #export GOPATH=$HOME/go
 #export PATH=$PATH:$GOPATH/bin
 
 export PATH="$HOME/.gems/bin:$PATH"
-export PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
+export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export GEM_HOME="$HOME/.gems"
