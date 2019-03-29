@@ -36,6 +36,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -197,16 +198,15 @@ endfunction
 
 "" General Shortcuts:
 
-" Abre uma janela horizontalmente e abre um menu inicial: 
-nnoremap <C-h> :new <bar> :Startify <CR>
-" Abre uma janela verticalmente e abre um menu inicial:  
-nnoremap <C-v> :vnew <bar> :Startify <CR>
 " Abre um painel com um historico de modificacoes
 nnoremap <F5> :UndotreeToggle<cr>
 
 " Substitui a palavra sobre o cursor com a ultima palavra copiada.
 " Para copiar uma palavra: yiw
 nnoremap CC diw"0P
+
+" Corrigir erros de escrita com ctrl+L (Modo de inserção)
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Fix indentation on entire file
 map <F7> mzgg=G`z
