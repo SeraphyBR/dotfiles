@@ -70,6 +70,15 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Type: Bool
 c.content.plugins = True
 
+# Editor (and arguments) to use for the `open-editor` command. The
+# following placeholders are defined: * `{file}`: Filename of the file
+# to be edited. * `{line}`: Line in which the caret is found in the
+# text. * `{column}`: Column in which the caret is found in the text. *
+# `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
+# Same as `{column}`, but starting from index 0.
+# Type: ShellCommand
+c.editor.command = ['alacritty', '-e', 'nvim', '-f', '{}']
+
 # CSS border value for hints.
 # Type: String
 c.hints.border = '1px solid #24292E'
@@ -258,7 +267,7 @@ c.colors.messages.warning.border = '#24292E'
 
 # Foreground color of an info message.
 # Type: QssColor
-c.colors.messages.info.fg = '#6272a4'
+c.colors.messages.info.fg = '#f9ebb0'
 
 # Background color of an info message.
 # Type: QssColor
