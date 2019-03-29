@@ -44,9 +44,6 @@ x11-misc/redshift appindicator geoclue
 # required by sys-power/suspend-1.0_p20150810::nokit[crypt]
 # required by suspend (argument)
 >=dev-libs/libgpg-error-1.29 static-libs
-# required by media-gfx/inkscape-0.92.1-r1::media-kit
-# required by media-gfx/inkscape (argument)
->=app-text/poppler-0.52.0-r2 cairo
 # required by app-office/libreoffice-6.0.2.1::kde-kit
 # required by libreoffice (argument)
 >=dev-libs/xmlsec-1.2.24-r1 nss
@@ -56,7 +53,7 @@ dev-python/PyQt5 webengine widgets webchannel
 >=dev-python/PyQt5-5.10.1-r1 network gui declarative sql printsupport
 # required by www-client/qutebrowser-1.3.2::net-kit
 # required by qutebrowser (argument)
->=dev-qt/qtwebengine-5.9.4 widgets
+>=dev-qt/qtwebengine-5.9.4 widgets systemd-ffmpeg system-icu
 # required by dev-qt/qtwebengine-5.9.4::kde-kit
 # required by dev-python/PyQt5-5.10.1-r1::python-modules-kit[webengine]
 # required by www-client/qutebrowser-1.3.2::net-kit
@@ -85,30 +82,10 @@ dev-python/PyQt5 webengine widgets webchannel
 # required by gimp (argument)
 >=media-libs/gegl-0.3.20 cairo
 www-plugins/adobe-flash nsplugin
-games-util/steam-games-meta *
-# required by x11-misc/virtualgl-2.5.2::desktop-kit
-# required by virtualgl (argument)
-# required by x11-libs/libXv-1.0.11::xorg-kit
-# required by x11-misc/virtualgl-2.5.2::desktop-kit
-# required by virtualgl (argument)
-# required by x11-misc/primus-0.2::desktop-kit
-# required by primus (argument)
->=x11-drivers/nvidia-drivers-390.67 compat
 app-text/asciidoc python_single_target_python2_7
-# required by sys-boot/os-prober-1.76-r1::core-kit
-# required by os-prober (argument)
->=sys-boot/grub-2.02-r1 mount
-media-video/ffmpeg sdl  xcb  openssl
-# required by sys-devel/prelink-20151030::nokit
-# required by app-emulation/wine-1.7.34-r2::eroen[prelink]
-# required by wine (argument)
->=dev-libs/elfutils-0.170-r1 static-libs
-xfce-base/thunar -trash-panel-plugin
-# required by kde-apps/kdenlive-17.12.3::kde-kit
-# required by kdenlive (argument)
->=media-libs/mlt-6.4.1-r6 kdenlive melt sdl qt5
+media-video/ffmpeg sdl  xcb  openssl chromium
 media-gfx/fontforge python_single_target_python3_6 python_targets_python3_6
->=net-print/hplip-3.18.6 qt5 scanner 
+>=net-print/hplip-3.18.6 -X qt5 scanner 
 >=media-sound/ncmpcpp-0.8.1 clock visualizer outputs
 >=media-sound/mpd-0.20.20 libmpdclient
 # required by www-client/qutebrowser-1.5.1::net-kit
@@ -120,15 +97,6 @@ media-gfx/fontforge python_single_target_python3_6 python_targets_python3_6
 # required by @selected
 # required by @world (argument)
 >=dev-qt/qtmultimedia-5.9.4-r1 widgets
-# required by app-emulation/virt-manager-1.5.1-r1::nokit[gtk]
-# required by virt-manager (argument)
->=net-misc/spice-gtk-0.35 usbredir
-# required by app-emulation/libvirt-4.6.0-r1::nokit[virt-network]
-# required by app-emulation/libvirt-glib-1.0.0-r1::nokit
-# required by app-emulation/virt-manager-1.5.1-r1::nokit
-# required by virt-manager (argument)
->=net-dns/dnsmasq-2.80 script
->=app-emulation/qemu-3.0.0 spice vte ssh bluetooth virgl virtfs
 # required by app-text/calibre-3.15.0::text-kit
 # required by calibre (argument)
 >=dev-python/PyQt5-5.10.1 webkit
@@ -141,7 +109,6 @@ media-gfx/fontforge python_single_target_python3_6 python_targets_python3_6
 >=dev-python/certifi-2018.4.16 python_targets_python3_5 
 >=dev-python/setuptools-40.0.0 python_targets_python3_5
 net-print/cups-filters -pdf
-app-office/libreoffice googledrive
 
 # required by media-gfx/simple-scan-3.26.2::gnome-kit
 # required by simple-scan (argument)
@@ -228,3 +195,18 @@ net-misc/networkmanager consolekit -elogind
 # required by @selected
 # required by @world (argument)
 >=dev-ruby/rubygems-2.7.8 ruby_targets_ruby25
+# required by app-text/calibre-3.35.0::text-kit
+# required by calibre (argument)
+>=app-text/poppler-0.57.0-r1 qt5
+games-emulation/mgba qt5
+dev-lang/rust rls cargo rustfmt 
+# required by dev-util/android-studio-3.2.0.26.181.5014246::dev-kit
+# required by android-studio (argument)
+>=sys-libs/ncurses-5.9-r101:5 tinfo
+# required by www-client/qutebrowser-1.6.0::seraphybr-overlay
+# required by @selected
+# required by @world (argument)
+>=dev-python/pyyaml-3.13 libyaml
+www-client/qutebrowser scripts
+dev-java/openjdk -webstart gentoo-vm source
+dev-java/openjdk-bin -webstart
