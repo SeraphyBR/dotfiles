@@ -606,7 +606,7 @@ menu-2-1 =  |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = betterlockscreen -s 
+menu-3-0-exec = "betterlockscreen -s" 
 
 menu-3-1 =  |
 menu-3-1-exec = menu-open-0
