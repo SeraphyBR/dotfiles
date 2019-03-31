@@ -195,6 +195,10 @@ c.colors.completion.scrollbar.bg = '#24292E'
 # Type: QssColor
 c.colors.downloads.bar.bg = '#24292E'
 
+# Color gradient start for download backgrounds.
+# Type: QtColor
+c.colors.downloads.start.bg = '#BADB5F'
+
 # Color gradient stop for download backgrounds.
 # Type: QtColor
 c.colors.downloads.stop.bg = '#24292E'
@@ -206,7 +210,7 @@ c.colors.downloads.stop.bg = '#24292E'
 #   - hsv: Interpolate in the HSV color system.
 #   - hsl: Interpolate in the HSL color system.
 #   - none: Don't show a gradient.
-c.colors.downloads.system.bg = 'none'
+c.colors.downloads.system.bg = 'rgb'
 
 # Foreground color for downloads with errors.
 # Type: QtColor
