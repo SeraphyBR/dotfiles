@@ -9,10 +9,10 @@
 "================================================================
 
 " Auto install vim-plug and Plugins
- if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -37,7 +37,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-unimpaired'
-
+Plug 'prettier/vim-prettier', {
+            \ 'do': 'yarn install',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
@@ -53,8 +55,8 @@ call plug#end()            " required
 " https://github.com/palantir/python-language-server
 
 let g:ale_linters = {
-    \ 'python': ['pyls']
-    \ }
+            \ 'python': ['pyls']
+            \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Airline status line:
@@ -134,10 +136,14 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 set spelllang=pt_br,en_us
 autocmd FileType tex,gitcommit,text,markdown setlocal spell
 
+"" Prettier:
+let g:prettier#config#print_width = 100
+let g:prettier#autoformat = 0
+let g:prettier#config#tab_width = 4
+
 "" Disable conceal ("Hiding tag"):
 let g:tex_conceal = ''
 let g:vim_markdown_conceal = 0
-
 
 "" Colorscheme Section:
 if empty($DISPLAY)
@@ -220,7 +226,7 @@ set backspace=indent,eol,start	" Backspace behaviour
 autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd VimEnter *
-                \   if !argc()
-                \ |   setlocal nowrap
-                \ |   Startify
-                \ | endif     
+            \   if !argc()
+            \ |   setlocal nowrap
+            \ |   Startify
+            \ | endif     
