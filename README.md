@@ -87,7 +87,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
 | [vim-prettier](https://github.com/prettier/vim-prettier)                                    | Code formatter                                        |
 
-##### [COC Extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) (Not related to a programming language):
+##### [COC Extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use and are not related to a programming language:
 
 | Extension                                                  |
 | :--------------------------------------------------------- |
