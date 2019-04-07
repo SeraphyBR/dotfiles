@@ -67,11 +67,11 @@ alt + l
 
 # Volume Controls
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume 1 {+,-}10%  
+    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%  
 
 # Volume Mute
 XF86AudioMute
-    pactl set-sink-mute 1 toggle
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # PrintScreen
 Print + {_,super} 
