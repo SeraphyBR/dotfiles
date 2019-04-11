@@ -5,4 +5,4 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim 
 export GIT_EDITOR=/usr/bin/nvim
 export _JAVA_AWT_WM_NONREPARENTING=1  
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
