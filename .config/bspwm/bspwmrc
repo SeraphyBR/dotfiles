@@ -29,14 +29,7 @@ dunstify "Bem Vindo ${USER^}!" &
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' & 
 
-if [ "$(xrandr --query | grep -c " connected")" -eq 2 ]; then
-    bspc monitor eDP-1  -d I II III IV V 
-    bspc monitor HDMI-1 -d VI VII VIII IX X
-else 
-    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
-fi
-
-
+bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 #bspc config click_to_focus true
 bspc config pointer_modifier mod4 # Super key to mouse actions
 bspc config pointer_action1 move
@@ -48,7 +41,7 @@ bspc config border_width         5
 bspc config border_radius       10
 bspc config window_gap          14
 
-#bspc config remove_disabled_monitors true
+bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 bspc config automatic_scheme longest_side
@@ -57,7 +50,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc config normal_border_color "#c9c9c9"
-bspc config active_border_color "#556B2F"
+bspc config active_border_color "#76DD6C"
 bspc config focused_border_color "#76DD6C"
 bspc config urgent_border_color "#FF4500"
 bspc config presel_border_color "#9DFF5F"
@@ -69,3 +62,5 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
+# srandr for handle displays output
+srandrd -v ~/DotFiles/Scripts/display_handler.sh    
