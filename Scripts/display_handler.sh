@@ -23,9 +23,4 @@
 
 
     notify-send "srandrd" "$SRANDRD_OUTPUT $SRANDRD_EVENT"
-} & # Group all the commands and run them in the background. srandrd waits for
-# the script to exit before continuing. That means it'll wait for this script to
-# return, then run it again because of the xrandr command above. That makes our
-# lockfile useless. Putting all the commands in the background means that the
-# script returns immediately, runs the script a second time, and our lockfile
-# above blocks it.
+} &
