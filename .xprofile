@@ -6,3 +6,4 @@ export VISUAL=/usr/bin/nvim
 export GIT_EDITOR=/usr/bin/nvim
 export _JAVA_AWT_WM_NONREPARENTING=1  
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
+export WINIT_HIDPI_FACTOR=1.0
