@@ -24,6 +24,5 @@ WALLPAPER="$HOME/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080
         "VGA-0 connected") xrandr --output VGA-0 --auto --left-of eDP-1;;
     esac
 
-
     notify-send "srandrd" "$SRANDRD_OUTPUT $SRANDRD_EVENT"
 } &
