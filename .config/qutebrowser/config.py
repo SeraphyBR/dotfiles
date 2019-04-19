@@ -128,11 +128,11 @@ c.tabs.indicator.width = 1
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?hl=en&q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = ['https://www.google.com/']
+c.url.start_pages = ['https://duckduckgo.com/']
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
