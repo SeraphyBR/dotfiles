@@ -194,10 +194,6 @@ let g:startify_lists = [
             \ { 'type': 'commands',  'header': ['   Commands:']       },
             \ ] 
 
-function! StartifyEntryFormat() 
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path' 
-endfunction 
-
 "" General Shortcuts:
 
 " Abre um painel com um historico de modificacoes
@@ -219,10 +215,22 @@ set undolevels=1500	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
 "" AutoStart:
+autocmd TermOpen * call SetTermOptions()
 autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd VimEnter *
             \   if !argc()
             \ |   setlocal nowrap
             \ |   Startify
-            \ | endif     
+            \ | endif   
+
+"" Functions:
+function SetTermOptions() 
+    setlocal nonumber
+    setlocal norelativenumber
+    IndentLinesDisable
+endfunction   
+
+function! StartifyEntryFormat() 
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path' 
+endfunction  
