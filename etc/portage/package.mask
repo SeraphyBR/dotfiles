@@ -5,7 +5,6 @@
 */*::seeds
 */*::raiagent
 */*::Not-A-Overlay
->=x11-drivers/nvidia-drivers-391.0.0
 >=x11-misc/polybar-9999
 >=media-fonts/fontawesome-5.0.0
 
