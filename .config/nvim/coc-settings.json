@@ -1,4 +1,7 @@
 {
-    "suggest.echodocSupport": true,
-    "java.errors.incompleteClasspath.severity": "ignore"
+    "suggest.echodocSupport": true, 
+    "coc.preferences.extensionUpdateCheck": "never",
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "signature.target": "float",
+    "diagnostic.messageTarget": "float"
 }

@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentline'
 Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
+Plug 'Shougo/denite.nvim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'Shougo/echodoc.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -37,49 +38,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-unimpaired'
-Plug 'prettier/vim-prettier', {
-            \ 'do': 'yarn install',
-            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
-" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-" :CocInstall coc-highlight coc-css coc-vimtex coc-java coc-pairs coc-pyls coc-rls coc-json coc-html
 
 " Put your non-Plugin stuff after this line
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Language servers related:
-
-" https://github.com/MaskRay/ccls
-" https://github.com/palantir/python-language-server
-
-let g:ale_linters = {
-            \ 'python': ['pyls']
-            \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Airline status line:
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_theme='deus'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}' 
-
-"" IndentLine
-let g:indentLine_char= '┊'
-let g:indentLine_fileTypeExclude = ['markdown']  
-
-" Vimtex
-let g:vimtex_view_general_viewer = 'zathura'
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General:
-
 set mouse=a                " Enable mouse. see :help mouse for info. 
 set number	           " Show line numbers
 set hidden
@@ -96,13 +62,12 @@ set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
 set wildmenu
 set wildmode=full
 set guifont=DejaVuSansMono\ Nerd\ Font\ 12
-
+set pumblend=18            " pseudo-transparent popup menu
 set hlsearch	           " Highlight all search results
 set smartcase	           " Enable smart-case search
 set ignorecase	           " Always case-insensitive
 set incsearch	           " Searches for strings incrementally
 set splitbelow
-
 set ve=all                 " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
 set expandtab	           " Use spaces instead of tabs
@@ -113,6 +78,7 @@ set softtabstop=4	   " Number of spaces per Tab
 set scrolloff=3            " Always show N lines above/below the cursor
 set clipboard=unnamedplus 
 set shell=/bin/zsh
+set spelllang=pt_br,en_us
 
 set background=dark
 set termguicolors
@@ -128,9 +94,55 @@ set wildignore+=*.doc,*.pdf,*.cbr,*.cbz,*.docx,*.ppt,*.odt
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
-"" SpellCheck:
-set spelllang=pt_br,en_us
-autocmd FileType tex,gitcommit,text,markdown setlocal spell
+"" Advanced:
+set ruler	                " Show row and column ruler information
+set undolevels=1500	        " Number of undo levels
+set backspace=indent,eol,start	" Backspace behaviour  
+
+"" Persistent Undo:
+" Let's save undo info!
+if !isdirectory($HOME."/.config/nvim/undo-dir")
+    call mkdir($HOME."/.config/nvim/undo-dir", "", 0700)
+endif
+set undodir=~/.config/nvim/undo-dir
+set undofile
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Airline status line:
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}' 
+
+"" ALE section:
+let g:ale_linters = {
+            \ 'python': ['pyls']
+            \ }
+
+"" COC section:
+" https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+let g:coc_global_extensions = [ 
+            \ 'coc-highlight',
+            \ 'coc-pairs',
+            \ 'coc-snippets',
+            \ 'coc-json',
+            \ 'coc-prettier',
+            \ 'coc-vimtex'
+            \ ]
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"" IndentLine
+let g:indentLine_char= '┊'
+let g:indentLine_fileTypeExclude = ['markdown']  
+
+" Vimtex
+let g:vimtex_view_general_viewer = 'zathura'
 
 "" Prettier:
 let g:prettier#config#print_width = 100
@@ -152,20 +164,7 @@ endif
 "" Syntax Hightlighting:
 syntax on
 
-"" Persistent Undo:
-" Let's save undo info!
-if !isdirectory($HOME."/.config/nvim/undo-dir")
-    call mkdir($HOME."/.config/nvim/undo-dir", "", 0700)
-endif
-set undodir=~/.config/nvim/undo-dir
-set undofile
-
-"" ALE quick navigate between errors:
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 "" NERDtree Section: 
-map <C-n> :NERDTreeToggle<CR>
 let NERDTreeWinPos = "right"
 let NERDTreeWinSize = 42
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
@@ -192,8 +191,16 @@ let g:startify_lists = [
             \ { 'type': 'sessions',  'header': ['   Sessions:']       },
             \ { 'type': 'bookmarks', 'header': ['   Bookmarks:']      },
             \ { 'type': 'commands',  'header': ['   Commands:']       },
-            \ ] 
+            \ ]
 
+"" Denite Section:
+call denite#custom#option('default', {
+            \ 'auto_resize': 1,
+            \ 'prompt': '  :',
+            \ 'direction': 'rightbelow',
+            \ })
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Shortcuts:
 
 " Abre um painel com um historico de modificacoes
@@ -209,12 +216,19 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " Fix indentation on entire file
 map <F7> mzgg=G`z
 
-"" Advanced:
-set ruler	                " Show row and column ruler information
-set undolevels=1500	        " Number of undo levels
-set backspace=indent,eol,start	" Backspace behaviour
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"  
 
+" ALE quick navigate between errors:
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+map <C-n> :NERDTreeToggle<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:
+autocmd FileType tex,gitcommit,text,markdown setlocal spell
 autocmd TermOpen * call SetTermOptions()
 autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -222,8 +236,9 @@ autocmd VimEnter *
             \   if !argc()
             \ |   setlocal nowrap
             \ |   Startify
-            \ | endif   
+            \ | endif 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Functions:
 function SetTermOptions() 
     setlocal nonumber
