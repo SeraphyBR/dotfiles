@@ -86,7 +86,6 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [markdown-preview](https://github.com/iamcco/markdown-preview.vim)                          | Markdown Live Preview                                 |
 | [gruvbox](https://github.com/morhetz/gruvbox)                                               | Color scheme                                          |
 | [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
-| [vim-prettier](https://github.com/prettier/vim-prettier)                                    | Code formatter                                        |
 
 ##### [COC Extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use and are not related to a programming language:
 
@@ -95,6 +94,9 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [coc-highlight](https://github.com/neoclide/coc-highlight) |
 | [coc-pairs](https://github.com/neoclide/coc-pairs)         |
 | [coc-vimtex](https://github.com/neoclide/coc-vimtex)       |
+| [coc-snippets](https://github.com/neoclide/coc-snippets)   |
+| [coc-json](https://github.com/neoclide/coc-json)           |
+| [coc-prettier](https://github.com/neoclide/coc-prettier)   |
 
 #### Rofi Theme:
 
