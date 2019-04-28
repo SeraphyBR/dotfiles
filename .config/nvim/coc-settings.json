@@ -2,6 +2,7 @@
     "suggest.echodocSupport": true, 
     "coc.preferences.extensionUpdateCheck": "never",
     "java.errors.incompleteClasspath.severity": "ignore",
+    "prettier.tabWidth": 4,
     "signature.target": "float",
     "diagnostic.messageTarget": "float"
 }

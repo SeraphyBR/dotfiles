@@ -18,6 +18,7 @@ if [ ! -d "$ZSH" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-completions $ZSH/custom/plugins/zsh-completions
+    git clone https://github.com/bilelmoussaoui/flatpak-zsh-completion $ZSH/custom/plugins/flatpak
     chsh -s /bin/zsh
 fi
 
@@ -25,7 +26,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions extract)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions extract flatpak)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -67,8 +68,6 @@ COMPLETION_WAITING_DOTS="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [ ! -d $ZSH_CACHE_DIR ]; then

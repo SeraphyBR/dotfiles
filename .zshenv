@@ -21,3 +21,7 @@ export LESS=-r
 
 # Time
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
+
+# Editor 
+export EDITOR=/usr/bin/nvim 
+export GIT_EDITOR=/usr/bin/nvim
