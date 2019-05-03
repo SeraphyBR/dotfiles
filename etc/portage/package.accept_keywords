@@ -1,5 +1,4 @@
-# required by =ranger-9999 (argument)
+=app-editors/neovim-9999 **
+=app-misc/fff-9999 **
 =app-misc/ranger-9999 **
 net-vpn/zeronet
-# required by app-misc/fff (argument)
-=app-misc/fff-9999 **
