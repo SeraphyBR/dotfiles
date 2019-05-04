@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sxhkd -c ~/.config/sxhkd/sxhkdrc.bspwm &
+sxhkd &
 # Compositor
 compton -b &
 # Wallpaper
@@ -18,7 +18,7 @@ setxkbmap -model abnt2 -layout br -variant abnt2 &
 /usr/libexec/geoclue-2.0/demos/agent &
 redshift-gtk &
 # Plugin que desabilita escurecimento de tela
-caffeine-indicator &
+caffeine &
 # Notification Daemon
 dunst &
 ~/DotFiles/Scripts/battery-status.sh &

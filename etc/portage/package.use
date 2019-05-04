@@ -17,7 +17,7 @@ dev-libs/openssl abi_x86_32
 dev-libs/xmlsec nss
 dev-lua/lpeg luajit
 dev-lua/mpack luajit
-dev-python/PyQt5 webengine multimedia network declarative 
+dev-python/PyQt5 webengine multimedia network declarative webkit 
 dev-python/PyQt5 widgets webchannel printsupport gui sql 
 dev-python/certifi python_targets_python3_5 
 dev-python/jinja python_targets_python3_6
