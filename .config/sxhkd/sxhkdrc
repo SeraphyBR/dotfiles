@@ -85,11 +85,11 @@ XF86MonBrightness{Up,Down}
 #################### BSPWM HOTKEYS #########################
 ############################################################
 
-# Sair do Bspwm Normalmente
+# Exit Bspwm 
 super + alt + Escape
 	bspc quit
 
-# Fechar Janela
+# Close focus window 
 alt + w
 	bspc node -c
 
@@ -122,7 +122,6 @@ ctrl + shift + {less,greater}
 # state/flags
 #
 
-# super + {t,shift + t,s,f}
 # set the window state
 super + t
 	bspc node -t {floating,tiled}
@@ -130,7 +129,7 @@ super + t
 # Locked = Does not allow closing the window
 # Sticky = Will move along with desktop
 # Private = It will keep its position in the mosaic.
-# Sets flags to the window
+# Sets flags to the window (locked,Sticky,private)
 super + ctrl + {x,y,z}
 	bspc node -g {locked,sticky,private}
 
@@ -168,7 +167,7 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-# Rotaciona todas as janelas da area de trabalho
+# Rotatates the windows 90 degrees
 super + shift + r
     bspc node @/ -R 90
  
