@@ -28,10 +28,6 @@ super + q
 super + a
     alacritty -e ranger
  
-# File Manager Thunar
-super + shift + a
-    thunar
- 
 # Text Editor Neovim
 super + e
     alacritty -e nvim
