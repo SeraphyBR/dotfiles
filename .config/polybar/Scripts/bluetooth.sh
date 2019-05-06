@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # Depends on TLP
 # https://github.com/linrunner/TLP
 

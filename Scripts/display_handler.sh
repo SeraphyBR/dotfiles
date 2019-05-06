@@ -1,4 +1,4 @@
-#! /usr/bin/env sh
+#!/bin/sh
 #
 # Script for use with srandrd - (https://github.com/jceb/srandrd)
 #

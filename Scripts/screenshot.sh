@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 tmp="$HOME/$(date +%F_%T).png"
 filename="$HOME/Imagens/Screenshots/$(date +%F_%T).png"

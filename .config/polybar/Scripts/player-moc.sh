@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Change according to information you wish to show in your polybar:
 #        %state     State

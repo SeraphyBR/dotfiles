@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 ICON=/usr/share/icons/Papirus/48x48/devices/battery.svg
 

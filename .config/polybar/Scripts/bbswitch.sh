@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Script criado para ser usado como modulo para o polybar,
 # vai dizer se a placa nvidia está em uso ou não.
