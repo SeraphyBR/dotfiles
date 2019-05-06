@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 while read -r file
 do
     case "$1" in
