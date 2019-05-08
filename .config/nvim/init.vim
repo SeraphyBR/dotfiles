@@ -143,11 +143,17 @@ let g:coc_global_extensions = [
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-"" IndentLine
+"" IndentLine:
 let g:indentLine_char= '┊'
 let g:indentLine_fileTypeExclude = ['markdown']  
 
-" Vimtex
+"" Custom Templates:
+if !isdirectory($HOME."/.config/nvim/templates")
+    call mkdir($HOME."/.config/nvim/templates", "", 0700)
+endif
+let g:templates_directory = [ '~/.config/nvim/templates' ]
+
+" Vimtex:
 let g:vimtex_view_general_viewer = 'zathura'
 
 "" Prettier:
