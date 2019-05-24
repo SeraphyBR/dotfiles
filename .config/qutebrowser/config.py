@@ -455,11 +455,11 @@ c.fonts.monospace = '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", M
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '12pt DejaVuSans Mono'
+c.fonts.completion.entry = '12pt Fira Code'
 
 # Font used in the completion categories.
 # Type: Font
-c.fonts.completion.category = '12pt DejaVuSans Mono'
+c.fonts.completion.category = '12pt Fira Code'
 
 # Font used for the debugging console.
 # Type: QtFont
@@ -467,23 +467,23 @@ c.fonts.debug_console = '10pt monospace'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = '10pt DejaVuSans Mono'
+c.fonts.downloads = '10pt Fira Code'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = '12pt DejaVuSans Mono'
+c.fonts.hints = '12pt Fira Code'
 
 # Font used in the keyhint widget.
 # Type: Font
-c.fonts.keyhint = '10pt DejaVuSans Mono'
+c.fonts.keyhint = '10pt Fira Code'
 
 # Font used for error messages.
 # Type: Font
-c.fonts.messages.error = '10pt DejaVuSans Mono'
+c.fonts.messages.error = '10pt Fira Code'
 
 # Font used for info messages.
 # Type: Font
-c.fonts.messages.info = '10pt monospace'
+c.fonts.messages.info = '10pt Fira Code'
 
 # Font used for warning messages.
 # Type: Font
@@ -491,15 +491,15 @@ c.fonts.messages.warning = '10pt monospace'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = '10pt DejaVuSansMono'
+c.fonts.prompts = '12pt Fira Code'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '12pt DejaVuSans Mono'
+c.fonts.statusbar = '12pt Fira Code'
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs = '12pt DejaVuSans Mono'
+c.fonts.tabs = '12pt Fira Code'
 
 # Font family for standard fonts.
 # Type: FontFamily
