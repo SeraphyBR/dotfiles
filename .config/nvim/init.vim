@@ -74,14 +74,14 @@ set smartcase	           " Enable smart-case search
 set ignorecase	           " Always case-insensitive
 set incsearch	           " Searches for strings incrementally
 set splitbelow
-set ve=all                 " Permite mover o cursor onde não há texto
+set virtualedit=insert,block,onemore " Permite mover o cursor onde não há texto
 set autoindent	           " Auto-indent new lines
 set expandtab	           " Use spaces instead of tabs
 set shiftwidth=4	   " Number of auto-indent spaces
 set smartindent	           " Enable smart-indent
 set smarttab	           " Enable smart-tabs
 set softtabstop=4	   " Number of spaces per Tab
-set scrolloff=3            " Always show N lines above/below the cursor
+set scrolloff=999            " Always show N lines above/below the cursor
 set clipboard=unnamedplus 
 set shell=/bin/zsh
 set spelllang=pt_br,en_us
@@ -138,6 +138,7 @@ let g:coc_global_extensions = [
             \ 'coc-pairs',
             \ 'coc-snippets',
             \ 'coc-json',
+            \ 'coc-yaml',
             \ 'coc-prettier',
             \ 'coc-vimtex'
             \ ]
@@ -186,6 +187,8 @@ let g:NERDTreeRespectWildIgnore = 1
 let g:startify_files_number = 8
 let g:startify_update_oldfiles = 1
 let g:startify_session_autoload = 1
+let g:startify_session_persistence = 1
+let g:startify_change_to_vcs_root = 1
 let g:startify_change_to_dir = 1
 let g:startify_fortune_use_unicode = 1
 let g:ascii = [
