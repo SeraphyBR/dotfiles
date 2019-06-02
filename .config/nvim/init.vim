@@ -23,27 +23,30 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'gentoo/gentoo-syntax'
-Plug 'sheerun/vim-polyglot'
-Plug 'mhinz/vim-startify'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/echodoc.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentline'
 Plug 'aperezdc/vim-template'
+Plug 'gentoo/gentoo-syntax'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'luochen1990/rainbow'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-startify'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentline'
-Plug 'mbbill/undotree'
 Plug 'w0rp/ale'
-Plug 'Shougo/denite.nvim'
-Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'Shougo/echodoc.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'tpope/vim-fugitive'
-Plug 'ryanoasis/vim-devicons'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-unimpaired'
+
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
@@ -144,8 +147,11 @@ let g:coc_global_extensions = [
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+"" Rainbow Parentheses Improved
+let g:rainbow_active = 1 
+
 "" IndentLine:
-let g:indentLine_char= '┊'
+let g:indentLine_char= '│'
 let g:indentLine_fileTypeExclude = ['markdown']  
 
 "" Custom Templates:

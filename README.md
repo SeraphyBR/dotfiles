@@ -88,6 +88,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [markdown-preview](https://github.com/iamcco/markdown-preview.vim)                          | Markdown Live Preview                                 |
 | [gruvbox](https://github.com/morhetz/gruvbox)                                               | Color scheme                                          |
 | [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
+| [rainbow](https://github.com/luochen1990/rainbow)                                           | Rainbow Parentheses Improved                          |
 
 ##### [COC Extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use and are not related to a programming language:
 
