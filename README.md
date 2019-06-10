@@ -85,6 +85,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [vim-nerdtree-syntax-highlight](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight) | Extra syntax and highlight for nerdtree files         |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive)                                       | Git wrapper inside Vim                                |
 | [vim-devicons](https://github.com/ryanoasis/vim-devicons)                                   | Icons for vim plugins                                 |
+| [Vista](http://liuchengxu.org/vista.vim/)                                                   | Viewer for Symbols and Ctags                          |
 | [markdown-preview](https://github.com/iamcco/markdown-preview.vim)                          | Markdown Live Preview                                 |
 | [gruvbox](https://github.com/morhetz/gruvbox)                                               | Color scheme                                          |
 | [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
@@ -100,6 +101,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [coc-snippets](https://github.com/neoclide/coc-snippets)   |
 | [coc-json](https://github.com/neoclide/coc-json)           |
 | [coc-prettier](https://github.com/neoclide/coc-prettier)   |
+| [coc-yaml](https://github.com/neoclide/coc-yaml)           |
+| [coc-yank](https://github.com/neoclide/coc-yank)           |
 
 #### Rofi Theme:
 

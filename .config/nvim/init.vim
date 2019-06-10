@@ -43,6 +43,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+Plug 'liuchengxu/vista.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
@@ -142,6 +143,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-json',
             \ 'coc-yaml',
+            \ 'coc-yank',
             \ 'coc-prettier',
             \ 'coc-vimtex'
             \ ]
@@ -149,6 +151,9 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1 
+
+"" Vista:
+let g:vista#renderer#enable_icon = 1
 
 "" IndentLine:
 let g:indentLine_char= '│'
@@ -230,6 +235,9 @@ nnoremap <F5> :UndotreeToggle<cr>
 " Substitui a palavra sobre o cursor com a ultima palavra copiada.
 " Para copiar uma palavra: yiw
 nnoremap CC diw"0P
+
+" Coc-yank list
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " Corrigir erros de escrita com ctrl+L (Modo de inserção)
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u

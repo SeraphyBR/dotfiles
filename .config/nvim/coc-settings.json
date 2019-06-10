@@ -1,9 +1,12 @@
 {
     "java.home": "/opt/openjdk-bin-11.0.1_p13",
+    "java.trace.server": "verbose",
     "suggest.echodocSupport": true, 
     "coc.preferences.extensionUpdateCheck": "never",
     "java.errors.incompleteClasspath.severity": "ignore",
     "prettier.tabWidth": 4,
     "signature.target": "float",
-    "diagnostic.messageTarget": "float"
+    "diagnostic.messageTarget": "float",
+    "java.format.settings.url": "/home/seraphybr-fun/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+    "yank.highlight.duration": 250
 }
