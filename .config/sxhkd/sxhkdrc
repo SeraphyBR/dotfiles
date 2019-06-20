@@ -32,6 +32,10 @@ super + a
 super + e
     alacritty -e nvim
 
+# Text Editor VScode
+super + shift + e
+    code
+
 # Music Player
 alt + m 
     alacritty -e ncmpcpp

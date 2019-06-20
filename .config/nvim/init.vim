@@ -35,6 +35,7 @@ Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -144,16 +145,21 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-yaml',
             \ 'coc-yank',
+            \ 'coc-git',
             \ 'coc-prettier',
-            \ 'coc-vimtex'
+            \ 'coc-vimtex',
+            \ 'coc-vimlsp',
+            \ 'coc-marketplace'
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1 
+let g:rainbow_conf = {'guifgs': ['#3E87E5','#3EE54F','#E5E33E','#A73EE5']}
 
 "" Vista:
 let g:vista#renderer#enable_icon = 1
+let g:vista_default_executive = "coc"
 
 "" IndentLine:
 let g:indentLine_char= '│'

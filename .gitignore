@@ -2,3 +2,5 @@
 .config/nvim/plugged/*
 .config/nvim/autoload/*
 .config/nvim/undo-dir/*
+**/tags
+tags.*

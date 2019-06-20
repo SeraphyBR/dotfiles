@@ -74,7 +74,7 @@ geometry = "364x50-15+49"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
-shrink = no
+shrink = yes
 
 # The transparency of the window.  Range: [0; 100].
 # This option will only work if a compositing windowmanager is
@@ -149,7 +149,7 @@ browser = /usr/bin/qutebrowser
 
 # Align icons left/right/off
 icon_position = right
-max_icon_size = 80
+max_icon_size = 128
 
 # Paths to default icons.
 icon_path = /usr/share/icons/Papirus/16x16/mimetypes/:/usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/16x16/devices/:/usr/share/icons/Papirus/48x48/apps/

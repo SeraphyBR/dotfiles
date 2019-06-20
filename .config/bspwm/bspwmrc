@@ -66,5 +66,6 @@ bspc rule -a Emacs state=tiled
 bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
+
 # srandr for handle displays output
 srandrd -v ~/DotFiles/Scripts/display_handler.sh    
