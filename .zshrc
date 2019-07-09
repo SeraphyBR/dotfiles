@@ -7,7 +7,7 @@
 #                                                          
 
 
-################## Oh-my-zsh Section ########################################################
+################## Oh-my-zsh Section ##################################
 
 # Path to your oh-my-zsh installation.
 ZSH="$HOME/.oh-my-zsh"
@@ -102,19 +102,18 @@ if [ ! -e "~/.hgrc" ];then
     touch ~/.hgrc
 fi
 
-############################################################################################### 
+################################################################################# 
 
 # Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-###################### End of Oh-my-zsh section ##########################################################
+###################### End of Oh-my-zsh section ##################################
+
+#################### User settings below this line ################################
 
 
-
-#################### User settings below this line ########################################################
-
-# Auto correct mistakes
-unsetopt correct 
+# (unset) Auto correct mistakes
+unsetopt correctall 
 # Extended globbing. Allows using regular expressions with *  
 setopt extendedglob                                            
 # Case insensitive globbing
@@ -135,8 +134,6 @@ setopt histignorealldups
 setopt autocd
 # Remove command lines from the history list when the first character on the line is a space.
 setopt HIST_IGNORE_SPACE                 
-
-
 
 #################################  Aliases section  ############################################# 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
