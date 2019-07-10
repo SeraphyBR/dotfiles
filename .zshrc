@@ -59,7 +59,7 @@ UPDATE_ZSH_DAYS=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -111,9 +111,6 @@ source $ZSH/oh-my-zsh.sh
 
 #################### User settings below this line ################################
 
-
-# (unset) Auto correct mistakes
-unsetopt correctall 
 # Extended globbing. Allows using regular expressions with *  
 setopt extendedglob                                            
 # Case insensitive globbing
