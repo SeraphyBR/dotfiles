@@ -31,11 +31,11 @@ Plug 'aperezdc/vim-template'
 Plug 'gentoo/gentoo-syntax'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -44,7 +44,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'liuchengxu/vista.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
@@ -57,42 +56,43 @@ call plug#end()            " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General:
-set mouse=a                " Enable mouse. see :help mouse for info. 
-set number	           " Show line numbers
-set hidden
-set relativenumber
-set cursorline             " Highlight cursor line
-set noshowmode
-set linebreak	           " Break lines at word (requires Wrap lines)
-set showbreak=+++ 	   " Wrap-broken line prefix
-set textwidth=110	   " Line wrap (number of cols)
-set showmatch	           " Highlight matching brace
-set visualbell	           " Use visual bell (no beeping)
-set encoding=utf-8         " Define o encoding exibido no terminal
-set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
-set wildmenu
-set wildmode=full
-set guifont=DejaVuSansMono\ Nerd\ Font\ 12
-set pumblend=18            " pseudo-transparent popup menu
-set hlsearch	           " Highlight all search results
-set smartcase	           " Enable smart-case search
-set ignorecase	           " Always case-insensitive
-set incsearch	           " Searches for strings incrementally
-set splitbelow
-set virtualedit=insert,block,onemore " Permite mover o cursor onde não há texto
+
 set autoindent	           " Auto-indent new lines
+set background=dark
+set clipboard=unnamedplus 
+set cursorline             " Highlight cursor line
+set encoding=utf-8         " Define o encoding exibido no terminal
 set expandtab	           " Use spaces instead of tabs
+set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
+set guifont=DejaVuSansMono\ Nerd\ Font\ 12
+set hidden
+set hlsearch	           " Highlight all search results
+set ignorecase	           " Always case-insensitive
+set inccommand=split
+set incsearch	           " Searches for strings incrementally
+set linebreak	           " Break lines at word (requires Wrap lines)
+set mouse=a                " Enable mouse. see :help mouse for info. 
+set noshowmode
+set number	           " Show line numbers
+set pumblend=18            " pseudo-transparent popup menu
+set relativenumber
+set scrolloff=999          " Always show N lines above/below the cursor
+set shell=/bin/zsh
 set shiftwidth=4	   " Number of auto-indent spaces
+set showbreak=+++ 	   " Wrap-broken line prefix
+set showmatch	           " Highlight matching brace
+set smartcase	           " Enable smart-case search
 set smartindent	           " Enable smart-indent
 set smarttab	           " Enable smart-tabs
 set softtabstop=4	   " Number of spaces per Tab
-set scrolloff=999            " Always show N lines above/below the cursor
-set clipboard=unnamedplus 
-set shell=/bin/zsh
 set spelllang=pt_br,en_us
-
-set background=dark
+set splitbelow
 set termguicolors
+set textwidth=110	   " Line wrap (number of cols)
+set virtualedit=insert,block,onemore " Permite mover o cursor onde não há texto
+set visualbell	           " Use visual bell (no beeping)
+set wildmenu
+set wildmode=full
 
 set wildignore+=.git,.hg,.svn
 set wildignore+=*.aux,*.out,*.toc
