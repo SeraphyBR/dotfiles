@@ -33,13 +33,13 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Vídeo Player        | [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/)                                                                  |
 | Sound Visualizer    | [Cava](https://github.com/karlstav/cava)                                                                                           |
 | File Manager        | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons)                     |
-| Image Viewer        | [sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug)(for preview in Ranger)                   |
+| Image Viewer        | [Sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug) (for preview in Ranger)                  |
 | PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                         |
 | Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot)                                                                                     |
 | Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                   |
-| Terminal Emulator   | [Alacritty](https://github.com/jwilm/alacritty) and [Termite](https://github.com/thestinger/termite)                               |
+| Terminal Emulator   | [Alacritty](https://github.com/jwilm/alacritty)                                                                                    |
 | Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)   |
-| Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                                                          |
+| Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                            |
 | Power Manager       | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html)                                                    |
 | Monitor setup       | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) / [srandrd](https://github.com/jceb/srandrd)                        |
 | Run command as root | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo)                                                            |
