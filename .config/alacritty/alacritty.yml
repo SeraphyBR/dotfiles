@@ -88,19 +88,19 @@ font:
   normal:
     family: DejaVuSansMono Nerd Font
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   bold:
     family: DejaVuSansMono Nerd Font
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
     family: DejaVuSansMono Nerd Font
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Point size
   size: 12.0
