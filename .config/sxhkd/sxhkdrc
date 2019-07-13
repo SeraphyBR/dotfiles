@@ -25,7 +25,7 @@ super + q
     qutebrowser
 
 # File Manager
-super + a
+super + f
     alacritty -e ranger
  
 # Text Editor Neovim
@@ -34,7 +34,7 @@ super + e
 
 # Text Editor VScode
 super + shift + e
-    code
+    vscode
 
 # Music Player
 super + m 
@@ -55,7 +55,7 @@ super + Escape
 	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
 # Find files with rofi:
-super + f
+super + shift + f
     xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 2 -width 60 -dmenu -i -p "Find: ")"
 
 # Show Keybindings
@@ -147,7 +147,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }r
+super + {_,shift + } r
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -155,7 +155,7 @@ super + shift + {less,greater}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {apostrophe,Tab}
+Tab + {super,alt}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
