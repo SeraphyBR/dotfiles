@@ -37,7 +37,7 @@ super + shift + e
     code
 
 # Music Player
-alt + m 
+super + m 
     alacritty -e ncmpcpp
 
 # Programs Launcher / Window alternator
@@ -47,7 +47,8 @@ super + {d,w}
          -show-icons \
          -drun-icon-theme Papirus \
          -scroll-method 1 \
-         -sidebar-mode  
+         -sidebar-mode \
+         -threads 2
 
 # Reload sxhkd and polybar:
 super + Escape
@@ -55,7 +56,7 @@ super + Escape
 
 # Find files with rofi:
 super + f
-    xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 0 -width 60 -dmenu -i -p "Find: ")"
+    xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 2 -width 60 -dmenu -i -p "Find: ")"
 
 # Show Keybindings
 alt + h 
@@ -86,7 +87,7 @@ XF86MonBrightness{Up,Down}
 ############################################################
 
 # Exit Bspwm 
-super + alt + Escape
+super + shift + Escape
 	bspc quit
 
 # Close focus window 
@@ -94,7 +95,7 @@ alt + w
 	bspc node -c
 
 # alternate between the tiled and monocle layout ("Fullscreen")
-super + m
+alt + m
 	bspc desktop -l next
 
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf
@@ -123,14 +124,14 @@ ctrl + shift + {less,greater}
 #
 
 # set the window state
-super + t
+alt + t
 	bspc node -t {floating,tiled}
 
 # Locked = Does not allow closing the window
 # Sticky = Will move along with desktop
 # Private = It will keep its position in the mosaic.
 # Sets flags to the window (locked,Sticky,private)
-super + ctrl + {x,y,z}
+super + shift + {z,x,c}
 	bspc node -g {locked,sticky,private}
 
 #
@@ -146,7 +147,7 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
+super + {_,shift + }r
 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -168,7 +169,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Rotatates the windows 90 degrees
-super + shift + r
+alt + shift + r
     bspc node @/ -R 90
  
 # focus all windows, can be use to move the entire workspace
