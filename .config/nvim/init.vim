@@ -22,15 +22,14 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentline'
 Plug 'aperezdc/vim-template'
 Plug 'gentoo/gentoo-syntax'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
@@ -47,10 +46,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
-
-" All of your Plugins must be added before the following line
-call plug#end()            " required
-
+call plug#end()
 
 " Put your non-Plugin stuff after this line
 
