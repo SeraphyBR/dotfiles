@@ -10,15 +10,16 @@
 # <fs>			                    <mountpoint>	            <type>	<opts>		        <dump/pass>
 
 UUID=0ccb9ced-c7f3-4318-8bcb-7255ab7dac19   none                            swap        sw                                          0 0
-UUID=2CDA-9467                              /boot                           vfat        defaults                                    0 2
+UUID=0f563873-cc67-4708-8a2d-6b1b69850eec   /boot                           ext4        defaults                                    0 2
+UUID=94CC-916A                              /boot/efi                       vfat        defaults                                    0 2
 UUID=d3c28881-a752-4af7-bea5-ce443aace5f8   /                               btrfs       rw,lazytime,ssd,compress=zstd,autodefrag,subvol=/@funtoo  0 1
 UUID=d3c28881-a752-4af7-bea5-ce443aace5f8   /home                           btrfs       rw,lazytime,ssd,compress=zstd,autodefrag,subvol=/@home    0 2
 
-UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Downloads   btrfs   rw,user,nofail,relatime,autodefrag,subvol=/@Downloads        0 2
-UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Documentos  btrfs   rw,user,nofail,relatime,autodefrag,subvol=/@Documents        0 2
-UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Imagens     btrfs   rw,user,nofail,relatime,autodefrag,subvol=/@Pictures         0 2
-UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Música      btrfs   rw,user,nofail,relatime,autodefrag,subvol=/@Music            0 2
-UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Vídeos      btrfs   rw,user,nofail,relatime,autodefrag,subvol=/@Video            0 2
+UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Downloads   btrfs   rw,user,nofail,relatime,compress=zstd,autodefrag,subvol=/@Downloads        0 2
+UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Documentos  btrfs   rw,user,nofail,relatime,compress=zstd,autodefrag,subvol=/@Documents        0 2
+UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Imagens     btrfs   rw,user,nofail,relatime,compress=zstd,autodefrag,subvol=/@Pictures         0 2
+UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Música      btrfs   rw,user,nofail,relatime,compress=zstd,autodefrag,subvol=/@Music            0 2
+UUID=0c222efd-428d-4414-9224-d8e589e09497   /home/seraphybr-fun/Vídeos      btrfs   rw,user,nofail,relatime,compress=zstd,autodefrag,subvol=/@Video            0 2
 
 tmpfs           /tmp                            tmpfs   rw,nosuid,noatime,nodev,size=4G,mode=1777                   0 0
 tmpfs		/var/tmp/portage		tmpfs	size=6G,uid=portage,gid=portage,mode=775,noatime	    0 0
