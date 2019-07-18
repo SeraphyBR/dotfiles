@@ -2,9 +2,11 @@ app-emulation/qemu spice virgl virtfs
 app-laptop/tlp tlp_suggests bluetooth pm-utils
 app-text/asciidoc python_single_target_python2_7
 app-text/poppler cairo qt5
+app-text/texlive xetex -xml science l10n_pt
+app-text/texlive-core xetex
 dev-java/openjdk -webstart gentoo-vm source 
 dev-java/openjdk-bin -webstart -nsplugin   
-dev-java/oracle-jdk-bin -nsplugin
+dev-java/oracle-jdk-bin -nsplugin source
 dev-java/oracle-jre-bin -nsplugin
 dev-lang/rust rls cargo rustfmt 
 dev-libs/libdbusmenu gtk3
@@ -13,7 +15,6 @@ dev-libs/libgpg-error static-libs
 dev-libs/libgusb vala
 dev-libs/libpcre pcre16
 dev-libs/lzo static-libs
-dev-libs/openssl abi_x86_32
 dev-libs/xmlsec nss
 dev-lua/lpeg luajit
 dev-lua/mpack luajit
@@ -28,36 +29,52 @@ dev-python/zope-interface python_targets_python3_6
 dev-qt/qtmultimedia widgets
 dev-qt/qtwebchannel qml
 dev-qt/qtwebengine widgets system-ffmpeg system-icu
-dev-ruby/did_you_mean ruby_targets_ruby25
+dev-ruby/bundler ruby_targets_ruby26
+dev-ruby/did_you_mean ruby_targets_ruby26
 dev-ruby/json ruby_targets_ruby25
+dev-ruby/json ruby_targets_ruby26
 dev-ruby/kpeg ruby_targets_ruby25
+dev-ruby/kpeg ruby_targets_ruby26
 dev-ruby/minitest ruby_targets_ruby25
+dev-ruby/minitest ruby_targets_ruby26
 dev-ruby/net-telnet ruby_targets_ruby25
+dev-ruby/net-telnet ruby_targets_ruby26
 dev-ruby/power_assert ruby_targets_ruby25
+dev-ruby/power_assert ruby_targets_ruby26
 dev-ruby/racc ruby_targets_ruby25
+dev-ruby/racc ruby_targets_ruby26
 dev-ruby/rake ruby_targets_ruby25
+dev-ruby/rake ruby_targets_ruby26
 dev-ruby/rdoc ruby_targets_ruby25
+dev-ruby/rdoc ruby_targets_ruby26
 dev-ruby/rubygems ruby_targets_ruby25
+dev-ruby/rubygems ruby_targets_ruby26
 dev-ruby/test-unit ruby_targets_ruby25
+dev-ruby/test-unit ruby_targets_ruby26
 dev-ruby/xmlrpc ruby_targets_ruby25
+dev-ruby/xmlrpc ruby_targets_ruby26
+dev-util/ctags json xml
 games-emulation/mgba qt5
 media-gfx/fontforge python_single_target_python3_6 python_targets_python3_6
 media-libs/gd fontconfig
 media-libs/gegl cairo
 media-libs/libmypaint gegl
+media-libs/libsdl2 haptic
 media-libs/libvpx svc
 media-sound/mpd libmpdclient
 media-sound/ncmpcpp clock visualizer outputs
 media-video/ffmpeg sdl  xcb  openssl chromium -jack 
 net-dns/dnsmasq script
-net-misc/networkmanager consolekit -elogind
+net-misc/networkmanager consolekit bluetooth
 net-misc/spice-gtk sasl usbredir
 net-print/cups-filters -pdf
 net-print/hplip -X qt5 scanner 
 sys-block/gparted -hfs -xfs -jfs -reiserfs
+sys-boot/grub mount
 sys-fs/cryptsetup -gcrypt openssl
 sys-libs/ncurses tinfo
 virtual/rubygems ruby_targets_ruby25
+virtual/rubygems ruby_targets_ruby26
 www-client/qutebrowser scripts
 www-client/w3m imlib
 x11-base/xorg-server -ipv6
