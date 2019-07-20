@@ -86,19 +86,19 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: DejaVuSansMono Nerd Font
+    family: Fura Code Nerd Font
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium
 
   # Bold font face
   bold:
-    family: DejaVuSansMono Nerd Font
+    family: Fura Code Nerd Font
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    family: DejaVuSansMono Nerd Font
+    family: Fura Code Nerd Font
     # The `style` can be specified to pick a specific face.
     style: Italic
 
@@ -163,7 +163,7 @@ colors:
   normal:
     black:   '0x3f3f3f'
     red:     '0xff6c6c'
-    green:   '0x6cecff'
+    green:   '0xA3DF4C'
     yellow:  '0xdbee77'
     blue:    '0x5cb64f'
     magenta: '0xb981f4'
