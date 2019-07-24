@@ -1,10 +1,10 @@
 "=================================================================
-"  _   _         __     ___           
-" | \ | | ___  __\ \   / (_)_ __ ___  
-" |  \| |/ _ \/ _ \ \ / /| | '_ ` _ \ 
+"  _   _         __     ___
+" | \ | | ___  __\ \   / (_)_ __ ___
+" |  \| |/ _ \/ _ \ \ / /| | '_ ` _ \
 " | |\  |  __/ (_) \ V / | | | | | | |
 " |_| \_|\___|\___/ \_/  |_|_| |_| |_|
-" 
+"
 " ~SeraphyBR Neovim Config
 "================================================================
 
@@ -15,7 +15,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
         execute "q!"
     endif
     echo "Installing Vim-Plug..."
-    echo "" 
+    echo ""
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -55,7 +55,7 @@ call plug#end()
 
 set autoindent	           " Auto-indent new lines
 set background=dark
-set clipboard=unnamedplus 
+set clipboard=unnamedplus
 set cursorline             " Highlight cursor line
 set encoding=utf-8         " Define o encoding exibido no terminal
 set expandtab	           " Use spaces instead of tabs
@@ -66,27 +66,28 @@ set hlsearch	           " Highlight all search results
 set ignorecase	           " Always case-insensitive
 set inccommand=split
 set incsearch	           " Searches for strings incrementally
+set list listchars=trail:· " Show trailing spaces as dots
 set linebreak	           " Break lines at word (requires Wrap lines)
-set mouse=a                " Enable mouse. see :help mouse for info. 
+set mouse=a                " Enable mouse. see :help mouse for info.
 set noshowmode
 set number	           " Show line numbers
-set pumblend=18            " pseudo-transparent popup menu
+"set pumblend=18            " pseudo-transparent popup menu
 set relativenumber
 set scrolloff=999          " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4	   " Number of auto-indent spaces
-set showbreak=+++ 	   " Wrap-broken line prefix
-set showmatch	           " Highlight matching brace
-set smartcase	           " Enable smart-case search
-set smartindent	           " Enable smart-indent
-set smarttab	           " Enable smart-tabs
-set softtabstop=4	   " Number of spaces per Tab
+set showbreak=+++   " Wrap-broken line prefix
+set showmatch           " Highlight matching brace
+set smartcase           " Enable smart-case search
+set smartindent            " Enable smart-indent
+set smarttab           " Enable smart-tabs
+set softtabstop=4   " Number of spaces per Tab
 set spelllang=pt_br,en_us
 set splitbelow
 set termguicolors
-set textwidth=110	   " Line wrap (number of cols)
+set textwidth=110   " Line wrap (number of cols)
 set virtualedit=insert,block,onemore " Permite mover o cursor onde não há texto
-set visualbell	           " Use visual bell (no beeping)
+set visualbell           " Use visual bell (no beeping)
 set wildmenu
 set wildmode=full
 
@@ -96,15 +97,15 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class,*.jar,*.iso
 set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
 set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
 set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
-set wildignore+=*.eot,*.otf,*.ttf,*.woff    
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
 set wildignore+=*.doc,*.pdf,*.cbr,*.cbz,*.docx,*.ppt,*.odt
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
 set wildignore+=*.swp,.lock,.DS_Store,._*
 
 "" Advanced:
-set ruler	                " Show row and column ruler information
-set undolevels=1500	        " Number of undo levels
-set backspace=indent,eol,start	" Backspace behaviour  
+set ruler                      " Show row and column ruler information
+set undolevels=1500            " Number of undo levels
+set backspace=indent,eol,start " Backspace behaviour
 
 "" Persistent Undo:
 " Let's save undo info!
@@ -125,7 +126,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}' 
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 "" ALE section:
 let g:ale_linters = {
@@ -134,7 +135,7 @@ let g:ale_linters = {
 
 "" COC section:
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-let g:coc_global_extensions = [ 
+let g:coc_global_extensions = [
             \ 'coc-highlight',
             \ 'coc-pairs',
             \ 'coc-snippets',
@@ -150,8 +151,8 @@ let g:coc_global_extensions = [
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "" Rainbow Parentheses Improved
-let g:rainbow_active = 1 
-let g:rainbow_conf = {'guifgs': ['#3E87E5','#3EE54F','#E5E33E','#A73EE5']}
+let g:rainbow_active = 1
+let g:rainbow_conf = {'guifgs': ['#FFD700','#C466C0','#7AB9E0']}
 
 "" Vista:
 let g:vista#renderer#enable_icon = 1
@@ -159,7 +160,7 @@ let g:vista_default_executive = "coc"
 
 "" IndentLine:
 let g:indentLine_char= '│'
-let g:indentLine_fileTypeExclude = ['markdown']  
+let g:indentLine_fileTypeExclude = ['markdown']
 
 "" Custom Templates:
 if !isdirectory($HOME."/.config/nvim/templates")
@@ -185,12 +186,12 @@ if empty($DISPLAY)
 else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
-endif 
+endif
 
 "" Syntax Hightlighting:
 syntax on
 
-"" NERDtree Section: 
+"" NERDtree Section:
 let NERDTreeWinPos = "right"
 let NERDTreeWinSize = 42
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
@@ -205,12 +206,12 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_change_to_dir = 1
 let g:startify_fortune_use_unicode = 1
 let g:ascii = [
-            \' _______                ___ ___  __ ',          
+            \' _______                ___ ___  __ ',
             \'|    |  |.-----..-----.|   |   ||__|.--------. ',
             \'|       ||  -__||  _  ||   |   ||  ||        |   ',
             \'|__|____||_____||_____| \_____/ |__||__|__|__|   ',
             \]
-let g:startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\"   \".v:val")' 
+let g:startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\"   \".v:val")'
 let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
 let g:startify_commands = [ {'t': ['Open a new Terminal', ':terminal']} ]
 let g:startify_lists = [
@@ -245,10 +246,16 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Fix indentation on entire file
-map <F7> mzgg=G`z
+noremap <F7> mzgg=G`z
+
+" Remove trailing whitespaces at the end of each line
+command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
+command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
+nnoremap <F6>   m`:TrimSpaces<CR>``
+
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"  
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ALE quick navigate between errors:
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -266,17 +273,38 @@ autocmd VimEnter *
             \   if !argc()
             \ |   setlocal nowrap
             \ |   Startify
-            \ | endif 
+            \ | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Functions:
-function SetTermOptions() 
+function SetTermOptions()
     setlocal nonumber
     setlocal norelativenumber
     IndentLinesDisable
     startinsert
-endfunction   
+endfunction
 
-function! StartifyEntryFormat() 
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path' 
-endfunction  
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+
+"" https://vim.fandom.com/wiki/Remove_unwanted_spaces
+function ShowSpaces(...)
+  let @/='\v(\s+$)|( +\ze\t)'
+  let oldhlsearch=&hlsearch
+  if !a:0
+    let &hlsearch=!&hlsearch
+  else
+    let &hlsearch=a:1
+  end
+  return oldhlsearch
+endfunction
+
+"" https://vim.fandom.com/wiki/Remove_unwanted_spaces
+function TrimSpaces() range
+  let oldhlsearch=ShowSpaces(1)
+  execute a:firstline.",".a:lastline."substitute ///gec"
+  let &hlsearch=oldhlsearch
+endfunction
+
+
