@@ -29,7 +29,7 @@ media_library_primary_tag = album_artist
 current_item_prefix = " $4 "
 
 # Now Playing ..
-now_playing_prefix = " $2 " 
+now_playing_prefix = " $2 " 
 now_playing_suffix = "$8$/b"
 
 # Playlist ..

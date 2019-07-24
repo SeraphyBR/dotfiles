@@ -13,12 +13,12 @@
 
 # Terminal emulator
 super + Return
-    alacritty
+    kitty
 
 # Floating Terminal with selection (Slop programs is needed)
 alt + Return
     bspc rule -a \* -o state=floating \
-    rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && alacritty
+    rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && kitty
 
 # Qutebrowser
 super + q 
@@ -26,11 +26,11 @@ super + q
 
 # File Manager
 super + f
-    alacritty -e ranger
+    kitty -e ranger
  
 # Text Editor Neovim
 super + e
-    alacritty -e nvim
+    kitty -e nvim
 
 # Text Editor VScode
 super + shift + e
@@ -38,7 +38,7 @@ super + shift + e
 
 # Music Player
 super + m 
-    alacritty -e ncmpcpp
+    kitty -e ncmpcpp
 
 # Programs Launcher / Window alternator
 super + {d,w}

@@ -95,6 +95,7 @@ if [ ! -z "$DISPLAY" ]; then
     POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
     POWERLEVEL9K_SHORTEN_DELIMITER=""
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+    POWERLEVEL9K_STATUS_OK=false	
 fi
 
 # If powerlevel9k shows errors messages about mercurial...

@@ -37,7 +37,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                         |
 | Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot)                                                                                     |
 | Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                   |
-| Terminal Emulator   | [Alacritty](https://github.com/jwilm/alacritty)                                                                                    |
+| Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                              |
 | Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)   |
 | Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                            |
 | Power Manager       | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html)                                                    |
@@ -51,17 +51,17 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 #### Main Fonts used in this Dotfiles:
 
-| Font                                                                  | Usage                                                                |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------------- |
-| [Cantarell](https://github.com/GNOME/cantarell-fonts)                 | Gui Programs                                                         |
-| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts)            | Polybar                                                              |
-| [Fira Code](https://github.com/tonsky/FiraCode)                       | Qutebrowser & Dunst & VScode & Alacritty (Nerd Font patched Version) |
-| [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) | Polybar                                                              |
-| [MaterialDesign](https://github.com/google/material-design-icons)     | Polybar                                                              |
-| [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts)                 | Zsh                                                                  |
-| [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/)            | Polybar (support for Asian letters)                                  |
-| [Weather-icons](https://erikflowers.github.io/weather-icons/)         | Polybar                                                              |
-| [font-logos](https://github.com/lukas-w/font-logos)                   | Distro logo in Polybar                                               |
+| Font                                                                  | Usage                                                                      |
+| :-------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| [Cantarell](https://github.com/GNOME/cantarell-fonts)                 | Gui Programs                                                               |
+| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts)            | Polybar                                                                    |
+| [Fira Code](https://github.com/tonsky/FiraCode)                       | Qutebrowser & Dunst & VScode & Alacritty/Kitty (Nerd Font patched Version) |
+| [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) | Polybar                                                                    |
+| [MaterialDesign](https://github.com/google/material-design-icons)     | Polybar                                                                    |
+| [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts)                 | Zsh                                                                        |
+| [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/)            | Polybar (support for Asian letters)                                        |
+| [Weather-icons](https://erikflowers.github.io/weather-icons/)         | Polybar                                                                    |
+| [font-logos](https://github.com/lukas-w/font-logos)                   | Distro logo in Polybar                                                     |
 
 #### Vim/Neovim Plugins:
 
