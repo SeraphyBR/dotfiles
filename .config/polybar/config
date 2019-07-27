@@ -1,12 +1,12 @@
 ;==============================================================
 ;
-;   .______     ______    __      ____    ____ .______        ___      .______      
-;   |   _  \   /  __  \  |  |     \   \  /   / |   _  \      /   \     |   _  \     
-;   |  |_)  | |  |  |  | |  |      \   \/   /  |  |_)  |    /  ^  \    |  |_)  |    
-;   |   ___/  |  |  |  | |  |       \_    _/   |   _  <    /  /_\  \   |      /     
+;   .______     ______    __      ____    ____ .______        ___      .______
+;   |   _  \   /  __  \  |  |     \   \  /   / |   _  \      /   \     |   _  \
+;   |  |_)  | |  |  |  | |  |      \   \/   /  |  |_)  |    /  ^  \    |  |_)  |
+;   |   ___/  |  |  |  | |  |       \_    _/   |   _  <    /  /_\  \   |      /
 ;   |  |      |  `--'  | |  `----.    |  |     |  |_)  |  /  _____  \  |  |\  \----.
 ;   | _|       \______/  |_______|    |__|     |______/  /__/     \__\ | _| `._____|
-;                                                                                
+;
 ;   Polybar de SeraphyBR (Luiz Junio)
 ;   email => luisjuniorbr@gmail.com
 ;
@@ -18,7 +18,7 @@
 ;==============================================================
 
 [colors]
-; #RRGGBB ~ RGB 
+; #RRGGBB ~ RGB
 ; #AARRGGBB ~ RGBA
 
 background = #24292E
@@ -34,7 +34,7 @@ bspwm-background = #3F3F3F
 bspwm-dimmed = #FBA922
 user = #7DF059
 volume = #8FF6FF
-xbacklight = #C8F059 
+xbacklight = #C8F059
 nvidia = #7FFF00
 ram = #D6AA3F
 cpu = #D6AA3F
@@ -97,7 +97,7 @@ modules-right = volume xbacklight bbswitch_show memory cpu temperature bluetooth
 ################################################################################
 
 [bar/seraphybr_bottom]
-monitor = ${env:MONITOR:eDP-1} 
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 28
 #offset-x = 1%
@@ -122,7 +122,7 @@ bottom = true
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "Dejavu Sans:size=13;2"
+font-0 = "Dejavu Sans:style=Medium:size=13;2"
 font-1 = "FontAwesome:size=14;2"
 font-2 = "MaterialIcons:size=14;2"
 font-3 = "Weather Icons:size=14;2"
@@ -305,23 +305,23 @@ port = 6600
 interval = 1
 
 format-playing = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:} <label-song> %{A A A}"
-format-playing-prefix =  
+format-playing-prefix = 
 format-playing-prefix-foreground = ${colors.mpd-playing}
-format-playing-suffix =  
+format-playing-suffix = 
 format-playing-suffix-foreground = ${colors.mpd-playing}
 format-playing-underline = ${colors.mpd-playing}
 
-format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:} <label-song> %{A A A}"   
-format-paused-prefix =  
+format-paused = "%{A1:mpc next: A2:mpc toggle: A3:mpc prev:} <label-song> %{A A A}"
+format-paused-prefix = 
 format-paused-prefix-foreground = ${colors.mpd-paused}
-format-paused-suffix =  
-format-paused-suffix-foreground = ${colors.mpd-paused}  
+format-paused-suffix = 
+format-paused-suffix-foreground = ${colors.mpd-paused}
 format-paused-underline = ${colors.mpd-paused}
 
 format-offline = " <label-offline> "
-format-offline-prefix =  
+format-offline-prefix = 
 format-offline-prefix-foreground = ${colors.mpd-offline}
-format-offline-suffix =  
+format-offline-suffix = 
 format-offline-suffix-foreground = ${colors.mpd-offline}
 format-offline-underline = ${colors.mpd-offline}
 
@@ -348,9 +348,9 @@ bar-progress-width = 10
 ;bar-progress-indicator =
 bar-progress-fill = ""
 bar-progress-fill-foreground = #1db954
-bar-progress-empty = "" 
+bar-progress-empty = ""
 ##########################################################################
- 
+
 [module/spotify]
 type = custom/script
 interval = 1.5
@@ -377,7 +377,7 @@ label = 
 label-foreground = ${colors.xbacklight}
 
 bar-width = 10
-bar-indicator = 
+bar-indicator =
 bar-indicator-foreground = ${colors.xbacklight}
 bar-indicator-font = 2
 bar-fill = ""
@@ -441,7 +441,7 @@ format-connected-suffix = "%{T3}  %{T-}"
 format-connected-suffix-foreground = ${self.format-connected-underline}
 
 label-connected = %local_ip%
-label-disconnected = 
+label-disconnected =
 
 format-disconnected = <label-disconnected>
 #####################################################################
@@ -451,7 +451,7 @@ type = internal/date
 interval = 1
 #date = " %d-%m-%Y "
 #date-alt = " %d-%m-%Y "
-time = %H:%M:%S 
+time = %H:%M:%S
 time-alt = %H:%M
 
 format = " <label>"
@@ -497,7 +497,7 @@ bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.volume}
 
 bar-volume-gradient = false
-bar-volume-indicator =  
+bar-volume-indicator =
 bar-volume-indicator-font = 0
 bar-volume-fill = ""
 bar-volume-fill-font = 1
@@ -556,7 +556,7 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.alert}
 
-ramp-0 =  
+ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-3 = 
@@ -587,14 +587,14 @@ menu-0-1-exec = menu-open-2
 menu-0-2 = "  "
 menu-0-2-exec = menu-open-3
 
-menu-0-3 =  "  " 
+menu-0-3 =  "  "
 menu-0-3-exec = betterlockscreen -l
 
 menu-0-4 = "  |"
 menu-0-4-exec = bspc quit
 
-menu-1-0 = Reiniciar 
-menu-1-0-exec = doas shutdown -r now 
+menu-1-0 = Reiniciar
+menu-1-0-exec = doas shutdown -r now
 
 menu-1-1 =  |
 menu-1-1-exec = menu-open-0
@@ -606,7 +606,7 @@ menu-2-1 =  |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = "betterlockscreen -s" 
+menu-3-0-exec = "betterlockscreen -s"
 
 menu-3-1 =  |
 menu-3-1-exec = menu-open-0
@@ -644,7 +644,7 @@ content-prefix-foreground = ${colors.user}
 content-suffix-foreground = ${colors.foreground}
 content-foreground = ${colors.foreground}
 content-underline = ${colors.user}
- 
+
 ################################################################################
 
 [module/bbswitch_show]
@@ -681,7 +681,7 @@ compositing-border = over
 
 ; Enables pseudo-transparency for the bar
 ; If set to true the bar can be transparent without a compositor.
-pseudo-transparency = true 
+pseudo-transparency = true
 
 
 ; vim:ft=dosini

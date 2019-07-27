@@ -10,11 +10,11 @@ else
     maim -d 1 "$tmp"
 fi
 
-if mv "$tmp" "$filename" 
+if mv "$tmp" "$filename"
 then
     notify-send -i "$tmp"  "Screenshot" "Capture saved to '$filename'"
     xclip -selection clipboard -t image/png "$filename"
 else
     notify-send -i "$tmp"  "Screenshot" "Capture saved to '$tmp'"
-    xclip -selection clipboard -t image/png "$tmp" 
+    xclip -selection clipboard -t image/png "$tmp"
 fi

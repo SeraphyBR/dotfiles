@@ -1,10 +1,10 @@
-#   ________      _______. __    __  .______        ______ 
+#   ________      _______. __    __  .______        ______
 #  |       /     /       ||  |  |  | |   _  \      /      |
 #  `---/  /     |   (----`|  |__|  | |  |_)  |    |  ,----'
-#     /  /       \   \    |   __   | |      /     |  |     
+#     /  /       \   \    |   __   | |      /     |  |
 # __ /  /----.----)   |   |  |  |  | |  |\  \----.|  `----.
 #(__)________|_______/    |__|  |__| | _| `._____| \______|
-#                                                          
+#
 
 
 ################## Oh-my-zsh Section ##################################
@@ -34,11 +34,11 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions extract
 
 if [ -z "$DISPLAY" ]; then
     ZSH_THEME="rkj-repos"
-else 
+else
     POWERLEVEL9K_MODE='nerdfont-complete'
     ZSH_THEME="powerlevel9k/powerlevel9k"
 fi
- 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -72,12 +72,12 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [ ! -d $ZSH_CACHE_DIR ]; then
   mkdir $ZSH_CACHE_DIR
-fi    
+fi
 
 # Use autosuggestion
 # https://github.com/zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8' 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 # zsh-syntax-highlighting settings
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -86,16 +86,16 @@ ZSH_HIGHLIGHT_REGEXP+=("(.*?)\(\)\{\1(\|\1&?)?\}\|\1" "bg=9,bold,fg=0")
 ######################## PowerLevel9K Section #####################################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-if [ ! -z "$DISPLAY" ]; then 
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+if [ ! -z "$DISPLAY" ]; then
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs )
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs virtualenv)
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true 
+    POWERLEVEL9K_DIR_SHOW_WRITABLE=true
     POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
     POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
     POWERLEVEL9K_SHORTEN_DELIMITER=""
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-    POWERLEVEL9K_STATUS_OK=false	
+    POWERLEVEL9K_STATUS_OK=false
 fi
 
 # If powerlevel9k shows errors messages about mercurial...
@@ -103,7 +103,7 @@ if [ ! -e "~/.hgrc" ];then
     touch ~/.hgrc
 fi
 
-################################################################################# 
+#################################################################################
 
 # Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -112,33 +112,33 @@ source $ZSH/oh-my-zsh.sh
 
 #################### User settings below this line ################################
 
-# Extended globbing. Allows using regular expressions with *  
-setopt extendedglob                                            
+# Extended globbing. Allows using regular expressions with *
+setopt extendedglob
 # Case insensitive globbing
-setopt nocaseglob                                              
-# Array expension with parameters  
-setopt rcexpandparam                                            
-# Dont warn about running processes when exiting  
-setopt nocheckjobs                                              
-# Sort filenames numerically when it makes sense  
-setopt numericglobsort                           
+setopt nocaseglob
+# Array expension with parameters
+setopt rcexpandparam
+# Dont warn about running processes when exiting
+setopt nocheckjobs
+# Sort filenames numerically when it makes sense
+setopt numericglobsort
 # No beep
-setopt nobeep                                       
-# Immediately append history instead of overwriting  
-setopt appendhistory                                            
-# If a new command is a duplicate, remove the older one  
-setopt histignorealldups                                        
-# if only directory path is entered, cd there. 
+setopt nobeep
+# Immediately append history instead of overwriting
+setopt appendhistory
+# If a new command is a duplicate, remove the older one
+setopt histignorealldups
+# if only directory path is entered, cd there.
 setopt autocd
 # Remove command lines from the history list when the first character on the line is a space.
-setopt HIST_IGNORE_SPACE                 
+setopt HIST_IGNORE_SPACE
 
-#################################  Aliases section  ############################################# 
+#################################  Aliases section  #############################################
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
- 
+
 alias clima='curl pt.wttr.in'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
