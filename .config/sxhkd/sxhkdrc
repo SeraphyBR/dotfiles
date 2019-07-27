@@ -1,9 +1,9 @@
-#  ____   __  __  _   _   _  __  ____  
-# / ___|  \ \/ / | | | | | |/ / |  _ \ 
+#  ____   __  __  _   _   _  __  ____
+# / ___|  \ \/ / | | | | | |/ / |  _ \
 # \___ \   \  /  | |_| | | ' /  | | | |
 #  ___) |  /  \  |  _  | | . \  | |_| |
-# |____/  /_/\_\ |_| |_| |_|\_\ |____/ 
-#                                      
+# |____/  /_/\_\ |_| |_| |_|\_\ |____/
+#
 # Simple X hotkey daemon
 # https://github.com/baskerville/sxhkd
 
@@ -21,13 +21,13 @@ alt + Return
     rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && kitty
 
 # Qutebrowser
-super + q 
+super + q
     qutebrowser
 
 # File Manager
 super + f
     kitty -e ranger
- 
+
 # Text Editor Neovim
 super + e
     kitty -e nvim
@@ -37,7 +37,7 @@ super + shift + e
     vscode
 
 # Music Player
-super + m 
+super + m
     kitty -e ncmpcpp
 
 # Programs Launcher / Window alternator
@@ -52,14 +52,14 @@ super + {d,w}
 
 # Reload sxhkd and polybar:
 super + Escape
-	pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
+    pkill -USR1 -x sxhkd && ~/.config/polybar/launch.sh
 
 # Find files with rofi:
 super + shift + f
     xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 2 -width 60 -dmenu -i -p "Find: ")"
 
 # Show Keybindings
-alt + h 
+alt + h
     ~/DotFiles/Scripts/rofi-sxhkd.sh
 
 # Lock screen
@@ -68,14 +68,14 @@ alt + l
 
 # Volume Controls
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%  
+    pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
 
 # Volume Mute
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # PrintScreen
-Print + {_,super} 
+Print + {_,super}
     ~/DotFiles/Scripts/screenshot.sh {_,-s}
 
 # Brightness Control
@@ -86,37 +86,37 @@ XF86MonBrightness{Up,Down}
 #################### BSPWM HOTKEYS #########################
 ############################################################
 
-# Exit Bspwm 
+# Exit Bspwm
 super + shift + Escape
-	bspc quit
+    bspc quit
 
-# Close focus window 
+# Close focus window
 alt + w
-	bspc node -c
+    bspc node -c
 
 # alternate between the tiled and monocle layout ("Fullscreen")
 alt + m
-	bspc desktop -l next
+    bspc desktop -l next
 
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf
 super + y
-	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
+    bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
 
 # Swap the current window through the largest window (regardless of location)
 super + g
-	bspc node -s biggest
+    bspc node -s biggest
 
 # Make split ratios equal
 super + equal
-	bspc node @/ --equalize
+    bspc node @/ --equalize
 
 # Make split ratios balanced
 super + minus
-	bspc node @/ --balance
+    bspc node @/ --balance
 
 # Increase/decrease window gap on focused desktop
 ctrl + shift + {less,greater}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
 
 
 #
@@ -125,14 +125,14 @@ ctrl + shift + {less,greater}
 
 # set the window state
 alt + t
-	bspc node -t {floating,tiled}
+    bspc node -t {floating,tiled}
 
 # Locked = Does not allow closing the window
 # Sticky = Will move along with desktop
 # Private = It will keep its position in the mosaic.
 # Sets flags to the window (locked,Sticky,private)
 super + shift + {z,x,c}
-	bspc node -g {locked,sticky,private}
+    bspc node -g {locked,sticky,private}
 
 #
 # focus/swap
@@ -140,38 +140,38 @@ super + shift + {z,x,c}
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+    bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + } r
-	bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + shift + {less,greater}
-	bspc desktop -f {prev,next}.local
+    bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 Tab + {super,alt}
-	bspc {node,desktop} -f last
+    bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Rotatates the windows 90 degrees
 alt + shift + r
     bspc node @/ -R 90
- 
+
 # focus all windows, can be use to move the entire workspace
 super + alt + s
     bspc node -f @/
@@ -182,31 +182,30 @@ super + alt + s
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 ######################## move/resize ####################################
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 super + alt + ctrl + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
