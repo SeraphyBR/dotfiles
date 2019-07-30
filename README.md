@@ -21,33 +21,33 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ## Setup Description:
 
-| Type                | Program                                                                                                                            |
-| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
-| Linux Distro        | [Funtoo](https://www.funtoo.org/Welcome)                                                                                           |
-| Window Manager      | [Bspwm](https://github.com/baskerville/bspwm) (with [Rounded Corners patch](etc/portage/patches/x11-wm/bspwm-0.9.5/rounded.patch)) |
-| Web Browser         | [qutebrowser](https://qutebrowser.org/)                                                                                            |
-| Program Launcher    | [Rofi](https://github.com/DaveDavenport/rofi)                                                                                      |
-| Status bar          | [Polybar](https://github.com/jaagr/polybar)                                                                                        |
-| Music Player        | [Ncmpcpp](https://rybczak.net/ncmpcpp/) + [Mpd](https://github.com/MusicPlayerDaemon/MPD)                                          |
-| Music Player        | [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify))        |
-| Vídeo Player        | [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/)                                                                  |
-| Sound Visualizer    | [Cava](https://github.com/karlstav/cava)                                                                                           |
-| File Manager        | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons)                     |
-| Image Viewer        | [Sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug) (for preview in Ranger)                  |
-| PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                         |
-| Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot)                                                                                     |
-| Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                   |
-| Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                              |
-| Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)   |
-| Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                            |
-| Power Manager       | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html)                                                    |
-| Monitor setup       | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) / [srandrd](https://github.com/jceb/srandrd)                        |
-| Run command as root | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo)                                                            |
-| Lock Screen         | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) (i3lock-color script)                                          |
-| Automounter         | [Udiskie](https://github.com/coldfix/udiskie)                                                                                      |
-| Notification Daemon | [Dunst](https://github.com/dunst-project/dunst)                                                                                    |
-| GTK theme           | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes)                                                         |
-| Cursor theme        | Breeze Obsidian                                                                                                                    |
+| Type                | Program                                                                                                                             |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
+| Linux Distro        | [Funtoo](https://www.funtoo.org/Welcome)                                                                                            |
+| Window Manager      | [Bspwm](https://github.com/baskerville/bspwm) (with [Rounded Corners patch](etc/portage/patches/x11-wm/bspwm-0.9.5/rounded.patch))  |
+| Web Browser         | [qutebrowser](https://qutebrowser.org/)                                                                                             |
+| Program Launcher    | [Rofi](https://github.com/DaveDavenport/rofi)                                                                                       |
+| Status bar          | [Polybar](https://github.com/jaagr/polybar)                                                                                         |
+| Music Player        | [Ncmpcpp](https://rybczak.net/ncmpcpp/) + [Mpd](https://github.com/MusicPlayerDaemon/MPD)                                           |
+| Music Player        | [Spotify](https://www.spotify.com/) (with a polybar module: [spotify_status](https://github.com/Jvanrhijn/polybar-spotify))         |
+| Vídeo Player        | [SMPlayer](https://www.smplayer.info/) and [MPV](https://mpv.io/)                                                                   |
+| Sound Visualizer    | [Cava](https://github.com/karlstav/cava)                                                                                            |
+| File Manager        | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons)                      |
+| Image Viewer        | [Sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug) (for preview in Ranger)                   |
+| PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                          |
+| Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot)                                                                                      |
+| Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                    |
+| Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                               |
+| Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)    |
+| Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                             |
+| Power Manager       | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html)                                                     |
+| Monitor setup       | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) / [srandrd](https://github.com/jceb/srandrd) (handle multi monitors) |
+| Run command as root | [OpenDoas](https://github.com/Duncaen/OpenDoas) (used in place of sudo)                                                             |
+| Lock Screen         | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) (i3lock-color script)                                           |
+| Automounter         | [Udiskie](https://github.com/coldfix/udiskie)                                                                                       |
+| Notification Daemon | [Dunst](https://github.com/dunst-project/dunst)                                                                                     |
+| GTK theme           | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes)                                                          |
+| Cursor theme        | Breeze Obsidian                                                                                                                     |
 
 #### Main Fonts used in this Dotfiles:
 

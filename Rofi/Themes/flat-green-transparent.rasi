@@ -21,7 +21,7 @@
    blackselect:      #30303066;
    darkgray:         #848484;
    scrollbarcolor:   #50505066;
-   font: "DejaVu Sans Mono Regular 14";
+   font: "Fira Code Medium 14";
    background-color: @blackdarkest;
 }
 
