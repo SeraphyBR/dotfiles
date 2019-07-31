@@ -1,1 +1,109 @@
-rofi.theme: DotFiles/Rofi/Themes/flat-green-transparent.rasi
+!             __ _
+!  _ __ ___  / _(_)
+! | '__/ _ \| |_| |
+! | | | (_) |  _| |
+! |_|  \___/|_| |_|
+!
+
+! "Enabled modi"
+rofi.modi:  run,drun,window
+
+! "Window width"
+rofi.width: 50
+
+! "Number of lines"
+rofi.lines: 17
+
+! "Number of columns"
+rofi.columns: 1
+
+! "Font to use"
+rofi.font: Fira Code Medium 14
+
+! "Border width"
+rofi.bw: 1
+
+! "Location on screen"
+rofi.location: 0
+
+! "Padding"
+rofi.padding: 5
+
+! "Y-offset relative to location"
+rofi.yoffset: 0
+
+! "X-offset relative to location"
+rofi.xoffset: 0
+
+! "Always show number of lines"
+rofi.fixed-num-lines: true
+
+! "Whether to load and show icons"
+rofi.show-icons: true
+
+! "Terminal to use"
+rofi.terminal: rofi-sensible-terminal
+
+! "Run command to execute"
+rofi.run-command: zsh -c '{cmd}'
+
+! "Run command to execute that runs in shell"
+rofi.run-shell-command: {terminal} -e {cmd}
+
+! "Command executed on accep-entry-custom for window modus"
+rofi.window-command: xkill -id {window}
+
+! "Window fields to match in window mode"
+rofi.window-match-fields: all
+
+! "Theme to use to look for icons"
+rofi.drun-icon-theme: Papirus
+
+! "Disable history in run/ssh"
+rofi.disable-history: false
+
+! "Use sorting"
+rofi.sort: true
+
+! "Use levenshtein sorting also for fuzzy matching"
+rofi.levenshtein-sort: true
+
+! "Set case-sensitivity"
+rofi.case-sensitive: false
+
+! "Cycle through the results list"
+rofi.cycle: true
+
+! "Enable sidebar-mode"
+rofi.sidebar-mode: true
+
+! "Row height (in chars)"
+rofi.eh: 1
+
+! "Enable auto select mode"
+rofi.auto-select: true
+
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)"
+rofi.matching: normal
+
+! "Fullscreen"
+rofi.fullscreen: false
+
+! "DPI"
+rofi.dpi: -1
+
+! "Threads to use for string matching"
+rofi.threads: 0
+
+! "Scrolling method. (0: Page, 1: Centered)"
+rofi.scroll-method: 1
+
+! "Click outside the window to exit"
+rofi.click-to-exit: true
+
+! "Indicate how it match by underlining it."
+rofi.show-match: true
+
+! "New style theme file"
+rofi.theme: ~/DotFiles/Rofi/Themes/flat-green-transparent.rasi
+

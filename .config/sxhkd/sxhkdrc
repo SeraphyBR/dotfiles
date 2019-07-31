@@ -42,13 +42,7 @@ super + m
 
 # Programs Launcher / Window alternator
 super + {d,w}
-    rofi -modi run,drun,window \
-         -show {drun,window} \
-         -show-icons \
-         -drun-icon-theme Papirus \
-         -scroll-method 1 \
-         -sidebar-mode \
-         -threads 2
+    rofi -show {drun,window}
 
 # Reload sxhkd and polybar:
 super + Escape
@@ -56,7 +50,7 @@ super + Escape
 
 # Find files with rofi:
 super + shift + f
-    xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -threads 2 -width 60 -dmenu -i -p "Find: ")"
+    xdg-open "$(find /home -type f \( ! -regex '.*/\..*' \) -type f | sed 's/ /\\ /g' | sort -f | rofi -width 60 -dmenu -i -p "Find: ")"
 
 # Show Keybindings
 alt + h

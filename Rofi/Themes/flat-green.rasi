@@ -19,7 +19,6 @@
    blackselect:      #303030;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "Fira Code Medium 14";
    background-color: @blackdarkest;
 }
 
