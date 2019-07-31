@@ -63,7 +63,7 @@ rofi.drun-icon-theme: Papirus
 rofi.disable-history: false
 
 ! "Use sorting"
-rofi.sort: true
+rofi.sort: false
 
 ! "Use levenshtein sorting also for fuzzy matching"
 rofi.levenshtein-sort: true
