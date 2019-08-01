@@ -53,41 +53,41 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General:
 
-set autoindent	           " Auto-indent new lines
+set autoindent               " Auto-indent new lines
 set background=dark
 set clipboard=unnamedplus
-set cursorline             " Highlight cursor line
-set encoding=utf-8         " Define o encoding exibido no terminal
-set expandtab	           " Use spaces instead of tabs
-set fileencoding=utf-8     " Define o encoding na escrita dos arquivos
+set cursorline              " Highlight cursor line
+set encoding=utf-8          " Define o encoding exibido no terminal
+set expandtab               " Use spaces instead of tabs
+set fileencoding=utf-8      " Define o encoding na escrita dos arquivos
 set guifont=DejaVuSansMono\ Nerd\ Font\ 12
 set hidden
-set hlsearch	           " Highlight all search results
-set ignorecase	           " Always case-insensitive
+set hlsearch                " Highlight all search results
+set ignorecase              " Always case-insensitive
 set inccommand=split
-set incsearch	           " Searches for strings incrementally
-set list listchars=trail:· " Show trailing spaces as dots
-set linebreak	           " Break lines at word (requires Wrap lines)
-set mouse=a                " Enable mouse. see :help mouse for info.
+set incsearch                     " Searches for strings incrementally
+set list listchars=trail:·,tab:>· " Show trailing spaces as dots
+set linebreak                     " Break lines at word (requires Wrap lines)
+set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
-set number	           " Show line numbers
+set number                  " Show line numbers
 "set pumblend=18            " pseudo-transparent popup menu
 set relativenumber
-set scrolloff=999          " Always show N lines above/below the cursor
+set scrolloff=999           " Always show N lines above/below the cursor
 set shell=/bin/zsh
-set shiftwidth=4	   " Number of auto-indent spaces
-set showbreak=+++   " Wrap-broken line prefix
-set showmatch           " Highlight matching brace
-set smartcase           " Enable smart-case search
-set smartindent            " Enable smart-indent
-set smarttab           " Enable smart-tabs
-set softtabstop=4   " Number of spaces per Tab
+set shiftwidth=4            " Number of auto-indent spaces
+set showbreak=+++           " Wrap-broken line prefix
+set showmatch               " Highlight matching brace
+set smartcase               " Enable smart-case search
+set smartindent             " Enable smart-indent
+set smarttab                " Enable smart-tabs
+set softtabstop=4           " Number of spaces per Tab
 set spelllang=pt_br,en_us
 set splitbelow
 set termguicolors
-set textwidth=110   " Line wrap (number of cols)
+set textwidth=110                    " Line wrap (number of cols)
 set virtualedit=insert,block,onemore " Permite mover o cursor onde não há texto
-set visualbell           " Use visual bell (no beeping)
+set visualbell                       " Use visual bell (no beeping)
 set wildmenu
 set wildmode=full
 
