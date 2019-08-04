@@ -13,5 +13,5 @@ verifcolor=ffffffff
 timecolor=ffffffff
 datecolor=ffffffff
 loginbox=24292EB3
-font="Iosevka"
-locktext="Digite a senha para desbloquear"
+font="Fira Code Medium"
+locktext="Digite sua senha..."
