@@ -119,7 +119,7 @@ ctrl + shift + {less,greater}
 
 # set the window state
 alt + t
-    bspc node -t {floating,tiled}
+    bspc node -t {pseudo_tiled,floating,tiled}
 
 # Locked = Does not allow closing the window
 # Sticky = Will move along with desktop
