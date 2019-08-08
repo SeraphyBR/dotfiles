@@ -136,19 +136,23 @@ let g:ale_linters = {
 "" COC section:
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 let g:coc_global_extensions = [
-            \ 'coc-tabnine',
-            \ 'coc-highlight',
-            \ 'coc-pairs',
-            \ 'coc-snippets',
-            \ 'coc-json',
-            \ 'coc-yaml',
-            \ 'coc-yank',
+            \ 'coc-css',
             \ 'coc-git',
+            \ 'coc-highlight',
+            \ 'coc-html',
+            \ 'coc-java',
+            \ 'coc-json',
+            \ 'coc-marketplace',
+            \ 'coc-pairs',
             \ 'coc-prettier',
             \ 'coc-project',
-            \ 'coc-vimtex',
+            \ 'coc-rls',
+            \ 'coc-snippets',
+            \ 'coc-tabnine',
             \ 'coc-vimlsp',
-            \ 'coc-marketplace'
+            \ 'coc-vimtex',
+            \ 'coc-yaml',
+            \ 'coc-yank'
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
