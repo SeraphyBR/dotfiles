@@ -91,18 +91,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
 | [vimtex](https://github.com/lervag/vimtex)                                                  | LaTeX support                                         |
 
-##### [COC Extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use and are not related to a programming language:
-
-| Extension                                                  |
-| :--------------------------------------------------------- |
-| [coc-highlight](https://github.com/neoclide/coc-highlight) |
-| [coc-json](https://github.com/neoclide/coc-json)           |
-| [coc-pairs](https://github.com/neoclide/coc-pairs)         |
-| [coc-prettier](https://github.com/neoclide/coc-prettier)   |
-| [coc-snippets](https://github.com/neoclide/coc-snippets)   |
-| [coc-vimtex](https://github.com/neoclide/coc-vimtex)       |
-| [coc-yaml](https://github.com/neoclide/coc-yaml)           |
-| [coc-yank](https://github.com/neoclide/coc-yank)           |
+##### Obs: [The extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use from COC are defined in the neovim config
 
 #### Rofi Theme:
 

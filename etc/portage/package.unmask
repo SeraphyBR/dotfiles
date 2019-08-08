@@ -1,4 +1,3 @@
-=dev-util/android-studio-3.2.0.26.181.5014246
 app-laptop/tlp::tlp
 dev-python/ewmh::jorgicio
 dev-qt/qtstyleplugins::jorgicio
@@ -10,3 +9,5 @@ x11-misc/caffeine-ng::jorgicio
 x11-themes/adapta-gtk-theme::jorgicio
 x11-themes/papirus-icon-theme::jorgicio
 x11-themes/papirus-libreoffice-theme::jorgicio
+media-fonts/twemoji-color-font::jorgicio
+dev-util/android-studio::seraphybr-overlay

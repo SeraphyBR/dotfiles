@@ -136,6 +136,7 @@ let g:ale_linters = {
 "" COC section:
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 let g:coc_global_extensions = [
+            \ 'coc-tabnine',
             \ 'coc-highlight',
             \ 'coc-pairs',
             \ 'coc-snippets',
@@ -144,6 +145,7 @@ let g:coc_global_extensions = [
             \ 'coc-yank',
             \ 'coc-git',
             \ 'coc-prettier',
+            \ 'coc-project',
             \ 'coc-vimtex',
             \ 'coc-vimlsp',
             \ 'coc-marketplace'
@@ -306,5 +308,3 @@ function TrimSpaces() range
   execute a:firstline.",".a:lastline."substitute ///gec"
   let &hlsearch=oldhlsearch
 endfunction
-
-

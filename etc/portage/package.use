@@ -1,3 +1,4 @@
+app-crypt/pinentry gnome-keyring
 app-emulation/qemu spice virgl virtfs
 app-laptop/tlp tlp_suggests bluetooth pm-utils
 app-text/asciidoc python_single_target_python2_7
@@ -14,6 +15,7 @@ dev-libs/libgcrypt static-libs
 dev-libs/libgpg-error static-libs
 dev-libs/libgusb vala
 dev-libs/libpcre pcre16
+dev-libs/libpcre2 pcre16
 dev-libs/lzo static-libs
 dev-libs/nss utils
 dev-libs/xmlsec nss
@@ -72,7 +74,7 @@ virtual/rubygems ruby_targets_ruby25
 virtual/rubygems ruby_targets_ruby26
 www-client/qutebrowser scripts
 www-client/w3m imlib
-x11-base/xorg-server -ipv6 xvfb
+x11-base/xorg-server -ipv6 -glvnd xephyr kdrive
 x11-libs/cairo xcb
 x11-libs/libxcb xkb
 x11-misc/colord vala

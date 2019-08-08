@@ -26,7 +26,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions extract flatpak)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-completions extract flatpak)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -133,7 +133,7 @@ setopt autocd
 # Remove command lines from the history list when the first character on the line is a space.
 setopt HIST_IGNORE_SPACE
 
-#################################  Aliases section  #############################################
+##########################  Aliases section  ########################################
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -148,14 +148,11 @@ alias rm='rm -Ivr'
 alias :q='exit'
 alias svim='doas nvim'
 alias vim='nvim'
-alias tvim='nvim -u ~/.config/nvim/init-tty.vim '
 alias mocp="mocp -T darkdot_theme"
 alias bbswitch="cat /proc/acpi/bbswitch"
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
 alias sxiv="sxiv -r . "
-alias addpkg="doas emerge -a --jobs"
-alias update="doas ego sync"
-alias upgrade="doas emerge -auvDN @world"
+alias efetchlog="tail -f /var/log/emerge-fetch.log"
 alias smtp="doas simple-mtpfs -o allow_other -o enable-move "
 alias .='cd ../'
 alias ..='cd ../../'
