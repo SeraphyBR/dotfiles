@@ -142,18 +142,17 @@ setopt HIST_IGNORE_SPACE
 alias clima='curl pt.wttr.in'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
-alias ls='exa '
+alias ls='exa --group-directories-first'
 alias cp='cp -R'
 alias rm='rm -Ivr'
 alias :q='exit'
 alias svim='doas nvim'
 alias vim='nvim'
-alias mocp="mocp -T darkdot_theme"
-alias bbswitch="cat /proc/acpi/bbswitch"
-alias nvidia-settings="optirun -b none nvidia-settings -c :8"
-alias sxiv="sxiv -r . "
-alias efetchlog="tail -f /var/log/emerge-fetch.log"
-alias smtp="doas simple-mtpfs -o allow_other -o enable-move "
+alias mocp='mocp -T darkdot_theme'
+alias bbswitch='cat /proc/acpi/bbswitch'
+alias nvidia-settings='optirun -b none nvidia-settings -c :8'
+alias efetchlog='tail -f /var/log/emerge-fetch.log'
+alias smtp='doas simple-mtpfs -o allow_other -o enable-move '
 alias .='cd ../'
 alias ..='cd ../../'
 
