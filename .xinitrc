@@ -4,7 +4,7 @@
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 
-dbus="ck-launch-session dbus-launch --sh-syntax --exit-with-session" 
+dbus="dbus-launch --sh-syntax --exit-with-session" 
 
 case $2 in
     bspwm) exec $dbus bspwm ;;

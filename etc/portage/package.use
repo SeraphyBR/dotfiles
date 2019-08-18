@@ -62,7 +62,7 @@ media-sound/mpd libmpdclient
 media-sound/ncmpcpp clock visualizer outputs
 media-video/ffmpeg sdl xcb openssl chromium -jack
 net-dns/dnsmasq script
-net-misc/networkmanager consolekit bluetooth -ppp
+net-misc/networkmanager bluetooth -ppp
 net-misc/spice-gtk sasl usbredir
 net-print/cups-filters -pdf
 net-print/hplip -X qt5 scanner

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 get_icon() {
     case $1 in
@@ -48,42 +48,42 @@ if [ ! -z "$weather" ]; then
     weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
 
 ######################  Translate section  ##################################
-    if [ "$weather_desc" = "shower rain" ]; then 
+    if [ "$weather_desc" = "shower rain" ]; then
         weather_desc="Chuva torrencial"
-    elif [ "$weather_desc" = "overcast clouds" ]; then 
+    elif [ "$weather_desc" = "overcast clouds" ]; then
         weather_desc="Nublado"
-    elif [ "$weather_desc" = "scattered clouds" ]; then 
+    elif [ "$weather_desc" = "scattered clouds" ]; then
         weather_desc="Nuvens esparsas"
-    elif [ "$weather_desc" = "thunderstorm" ]; then 
+    elif [ "$weather_desc" = "thunderstorm" ]; then
         weather_desc="Trovoada"
-    elif [ "$weather_desc" = "thunderstorm with light rain" ]; then 
+    elif [ "$weather_desc" = "thunderstorm with light rain" ]; then
         weather_desc="Trovoada com chuva fina"
     elif [ "$weather_desc" = "few clouds" ]; then
         weather_desc="Poucas nuvens"
-    elif [ "$weather_desc" = "broken clouds" ]; then 
+    elif [ "$weather_desc" = "broken clouds" ]; then
         weather_desc="Nuvens esparsas"
-    elif [ "$weather_desc" = "clear sky" ]; then 
+    elif [ "$weather_desc" = "clear sky" ]; then
             weather_desc="Céu claro"
-    elif [ "$weather_desc" = "moderate rain" ]; then 
+    elif [ "$weather_desc" = "moderate rain" ]; then
         weather_desc="Chuva moderada"
-    elif [ "$weather_desc" = "thunderstorm with heavy rain" ]; then 
+    elif [ "$weather_desc" = "thunderstorm with heavy rain" ]; then
         weather_desc="Trovoada com chuva pesada"
-    elif [ "$weather_desc" = "drizzle" ] || [ "$weather_desc" = "light intensity drizzle rain" ] ; then 
-        weather_desc="Chuvisco"  
-    elif [ "$weather_desc" = "light rain" ]; then 
+    elif [ "$weather_desc" = "drizzle" ] || [ "$weather_desc" = "light intensity drizzle rain" ] ; then
+        weather_desc="Chuvisco"
+    elif [ "$weather_desc" = "light rain" ]; then
         weather_desc="Chuva leve"
-    elif [ "$weather_desc" = "light intensity shower rain" ]; then 
+    elif [ "$weather_desc" = "light intensity shower rain" ]; then
         weather_desc="Chuva leve"
-    elif [ "$weather_desc" = "mist" ] || [ "$weather_desc" = "fog" ]; then 
+    elif [ "$weather_desc" = "mist" ] || [ "$weather_desc" = "fog" ]; then
         weather_desc="Névoa"
     elif [ "$weather_desc" = "haze" ]; then
         weather_desc="neblina"
     elif [ "$weather_desc" = "light intensity drizzle" ]; then
         weather_desc="Chuvisco leve"
-    fi 
+    fi
 ############################################################################
 
-# https://github.com/jaagr/polybar/wiki/Fonts 
+# https://github.com/jaagr/polybar/wiki/Fonts
 #; Using raw formatting tags, you can mix fonts.
 #; %{T3} tells the bar to use Noto Sans and %{T-} resets it to default.
 #label-inactive = %{T3}Inactive%{T-} %time%

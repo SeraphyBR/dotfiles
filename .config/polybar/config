@@ -80,13 +80,13 @@ overline-size = 3
 border-size = 4
 border-color = ${colors.background}
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "DejaVu Sans:size=12;2"
+font-0 = "DejaVuSans:size=12;2"
 font-1 = "font\-logos:size=12"
 font-2 = "FontAwesome:size=14;2"
 font-3 = "MaterialIcons:size=14;2"
@@ -275,7 +275,6 @@ interval = 5
 format-foreground = ${colors.bluetooth}
 format-underline = ${self.format-foreground}
 exec = ~/.config/polybar/Scripts/bluetooth.sh
-click-left = "doas bluetooth toggle"
 
 ###############################################################################
 
@@ -468,7 +467,7 @@ label-font = 10
 [module/calendar]
 type = custom/script
 exec = "date +%d-%m-%Y"
-interval = 600
+interval = 30
 
 format = " <label>"
 format-underline = ${colors.calendar}
@@ -594,19 +593,21 @@ menu-0-4 = "  |"
 menu-0-4-exec = bspc quit
 
 menu-1-0 = Reiniciar
-menu-1-0-exec = doas shutdown -r now
+# Using elogind
+menu-1-0-exec = loginctl reboot
 
 menu-1-1 =  |
 menu-1-1-exec = menu-open-0
 
 menu-2-0 = Desligar
-menu-2-0-exec = doas shutdown -h now
+# Using elogind
+menu-2-0-exec = loginctl poweroff
 
 menu-2-1 =  |
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = Suspender
-menu-3-0-exec = "betterlockscreen -s"
+menu-3-0-exec = betterlockscreen -s
 
 menu-3-1 =  |
 menu-3-1-exec = menu-open-0
