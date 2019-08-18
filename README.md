@@ -103,6 +103,12 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 -   And then run the `rofi-theme-selector` command to set the theme to be used.
 
+-   Alternatively, just add this to your ~/.config/rofi/config
+
+    ```
+    rofi.theme: ~/path/to/theme.rasi
+    ```
+
 -   My current theme is based on [flat-orange](https://github.com/DaveDavenport/rofi-themes/blob/master/User%20Themes/flat-orange.rasi).
     I found it in the [rofi-themes](https://github.com/DaveDavenport/rofi-themes/tree/master/User%20Themes) repository,
     in that same place you can get other themes and modify them as I did. For more details on setting up an .rasi file, run the `man rofi-theme` command.
