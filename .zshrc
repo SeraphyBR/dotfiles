@@ -79,10 +79,6 @@ fi
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-# zsh-syntax-highlighting settings
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_REGEXP+=("(.*?)\(\)\{\1(\|\1&?)?\}\|\1" "bg=9,bold,fg=0")
-
 ######################## PowerLevel9K Section #####################################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
