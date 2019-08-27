@@ -16,7 +16,7 @@ super + Return
     kitty
 
 # Floating Terminal with selection (Slop programs is needed)
-alt + Return
+super + alt + Return
     bspc rule -a \* -o state=floating \
     rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && kitty
 
@@ -43,6 +43,10 @@ super + m
 # Programs Launcher / Window alternator
 super + {d,w}
     rofi -show {drun,window}
+
+# Screen record
+super + shift + s
+    ~/DotFiles/Scripts/record.sh
 
 # Reload sxhkd and polybar:
 super + Escape
