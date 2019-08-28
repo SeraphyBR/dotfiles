@@ -76,6 +76,7 @@ set relativenumber
 set scrolloff=999           " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
+set showmode
 set showbreak=+++           " Wrap-broken line prefix
 set showmatch               " Highlight matching brace
 set smartcase               " Enable smart-case search
@@ -221,8 +222,8 @@ let g:startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\"   \"
 let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
 let g:startify_commands = [ {'t': ['Open a new Terminal', ':terminal']} ]
 let g:startify_lists = [
-            \ { 'type': 'files',     'header': ['   My most recently used files:'] },
             \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
+            \ { 'type': 'files',     'header': ['   My most recently used files:'] },
             \ { 'type': 'sessions',  'header': ['   Sessions:']       },
             \ { 'type': 'bookmarks', 'header': ['   Bookmarks:']      },
             \ { 'type': 'commands',  'header': ['   Commands:']       },
