@@ -62,7 +62,7 @@ media-sound/mpd libmpdclient
 media-sound/ncmpcpp clock visualizer outputs
 media-video/ffmpeg sdl xcb openssl chromium -jack
 net-dns/dnsmasq script
-net-misc/networkmanager bluetooth -ppp
+net-misc/networkmanager bluetooth iwd dhcpcd -ppp -dhclient
 net-misc/spice-gtk sasl usbredir
 net-print/cups-filters -pdf
 net-print/hplip -X qt5 scanner
@@ -83,3 +83,4 @@ app-text/mupdf -X -curl
 x11-misc/polybar network curl mpd
 x11-misc/redshift appindicator geoclue
 x11-misc/rofi windowmode
+media-gfx/fontforge cairo

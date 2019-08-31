@@ -24,13 +24,14 @@ dunst &
 ~/DotFiles/Scripts/battery-status.sh &
 # Music Player Daemon
 mpd &
+~/DotFiles/Scripts/mpd_notify.sh &
 # Auto mount devices
 udiskie --smart-tray &
 
 # Welcome
-dunstify "Bem Vindo ${USER^}!" & 
+dunstify "Bem Vindo ${USER^}!" &
 # Auto lockscreen
-xautolock -time 15 -locker 'betterlockscreen -l' & 
+xautolock -time 15 -locker 'betterlockscreen -l' &
 
 bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 #bspc config click_to_focus true
@@ -41,7 +42,6 @@ bspc config pointer_action3 resize_corner
 
 bspc config focus_follows_pointer true
 bspc config border_width         5
-bspc config border_radius       10
 bspc config window_gap          14
 
 bspc config remove_disabled_monitors true
@@ -60,12 +60,11 @@ bspc config presel_border_color "#9DFF5F"
 bspc config presel_feedback_color "#9DFF5F"
 
 bspc rule -a '*:libreoffice' state=tiled
-bspc rule -a '*:soffice' state=tiled 
+bspc rule -a '*:soffice' state=tiled
 bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
 bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
-
 # srandr for handle displays output
-srandrd -v ~/DotFiles/Scripts/display_handler.sh    
+srandrd -v ~/DotFiles/Scripts/display_handler.sh

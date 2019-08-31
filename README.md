@@ -25,7 +25,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
 | Linux Distro        | [Funtoo](https://www.funtoo.org/Welcome)                                                                                            |
 | Session Manager     | [Elogind](https://github.com/elogind/elogind)                                                                                       |
-| Window Manager      | [Bspwm](https://github.com/baskerville/bspwm) (with [Rounded Corners patch](etc/portage/patches/x11-wm/bspwm-0.9.5/rounded.patch))  |
+| Window Manager      | [Bspwm](https://github.com/baskerville/bspwm)                                                                                       |
 | Web Browser         | [qutebrowser](https://qutebrowser.org/)                                                                                             |
 | Program Launcher    | [Rofi](https://github.com/DaveDavenport/rofi)                                                                                       |
 | Status bar          | [Polybar](https://github.com/jaagr/polybar)                                                                                         |

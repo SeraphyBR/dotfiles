@@ -53,6 +53,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General:
 
+"set pumblend=18            " pseudo-transparent popup menu
 set autoindent               " Auto-indent new lines
 set background=dark
 set clipboard=unnamedplus
@@ -60,23 +61,20 @@ set cursorline              " Highlight cursor line
 set encoding=utf-8          " Define o encoding exibido no terminal
 set expandtab               " Use spaces instead of tabs
 set fileencoding=utf-8      " Define o encoding na escrita dos arquivos
-set guifont=DejaVuSansMono\ Nerd\ Font\ 12
 set hidden
 set hlsearch                " Highlight all search results
 set ignorecase              " Always case-insensitive
 set inccommand=split
 set incsearch                     " Searches for strings incrementally
-set list listchars=trail:·,tab:>· " Show trailing spaces as dots
 set linebreak                     " Break lines at word (requires Wrap lines)
+set list listchars=trail:·,tab:>· " Show trailing spaces as dots
 set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
 set number                  " Show line numbers
-"set pumblend=18            " pseudo-transparent popup menu
 set relativenumber
 set scrolloff=999           " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
-set showmode
 set showbreak=+++           " Wrap-broken line prefix
 set showmatch               " Highlight matching brace
 set smartcase               " Enable smart-case search
@@ -92,21 +90,21 @@ set visualbell                       " Use visual bell (no beeping)
 set wildmenu
 set wildmode=full
 
-set wildignore+=.git,.hg,.svn
-set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class,*.jar,*.iso
 set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.avi,*.divx,*.mp4,*.webm,*.mov,*.m2ts,*.mkv,*.vob,*.mpg,*.mpeg
-set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
-set wildignore+=*.eot,*.otf,*.ttf,*.woff
 set wildignore+=*.doc,*.pdf,*.cbr,*.cbz,*.docx,*.ppt,*.odt
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.mp3,*.oga,*.ogg,*.wav,*.flac
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class,*.jar,*.iso
 set wildignore+=*.swp,.lock,.DS_Store,._*
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kgb
+set wildignore+=.git,.hg,.svn
 
 "" Advanced:
+set backspace=indent,eol,start " Backspace behaviour
 set ruler                      " Show row and column ruler information
 set undolevels=1500            " Number of undo levels
-set backspace=indent,eol,start " Backspace behaviour
 
 "" Persistent Undo:
 " Let's save undo info!
@@ -174,6 +172,7 @@ if !isdirectory($HOME."/.config/nvim/templates")
     call mkdir($HOME."/.config/nvim/templates", "", 0700)
 endif
 let g:templates_directory = [ '~/.config/nvim/templates' ]
+let g:templates_detect_git = 1
 
 " Vimtex:
 let g:vimtex_view_general_viewer = 'zathura'
@@ -272,10 +271,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:
-autocmd FileType tex,gitcommit,text,markdown setlocal spell
-autocmd TermOpen * call SetTermOptions()
-autocmd StdinReadPre * let s:std_in=1
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType tex,gitcommit,text,markdown setlocal spell
+autocmd StdinReadPre * let s:std_in=1
+autocmd TermOpen * call SetTermOptions()
 autocmd VimEnter *
             \   if !argc()
             \ |   setlocal nowrap
