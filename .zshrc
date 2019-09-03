@@ -148,7 +148,7 @@ alias mocp='mocp -T darkdot_theme'
 alias bbswitch='cat /proc/acpi/bbswitch'
 alias nvidia-settings='optirun -b none nvidia-settings -c :8'
 alias efetchlog='tail -f /var/log/emerge-fetch.log'
-alias smtp='su -c simple-mtpfs -o allow_other -o enable-move '
+alias smtp='simple-mtpfs'
 alias .='cd ../'
 alias ..='cd ../../'
 
