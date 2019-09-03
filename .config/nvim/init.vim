@@ -28,10 +28,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentline'
 Plug 'aperezdc/vim-template'
 Plug 'gentoo/gentoo-syntax'
-Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'liuchengxu/vista.vim'
 Plug 'luochen1990/rainbow'
+Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'

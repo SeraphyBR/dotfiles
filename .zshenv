@@ -10,6 +10,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export GEM_HOME="$HOME/.gems"
 
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share"
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share"
 
 # Color man pages
@@ -20,11 +21,11 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;47;34m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r 
+export LESS=-r
 
 # Time
 export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
 
-# Editor 
-export EDITOR=/usr/bin/nvim 
+# Editor
+export EDITOR=/usr/bin/nvim
 export GIT_EDITOR=/usr/bin/nvim
