@@ -64,6 +64,16 @@ alt + h
 alt + l
     betterlockscreen -l
 
+# Multimedia Keys
+XF86AudioPlay
+    ~/DotFiles/Scripts/player.sh play-pause
+
+XF86AudioStop
+    ~/DotFiles/Scripts/player.sh stop
+
+XF86Audio{Prev,Next}
+    ~/DotFiles/Scripts/player.sh {prev,next}
+
 # Volume Controls
 XF86Audio{Raise,Lower}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%

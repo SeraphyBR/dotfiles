@@ -24,6 +24,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
+Plug 'janko/vim-test'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentline'
 Plug 'aperezdc/vim-template'
@@ -155,6 +156,13 @@ let g:coc_global_extensions = [
             \ 'coc-yank'
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"" vim-test
+let test#strategy = {
+  \ 'nearest': 'neovim',
+  \ 'file':    'neovim',
+  \ 'suite':   'basic',
+\}
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1
