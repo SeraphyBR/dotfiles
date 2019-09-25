@@ -171,7 +171,7 @@ c.colors.completion.item.selected.fg = '#f8f8f2'
 # Type: QssColor
 c.colors.completion.item.selected.bg = '#555555'
 
-# Top border color of the completion widget category headers.
+# Top border color of the selected completion item.
 # Type: QssColor
 c.colors.completion.item.selected.border.top = '#44475a'
 
@@ -230,7 +230,7 @@ c.colors.hints.fg = '#00BFFF'
 c.colors.hints.bg = '#24292E'
 
 # Font color for the matched part of hints.
-# Type: QssColor
+# Type: QtColor
 c.colors.hints.match.fg = '#FFFFFF'
 
 # Text color for the keyhint widget.
@@ -392,7 +392,7 @@ c.colors.statusbar.url.success.https.fg = '#50fa7b'
 c.colors.statusbar.url.warn.fg = '#f1fa8c'
 
 # Background color of the tab bar.
-# Type: QtColor
+# Type: QssColor
 c.colors.tabs.bar.bg = '#24292E'
 
 # Color gradient start for the tab indicator.

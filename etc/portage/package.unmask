@@ -11,3 +11,4 @@ x11-themes/papirus-icon-theme::jorgicio
 x11-themes/papirus-libreoffice-theme::jorgicio
 media-fonts/twemoji-color-font::jorgicio
 dev-util/android-studio::seraphybr-overlay
+dev-python/PyQt5::seraphybr-overlay

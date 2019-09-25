@@ -2,8 +2,9 @@ app-crypt/pinentry gnome-keyring
 app-emulation/qemu spice virgl virtfs
 app-laptop/tlp tlp_suggests bluetooth pm-utils
 app-text/asciidoc python_single_target_python2_7
+app-text/mupdf -X -curl
 app-text/poppler cairo qt5
-app-text/texlive xetex -xml science l10n_pt
+app-text/texlive xetex -xml science l10n_pt graphics extra
 app-text/texlive-core xetex
 dev-java/openjdk -webstart gentoo-vm source
 dev-java/openjdk-bin -webstart -nsplugin
@@ -53,6 +54,7 @@ dev-ruby/xmlrpc ruby_targets_ruby25
 dev-ruby/xmlrpc ruby_targets_ruby26
 dev-util/ctags json xml
 games-emulation/mgba qt5
+media-gfx/fontforge cairo
 media-libs/gd fontconfig
 media-libs/gegl cairo
 media-libs/libmypaint gegl
@@ -65,7 +67,8 @@ net-dns/dnsmasq script
 net-misc/networkmanager bluetooth iwd dhcpcd -ppp -dhclient
 net-misc/spice-gtk sasl usbredir
 net-print/cups-filters -pdf
-net-print/hplip -X qt5 scanner
+net-print/hplip -X qt5 scanner  -python_single_target_python2_7
+sys-block/fio aio
 sys-block/gparted -hfs -xfs -jfs -reiserfs
 sys-boot/grub mount
 sys-fs/cryptsetup -gcrypt openssl
@@ -79,8 +82,10 @@ x11-libs/cairo xcb
 x11-libs/libxcb xkb
 x11-misc/colord vala
 x11-misc/dunst dunstify
-app-text/mupdf -X -curl
 x11-misc/polybar network curl mpd
 x11-misc/redshift appindicator geoclue
 x11-misc/rofi windowmode
-media-gfx/fontforge cairo
+app-misc/pax-utils python_single_target_python3_6
+dev-python/PyQt5 -webkit
+dev-python/PyQtWebEngine -python_targets_python2_7
+x11-misc/caffeine-ng -python_targets_python3_7

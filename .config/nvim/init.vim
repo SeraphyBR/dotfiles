@@ -79,6 +79,7 @@ set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
 set showbreak=+++           " Wrap-broken line prefix
 set showmatch               " Highlight matching brace
+set shell=/bin/zsh
 set smartcase               " Enable smart-case search
 set smartindent             " Enable smart-indent
 set smarttab                " Enable smart-tabs
