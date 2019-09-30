@@ -1,3 +1,6 @@
 [submodule ".config/polybar/Scripts/polybar-spotify"]
 	path = .config/polybar/Scripts/polybar-spotify
 	url = https://github.com/Jvanrhijn/polybar-spotify.git
+[submodule ".config/ranger/plugins/ranger_devicons"]
+	path = .config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons.git

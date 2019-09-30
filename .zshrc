@@ -18,7 +18,6 @@ if [ ! -d "$ZSH" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
     git clone https://github.com/zdharma/fast-syntax-highlighting.git $ZSH/custom/plugins/fast-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-completions $ZSH/custom/plugins/zsh-completions
-    git clone https://github.com/bilelmoussaoui/flatpak-zsh-completion $ZSH/custom/plugins/flatpak
     chsh -s /bin/zsh
 fi
 
@@ -26,7 +25,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions fast-syntax-highlighting zsh-completions extract flatpak)
+plugins=(zsh-autosuggestions fast-syntax-highlighting zsh-completions extract)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -91,7 +90,6 @@ if [ ! -z "$DISPLAY" ]; then
     POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
     POWERLEVEL9K_SHORTEN_DELIMITER=""
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-    POWERLEVEL9K_STATUS_OK=false
 fi
 
 # If powerlevel9k shows errors messages about mercurial...

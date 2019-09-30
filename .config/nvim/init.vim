@@ -74,7 +74,7 @@ set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
 set number                  " Show line numbers
 set relativenumber
-set scrolloff=999           " Always show N lines above/below the cursor
+set scrolloff=1000           " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
 set showbreak=+++           " Wrap-broken line prefix
