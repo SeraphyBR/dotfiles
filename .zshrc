@@ -143,12 +143,12 @@ alias :q='exit'
 alias vim='nvim'
 alias mocp='mocp -T darkdot_theme'
 alias bbswitch='cat /proc/acpi/bbswitch'
-alias nvidia-settings='optirun -b none nvidia-settings -c :8'
 alias efetchlog='tail -f /var/log/emerge-fetch.log'
 alias smtp='simple-mtpfs'
 alias .='cd ../'
 alias ..='cd ../../'
-
+alias nvrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia' 
+alias vkrun='__NV_PRIME_RENDER_OFFLOAD=1'
 ####################### Custom functions ###############################
 
 c() {
