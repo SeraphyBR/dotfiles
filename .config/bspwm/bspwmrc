@@ -1,10 +1,12 @@
 #!/bin/sh
 
+dot_scripts="$HOME/DotFiles/Scripts"
+
 sxhkd &
 # Compositor
 compton -b &
 # Wallpaper
-hsetroot -center ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg &
+"$dot_scripts"/wallblur/wallblur.sh -i ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg &
 # Painels
 ~/.config/polybar/launch.sh &
 # Read Xresources and Fix cursor on bspwm
@@ -21,10 +23,10 @@ redshift-gtk &
 caffeine &
 # Notification Daemon
 dunst &
-~/DotFiles/Scripts/battery-status.sh &
+"$dot_scripts"/battery-status.sh &
 # Music Player Daemon
 mpd &
-~/DotFiles/Scripts/mpd_notify.sh &
+"$dot_scripts"/mpd_notify.sh &
 # Auto mount devices
 udiskie --smart-tray &
 
@@ -67,4 +69,4 @@ bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
 # srandr for handle displays output
-srandrd -v ~/DotFiles/Scripts/display_handler.sh
+srandrd -v "$dot_scripts"/display_handler.sh
