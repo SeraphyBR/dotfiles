@@ -1,5 +1,3 @@
-=app-editors/neovim-9999 **
-=app-misc/fff-9999 **
 =app-misc/ranger-9999 **
 net-vpn/zeronet
 # required by dev-lang/python-3.5.5-r1::python-kit[ssl,-libressl]

@@ -89,3 +89,4 @@ app-misc/pax-utils python_single_target_python3_6
 dev-python/PyQt5 -webkit
 dev-python/PyQtWebEngine -python_targets_python2_7
 x11-misc/caffeine-ng -python_targets_python3_7
+dev-lua/luv luajit
