@@ -36,7 +36,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | File Manager        | [Ranger](https://github.com/ranger/ranger) with [Icons](https://github.com/alexanderjeurissen/ranger_devicons)                      |
 | Image Viewer        | [Sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug) (for preview in Ranger)                   |
 | PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                          |
-| Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot)                                                                                      |
+| Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot) (with [wallblur](https://github.com/SeraphyBR/wallblur) script)                      |
 | Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                    |
 | Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                               |
 | Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)    |
@@ -134,35 +134,35 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 -   And then create the following script called "tty-colors.start" in [/etc/local.d/](https://wiki.gentoo.org/wiki//etc/local.d) :
 
     ```sh
-    #!/usr/bin/env sh
+    #!/bin/sh
 
     PROGRAM=/usr/local/bin/setcolors
     COLORS=/etc/tty-colors
 
     if [ -e "$PROGRAM" ] && [ -e $COLORS ]; then
-    $PROGRAM $COLORS
+        $PROGRAM $COLORS
     fi
 
     ```
 
--   And then run the following commands to make the file executable, and loaded by openrc at boot time:
+-   And then run the following commands, as root, to make the file executable, and loaded by OpenRC at boot time:
 
-    ```
-    sudo chmod +x /etc/local.d/tty-colors.start
-    sudo rc-update add local default
+    ```sh
+    chmod +x /etc/local.d/tty-colors.start
+    rc-update add local default
     ```
 
 #### Touchpad Support:
 
--   To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/30-touchpad.conf"
+-   To use enable touch-click, install libinput and create the following file in "/etc/X11/xorg.conf.d/40-libinput.conf"
 
     ```
     Section "InputClass"
-    Identifier "touchpad"
-    Driver "libinput"
-    MatchIsTouchpad "on"
-    Option "Tapping" "on"
-    Option "TappingButtonMap" "lmr"
-    Option "TappingDrag" "on"
+        Identifier "libinput"
+        MatchIsTouchpad "on"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lmr"
+        Option "TappingDrag" "on"
+        Driver "libinput"
     EndSection
     ```
