@@ -510,7 +510,7 @@ bar-volume-empty-foreground = ${colors.empty}
 type = internal/battery
 battery = BAT0
 adapter = ADP0
-full-at = 98
+full-at = 99
 
 format-charging =  <label-charging> <animation-charging>
 format-charging-underline = ${colors.battery}

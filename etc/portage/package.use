@@ -77,7 +77,7 @@ virtual/rubygems ruby_targets_ruby25
 virtual/rubygems ruby_targets_ruby26
 www-client/qutebrowser scripts
 www-client/w3m imlib
-x11-base/xorg-server -ipv6 -glvnd xephyr kdrive
+x11-base/xorg-server -ipv6
 x11-libs/cairo xcb
 x11-libs/libxcb xkb
 x11-misc/colord vala
@@ -90,3 +90,4 @@ dev-python/PyQt5 -webkit
 dev-python/PyQtWebEngine -python_targets_python2_7
 x11-misc/caffeine-ng -python_targets_python3_7
 dev-lua/luv luajit
+net-wireless/iwd wired

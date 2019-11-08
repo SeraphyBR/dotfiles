@@ -4,10 +4,21 @@
     "diagnostic.messageTarget": "float",
     "java.errors.incompleteClasspath.severity": "ignore",
     "java.format.settings.url": "/home/seraphybr-fun/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
-    "java.home": "/opt/openjdk-bin-11.0.1_p13",
     "java.trace.server": "verbose",
     "prettier.tabWidth": 4,
     "signature.target": "float",
     "suggest.echodocSupport": true,
-    "yank.highlight.duration": 250
+    "yank.highlight.duration": 250,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
 }
