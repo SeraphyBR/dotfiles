@@ -623,6 +623,7 @@ format = <label>
 format-suffix = "  "
 format-suffix-foreground =  ${colors.uptime}
 format-underline =  ${colors.uptime}
+
 ###############################################################################
 
 [module/openweathermap-detailed]

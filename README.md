@@ -39,7 +39,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot) (with [wallblur](https://github.com/SeraphyBR/wallblur) script)                      |
 | Screen Shooter      | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                    |
 | Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                               |
-| Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel9k](https://github.com/bhilburn/powerlevel9k) theme)    |
+| Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel10k](https://github.com/romkatv/powerlevel10k) theme)    |
 | Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                             |
 | Power Manager       | [TLP](http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html)                                                     |
 | Monitor setup       | Arandr / [xrandr](https://wiki.archlinux.org/index.php/xrandr) / [srandrd](https://github.com/jceb/srandrd) (handle multi monitors) |
