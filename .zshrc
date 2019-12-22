@@ -78,7 +78,7 @@ fi
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-######################## PowerLevel9K Section #####################################################
+######################## PowerLevel9K Section ######################################
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 if [ ! -z "$DISPLAY" ]; then
@@ -90,11 +90,6 @@ if [ ! -z "$DISPLAY" ]; then
     POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
     POWERLEVEL9K_SHORTEN_DELIMITER=""
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-fi
-
-# If powerlevel9k shows errors messages about mercurial...
-if [ ! -e "~/.hgrc" ];then
-    touch ~/.hgrc
 fi
 
 #################################################################################
