@@ -4,7 +4,7 @@ dot_scripts="$HOME/DotFiles/Scripts"
 
 sxhkd &
 # Compositor
-compton -b &
+picom -b &
 # Wallpaper
 "$dot_scripts"/wallblur/wallblur.sh -i ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg &
 # Painels

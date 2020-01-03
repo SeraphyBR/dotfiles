@@ -177,7 +177,7 @@ close_all = ctrl+shift+space
 history = ctrl+Shift_R
 
 # Context menu.
-context = ctrl+shift+period
+context = alt+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
