@@ -32,6 +32,7 @@ Plug 'gentoo/gentoo-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vim-which-key'
 Plug 'luochen1990/rainbow'
 Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
@@ -54,8 +55,6 @@ call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General:
-
-"set pumblend=18            " pseudo-transparent popup menu
 set autoindent               " Auto-indent new lines
 set background=dark
 set clipboard=unnamedplus
@@ -73,13 +72,14 @@ set list listchars=trail:·,tab:>· " Show trailing spaces as dots
 set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
 set number                  " Show line numbers
+set pumblend=11             " pseudo-transparent popup menu
+set pumheight=10
 set relativenumber
 set scrolloff=1000           " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
 set showbreak=+++           " Wrap-broken line prefix
 set showmatch               " Highlight matching brace
-set shell=/bin/zsh
 set smartcase               " Enable smart-case search
 set smartindent             " Enable smart-indent
 set smarttab                " Enable smart-tabs
@@ -118,6 +118,32 @@ set undodir=~/.config/nvim/undo-dir
 set undofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-which-key
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+let g:which_key_map = {}
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ }
+
 "" Airline status line:
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -196,16 +222,18 @@ let g:prettier#config#tab_width = 4
 let g:tex_conceal = ''
 let g:vim_markdown_conceal = 0
 
+"" Syntax Hightlighting:
+syntax on
+
 "" Colorscheme Section:
 if empty($DISPLAY)
     colorscheme default
 else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
+    "" Transparent backgroud
+    hi Normal guibg=#00282828
 endif
-
-"" Syntax Hightlighting:
-syntax on
 
 "" NERDtree Section:
 let NERDTreeWinPos = "right"
@@ -228,7 +256,7 @@ let g:ascii = [
             \'|__|____||_____||_____| \_____/ |__||__|__|__|   ',
             \]
 let g:startify_custom_header = 'map(g:ascii + startify#fortune#boxed(), "\"   \".v:val")'
-let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
+let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, {'z': '~/.zshrc'} ]
 let g:startify_commands = [ {'t': ['Open a new Terminal', ':terminal']} ]
 let g:startify_lists = [
             \ { 'type': 'dir',       'header': ['   My most recently used files in the current directory: '. getcwd()] },
@@ -268,7 +296,6 @@ noremap <F7> mzgg=G`z
 command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
 command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
 nnoremap <F6>   m`:TrimSpaces<CR>``
-
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
