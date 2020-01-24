@@ -1,4 +1,4 @@
-![Dotfiles](Images/logo.png)\
+![Dotfiles](Images/logo.png)
 
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
