@@ -6,7 +6,7 @@ sxhkd &
 # Compositor
 picom -b &
 # Wallpaper
-"$dot_scripts"/wallblur/wallblur.sh -i ~/DotFiles/Images/Wallpapers/road_trees_top_view_119030_1920x1080.jpg &
+"$dot_scripts"/wallblur/wallblur.sh -i ~/DotFiles/Images/Wallpapers/road-trees-top-1920x1080.jpg &
 # Painels
 ~/.config/polybar/launch.sh &
 # Read Xresources and Fix cursor on bspwm
