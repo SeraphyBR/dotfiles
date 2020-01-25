@@ -22,32 +22,85 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+"
 Plug 'Shougo/denite.nvim'
+
+" Print infos in echo area
 Plug 'Shougo/echodoc.vim'
+
+"
 Plug 'janko/vim-test'
+
+" Git status support for nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Display the indentation levels with thin vertical lines
 Plug 'Yggdroot/indentline'
+
+" Templates
 Plug 'aperezdc/vim-template'
+
+" Support for specific files related to portage
 Plug 'gentoo/gentoo-syntax'
+
+" Markdown Line Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+" Latex support
 Plug 'lervag/vimtex', { 'for': 'tex' }
+
+" Viewer for Symbols and Ctags
 Plug 'liuchengxu/vista.vim'
+
+" Graphic viewer for keybinds
 Plug 'liuchengxu/vim-which-key'
+
+" Rainbow Parentheses Improved
 Plug 'luochen1990/rainbow'
+
+"
 Plug 'matze/vim-move'
+
+" Undo history visualizer
 Plug 'mbbill/undotree'
+
+" Start Screen for vim
 Plug 'mhinz/vim-startify'
+
+" Color scheme
 Plug 'morhetz/gruvbox'
+
+" Completion support and Language server Client
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" Icons for vim plugins
 Plug 'ryanoasis/vim-devicons'
+
+" File explorer
 Plug 'scrooloose/nerdtree'
+
+" Better syntax highlighting
 Plug 'sheerun/vim-polyglot'
+
+" Extra syntax highlighting for nerdtree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+"
 Plug 'tpope/vim-eunuch'
+
+" Git Wrapper inside Vim
 Plug 'tpope/vim-fugitive'
+
+" Awesome Keybinds
 Plug 'tpope/vim-unimpaired'
+
+" Status Line
 Plug 'vim-airline/vim-airline'
+
+" Themes for vim-airline
 Plug 'vim-airline/vim-airline-themes'
+
+" Linting support
 Plug 'w0rp/ale'
 call plug#end()
 
