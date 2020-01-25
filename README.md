@@ -16,6 +16,10 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 ![Screenshot-3](Images/Screenshots/Screenshot3.png)
 
+### VSCode Look:
+
+![Screenshot-4](Images/Screenshots/Screenshot4.png)
+
 ### TTY Look:
 
 ![Screenshot-4](Images/tty.png)
@@ -65,35 +69,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | [Weather-icons](https://erikflowers.github.io/weather-icons/)         | Polybar                                                                    |
 | [font-logos](https://github.com/lukas-w/font-logos)                   | Distro logo in Polybar                                                     |
 
-#### Vim/Neovim Plugins:
-
-| Plugin                                                                                      | Usage                                                 |
-| :------------------------------------------------------------------------------------------ | :---------------------------------------------------- |
-| [ALE](https://github.com/w0rp/ale)                                                          | Linting support                                       |
-| [COC](https://github.com/neoclide/coc.nvim)                                                 | Completion support and Language Server client         |
-| [NERDTree](https://github.com/scrooloose/nerdtree)                                          | File explorer                                         |
-| [Vista](http://liuchengxu.org/vista.vim/)                                                   | Viewer for Symbols and Ctags                          |
-| [echodoc](https://github.com/Shougo/echodoc.vim)                                            | Print infos in echo area                              |
-| [gentoo-syntax](https://github.com/gentoo/gentoo-syntax)                                    | Support for specific files related to portage         |
-| [gruvbox](https://github.com/morhetz/gruvbox)                                               | Color scheme                                          |
-| [indentline](https://github.com/Yggdroot/indentLine)                                        | Display the indention levels with thin vertical lines |
-| [markdown-preview](https://github.com/iamcco/markdown-preview.vim)                          | Markdown Live Preview                                 |
-| [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)                       | Git status support for NERDTree                       |
-| [rainbow](https://github.com/luochen1990/rainbow)                                           | Rainbow Parentheses Improved                          |
-| [undotree](https://github.com/mbbill/undotree)                                              | Undo history visualizer                               |
-| [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)                     | Themes for vim-airline                                |
-| [vim-airline](https://github.com/vim-airline/vim-airline)                                   | Status Line                                           |
-| [vim-devicons](https://github.com/ryanoasis/vim-devicons)                                   | Icons for vim plugins                                 |
-| [vim-fugitive](https://github.com/tpope/vim-fugitive)                                       | Git wrapper inside Vim                                |
-| [vim-nerdtree-syntax-highlight](https://github.com/tiagofumo/vim-nerdtree-syntax-highlight) | Extra syntax and highlight for nerdtree files         |
-| [vim-plug](https://github.com/junegunn/vim-plug)                                            | Plugin manager                                        |
-| [vim-polyglot](https://github.com/sheerun/vim-polyglot)                                     | For better syntax highlighting                        |
-| [vim-startify](https://github.com/mhinz/vim-startify)                                       | Start Screen for Vim                                  |
-| [vim-template](https://github.com/aperezdc/vim-template)                                    | Templates                                             |
-| [vim-unimpaired](https://github.com/tpope/vim-unimpaired)                                   | Awesome Keybinds                                      |
-| [vimtex](https://github.com/lervag/vimtex)                                                  | LaTeX support                                         |
-
-##### Obs: [The extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions) I use from COC are defined in the neovim config
+##### Obs: My vscode settings are not present in this repository, they are saved in a private gist, if you are interested, talk to me on the telegram.
 
 #### Rofi Theme:
 
