@@ -128,7 +128,6 @@ setopt HIST_IGNORE_SPACE
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias clima='curl pt.wttr.in'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias ls='exa --group-directories-first'
@@ -178,6 +177,33 @@ ram() {
       echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
     fi
   fi
+}
+
+clima() {
+    local cache="$HOME/.cache/clima"
+    local tmp="/tmp/clima"
+    if curl -s 'pt.wttr.in' > $tmp; then
+        mv $tmp $cache
+        cat $cache
+    elif [ -e $cache ]; then
+        echo "Without internet connection, using local cache."
+        cat $cache
+    else 
+        echo "You need internet connection!"
+    fi
+}
+
+mkernel() {
+    if [ ${EUID:-$(id -u)} -ne 0 ]; then
+        echo "You need to be root"
+    else
+        eselect kernel list
+        echo -n "Choose kernel: "
+        read target
+        eselect kernel set $target
+        cd /usr/src/linux
+        make menuconfig && make -j8 && make install && make modules_install
+    fi
 }
 
 ###############################################################

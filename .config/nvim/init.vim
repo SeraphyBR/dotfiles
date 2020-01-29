@@ -178,24 +178,24 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:which_key_map = {}
 let g:which_key_map['w'] = {
-      \ 'name' : '+windows' ,
-      \ 'w' : ['<C-W>w'     , 'other-window']          ,
-      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-      \ 'h' : ['<C-W>h'     , 'window-left']           ,
-      \ 'j' : ['<C-W>j'     , 'window-below']          ,
-      \ 'l' : ['<C-W>l'     , 'window-right']          ,
-      \ 'k' : ['<C-W>k'     , 'window-up']             ,
-      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-      \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-      \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-      \ '=' : ['<C-W>='     , 'balance-window']        ,
-      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-      \ }
+            \ 'name' : '+windows' ,
+            \ 'w' : ['<C-W>w'     , 'other-window']          ,
+            \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+            \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+            \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+            \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+            \ 'h' : ['<C-W>h'     , 'window-left']           ,
+            \ 'j' : ['<C-W>j'     , 'window-below']          ,
+            \ 'l' : ['<C-W>l'     , 'window-right']          ,
+            \ 'k' : ['<C-W>k'     , 'window-up']             ,
+            \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+            \ 'J' : ['resize +5'  , 'expand-window-below']   ,
+            \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+            \ 'K' : ['resize -5'  , 'expand-window-up']      ,
+            \ '=' : ['<C-W>='     , 'balance-window']        ,
+            \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+            \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+            \ }
 
 "" Airline status line:
 set laststatus=2
@@ -239,10 +239,10 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "" vim-test
 let test#strategy = {
-  \ 'nearest': 'neovim',
-  \ 'file':    'neovim',
-  \ 'suite':   'basic',
-\}
+            \ 'nearest': 'neovim',
+            \ 'file':    'neovim',
+            \ 'suite':   'basic',
+            \}
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1
@@ -284,8 +284,9 @@ if empty($DISPLAY)
 else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
+    "hi Normal guibg=#1d2021
     "" Transparent backgroud
-    hi Normal guibg=#00282828
+    hi Normal guibg=none
 endif
 
 "" NERDtree Section:
@@ -353,6 +354,9 @@ nnoremap <F6>   m`:TrimSpaces<CR>``
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Trigger coc completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
 " ALE quick navigate between errors:
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -386,19 +390,19 @@ endfunction
 
 "" https://vim.fandom.com/wiki/Remove_unwanted_spaces
 function ShowSpaces(...)
-  let @/='\v(\s+$)|( +\ze\t)'
-  let oldhlsearch=&hlsearch
-  if !a:0
-    let &hlsearch=!&hlsearch
-  else
-    let &hlsearch=a:1
-  end
-  return oldhlsearch
+    let @/='\v(\s+$)|( +\ze\t)'
+    let oldhlsearch=&hlsearch
+    if !a:0
+        let &hlsearch=!&hlsearch
+    else
+        let &hlsearch=a:1
+    end
+    return oldhlsearch
 endfunction
 
 "" https://vim.fandom.com/wiki/Remove_unwanted_spaces
 function TrimSpaces() range
-  let oldhlsearch=ShowSpaces(1)
-  execute a:firstline.",".a:lastline."substitute ///gec"
-  let &hlsearch=oldhlsearch
+    let oldhlsearch=ShowSpaces(1)
+    execute a:firstline.",".a:lastline."substitute ///gec"
+    let &hlsearch=oldhlsearch
 endfunction
