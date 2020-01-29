@@ -7,7 +7,9 @@
     "java.trace.server": "verbose",
     "prettier.tabWidth": 4,
     "signature.target": "float",
+    "lua.commandPath": "/home/seraphybr-fun/.luarocks/bin/lua-lsp",
     "suggest.echodocSupport": true,
+    "suggest.autoTrigger": "trigger",
     "yank.highlight.duration": 250,
     "languageserver": {
         "ccls": {
