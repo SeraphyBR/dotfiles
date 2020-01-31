@@ -52,9 +52,6 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 " Viewer for Symbols and Ctags
 Plug 'liuchengxu/vista.vim'
 
-" Graphic viewer for keybinds
-Plug 'liuchengxu/vim-which-key'
-
 " Rainbow Parentheses Improved
 Plug 'luochen1990/rainbow'
 
@@ -171,31 +168,6 @@ set undodir=~/.config/nvim/undo-dir
 set undofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vim-which-key
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-let g:which_key_map = {}
-let g:which_key_map['w'] = {
-            \ 'name' : '+windows' ,
-            \ 'w' : ['<C-W>w'     , 'other-window']          ,
-            \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-            \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-            \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-            \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-            \ 'h' : ['<C-W>h'     , 'window-left']           ,
-            \ 'j' : ['<C-W>j'     , 'window-below']          ,
-            \ 'l' : ['<C-W>l'     , 'window-right']          ,
-            \ 'k' : ['<C-W>k'     , 'window-up']             ,
-            \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-            \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-            \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-            \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-            \ '=' : ['<C-W>='     , 'balance-window']        ,
-            \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-            \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-            \ }
 
 "" Airline status line:
 set laststatus=2
@@ -230,6 +202,7 @@ let g:coc_global_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ 'coc-tabnine',
+            \ 'coc-tsserver',
             \ 'coc-vimlsp',
             \ 'coc-vimtex',
             \ 'coc-yaml',
@@ -346,6 +319,10 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " Fix indentation on entire file
 noremap <F7> mzgg=G`z
 
+" j/k will move virtual lines (lines that wrap)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 " Remove trailing whitespaces at the end of each line
 command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
 command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
@@ -356,6 +333,18 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Trigger coc completion
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " ALE quick navigate between errors:
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -405,4 +394,12 @@ function TrimSpaces() range
     let oldhlsearch=ShowSpaces(1)
     execute a:firstline.",".a:lastline."substitute ///gec"
     let &hlsearch=oldhlsearch
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
