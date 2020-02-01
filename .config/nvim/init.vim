@@ -22,14 +22,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-"
-Plug 'Shougo/denite.nvim'
 
 " Print infos in echo area
 Plug 'Shougo/echodoc.vim'
-
-"
-Plug 'janko/vim-test'
 
 " Git status support for nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -43,7 +38,7 @@ Plug 'aperezdc/vim-template'
 " Support for specific files related to portage
 Plug 'gentoo/gentoo-syntax'
 
-" Markdown Line Preview
+" Markdown Live Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Latex support
@@ -55,7 +50,7 @@ Plug 'liuchengxu/vista.vim'
 " Rainbow Parentheses Improved
 Plug 'luochen1990/rainbow'
 
-"
+" Move lines and selections in  a more visual manner
 Plug 'matze/vim-move'
 
 " Undo history visualizer
@@ -82,7 +77,7 @@ Plug 'sheerun/vim-polyglot'
 " Extra syntax highlighting for nerdtree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-"
+" Vim sugar for the UNIX shell commands
 Plug 'tpope/vim-eunuch'
 
 " Git Wrapper inside Vim
@@ -202,6 +197,7 @@ let g:coc_global_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ 'coc-tabnine',
+            \ 'coc-actions',
             \ 'coc-tsserver',
             \ 'coc-vimlsp',
             \ 'coc-vimtex',
@@ -293,18 +289,11 @@ let g:startify_lists = [
             \ { 'type': 'commands',  'header': ['   Commands:']       },
             \ ]
 
-"" Denite Section:
-call denite#custom#option('default', {
-            \ 'auto_resize': 1,
-            \ 'prompt': '  :',
-            \ 'direction': 'rightbelow',
-            \ })
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Shortcuts:
 
 " Abre um painel com um historico de modificacoes
-nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <F4> :UndotreeToggle<cr>
 
 " Substitui a palavra sobre o cursor com a ultima palavra copiada.
 " Para copiar uma palavra: yiw
@@ -317,7 +306,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Fix indentation on entire file
-noremap <F7> mzgg=G`z
+noremap <F3> mzgg=G`z
 
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -349,6 +338,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " ALE quick navigate between errors:
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+nmap <space>e :CocCommand explorer<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
