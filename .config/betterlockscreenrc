@@ -15,3 +15,4 @@ datecolor=ffffffff
 loginbox=24292EB3
 font="Fira Code Medium"
 locktext="Digite sua senha..."
+lock_timeout=10

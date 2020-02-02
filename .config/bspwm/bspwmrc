@@ -1,12 +1,19 @@
 #!/bin/sh
+#  ______
+# |   __ \.-----.-----.--.--.--.--------.----.----.
+# |   __ <|__ --|  _  |  |  |  |        |   _|  __|
+# |______/|_____|   __|________|__|__|__|__| |____|
+#               |__|
 
-dot_scripts="$HOME/DotFiles/Scripts"
+mydotfiles="$HOME/DotFiles"
+dot_s="$mydotfiles/Scripts"
+dot_i="$mydotfiles/Images"
 
 sxhkd &
 # Compositor
 picom -b &
 # Wallpaper
-"$dot_scripts"/wallblur/wallblur.sh -o ~/DotFiles/Images/Wallpapers/road-trees-top-1920x1080.jpg &
+"$dot_s"/wallblur/wallblur.sh -o "$dot_i"/Wallpapers/road-trees-top-1920x1080.jpg &
 # Painels
 ~/.config/polybar/launch.sh &
 # Read Xresources and Fix cursor on bspwm
@@ -16,24 +23,28 @@ xsetroot -cursor_name left_ptr &
 setxkbmap -model abnt2 -layout br -variant abnt2 &
 #Polkit
 /usr/libexec/polkit-gnome-authentication-agent-1 &
-# Ajuste de temperatura da cor da tela
+# Adjusts the color temperature of screen
 /usr/libexec/geoclue-2.0/demos/agent &
 redshift-gtk &
-# Plugin que desabilita escurecimento de tela
+# https://github.com/caffeine-ng/caffeine-ng
 caffeine &
 # Notification Daemon
 dunst &
-"$dot_scripts"/battery-status.sh &
+"$dot_s"/battery-status.sh &
 # Music Player Daemon
 mpd &
-"$dot_scripts"/mpd_notify.sh &
+"$dot_s"/mpd_notify.sh &
 # Auto mount devices
 udiskie --smart-tray &
 
 # Welcome
 dunstify "Bem Vindo ${USER^}!" &
+# Set random lockscreen image
+betterlockscreen -u "$dot_i"/Lockscreen
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' &
+
+# Bspwm config section
 
 bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 #bspc config click_to_focus true
@@ -69,4 +80,4 @@ bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
 # srandr for handle displays output
-srandrd -v "$dot_scripts"/display_handler.sh
+srandrd -v "$dot_s"/display_handler.sh
