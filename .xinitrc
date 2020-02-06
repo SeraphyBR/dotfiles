@@ -8,10 +8,10 @@ dbus="dbus-launch --sh-syntax --exit-with-session"
 
 case $2 in
     bspwm) exec $dbus bspwm ;;
-    herb) exec $dbus herbstluftwm ;;
+    awesome) exec $dbus awesome ;;
     *) exec $dbus bspwm ;;
 esac
 
 # Use: startx bspwm (to start bspwm)
-#      startx herb (to start, in this case, herbstluftwm)
+#      startx awesome (to start, in this case, awesome)
 #      startx (without arguments, to start bspwm)
