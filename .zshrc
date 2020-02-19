@@ -1,3 +1,4 @@
+
 #   ________      _______. __    __  .______        ______
 #  |       /     /       ||  |  |  | |   _  \      /      |
 #  `---/  /     |   (----`|  |__|  | |  |_)  |    |  ,----'
@@ -34,8 +35,15 @@ plugins=(zsh-autosuggestions fast-syntax-highlighting zsh-completions extract)
 if [ -z "$DISPLAY" ]; then
     ZSH_THEME="rkj-repos"
 else
-    POWERLEVEL9K_MODE='nerdfont-complete'
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block, everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
     ZSH_THEME="powerlevel10k/powerlevel10k"
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
 
 # Uncomment the following line to use case-sensitive completion.
@@ -78,22 +86,6 @@ fi
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
-######################## PowerLevel9K Section ######################################
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-if [ ! -z "$DISPLAY" ]; then
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs )
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs virtualenv)
-    POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-    POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
-    POWERLEVEL9K_SHORTEN_DELIMITER=""
-    POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-fi
-
-#################################################################################
-
 # Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -130,7 +122,7 @@ setopt HIST_IGNORE_SPACE
 
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
-alias ls='exa --group-directories-first'
+alias ls='exa --group-directories-first' # https://the.exa.website/
 alias cp='cp -R'
 alias rm='rm -Ivr'
 alias :q='exit'
