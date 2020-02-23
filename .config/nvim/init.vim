@@ -26,9 +26,6 @@ call plug#begin('~/.config/nvim/plugged')
 " Print infos in echo area
 Plug 'Shougo/echodoc.vim'
 
-" Git status support for nerdtree
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " Display the indentation levels with thin vertical lines
 Plug 'Yggdroot/indentline'
 
@@ -68,14 +65,8 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Icons for vim plugins
 Plug 'ryanoasis/vim-devicons'
 
-" File explorer
-Plug 'scrooloose/nerdtree'
-
 " Better syntax highlighting
 Plug 'sheerun/vim-polyglot'
-
-" Extra syntax highlighting for nerdtree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Vim sugar for the UNIX shell commands
 Plug 'tpope/vim-eunuch'
@@ -176,11 +167,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-"" ALE section:
-let g:ale_linters = {
-            \ 'python': ['pyls']
-            \ }
-
 "" COC section:
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 let g:coc_global_extensions = [
@@ -199,19 +185,13 @@ let g:coc_global_extensions = [
             \ 'coc-tabnine',
             \ 'coc-actions',
             \ 'coc-tsserver',
+            \ 'coc-explorer',
             \ 'coc-vimlsp',
             \ 'coc-vimtex',
             \ 'coc-yaml',
             \ 'coc-yank'
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-"" vim-test
-let test#strategy = {
-            \ 'nearest': 'neovim',
-            \ 'file':    'neovim',
-            \ 'suite':   'basic',
-            \}
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1
@@ -253,16 +233,9 @@ if empty($DISPLAY)
 else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
-    "hi Normal guibg=#1d2021
     "" Transparent backgroud
     hi Normal guibg=none
 endif
-
-"" NERDtree Section:
-let NERDTreeWinPos = "right"
-let NERDTreeWinSize = 42
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:NERDTreeRespectWildIgnore = 1
 
 "" Startify Section:
 let g:startify_files_number = 8
@@ -340,8 +313,6 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 nmap <space>e :CocCommand explorer<CR>
-
-map <C-n> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:

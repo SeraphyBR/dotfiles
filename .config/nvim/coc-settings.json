@@ -2,14 +2,16 @@
     "coc.preferences.extensionUpdateCheck": "never",
     "diagnostic.displayByAle": true,
     "diagnostic.messageTarget": "float",
+    "explorer.icon.enableNerdfont": true,
+    "explorer.position": "right",
     "java.errors.incompleteClasspath.severity": "ignore",
     "java.format.settings.url": "/home/seraphybr-fun/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
     "java.trace.server": "verbose",
+    "lua.commandPath": "/home/seraphybr-fun/.luarocks/bin/lua-lsp",
     "prettier.tabWidth": 4,
     "signature.target": "float",
-    "lua.commandPath": "/home/seraphybr-fun/.luarocks/bin/lua-lsp",
+    "suggest.autoTrigger": "always",
     "suggest.echodocSupport": true,
-    "suggest.autoTrigger": "trigger",
     "yank.highlight.duration": 250,
     "languageserver": {
         "ccls": {
