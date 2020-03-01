@@ -43,7 +43,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Image Viewer        | [Sxiv](https://github.com/muennich/sxiv) / [ueberzug](https://github.com/seebye/ueberzug) (for preview in Ranger)                   |
 | PDF Viewer          | [zathura](https://github.com/pwmt/zathura)                                                                                          |
 | Wallpaper Setter    | [hsetroot](https://github.com/himdel/hsetroot) (with [wallblur](https://github.com/SeraphyBR/wallblur) script)                      |
-| Screenshot tool     | [Maim + Slop](https://github.com/naelstrof/maim)                                                                                    |
+| Screenshot tool     | [Shotgun](https://github.com/neXromancers/shotgun) + [Hacksaw](https://github.com/neXromancers/hacksaw)                             |
 | Terminal Emulator   | [Kitty](https://sw.kovidgoyal.net/kitty/index.html) / [Alacritty](https://github.com/jwilm/alacritty)                               |
 | Shell               | Zsh ([Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [PowerLevel10k](https://github.com/romkatv/powerlevel10k) theme)   |
 | Text Editor         | [Neovim](https://neovim.io/) / [VScode](https://code.visualstudio.com/)                                                             |

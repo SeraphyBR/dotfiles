@@ -18,7 +18,7 @@ super + Return
 # Floating Terminal with selection (Slop programs is needed)
 super + alt + Return
     bspc rule -a \* -o state=floating \
-    rectangle=$(slop -k -b 6 --color=0.23,0.70,0.30,0.8 -f "%g") && kitty
+    rectangle="$(hacksaw -n -s "$(bspc config border_width)" -c "$(bspc config focused_border_color)")" && kitty
 
 # Qutebrowser
 super + q

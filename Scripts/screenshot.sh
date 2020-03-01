@@ -1,18 +1,24 @@
 #!/bin/sh
+# Shotgun - https://github.com/neXromancers/shotgun
+# Hacksaw - https://github.com/neXromancers/hacksaw
 
 tmp="$HOME/$(date +%F_%T).png"
 filename="$HOME/Imagens/Screenshots/$(date +%F_%T).png"
 
+bw="$(bspc config border_width)"
+bc="$(bspc config focused_border_color)"
+
+sleep 1
 if [ "$1" = "-s" ]
 then
-    maim --select -k -d 1 --bordersize 6 --color=0.23,0.70,0.30,0.8  "$tmp"
+    shotgun -g "$(hacksaw -n -s "$bw" -c "$bc")" "$tmp"
 else
-    maim -d 1 "$tmp"
+    shotgun "$tmp"
 fi
 
 if mv "$tmp" "$filename"
 then
-    notify-send -i "$tmp"  "Screenshot" "Capture saved to '$filename'"
+    notify-send -i "$filename"  "Screenshot" "Capture saved to '$filename'"
     xclip -selection clipboard -t image/png "$filename"
 else
     notify-send -i "$tmp"  "Screenshot" "Capture saved to '$tmp'"
