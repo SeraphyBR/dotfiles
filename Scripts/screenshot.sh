@@ -2,7 +2,7 @@
 # Shotgun - https://github.com/neXromancers/shotgun
 # Hacksaw - https://github.com/neXromancers/hacksaw
 
-tmp="$HOME/$(date +%F_%T).png"
+tmp="/tmp/$(date +%F_%T).png"
 filename="$HOME/Imagens/Screenshots/$(date +%F_%T).png"
 
 bw="$(bspc config border_width)"

@@ -54,6 +54,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Notification Daemon | [Dunst](https://github.com/dunst-project/dunst)                                                                                     |
 | GTK theme           | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes)                                                          |
 | Cursor theme        | Breeze Obsidian                                                                                                                     |
+| Icon theme          | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/)                                                            |
 
 #### Main Fonts used in this Dotfiles:
 
