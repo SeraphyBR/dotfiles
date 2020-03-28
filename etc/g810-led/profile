@@ -1,0 +1,10 @@
+# SeraphyBR profile by groups keys
+
+# https://github.com/SeraphyBR/g810-led
+g keys 76dd6c
+g fkeys 902AF2
+g functions E671B9
+g modifiers ffa707
+g numeric 27a2ff 
+g arrows ff4500
+c # Commit changes
