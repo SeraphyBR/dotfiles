@@ -199,6 +199,13 @@ mkernel() {
     fi
 }
 
+# Reload color settings of my logitech g512 keyboard
+# and change keyboard layout
+loadg512(){
+    g810-led -p /etc/g810-led/profile
+    setxkbmap -layout us -variant intl
+}
+
 ###############################################################
 
 
