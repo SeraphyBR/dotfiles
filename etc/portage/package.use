@@ -75,19 +75,56 @@ sys-fs/cryptsetup -gcrypt openssl
 sys-libs/ncurses tinfo
 virtual/rubygems ruby_targets_ruby25
 virtual/rubygems ruby_targets_ruby26
-www-client/qutebrowser scripts
+www-client/qutebrowser scripts python_targets_python3_6
 www-client/w3m imlib
 x11-base/xorg-server -ipv6
 x11-libs/cairo xcb
 x11-libs/libxcb xkb
 x11-misc/colord vala
+x11-wm/awesome doc
 x11-misc/dunst dunstify
 x11-misc/polybar network curl mpd
 x11-misc/redshift appindicator geoclue
 x11-misc/rofi windowmode
-app-misc/pax-utils python_single_target_python3_6
+app-misc/pax-utils python_single_target_python3_7
 dev-python/PyQt5 -webkit
-dev-python/PyQtWebEngine -python_targets_python2_7
-x11-misc/caffeine-ng -python_targets_python3_7
+x11-misc/caffeine-ng
 dev-lua/luv luajit
 net-wireless/iwd wired
+dev-lang/swi-prolog doc
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/colorama-0.4.1 python_targets_python3_6
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/cssutils-1.0.2-r1 python_targets_python3_6
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/pygments-2.4.2 python_targets_python3_6
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/pypeg2-2.15.2 python_targets_python3_6
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/PyQtWebEngine-5.14.0 python_targets_python3_6 -python_targets_python2_7
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/pyyaml-5.1.2 python_targets_python3_6
+# required by dev-python/pyyaml-5.1.2::seraphybr-overlay[python_targets_python2_7,python_targets_python3_7,python_targets_python3_6,libyaml]
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/cython-0.29.13 python_targets_python3_6
+# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/PyQt5-5.14.1 python_targets_python3_6
+# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/PyQt5-sip-4.19.21 python_targets_python3_6
+# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
+# required by www-client/qutebrowser-1.8.3::browser-kit
+# required by =qutebrowser-1.8.3 (argument)
+>=dev-python/sip-4.19.21 python_targets_python3_6
+# required by =qutebrowser-1.8.3 (argument)
+=www-client/qutebrowser-1.8.3 -python_targets_python3_7

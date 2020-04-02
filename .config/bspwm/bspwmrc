@@ -5,7 +5,7 @@
 # |______/|_____|   __|________|__|__|__|__| |____|
 #               |__|
 
-mydotfiles="$HOME/DotFiles"
+mydotfiles="$HOME/Git/DotFiles"
 dot_s="$mydotfiles/Scripts"
 dot_i="$mydotfiles/Images"
 

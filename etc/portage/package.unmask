@@ -12,4 +12,6 @@ x11-themes/papirus-libreoffice-theme::jorgicio
 media-fonts/twemoji-color-font::jorgicio
 dev-util/android-studio::seraphybr-overlay
 dev-python/PyQt5::seraphybr-overlay
-dev-util/ccls::oboverlay
+dev-util/ccls::oboeverlay
+dev-util/cquery::oboeverlay
+net-im/teams-bin::jorgicio

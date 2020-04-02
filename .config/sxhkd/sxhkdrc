@@ -46,7 +46,7 @@ super + {d,w}
 
 # Screen record
 super + shift + s
-    ~/DotFiles/Scripts/record.sh
+    $HOME/Git/DotFiles/Scripts/record.sh
 
 # Reload sxhkd and polybar:
 super + Escape
@@ -58,7 +58,7 @@ super + shift + f
 
 # Show Keybindings
 alt + h
-    ~/DotFiles/Scripts/rofi-sxhkd.sh
+    $HOME/Git/DotFiles/Scripts/rofi-sxhkd.sh
 
 # Lock screen
 alt + l
@@ -66,13 +66,13 @@ alt + l
 
 # Multimedia Keys
 XF86AudioPlay
-    ~/DotFiles/Scripts/player.sh play-pause
+    $HOME/Git/DotFiles/Scripts/player.sh play-pause
 
 XF86AudioStop
-    ~/DotFiles/Scripts/player.sh stop
+    $HOME/Git/DotFiles/Scripts/player.sh stop
 
 XF86Audio{Prev,Next}
-    ~/DotFiles/Scripts/player.sh {prev,next}
+    $HOME/Git/DotFiles/Scripts/player.sh {prev,next}
 
 # Volume Controls
 XF86Audio{Raise,Lower}Volume
@@ -84,7 +84,7 @@ XF86AudioMute
 
 # PrintScreen
 Print + {_,super}
-    ~/DotFiles/Scripts/screenshot.sh {_,-s}
+    $HOME/Git/DotFiles/Scripts/screenshot.sh {_,-s}
 
 # Brightness Control
 XF86MonBrightness{Up,Down}
@@ -176,7 +176,7 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
-# Rotatates the windows 90 degrees
+# Rotates the windows 90 degrees
 alt + shift + r
     bspc node @/ -R 90
 

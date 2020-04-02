@@ -81,7 +81,7 @@ rofi.sidebar-mode: true
 rofi.eh: 1
 
 ! "Enable auto select mode"
-rofi.auto-select: true
+rofi.auto-select: false
 
 ! "Set the matching algorithm. (normal, regex, glob, fuzzy)"
 rofi.matching: normal
@@ -105,5 +105,5 @@ rofi.click-to-exit: true
 rofi.show-match: true
 
 ! "New style theme file"
-rofi.theme: ~/DotFiles/Rofi/Themes/flat-green-transparent.rasi
+rofi.theme: ~/Git/DotFiles/Rofi/Themes/flat-green-transparent.rasi
 
