@@ -1,4 +1,3 @@
-=app-misc/ranger-9999 **
 net-vpn/zeronet
 # required by dev-lang/python-3.5.5-r1::python-kit[ssl,-libressl]
 # required by @__auto_slot_operator_replace_installed__ (argument)

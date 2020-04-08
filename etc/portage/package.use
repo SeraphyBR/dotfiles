@@ -1,7 +1,7 @@
 app-crypt/pinentry gnome-keyring
 app-emulation/qemu spice virgl virtfs
 app-laptop/tlp tlp_suggests bluetooth pm-utils
-app-text/asciidoc python_single_target_python2_7
+app-misc/pax-utils python_single_target_python3_7
 app-text/mupdf -X -curl
 app-text/poppler cairo qt5
 app-text/texlive xetex -xml science l10n_pt graphics extra
@@ -11,6 +11,7 @@ dev-java/openjdk-bin -webstart -nsplugin
 dev-java/oracle-jdk-bin -nsplugin source
 dev-java/oracle-jre-bin -nsplugin
 dev-lang/rust rls cargo rustfmt
+dev-lang/swi-prolog doc
 dev-libs/libdbusmenu gtk3
 dev-libs/libgcrypt static-libs
 dev-libs/libgpg-error static-libs
@@ -21,9 +22,12 @@ dev-libs/lzo static-libs
 dev-libs/nss utils
 dev-libs/xmlsec nss
 dev-lua/lpeg luajit
+dev-lua/luv luajit
 dev-lua/mpack luajit
-dev-python/PyQt5 webengine multimedia network declarative webkit
+dev-python/PyQt5 -webkit -python_targets_python2_7
+dev-python/PyQt5 webengine multimedia network declarative
 dev-python/PyQt5 widgets webchannel printsupport gui sql
+dev-python/PyQtWebEngine -python_targets_python2_7
 dev-python/pyyaml libyaml
 dev-qt/qtmultimedia widgets
 dev-qt/qtwebchannel qml
@@ -64,67 +68,27 @@ media-sound/mpd libmpdclient
 media-sound/ncmpcpp clock visualizer outputs
 media-video/ffmpeg sdl xcb openssl chromium -jack
 net-dns/dnsmasq script
-net-misc/networkmanager bluetooth iwd dhcpcd -ppp -dhclient
+net-misc/networkmanager bluetooth dhcpcd -ppp -dhclient
 net-misc/spice-gtk sasl usbredir
 net-print/cups-filters -pdf
-net-print/hplip -X qt5 scanner  -python_single_target_python2_7
+net-print/hplip -X qt5 scanner -python_targets_python2_7
+net-wireless/iwd wired
 sys-block/fio aio
-sys-block/gparted -hfs -xfs -jfs -reiserfs
+sys-block/gparted xfs -hfs -jfs -reiserfs
 sys-boot/grub mount
 sys-fs/cryptsetup -gcrypt openssl
 sys-libs/ncurses tinfo
 virtual/rubygems ruby_targets_ruby25
 virtual/rubygems ruby_targets_ruby26
-www-client/qutebrowser scripts python_targets_python3_6
+www-client/qutebrowser scripts
 www-client/w3m imlib
 x11-base/xorg-server -ipv6
 x11-libs/cairo xcb
 x11-libs/libxcb xkb
+x11-misc/caffeine-ng
 x11-misc/colord vala
-x11-wm/awesome doc
 x11-misc/dunst dunstify
 x11-misc/polybar network curl mpd
 x11-misc/redshift appindicator geoclue
 x11-misc/rofi windowmode
-app-misc/pax-utils python_single_target_python3_7
-dev-python/PyQt5 -webkit
-x11-misc/caffeine-ng
-dev-lua/luv luajit
-net-wireless/iwd wired
-dev-lang/swi-prolog doc
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/colorama-0.4.1 python_targets_python3_6
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/cssutils-1.0.2-r1 python_targets_python3_6
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/pygments-2.4.2 python_targets_python3_6
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/pypeg2-2.15.2 python_targets_python3_6
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/PyQtWebEngine-5.14.0 python_targets_python3_6 -python_targets_python2_7
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/pyyaml-5.1.2 python_targets_python3_6
-# required by dev-python/pyyaml-5.1.2::seraphybr-overlay[python_targets_python2_7,python_targets_python3_7,python_targets_python3_6,libyaml]
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/cython-0.29.13 python_targets_python3_6
-# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/PyQt5-5.14.1 python_targets_python3_6
-# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/PyQt5-sip-4.19.21 python_targets_python3_6
-# required by dev-python/PyQtWebEngine-5.14.0::seraphybr-overlay
-# required by www-client/qutebrowser-1.8.3::browser-kit
-# required by =qutebrowser-1.8.3 (argument)
->=dev-python/sip-4.19.21 python_targets_python3_6
-# required by =qutebrowser-1.8.3 (argument)
-=www-client/qutebrowser-1.8.3 -python_targets_python3_7
+x11-wm/awesome doc
