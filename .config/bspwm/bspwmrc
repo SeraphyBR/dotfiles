@@ -38,7 +38,7 @@ udiskie --smart-tray &
 # Welcome
 dunstify "Bem Vindo ${USER^}!" &
 # Set random lockscreen image
-betterlockscreen -u "$dot_i"/Lockscreen
+"$dot_s"/betterlockscreen/betterlockscreen -u "$dot_i"/Lockscreen
 # Auto lockscreen
 xautolock -time 15 -locker 'betterlockscreen -l' &
 

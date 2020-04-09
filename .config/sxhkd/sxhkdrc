@@ -62,7 +62,7 @@ alt + h
 
 # Lock screen
 alt + l
-    betterlockscreen -l
+    $HOME/Git/DotFiles/Scripts/betterlockscreen/betterlockscreen -l
 
 # Multimedia Keys
 XF86AudioPlay
