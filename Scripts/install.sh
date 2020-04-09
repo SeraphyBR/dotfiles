@@ -47,7 +47,7 @@ check_programs(){
 
 install_dotfiles() {
     if [ ! -d "$dotfiles" ]; then
-        git clone git@gitlab.com:SeraphyBR/DotFiles.git "$dotfiles"
+        git clone --recursive git@gitlab.com:SeraphyBR/DotFiles.git "$dotfiles"
     fi
 
     cp -b "$dotfiles/.zshrc" "$HOME"
