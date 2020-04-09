@@ -7,3 +7,6 @@
 [submodule "Scripts/wallblur"]
 	path = Scripts/wallblur
 	url = https://github.com/SeraphyBR/wallblur.git
+[submodule "Scripts/betterlockscreen"]
+	path = Scripts/betterlockscreen
+	url = https://github.com/pavanjadhaw/betterlockscreen.git
