@@ -40,7 +40,7 @@ dunstify "Bem Vindo ${USER^}!" &
 # Set random lockscreen image
 "$dot_s"/betterlockscreen/betterlockscreen -u "$dot_i"/Lockscreen
 # Auto lockscreen
-xautolock -time 15 -locker 'betterlockscreen -l' &
+xautolock -time 15 -locker "$dot_s/betterlockscreen/betterlockscreen -l" &
 
 # Bspwm config section
 
