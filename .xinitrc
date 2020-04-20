@@ -6,7 +6,12 @@
 
 dbus="dbus-launch --sh-syntax --exit-with-session" 
 
-# Reverse Prime
+# Nvidia Prime
+# Use the following command to generate config
+# for prime settings in hybrid notebooks
+# nvidia-xconfig --prime 
+
+# Reverse Prime to enable nvidia outputs
 xrandr --setprovideroutputsource 1 0
 xrandr --auto
 
