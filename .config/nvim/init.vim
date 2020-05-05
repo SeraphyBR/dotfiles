@@ -104,6 +104,7 @@ set ignorecase              " Always case-insensitive
 set inccommand=split
 set incsearch                     " Searches for strings incrementally
 set linebreak                     " Break lines at word (requires Wrap lines)
+set breakindent
 set list listchars=trail:·,tab:>· " Show trailing spaces as dots
 set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
@@ -114,7 +115,6 @@ set relativenumber
 set scrolloff=1000           " Always show N lines above/below the cursor
 set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
-set showbreak=+++           " Wrap-broken line prefix
 set showmatch               " Highlight matching brace
 set smartcase               " Enable smart-case search
 set smartindent             " Enable smart-indent
@@ -301,6 +301,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Setas redimensionam janelas adjacentes
+"nnoremap <left> :vertical resize -5<cr>
+"nnoremap <right> :vertical resize +5<cr>
+"nnoremap <up> :resize -5<cr>
+"nnoremap <down> :resize +5<cr>
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
