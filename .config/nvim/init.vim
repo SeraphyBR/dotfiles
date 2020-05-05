@@ -94,7 +94,7 @@ call plug#end()
 set autoindent               " Auto-indent new lines
 set background=dark
 set clipboard=unnamedplus
-set cursorline              " Highlight cursor line
+"set cursorline              " Highlight cursor line
 set encoding=utf-8          " Define o encoding exibido no terminal
 set expandtab               " Use spaces instead of tabs
 set fileencoding=utf-8      " Define o encoding na escrita dos arquivos
@@ -108,6 +108,7 @@ set breakindent
 set list listchars=trail:·,tab:>· " Show trailing spaces as dots
 set mouse=a                 " Enable mouse. see :help mouse for info.
 set noshowmode
+set updatetime=300          
 set number                  " Show line numbers
 set pumblend=11             " pseudo-transparent popup menu
 set pumheight=10
@@ -160,6 +161,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#ale#enabled = 1
@@ -192,6 +194,8 @@ let g:coc_global_extensions = [
             \ 'coc-yank'
             \ ]
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 "" Rainbow Parentheses Improved
 let g:rainbow_active = 1
@@ -234,7 +238,7 @@ else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
     "" Transparent backgroud
-    hi Normal guibg=none
+    "hi Normal guibg=none
 endif
 
 "" Startify Section:
@@ -320,6 +324,14 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 nmap <space>e :CocCommand explorer<CR>
 
+" Show all diagnostics.
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Remap for do codeAction of selected region
+xmap <silent> <space>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <space>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -331,6 +343,9 @@ autocmd VimEnter *
             \ |   setlocal nowrap
             \ |   Startify
             \ | endif
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Functions:
@@ -362,6 +377,10 @@ function TrimSpaces() range
     let oldhlsearch=ShowSpaces(1)
     execute a:firstline.",".a:lastline."substitute ///gec"
     let &hlsearch=oldhlsearch
+endfunction
+
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
 endfunction
 
 function! s:show_documentation()
