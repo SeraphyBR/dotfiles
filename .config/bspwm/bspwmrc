@@ -78,4 +78,5 @@ bspc rule -a Firefox state=floating
 bspc rule -a Firefox:Navigator state=tiled
 
 # srandr for handle displays output
-srandrd -e "$dot_s"/display_handler.sh
+sleep 2
+srandrd -e "$dot_s"/display_handler.sh &
