@@ -29,9 +29,6 @@ Plug 'Shougo/echodoc.vim'
 " Display the indentation levels with thin vertical lines
 Plug 'Yggdroot/indentline'
 
-" Templates
-Plug 'aperezdc/vim-template'
-
 " Support for specific files related to portage
 Plug 'gentoo/gentoo-syntax'
 
@@ -172,8 +169,11 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 "" COC section:
 " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 let g:coc_global_extensions = [
+            \ 'coc-actions',
             \ 'coc-css',
+            \ 'coc-explorer',
             \ 'coc-git',
+            \ 'coc-gitignore',
             \ 'coc-highlight',
             \ 'coc-html',
             \ 'coc-java',
@@ -185,10 +185,9 @@ let g:coc_global_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ 'coc-tabnine',
-            \ 'coc-actions',
             \ 'coc-tsserver',
-            \ 'coc-explorer',
             \ 'coc-vimlsp',
+            \ 'coc-template',
             \ 'coc-vimtex',
             \ 'coc-yaml',
             \ 'coc-yank'
@@ -208,13 +207,6 @@ let g:vista_default_executive = "coc"
 "" IndentLine:
 let g:indentLine_char= '│'
 let g:indentLine_fileTypeExclude = ['markdown']
-
-"" Custom Templates:
-if !isdirectory($HOME."/.config/nvim/templates")
-    call mkdir($HOME."/.config/nvim/templates", "", 0700)
-endif
-let g:templates_directory = [ '~/.config/nvim/templates' ]
-let g:templates_detect_git = 1
 
 " Vimtex:
 let g:vimtex_view_general_viewer = 'zathura'
@@ -334,6 +326,7 @@ nmap <silent> <space>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:
+autocmd BufNewFile .gitignore CocCommand template.templateTop
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType tex,gitcommit,text,markdown setlocal spell
 autocmd StdinReadPre * let s:std_in=1

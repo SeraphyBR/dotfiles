@@ -544,7 +544,7 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 65
+warn-temperature = 80
 
 format =  <label> <ramp>
 format-underline = ${colors.temperature}
