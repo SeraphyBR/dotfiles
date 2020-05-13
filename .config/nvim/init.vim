@@ -326,7 +326,7 @@ nmap <silent> <space>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" AutoStart:
-autocmd BufNewFile .gitignore CocCommand template.templateTop
+autocmd BufNewFile *.* CocCommand template.templateTop
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType tex,gitcommit,text,markdown setlocal spell
 autocmd StdinReadPre * let s:std_in=1
