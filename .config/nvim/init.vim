@@ -182,7 +182,7 @@ let g:coc_global_extensions = [
             \ 'coc-pairs',
             \ 'coc-prettier',
             \ 'coc-project',
-            \ 'coc-rls',
+            \ 'coc-rust-analyzer',
             \ 'coc-snippets',
             \ 'coc-tabnine',
             \ 'coc-tsserver',
