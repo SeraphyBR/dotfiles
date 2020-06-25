@@ -129,7 +129,7 @@ font-3 = "Weather Icons:size=14;2"
 font-4 = "Noto Sans CJK JP:size=13;2"
 
 ;modules-left = spotify mocp
-modules-left = spotify mpd
+modules-left = mpd
 modules-center = xwindow
 modules-right = openweathermap-detailed wired-network uptime powermenu
 
