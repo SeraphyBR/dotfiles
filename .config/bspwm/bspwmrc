@@ -33,7 +33,7 @@ dunst &
 mpd &
 "$dot_s"/mpd_notify.sh &
 # ZeroNet - https://zeronet.io/
-"$HOME"/Documentos/ZeroNet/ZeroNet.sh > /dev/null 2>&1 &
+"$HOME"/Documentos/ZeroNet/ZeroNet.sh --open_browser "" > /dev/null 2>&1 &
 # Auto mount devices
 udiskie --smart-tray &
 
