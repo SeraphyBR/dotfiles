@@ -65,6 +65,9 @@ Plug 'ryanoasis/vim-devicons'
 " Better syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+" Semantic syntax highlighting for C/C++
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
 " Vim sugar for the UNIX shell commands
 Plug 'tpope/vim-eunuch'
 
@@ -177,6 +180,7 @@ let g:coc_global_extensions = [
             \ 'coc-highlight',
             \ 'coc-html',
             \ 'coc-java',
+            \ 'coc-clangd',
             \ 'coc-json',
             \ 'coc-marketplace',
             \ 'coc-pairs',
@@ -233,8 +237,9 @@ else
     hi Normal guibg=none
     " Change background color of floating window
     hi NormalFloat guibg=#393939
-    " Change background color of suggestion window
+    " Change colors of suggestion window
     hi Pmenu guibg=#393939
+    hi PmenuSel guifg=#EBDBB2 guibg=#3D6556
 endif
 
 "" Startify Section:
