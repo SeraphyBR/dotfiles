@@ -229,8 +229,12 @@ if empty($DISPLAY)
 else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
-    "" Transparent backgroud
-    "hi Normal guibg=none
+    " Transparent backgroud
+    hi Normal guibg=none
+    " Change background color of floating window
+    hi NormalFloat guibg=#393939
+    " Change background color of suggestion window
+    hi Pmenu guibg=#393939
 endif
 
 "" Startify Section:
