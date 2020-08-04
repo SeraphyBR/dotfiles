@@ -92,44 +92,48 @@ Repository dedicated to my configuration files of my Desktop environment, with t
     I found it in the [rofi-themes](https://github.com/DaveDavenport/rofi-themes/tree/master/User%20Themes) repository,
     in that same place you can get other themes and modify them as I did. For more details on setting up an .rasi file, run the `man rofi-theme` command.
 
-#### Linux TTY Console:
+#### TTY Console colors:
 
--   In the folder [etc](etc), I have a file called [tty-colors](etc/tty-colors), this is a configuration file containing my color scheme used in the Console.
-    This color scheme is loaded at the initialization of openrc by calling the [setcolors](https://github.com/SeraphyBR/linux-vt-setcolors)
-    program that will apply colors to all TTY's, overriding the default values.
-    I preferred to use this method of [setcolors](https://github.com/SeraphyBR/linux-vt-setcolors) than using echo.
+-   Method 1:
 
--   To use in funtoo/gentoo openrc:
+    -   In the folder [etc](etc), I have a file called [tty-colors](etc/tty-colors), this is a configuration file containing my color scheme used in the Console.
+        This color scheme is loaded at the initialization of openrc by calling the [setcolors](https://github.com/SeraphyBR/linux-vt-setcolors)
+        program that will apply colors to all TTY's, overriding the default values.
 
-    ```
-    git clone https://github.com/SeraphyBR/linux-vt-setcolors
-    cd linux-vt-setcolors
-    sudo make install
-    ```
+    -   To use in funtoo/gentoo openrc:
 
--   After installing, copy the file [tty-colors](etc/tty-colors) or use one of the ones that are in the program's
-    [example-colors](https://github.com/SeraphyBR/linux-vt-setcolors/tree/master/example-colors) directory, to /etc.
+        ```
+        git clone https://github.com/SeraphyBR/linux-vt-setcolors
+        cd linux-vt-setcolors
+        sudo make install
+        ```
 
--   And then create the following script called "tty-colors.start" in [/etc/local.d/](https://wiki.gentoo.org/wiki//etc/local.d) :
+    -   After installing, copy the file [tty-colors](etc/tty-colors) or use one of the ones that are in the program's
+        [example-colors](https://github.com/SeraphyBR/linux-vt-setcolors/tree/master/example-colors) directory, to /etc.
 
-    ```sh
-    #!/bin/sh
+    -   And then create the following script called "tty-colors.start" in [/etc/local.d/](https://wiki.gentoo.org/wiki//etc/local.d) :
 
-    PROGRAM=/usr/local/bin/setcolors
-    COLORS=/etc/tty-colors
+        ```sh
+        #!/bin/sh
 
-    if [ -e "$PROGRAM" ] && [ -e $COLORS ]; then
-        $PROGRAM $COLORS
-    fi
+        PROGRAM=/usr/local/bin/setcolors
+        COLORS=/etc/tty-colors
 
-    ```
+        if [ -e "$PROGRAM" ] && [ -e $COLORS ]; then
+            $PROGRAM $COLORS
+        fi
 
--   And then run the following commands, as root, to make the file executable, and loaded by OpenRC at boot time:
+        ```
 
-    ```sh
-    chmod +x /etc/local.d/tty-colors.start
-    rc-update add local default
-    ```
+    -   And then run the following commands, as root, to make the file executable, and loaded by OpenRC at boot time:
+
+        ```sh
+        chmod +x /etc/local.d/tty-colors.start
+        rc-update add local default
+        ```
+
+-   Method 2:
+    -   Edit the script [vt-color-sheme.py](./Scripts/vt-color-scheme.py) with your colors in rgb, and follow the instructions present to add to grub, or run and copy the output, and put in the kernel configuration in the "built-in command line" option
 
 #### Touchpad Support:
 
