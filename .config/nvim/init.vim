@@ -57,7 +57,7 @@ Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 
 " Completion support and Language server Client
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Icons for vim plugins
 Plug 'ryanoasis/vim-devicons'
