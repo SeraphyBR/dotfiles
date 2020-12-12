@@ -3,24 +3,15 @@
 # Make sure this is before the 'exec' command or it won't be sourced.
 [ -f ~/.xprofile ] && . "$HOME"/.xprofile
 
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval $(dbus-launch --exit-with-session --sh-syntax)
+fi
+systemctl --user import-environment DISPLAY XAUTHORITY
 
-dbus="dbus-launch --sh-syntax --exit-with-session" 
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+    dbus-update-activation-environment DISPLAY XAUTHORITY
+fi
 
-# Nvidia Prime
-# Use the following command to generate config
-# for prime settings in hybrid notebooks
-# nvidia-xconfig --prime 
+exec  awesome
 
-# Reverse Prime to enable nvidia outputs
-xrandr --setprovideroutputsource 1 0
-xrandr --auto
 
-case $2 in
-    bspwm) exec $dbus bspwm ;;
-    awesome) exec $dbus awesome ;;
-    *) exec $dbus bspwm ;;
-esac
-
-# Use: startx bspwm (to start bspwm)
-#      startx awesome (to start, in this case, awesome)
-#      startx (without arguments, to start bspwm)

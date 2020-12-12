@@ -29,9 +29,6 @@ Plug 'Shougo/echodoc.vim'
 " Display the indentation levels with thin vertical lines
 Plug 'Yggdroot/indentline'
 
-" Support for specific files related to portage
-Plug 'gentoo/gentoo-syntax'
-
 " Markdown Live Preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
@@ -114,7 +111,6 @@ set pumblend=11             " pseudo-transparent popup menu
 set pumheight=10
 set relativenumber
 set scrolloff=1000           " Always show N lines above/below the cursor
-set shell=/bin/zsh
 set shiftwidth=4            " Number of auto-indent spaces
 set showmatch               " Highlight matching brace
 set smartcase               " Enable smart-case search
@@ -232,8 +228,9 @@ if empty($DISPLAY)
     colorscheme default
 else
     colorscheme gruvbox
+    let g:gruvbox_italic=1
     let g:gruvbox_contrast_dark='hard'
-    " Transparent backgroud
+    "" Transparent backgroud
     hi Normal guibg=none
     " Change background color of floating window
     hi NormalFloat guibg=#393939

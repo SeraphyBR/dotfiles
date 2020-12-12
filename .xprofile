@@ -1,9 +1,0 @@
-export BROWSER=/usr/bin/qutebrowser
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export VISUAL=/usr/bin/nvim
-export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
-export _JAVA_OPTIONS="$_JAVA_OPTIONS -Dswing.aatext=true -Dsun.java2d.opengl=true"
-export _JAVA_OPTIONS="$_JAVA_OPTIONS -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
-export WINIT_HIDPI_FACTOR=1.0

@@ -4,7 +4,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 mpd_host = localhost
 mpd_port = 6600
 #mpd_connection_timeout = 5
-mpd_music_dir = "/home/seraphybr-fun/Música"
+mpd_music_dir = "/home/seraphybr/Music"
 mpd_crossfade_time = 12
 external_editor = /usr/bin/nvim
 use_console_editor = yes
@@ -41,7 +41,7 @@ visualizer_fifo_path = /tmp/mpd.fifo
 visualizer_output_name = "Visualizer feed"
 visualizer_in_stereo = yes
 visualizer_sync_interval = 30
-visualizer_type = "spectrum"
+visualizer_type = "wave"
 visualizer_look = "▋▋"
 
 # Progress Bar ..

@@ -1,12 +1,3 @@
-[submodule ".config/polybar/Scripts/polybar-spotify"]
-	path = .config/polybar/Scripts/polybar-spotify
-	url = https://github.com/Jvanrhijn/polybar-spotify.git
-[submodule ".config/ranger/plugins/ranger_devicons"]
-	path = .config/ranger/plugins/ranger_devicons
-	url = https://github.com/alexanderjeurissen/ranger_devicons.git
-[submodule "Scripts/wallblur"]
-	path = Scripts/wallblur
-	url = https://github.com/SeraphyBR/wallblur.git
-[submodule "Scripts/betterlockscreen"]
-	path = Scripts/betterlockscreen
-	url = https://github.com/pavanjadhaw/betterlockscreen.git
+[submodule ".config/awesome/external/net_widgets"]
+	path = .config/awesome/external/net_widgets
+	url = https://github.com/SeraphyBR/net_widgets.git

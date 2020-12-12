@@ -1,7 +1,4 @@
-
-!--Cursor-Theme
-Xcursor.theme: Breeze_Obsidian
-
-!--Rofi
-rofi.run-command: zsh -c '{cmd}'
-
+! Sxiv
+Sxiv.font: Fira Code:size=12
+Sxiv.foreground: #222222 
+Sxiv.background: #A0C28A
