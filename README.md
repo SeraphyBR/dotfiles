@@ -2,7 +2,7 @@
 
 Repository dedicated to my configuration files of my Desktop environment, with the purpose of backup and sharing.
 
--   [A post on my blog commenting on my dotfiles. (PT-BR)](https://seraphybr.gitlab.io/DotFiles/)
+-   [A post on my blog commenting on my dotfiles. (PT-BR) [Old Setup with Bspwm]](https://seraphybr.gitlab.io/DotFiles/)
 
 ## Screenshots:
 
@@ -19,10 +19,6 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 ### VSCode Look:
 
 ![Screenshot-4](images/screenshots/4.png)
-
-### TTY Look:
-
-![Screenshot-4](images/tty.png)
 
 ## Setup Description:
 
@@ -49,19 +45,5 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | GTK theme         | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes)                                                        |
 | Cursor theme      | Breeze Obsidian                                                                                                                   |
 | Icon theme        | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/)                                                          |
-
-#### Main Fonts used in this Dotfiles:
-
-| Font                                                                  | Usage                                                                      |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| [Cantarell](https://github.com/GNOME/cantarell-fonts)                 | Gui Programs                                                               |
-| [DejavuSans](https://github.com/dejavu-fonts/dejavu-fonts)            | Polybar                                                                    |
-| [Fira Code](https://github.com/tonsky/FiraCode)                       | Qutebrowser & Dunst & VScode & Alacritty/Kitty (Nerd Font patched Version) |
-| [FontAwesome4](https://github.com/FortAwesome/Font-Awesome/tree/fa-4) | Polybar                                                                    |
-| [MaterialDesign](https://github.com/google/material-design-icons)     | Polybar                                                                    |
-| [Nerd-fonts](https://github.com/ryanoasis/nerd-fonts)                 | Zsh                                                                        |
-| [Noto Sans CJK](https://www.google.com/get/noto/help/cjk/)            | Polybar (support for Asian letters)                                        |
-| [Weather-icons](https://erikflowers.github.io/weather-icons/)         | Polybar                                                                    |
-| [font-logos](https://github.com/lukas-w/font-logos)                   | Distro logo in Polybar                                                     |
 
 ##### Obs: My vscode settings are not present in this repository, they are saved in a private gist, if you are interested, talk to me on the telegram.
