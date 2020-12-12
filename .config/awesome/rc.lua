@@ -1,5 +1,3 @@
---require('external/smart_borders'){ show_button_tooltips = true}
-
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -23,7 +21,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
-require("autostart")
 local default = require("programs").default
 
 -- {{{ Error handling
@@ -118,7 +115,7 @@ local function set_wallpaper(s)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+--screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(
     function(s)
@@ -130,7 +127,9 @@ awful.screen.connect_for_each_screen(
     end
 )
 -- }}}
+--
 require("notifications")
 require("keybinds")
 require("rules")
 require("signals")
+require("autostart")

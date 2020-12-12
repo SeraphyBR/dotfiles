@@ -169,7 +169,7 @@ theme.layout_cornersw       = layout_path .. "cornersw.png"
 theme.layout_cornerse       = layout_path .. "cornerse.png"
 
 -- Define the image to load
-theme.wallpaper = "wallpaper.jpg"
+--theme.wallpaper = "wallpaper.jpg"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(

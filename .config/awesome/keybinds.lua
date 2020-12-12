@@ -187,19 +187,19 @@ keybinds.global = gears.table.join(
     ),
     awful.key({ }, "Print",
         function ()
-            awful.spawn.with_shell("~/Git/dotfiles.nix/scripts/screenshot.sh")
+            awful.spawn.with_shell("~/Git/dotfiles/scripts/screenshot.sh")
         end,
         {description = "Take a screenshot", group = "launcher"}
     ),
     awful.key({ modkey, }, "Print",
         function ()
-            awful.spawn.with_shell("~/Git/dotfiles.nix/scripts/screenshot.sh -s")
+            awful.spawn.with_shell("~/Git/dotfiles/scripts/screenshot.sh -s")
         end,
         {description = "Take a screenshot from select area", group = "launcher"}
     ),
     awful.key({ "Control", }, "Print",
         function ()
-            awful.spawn.with_shell("~/Git/dotfiles.nix/scripts/record.sh")
+            awful.spawn.with_shell("~/Git/dotfiles/scripts/record.sh")
         end,
         {description = "Record screen", group = "launcher"}
     ),

@@ -1,6 +1,6 @@
 local home = "/home/seraphybr/"
-local scripts = home .. "Git/dotfiles.nix/scripts/"
-local wallpapers = home .. "Git/dotfiles.nix/images/wallpapers/"
+local scripts = home .. "Git/dotfiles/scripts/"
+local wallpapers = home .. "Git/dotfiles/images/wallpapers"
 
 return {
   -- List of apps to start by default on some actions
