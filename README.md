@@ -24,7 +24,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 | Type              | Program                                                                                                                           |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| Linux Distro      | [NixOS](https://www.funtoo.org/Welcome)                                                                                           |
+| Linux Distro      | [NixOS](https://nixos.org/Welcome)                                                                                           |
 | Window Manager    | [Awesome](https://github.com/baskerville/bspwm)                                                                                   |
 | Compositor        | [Picom](https://github.com/yshui/picom)                                                                                           |
 | Web Browser       | [qutebrowser](https://qutebrowser.org/)                                                                                           |
