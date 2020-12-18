@@ -1,4 +1,5 @@
 #!/bin/sh
+# Originally created by MORG4R37H
 
 fallback_icon="/run/current-system/sw/share/icons/Papirus/48x48/categories/audio-player.svg"
 
