@@ -1,3 +1,6 @@
 [submodule ".config/awesome/external/net_widgets"]
 	path = .config/awesome/external/net_widgets
 	url = https://github.com/SeraphyBR/net_widgets.git
+[submodule "scripts/wallblur"]
+	path = scripts/wallblur
+	url = https://github.com/SeraphyBR/wallblur/

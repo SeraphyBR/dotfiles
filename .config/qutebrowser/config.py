@@ -209,9 +209,42 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# Allow websites to record audio.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.media.audio_capture', True, 'https://teams.microsoft.com')
+
+# Allow websites to record video.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.media.video_capture', True, 'https://teams.microsoft.com')
+
+# Allow websites to show notifications.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.notifications', True, 'https://www.deezer.com')
+
 # Enable plugins in Web pages.
 # Type: Bool
 c.content.plugins = True
+
+# Allow websites to register protocol handlers via
+# `navigator.registerProtocolHandler`.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.register_protocol_handler', True, 'https://mail.google.com?extsrc=mailto&url=%25s')
 
 # Editor (and arguments) to use for the `open-editor` command. The
 # following placeholders are defined:  * `{file}`: Filename of the file
@@ -220,7 +253,7 @@ c.content.plugins = True
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['alacritty', '-e', 'nvim', '-f', '{}']
+c.editor.command = ['kitty', '-e', 'nvim', '-f', '{}']
 
 # CSS border value for hints.
 # Type: String
@@ -602,11 +635,11 @@ c.colors.tabs.selected.even.bg = '#4B7251'
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '12pt Fira Code'
+c.fonts.completion.entry = '12pt FiraCode Nerd Font'
 
 # Font used in the completion categories.
 # Type: Font
-c.fonts.completion.category = '12pt Fira Code'
+c.fonts.completion.category = '12pt FiraCode Nerd Font'
 
 # Font used for the debugging console.
 # Type: Font
@@ -614,23 +647,23 @@ c.fonts.debug_console = '10pt monospace'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = '10pt Fira Code'
+c.fonts.downloads = '10pt FiraCode Nerd Font'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = '12pt Fira Code'
+c.fonts.hints = '12pt FiraCode Nerd Font'
 
 # Font used in the keyhint widget.
 # Type: Font
-c.fonts.keyhint = '10pt Fira Code'
+c.fonts.keyhint = '10pt FiraCode Nerd Font'
 
 # Font used for error messages.
 # Type: Font
-c.fonts.messages.error = '10pt Fira Code'
+c.fonts.messages.error = '10pt FiraCode Nerd Font'
 
 # Font used for info messages.
 # Type: Font
-c.fonts.messages.info = '10pt Fira Code'
+c.fonts.messages.info = '10pt FiraCode Nerd Font'
 
 # Font used for warning messages.
 # Type: Font
@@ -638,19 +671,19 @@ c.fonts.messages.warning = '10pt monospace'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = '12pt Fira Code'
+c.fonts.prompts = '12pt FiraCode Nerd Font'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '12pt Fira Code'
+c.fonts.statusbar = '12pt FiraCode Nerd Font'
 
 # Font used for selected tabs.
 # Type: Font
-c.fonts.tabs.selected = '12pt Fira Code'
+c.fonts.tabs.selected = '12pt FiraCode Nerd Font'
 
 # Font used for unselected tabs.
 # Type: Font
-c.fonts.tabs.unselected = '12pt Fira Code'
+c.fonts.tabs.unselected = '12pt FiraCode Nerd Font'
 
 # Font family for standard fonts.
 # Type: FontFamily
