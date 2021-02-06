@@ -24,7 +24,10 @@
       '';
     };
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.hplipWithPlugin ];
+    };
     redshift = {
       enable = true;
       executable = "/bin/redshift-gtk";
@@ -58,7 +61,7 @@
       }; 
 
     };
-    mingetty.helpLine = ''
+    getty.helpLine = ''
 
             [0;34;40m ███    ██ ██ ██   ██  ██████  ███████ 
             [0;34;40m ████   ██ ██  ██ ██  ██    ██ ██      

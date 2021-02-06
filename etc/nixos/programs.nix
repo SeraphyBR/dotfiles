@@ -21,50 +21,30 @@ in
       inherit pkgs;
     };
   };
-  
+
   programs.command-not-found.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
   programs.light.enable = true; # Needed for the /run/wrappers/bin/light SUID wrapper.
-  hardware.pulseaudio.support32Bit = true;
-  hardware.steam-hardware.enable = true;
+
+  programs.steam.enable = true;
 
   environment.pathsToLink = [ "/libexec" ];
 
   environment.systemPackages = with pkgs; [
     #terminal & tools
-    kitty neofetch cava calc htop ranger
+    neofetch htop ranger git
     wget unzip exa pciutils unrar psmisc
-    calc cmatrix iw
+    cmatrix iw lm_sensors fbcat
 
     #theme
-    lxappearance papirus-icon-theme
-    hsetroot nitrogen gcolor2 libsForQt5.qtstyleplugins
     betterlockscreen
 
-    #browser
-    qutebrowser
-
-    #chat
-    tdesktop discord teams 
-
-    #audio & video
-    ncmpcpp mpd playerctl mpc_cli mpv
-    youtube-dl pavucontrol ffmpeg ffmpegthumbnailer
-    ueberzug
-
-    #image
-    sxiv ueberzug shotgun nur.repos.nexromancers.pkgs.hacksaw
-    neovim vscode
     #editor/ide
-    vscode
-
-    #printer
-    simple-scan hplip
+    neovim
 
     #dev
-    git gitAndTools.gh insomnia 
-    gcc zlib cmake musl clang clang-tools bzip2 
+    gcc zlib cmake musl clang clang-tools bzip2
     gnumake lua binutils.bintools gdb
     pkg-config python38Full dotnet-sdk
 
@@ -75,17 +55,11 @@ in
     nodejs yarn
 
     #tools
-    gparted gnome3.gucharmap
-
-    #xorg
-    xorg.xdpyinfo wmctrl libnotify xorg.xkill
-    xclip arandr xautolock picom dragon-drop
-    nvidia-offload glxinfo 
+    gparted
 
     #others
-    udiskie rofi 
-    zathura virt-manager polkit_gnome 
-    geoclue2 transmission-gtk
+    nvidia-offload
+    polkit_gnome
 
   ];
 

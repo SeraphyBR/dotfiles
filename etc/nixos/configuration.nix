@@ -12,23 +12,18 @@
       ./boot.nix
       ./programs.nix
       ./services.nix
+      ./home.nix
     ];
 
-    # Select internationalisation properties.
-    i18n.defaultLocale = "pt_BR.UTF-8";
-    console = {
-        #   font = "Lat2-Terminus16";
-        keyMap = "br-abnt2";
-      };
+  # Select internationalisation properties.
+  i18n.defaultLocale = "pt_BR.UTF-8";
+  console = {
+      #   font = "Lat2-Terminus16";
+      keyMap = "br-abnt2";
+    };
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  qt5 = {
-    enable = true;
-    platformTheme = "gtk2";
-    style = "gtk2";
-  };
 
   fonts.fonts = with pkgs; [
     fira-code
@@ -56,14 +51,17 @@
 
 
   users = {
-    users.root.shell = pkgs.zsh;
-    extraUsers.seraphybr = {
+    users.root = {
+      shell = pkgs.zsh;
+      initialPassword = "root";
+    };
+    users.seraphybr = {
       isNormalUser = true;
       shell = pkgs.zsh;
+      initialPassword = "nixos";
       extraGroups = [ "video" "wheel"  "libvirtd" "networkmanager" ]; # Enable ‘sudo’ for the user.
     };
   };
-
 
   # This value determines the NixOS release from which the default
 # settings for stateful data, like file locations and database versions
