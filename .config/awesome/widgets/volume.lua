@@ -9,25 +9,27 @@ local theme = require("theme")
 local shared = require("shared")
 
 local command = "env LANG='en_US.UTF-8' pactl list sinks"
+local markup = '<span fgcolor="'..theme.volume..'">󰕾</span>'
+local markup_muted = '<span fgcolor="'..theme.volume_mute..'">󰖁</span>'
 
 local step = 5
 
 local volume = {}
+
+volume.label = wibox.widget{
+    markup = markup,
+    align  = 'center',
+    valign = 'center',
+    font = "Material Design Icons 16",
+    widget = wibox.widget.textbox
+}
 
 function volume.get_volume_state(cb)
   awful.spawn.easy_async(command, function(stdout)
     local mute = stdout:match("Mute:%s+(%a+)")
     local volume = stdout:match("%s%sVolume:[%s%a-:%d/]+%s(%d+)%%")
 
-    if mute == "yes" then
-      mute = true
-    else
-      mute = false
-    end
-
-    volume = tonumber(volume)
-
-    cb(volume, mute)
+    cb(tonumber(volume), mute == "yes")
   end)
 end
 
@@ -39,7 +41,7 @@ function volume.volume_up (cb)
       next_vol = 100
     end
 
-    os.execute("pactl set-sink-volume @DEFAULT_SINK@ "..next_vol.."%")
+    awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ "..next_vol.."%", false)
     cb(next_vol, mute)
   end)
 end
@@ -52,7 +54,7 @@ function volume.volume_down(cb)
       next_vol = 0
     end
 
-    os.execute("pactl set-sink-volume @DEFAULT_SINK@ "..next_vol.."%")
+    awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ "..next_vol.."%", false)
     cb(next_vol, mute)
   end)
 end
@@ -60,7 +62,7 @@ end
 function volume.volume_mute(cb)
   volume.get_volume_state(function(vol, mute)
     local next_mute_bool = not mute
-    os.execute("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false)
     cb(vol, next_mute_bool)
   end)
 end
@@ -71,8 +73,10 @@ volume.bar = shared.rounded_bar(theme.volume)
 function update_volume_bar(vol, mute)
     volume.bar.value = vol
     if mute then
+        volume.label.markup = markup_muted
         volume.bar.color = theme.volume_mute
     else
+        volume.label.markup = markup
         volume.bar.color = theme.volume
     end
 end
@@ -100,22 +104,8 @@ watch(command, 1,
         local mute = stdout:match("Mute:%s+(%a+)")
         local volume = stdout:match("%s%sVolume:[%s%a-:%d/]+%s(%d+)%%")
 
-        if mute == "sim" then
-          mute = true
-        else
-          mute = false
-        end
+        update_volume_bar(tonumber(volume), mute == "yes")
 
-        volume = tonumber(volume)
-        update_volume_bar(volume, mute)
     end, volume)
-
-volume.label = wibox.widget{
-    markup = '<span fgcolor="' .. theme.volume .. '"></span>',
-    align  = 'center',
-    valign = 'center',
-    font = "FontAwesome 16",
-    widget = wibox.widget.textbox
-}
 
 return volume

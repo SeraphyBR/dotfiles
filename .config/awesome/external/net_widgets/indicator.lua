@@ -40,6 +40,10 @@ local function worker(args)
     wired_na = args.wired_na_textbox
   end
 
+  if not (args.vpn_textbox == nil) then
+    vpn = args.vpn_textbox
+  end
+
   -- Turn off advanced details by default
   if args.skiproutes == nil then
     args.skiproutes = true
@@ -296,7 +300,6 @@ local function worker(args)
     end
     local msg = ""
     for _, s in pairs(real_interfaces) do
-      i = s.iface
       msg = msg .. "\n<span font_desc=\"" .. detail_font .. "\">"
       msg = msg .. "┌[" .. s.iface .. "]"
       if s.is_vpn then
@@ -359,7 +362,7 @@ local function worker(args)
         end
       end
     end
-    return msg
+    return string.gsub(string.gsub(msg, '^\n', ""), '\n$', "")
   end  -- function text_grabber()
 
   widget:set_widget(wired_na)

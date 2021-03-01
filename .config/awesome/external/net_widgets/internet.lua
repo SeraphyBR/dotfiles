@@ -39,7 +39,7 @@ local function worker(args)
   widget:set_widget(no_internet)
   local function net_update()
     connected = false
-    awful.spawn.easy_async("bash -c \"nc -z 8.8.8.8 53 >/dev/null 2>&1\"",
+    awful.spawn.easy_async_with_shell("nc -z 8.8.8.8 53 >/dev/null 2>&1",
       function(_, _, _, exit_code)
         if (exit_code == 0) then
           connected = true

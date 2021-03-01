@@ -8,6 +8,8 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 
+local shared = require("shared")
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage",
     function (c)
@@ -18,6 +20,11 @@ client.connect_signal("manage",
         then
             -- Prevent clients from being unreachable after screen count changes.
             awful.placement.no_offscreen(c)
+        end
+
+        -- Rounded Corners
+        c.shape = function(cr,w,h)
+            gears.shape.rounded_rect(cr,w,h,6)
         end
     end
 )
@@ -42,8 +49,8 @@ client.connect_signal("request::titlebars",
         )
         awful.titlebar(c) : setup {
             { -- Left
-                awful.titlebar.widget.iconwidget(c),
-                buttons = buttons,
+                -- awful.titlebar.widget.iconwidget(c),
+                awful.titlebar.widget.stickybutton(c),
                 layout  = wibox.layout.fixed.horizontal
             },
             { -- Middle
@@ -55,11 +62,8 @@ client.connect_signal("request::titlebars",
                 layout  = wibox.layout.flex.horizontal
             },
             { -- Right
-                awful.titlebar.widget.floatingbutton (c),
-                awful.titlebar.widget.maximizedbutton(c),
-                awful.titlebar.widget.stickybutton   (c),
-                awful.titlebar.widget.ontopbutton    (c),
-                awful.titlebar.widget.closebutton    (c),
+                awful.titlebar.widget.ontopbutton(c),
+                awful.titlebar.widget.floatingbutton(c),
                 layout = wibox.layout.fixed.horizontal()
             },
             layout = wibox.layout.align.horizontal

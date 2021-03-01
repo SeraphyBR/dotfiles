@@ -1,4 +1,4 @@
-.vscode/*
+**/.vscode/*
 .config/nvim/plugged/*
 .config/nvim/autoload/*
 .config/nvim/undo-dir/*

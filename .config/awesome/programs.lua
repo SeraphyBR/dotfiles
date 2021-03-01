@@ -16,13 +16,13 @@ return {
 
     -- List of apps to start once on start-up
     run_on_start_up = {
+        "mpd",
         "picom -b",
         "systemctl --user start redshift",
         "caffeine",
-        "mpd",
-        scripts .. "mpd_notify.sh",
         "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1 &",
         "udiskie --smart-tray",
-        "nitrogen --restore"
+        scripts .. "wallblur/wallblur.sh -o " .. wallpapers,
+        scripts .. "mpd_notify.sh"
     }
 }

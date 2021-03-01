@@ -61,9 +61,17 @@ awful.rules.rules = {
         properties = { titlebars_enabled = true }
     },
 
-    {
+    {-- Visual Studio Code
         rule = { class = "Code" },
         properties = { opacity = 0.95 }
+    },
+
+    {-- https://github.com/mwh/dragon
+        rule = { class = "Dragon" },
+        properties = { 
+            floating  = true,
+            placement = awful.placement.centered 
+        }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

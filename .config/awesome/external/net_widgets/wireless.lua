@@ -8,6 +8,8 @@ local module_path = (...):match ("(.+/)[^/]+$") or ""
 
 local theme = beautiful.get()
 
+local signal_color = theme.fg_normal
+
 function dbg(message)
     naughty.notify({ preset = naughty.config.presets.normal,
                      title = "debug",
@@ -19,7 +21,7 @@ local function draw_signal(level)
     local img = cairo.ImageSurface.create(cairo.Format.ARGB32, 32, 32)
     local cr  = cairo.Context(img)
 
-    cr:set_source(gears.color(theme.fg_normal))
+    cr:set_source(gears.color(signal_color))
     if level > 75 then
         cr:arc(         32/2, 32/2, 32/2, 145*math.pi/180, 395*math.pi/180)
         cr:arc_negative(32/2, 32/2, 32/2-3, 395*math.pi/180, 145*math.pi/180)
@@ -65,8 +67,11 @@ local function worker(args)
     local onclick       = args.onclick
     local widget        = args.widget == nil and wibox.layout.fixed.horizontal() or args.widget == false and nil or args.widget
     local indent        = args.indent or 3
+    local signal_width  = args.signal_width
+    signal_color        = args.signal_color or theme.fg_normal
 
-    local net_icon = wibox.widget.imagebox(draw_signal(0))
+    local net_icon = wibox.widget.imagebox(draw_signal(0), true)
+    net_icon.forced_width = signal_width
     local net_text = wibox.widget.textbox()
     net_text.font = font
     net_text:set_text(" N/A ")

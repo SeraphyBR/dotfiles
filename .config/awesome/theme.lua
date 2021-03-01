@@ -35,6 +35,7 @@ theme.border_marked = "#FF4500"
 
 theme.user = "#7DF059"
 theme.volume = "#8FF6FF"
+theme.volume_mute = "#69656F"
 theme.xbacklight = "#C8F059"
 theme.nvidia = "#7FFF00"
 theme.ram = "#D6AA3F"
