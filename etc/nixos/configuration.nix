@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, options,... }:
 
 {
   imports =
@@ -10,10 +10,12 @@
       ./hardware.nix
       ./network.nix
       ./boot.nix
+      ./overlays.nix
       ./programs.nix
       ./services.nix
       ./home.nix
     ];
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -38,7 +40,9 @@
     })
   ];
 
+  virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+
   security.apparmor.enable = true;
   security.polkit.enable = true;
   security.sudo.enable = false;
@@ -59,7 +63,11 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       initialPassword = "nixos";
-      extraGroups = [ "video" "wheel"  "libvirtd" "networkmanager" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ 
+        "video" "wheel"  
+        "libvirtd" "networkmanager" 
+        "wireshark" "docker" 
+      ];
     };
   };
 

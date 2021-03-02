@@ -12,17 +12,30 @@
 
   swapDevices = [ ];
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
+  services.fstrim = {
+    enable = true;
+    interval = "weekly";
+  };
+
+  hardware.cpu.intel.updateMicrocode = true;
+
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
+  hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.prime = {
     offload.enable = true;
 
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
-
     # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
     nvidiaBusId = "PCI:1:0:0";
+
+    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+    intelBusId = "PCI:0:2:0";
   };
 
   fileSystems."/" = {
@@ -53,10 +66,16 @@
     options = [ "subvol=@Git,compress=zstd" ];
   };
 
-  fileSystems."/home/seraphybr/Documentos" = {
+  fileSystems."/home/seraphybr/Documents" = {
     device = "/dev/disk/by-uuid/857bf02f-6401-4ba4-aa36-3dcdca77fb32";
     fsType = "btrfs";
     options = [ "subvol=@Documents,compress=zstd" ];
+  };
+
+  fileSystems."/home/seraphybr/Downloads" = {
+    device = "/dev/disk/by-uuid/857bf02f-6401-4ba4-aa36-3dcdca77fb32";
+    fsType = "btrfs";
+    options = [ "subvol=@Downloads,compress=zstd" ];
   };
 
   fileSystems."/home/seraphybr/Video" = {

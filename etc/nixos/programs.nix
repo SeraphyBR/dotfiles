@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, options,... }:
 
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
@@ -29,6 +29,11 @@ in
 
   programs.steam.enable = true;
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
+
   environment.pathsToLink = [ "/libexec" ];
 
   environment.systemPackages = with pkgs; [
@@ -46,10 +51,14 @@ in
     #dev
     gcc zlib cmake musl clang clang-tools bzip2
     gnumake lua binutils.bintools gdb
-    pkg-config python38Full dotnet-sdk
+    pkg-config python38Full 
+
+    # CSharp
+    dotnet-sdk_3 dotnet-aspnetcore dotnet-netcore mono6
+    omnisharp-roslyn msbuild
 
     #rust dev
-    rustup cargo-edit lldb
+    rustup cargo-edit lldb rust-analyzer
 
     #node dev
     nodejs yarn

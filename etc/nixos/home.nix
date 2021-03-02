@@ -1,5 +1,7 @@
 { pkgs, ... }:
-
+let
+  dotfiles = "/home/seraphybr/Git/dotfiles";
+in
 {
 
   imports = [
@@ -10,7 +12,25 @@
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.seraphybr = {
-    programs.home-manager.enable = true;
+
+    programs = {
+      home-manager.enable = true;
+      git = {
+        enable = true;
+        userName  = "SeraphyBR";
+        userEmail = "luisjuniorbr@gmail.com";
+      };
+    };
+
+    xsession.enable = true;
+    xsession.windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks # package manager for lua
+        luadbi-mysql # Database abstration layer
+        lgi # Lua bindings to GObject libraries
+      ];
+    }; 
 
     xdg = {
       enable = true;
@@ -37,12 +57,6 @@
     qt = {
       enable = true;
       platformTheme = "gtk";
-    };
-
-    programs.git = {
-      enable = true;
-      userName  = "SeraphyBR";
-      userEmail = "luisjuniorbr@gmail.com";
     };
 
     home.sessionVariables = {
@@ -90,6 +104,57 @@
       glxinfo
 
     ];
+
+    xdg.configFile."awesome".source = "${dotfiles}/.config/awesome";
+    xdg.configFile."cava".source = "${dotfiles}/.config/cava";
+    xdg.configFile."rofi".source = "${dotfiles}/.config/rofi";
+    xdg.configFile."kitty".source = "${dotfiles}/.config/kitty";
+    xdg.configFile."mpd/mpd.conf".source = "${dotfiles}/.config/mpd/mpd.conf";
+
+    xdg.configFile."ncmpcpp" = {
+      source = "${dotfiles}/.config/ncmpcpp";
+      recursive = true;
+    };
+
+    xdg.configFile."ranger" = {
+      source = "${dotfiles}/.config/ranger";
+      recursive = true;
+    };
+
+    xdg.configFile."nvim" = {
+      source = "${dotfiles}/.config/nvim";
+      recursive = true;
+    };
+
+    xdg.configFile."zathura".source = "${dotfiles}/.config/zathura";
+
+    xresources.properties = {
+      "Sxiv.font" = "Fira Code:size=12";
+      "Sxiv.foreground" = "#222222";
+      "Sxiv.background" = "#A0C28A";
+    };
+
+    home.file.".ideavimrc".text = ''
+      source ~/.config/nvim/init.vim
+      set clipboard+=ideaput%
+    '';
+
+    home.file.".zlogin".text = ''
+      if [ ! -d "$HOME/Git/dotfiles" ]
+      then
+          echo "Downloading dotfiles..."
+          mkdir -p Git 
+          git clone --recurse-submodules -j3 "git@github.com:SeraphyBR/dotfiles.git"
+          echo "Apply dotfiles from home-manager in /etc/nixos/home.nix"
+          su -c "nixos-rebuild switch"
+      fi
+
+      # Auto startx for tty1
+      if [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ]
+      then
+          exec startx -- -keeptty -logfile "$HOME/.xorg.log"
+      fi
+    '';
 
   };
 

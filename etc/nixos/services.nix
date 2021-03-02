@@ -41,26 +41,20 @@
         night = 3700;
       };
     };
+    thermald.enable = true;
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
       layout = "br,us";
       xkbVariant = "abnt2,intl";
       xkbOptions = "grp:shifts_toggle";
-      videoDrivers = [ "modesetting" "nvidia" ];
+      videoDrivers = [ "nvidia" ];
       libinput.enable = true;
       desktopManager.xterm.enable = false;
       displayManager.startx.enable = true;
       updateDbusEnvironment = true;
-      windowManager.awesome = {
-        enable = true;
-        luaModules = with pkgs.luaPackages; [
-          luarocks # package manager for lua
-          luadbi-mysql # Database abstration layer
-        ];
-      }; 
-
     };
+
     getty.helpLine = ''
 
             [0;34;40m ███    ██ ██ ██   ██  ██████  ███████ 
