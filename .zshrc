@@ -19,13 +19,15 @@ if [ ! -d "$ZSH" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
     git clone https://github.com/zdharma/fast-syntax-highlighting.git $ZSH_CUSTOM/plugins/fast-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+    git clone https://github.com/chisui/zsh-nix-shell.git $ZSH_CUSTOM/plugins/nix-shell
+    git clone https://github.com/spwhitt/nix-zsh-completions.git $ZSH_CUSTOM/plugins/nix-zsh-completions 
 fi
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions fast-syntax-highlighting zsh-completions extract)
+plugins=(nix-shell nix-zsh-completions zsh-autosuggestions fast-syntax-highlighting zsh-completions extract)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -56,7 +58,7 @@ HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-UPDATE_ZSH_DAYS=1
+UPDATE_ZSH_DAYS=5
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -182,19 +184,6 @@ clima() {
         cat $cache
     else 
         echo "You need internet connection!"
-    fi
-}
-
-mkernel() {
-    if [ ${EUID:-$(id -u)} -ne 0 ]; then
-        echo "You need to be root"
-    else
-        eselect kernel list
-        echo -n "Choose kernel: "
-        read target
-        eselect kernel set $target
-        cd /usr/src/linux
-        make menuconfig && make -j8 && make install && make modules_install
     fi
 }
 
