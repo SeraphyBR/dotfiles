@@ -187,7 +187,6 @@ let g:coc_global_extensions = [
             \ 'coc-tabnine',
             \ 'coc-tsserver',
             \ 'coc-vimlsp',
-            \ 'coc-template',
             \ 'coc-vimtex',
             \ 'coc-yaml',
             \ 'coc-yank'
@@ -205,7 +204,9 @@ let g:vista#renderer#enable_icon = 1
 let g:vista_default_executive = "coc"
 
 "" IndentLine:
+let g:indentLine_enabled = 1
 let g:indentLine_char= '│'
+let g:indentLine_conceallevel = 2
 let g:indentLine_fileTypeExclude = ['markdown']
 
 " Vimtex:
