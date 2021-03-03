@@ -14,6 +14,8 @@
   services = {
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+    # Bluetooth tool
+    blueman.enable = true;
     # Postgresql Database (Dev only)
     postgresql = {
       enable = true;

@@ -106,7 +106,7 @@ in
     ];
 
     xdg.configFile."awesome".source = "${dotfiles}/.config/awesome";
-    xdg.configFile."cava".source = "${dotfiles}/.config/cava";
+    xdg.configFile."cava/config".source = "${dotfiles}/.config/cava/config";
     xdg.configFile."rofi".source = "${dotfiles}/.config/rofi";
     xdg.configFile."kitty".source = "${dotfiles}/.config/kitty";
     xdg.configFile."mpd/mpd.conf".source = "${dotfiles}/.config/mpd/mpd.conf";
@@ -133,6 +133,14 @@ in
       "Sxiv.foreground" = "#222222";
       "Sxiv.background" = "#A0C28A";
     };
+
+    home.file.".zshrc".source = "${dotfiles}/.zshrc";
+    home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
+
+    home.file.".zshenv".text = ''
+      # Time zsh command
+      export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
+    '';
 
     home.file.".ideavimrc".text = ''
       source ~/.config/nvim/init.vim

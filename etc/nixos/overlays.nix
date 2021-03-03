@@ -11,6 +11,14 @@
             };
         });
 
+        cava = super.cava.overrideAttrs(old: {
+          src = builtins.fetchGit {
+            url = "https://github.com/karlstav/cava.git";
+            ref = "master";
+            rev = "c57538d072967e0906c81642f74c5161d78c24b2";
+          };
+        });
+
       })
     ];
 }

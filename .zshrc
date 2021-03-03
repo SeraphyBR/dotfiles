@@ -121,7 +121,6 @@ setopt HIST_IGNORE_SPACE
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias ls='exa --group-directories-first' # https://the.exa.website/
 alias cp='cp -R'
@@ -129,14 +128,9 @@ alias rm='rm -Ivr'
 alias :q='exit'
 alias vim='nvim'
 alias mocp='mocp -T darkdot_theme'
-alias bbswitch='cat /proc/acpi/bbswitch'
-alias efetchlog='tail -f /var/log/emerge-fetch.log'
 alias webcam='mpv /dev/video0'
-alias smtp='simple-mtpfs'
 alias .='cd ../'
 alias ..='cd ../../'
-alias nvrun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia' 
-alias vkrun='__NV_PRIME_RENDER_OFFLOAD=1'
 ####################### Custom functions ###############################
 
 c() {
@@ -189,7 +183,7 @@ clima() {
 
 # Reload color settings of my logitech g512 keyboard
 # and change keyboard layout
-loadg512(){
+loadg512() {
     g810-led -p /etc/g810-led/profile
     setxkbmap -layout us -variant intl
 }
