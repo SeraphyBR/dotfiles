@@ -1,42 +1,63 @@
-
 # Settings
-set font "DejavuSansMono Nerd Font 11"
+set font "Fira Code 11"
 set guioptions "shv"
-set selection-clipboard clipboard
 set recolor "true"
 set recolor-reverse-video "true"
+set window-title-basename "true"
+set selection-clipboard "clipboard"
 
-# Colors
-set default-bg                  "#1d2021"
-set default-fg                  "#3c3836"
+map <C-i> recolor
 
-set statusbar-fg                "#ffffff"
-set statusbar-bg                "#504945"
+# Dracula color theme for Zathura
+# Swaps Foreground for Background to get a light version if the user prefers
 
-set scrollbar-fg                "#fbf1c7"
-set scrollbar-bg                "#504945"
+#
+# Dracula color theme
+#
 
-set inputbar-bg                 "#1d2021"
-set inputbar-fg                 "#fbf1c7"
+set notification-error-bg       "#ff5555" # Red
+set notification-error-fg       "#f8f8f2" # Foreground
+set notification-warning-bg     "#ffb86c" # Orange
+set notification-warning-fg     "#44475a" # Selection
+set notification-bg             "#24292e" # Background
+set notification-fg             "#f8f8f2" # Foreground
 
-set notification-bg             "#1d2021"
-set notification-fg             "#fbf1c7"
+set completion-bg               "#24292e" # Background
+set completion-fg               "#6272a4" # Comment
+set completion-group-bg         "#24292e" # Background
+set completion-group-fg         "#6272a4" # Comment
+set completion-highlight-bg     "#44475a" # Selection
+set completion-highlight-fg     "#f8f8f2" # Foreground
 
-set notification-error-bg       "#1d2021"
-set notification-error-fg       "#fb4934"
+set index-bg                    "#24292e" # Background
+set index-fg                    "#f8f8f2" # Foreground
+set index-active-bg             "#44475a" # Current Line
+set index-active-fg             "#f8f8f2" # Foreground
 
-set notification-warning-bg     "#1d2021"
-set notification-warning-fg     "#fb4934"
+set inputbar-bg                 "#24292e" # Background
+set inputbar-fg                 "#f8f8f2" # Foreground
+set statusbar-bg                "#24292e" # Background
+set statusbar-fg                "#f8f8f2" # Foreground
 
-set highlight-color             "#fabd2f"
-set highlight-active-color      "#83a598"
+set highlight-color             "#ffb86c" # Orange
+set highlight-active-color      "#ff79c6" # Pink
 
-set completion-bg               "#3c3836"
-set completion-fg               "#83a598"
+set default-bg                  "#24292e" # Background
+set default-fg                  "#f8f8f2" # Foreground
 
-set completion-highlight-fg     "#fbf1c7"
-set completion-highlight-bg     "#83a598"
+set render-loading              true
+set render-loading-fg           "#24292e" # Background
+set render-loading-bg           "#f8f8f2" # Foreground
 
-set recolor-lightcolor          "#1d2021"
-set recolor-darkcolor           "#ebdbb2"
+#
+# Recolor mode settings
+#
 
+set recolor-lightcolor          "#24292e" # Background
+set recolor-darkcolor           "#f8f8f2" # Foreground
+
+#
+# Startup options
+#
+set adjust-open width
+set recolor true

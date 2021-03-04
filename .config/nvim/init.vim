@@ -306,10 +306,10 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Setas redimensionam janelas adjacentes
-"nnoremap <left> :vertical resize -5<cr>
-"nnoremap <right> :vertical resize +5<cr>
-"nnoremap <up> :resize -5<cr>
-"nnoremap <down> :resize +5<cr>
+nnoremap <left> :vertical resize -5<cr>
+nnoremap <right> :vertical resize +5<cr>
+nnoremap <up> :resize -5<cr>
+nnoremap <down> :resize +5<cr>
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)

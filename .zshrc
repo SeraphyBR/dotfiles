@@ -15,12 +15,12 @@ ZSH="$HOME/.oh-my-zsh"
 
 if [ ! -d "$ZSH" ]; then
     git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    git clone https://github.com/zdharma/fast-syntax-highlighting.git $ZSH_CUSTOM/plugins/fast-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
-    git clone https://github.com/chisui/zsh-nix-shell.git $ZSH_CUSTOM/plugins/nix-shell
-    git clone https://github.com/spwhitt/nix-zsh-completions.git $ZSH_CUSTOM/plugins/nix-zsh-completions 
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions
+    git clone https://github.com/zdharma/fast-syntax-highlighting.git $ZSH/custom/plugins/fast-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-completions $ZSH/custom/plugins/zsh-completions
+    git clone https://github.com/chisui/zsh-nix-shell.git $ZSH/custom/plugins/nix-shell
+    git clone https://github.com/spwhitt/nix-zsh-completions.git $ZSH/custom/plugins/nix-zsh-completions 
 fi
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
