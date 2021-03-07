@@ -27,7 +27,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(nix-shell nix-zsh-completions zsh-autosuggestions fast-syntax-highlighting zsh-completions extract)
+plugins=(nix-shell nix-zsh-completions zsh-autosuggestions fast-syntax-highlighting zsh-completions colored-man-pages extract)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
