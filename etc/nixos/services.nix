@@ -16,6 +16,8 @@
     openssh.enable = true;
     # Bluetooth tool
     blueman.enable = true;
+    # Gnome Keyring, for stuff like vscode auth github
+    gnome3.gnome-keyring.enable = true;
     # Postgresql Database (Dev only)
     postgresql = {
       enable = true;
@@ -55,6 +57,12 @@
       desktopManager.xterm.enable = false;
       displayManager.startx.enable = true;
       updateDbusEnvironment = true;
+      serverFlagsSection = ''
+          Option "BlankTime" "0"
+          Option "StandbyTime" "0"
+          Option "SuspendTime" "0"
+          Option "OffTime" "0"
+      '';
     };
 
     getty.helpLine = ''

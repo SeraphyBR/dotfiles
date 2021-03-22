@@ -46,8 +46,7 @@ awful.rules.rules = {
             },
             role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
-                "ConfigManager",  -- Thunderbird's about:config.
-                "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+                "ConfigManager"  -- Thunderbird's about:config.
             }
         },
         properties = { floating = true }
@@ -66,8 +65,15 @@ awful.rules.rules = {
         properties = { opacity = 0.95 }
     },
 
-    {-- https://github.com/mwh/dragon
-        rule = { class = "Dragon" },
+    {
+        rule = { 
+            class = {
+                -- https://github.com/mwh/dragon
+                "Dragon", 
+                -- From Password Prompt
+                "gcr-prompter"
+            } 
+        },
         properties = { 
             floating  = true,
             placement = awful.placement.centered 

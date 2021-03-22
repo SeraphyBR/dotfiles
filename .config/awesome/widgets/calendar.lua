@@ -19,6 +19,16 @@ local calendar_widget = {}
 local function worker(args)
 
     local calendar_themes = {
+        seraphybr = {
+            bg = '#2C2E33',
+            fg = '#D8DEE9',
+            focus_date_bg = '#5AAE5F',
+            focus_date_fg = '#000000',
+            weekend_day_bg = '#3B4252',
+            weekday_fg = '#5AAE5F',
+            header_fg = '#E5E9F0',
+            border = '#4C566A'
+        },
         nord = {
             bg = '#2E3440',
             fg = '#D8DEE9',

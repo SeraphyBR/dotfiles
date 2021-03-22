@@ -20,4 +20,6 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot/efi";
   }; 
+
+  boot.cleanTmpDir = true;
 }

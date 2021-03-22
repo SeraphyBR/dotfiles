@@ -3,7 +3,6 @@ let
   dotfiles = "/home/seraphybr/Git/dotfiles";
 in
 {
-
   imports = [
     (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   ];
@@ -136,6 +135,7 @@ in
 
     home.file.".zshrc".source = "${dotfiles}/.zshrc";
     home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
+    home.file.".xinitrc".source = "${dotfiles}/.xinitrc";
 
     home.file.".zshenv".text = ''
       # Time zsh command

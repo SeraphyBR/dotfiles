@@ -12,6 +12,11 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
     dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
+# Restarts gnome-keyring as user
+# Fix for using with home-manager
+gnome-keyring-daemon -r
+export SSH_AUTH_SOCK
+
 xrandr --auto
 
 exec  awesome

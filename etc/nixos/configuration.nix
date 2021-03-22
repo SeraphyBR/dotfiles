@@ -20,8 +20,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
   console = {
-      #   font = "Lat2-Terminus16";
-      keyMap = "br-abnt2";
+      #font = "Lat2-Terminus16";
+      #keyMap = "br-abnt2";
+      useXkbConfig = true;
     };
 
   # Set your time zone.
@@ -46,6 +47,7 @@
   security.apparmor.enable = true;
   security.polkit.enable = true;
   security.sudo.enable = false;
+  security.pam.services.seraphybr.enableGnomeKeyring = true;
 
   # Enable sound.
   sound.enable = true;

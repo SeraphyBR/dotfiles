@@ -22,7 +22,9 @@ local shared = require("shared")
 local systray_margin = (theme.wibar_height - theme.systray_icon_size) / 2
 
 local clock_calendar = wibox.widget.textclock();
-local cal_widget = calendar();
+local cal_widget = calendar({
+    theme = "seraphybr"
+});
 
 clock_calendar:connect_signal("button::press",
     function(_, _, _, button)
