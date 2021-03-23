@@ -65,15 +65,8 @@ awful.rules.rules = {
         properties = { opacity = 0.95 }
     },
 
-    {
-        rule = { 
-            class = {
-                -- https://github.com/mwh/dragon
-                "Dragon", 
-                -- From Password Prompt
-                "gcr-prompter"
-            } 
-        },
+    {-- https://github.com/mwh/dragon
+        rule = { class = "Dragon" },
         properties = { 
             floating  = true,
             placement = awful.placement.centered 
