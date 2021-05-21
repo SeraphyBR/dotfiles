@@ -10,14 +10,17 @@
     longitude = -43.934559;
   };
 
+
   # List services that you want to enable:
   services = {
+    # RDP client support
+    xrdp.enable = true;
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     # Bluetooth tool
     blueman.enable = true;
     # Gnome Keyring, for stuff like vscode auth github
-    gnome3.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true;
     # Postgresql Database (Dev only)
     postgresql = {
       enable = true;
@@ -53,6 +56,8 @@
       xkbVariant = "abnt2,intl";
       xkbOptions = "grp:shifts_toggle";
       videoDrivers = [ "nvidia" ];
+      # Manualy setting dpi, for nvidia prime sync
+      dpi = 96;
       libinput.enable = true;
       desktopManager.xterm.enable = false;
       displayManager.startx.enable = true;

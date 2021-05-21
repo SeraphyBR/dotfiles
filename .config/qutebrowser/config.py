@@ -10,8 +10,8 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
-# Uncomment this to still load settings configured via autoconfig.yml
-# config.load_autoconfig()
+# Change the argument to True to still load settings configured via autoconfig.yml
+config.load_autoconfig(False)
 
 # Require a confirmation before quitting the application.
 # Type: ConfirmQuit
@@ -23,17 +23,25 @@
 c.confirm_quit = ['multiple-tabs', 'downloads']
 
 # Backend to use to display websites. qutebrowser supports two different
-# web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
-# was discontinued by the Qt project with Qt 5.6, but picked up as a
-# well maintained fork: https://github.com/annulen/webkit/wiki -
-# qutebrowser only supports the fork. QtWebEngine is Qt's official
-# successor to QtWebKit. It's slightly more resource hungry than
-# QtWebKit and has a couple of missing features in qutebrowser, but is
-# generally the preferred choice.
+# web rendering engines / backends, QtWebEngine and QtWebKit (not
+# recommended). QtWebEngine is Qt's official successor to QtWebKit, and
+# both the default/recommended backend. It's based on a stripped-down
+# Chromium and regularly updated with security fixes and new features by
+# the Qt project: https://wiki.qt.io/QtWebEngine QtWebKit was
+# qutebrowser's original backend when the project was started. However,
+# support for QtWebKit was discontinued by the Qt project with Qt 5.6 in
+# 2016. The development of QtWebKit was picked up in an official fork:
+# https://github.com/qtwebkit/qtwebkit - however, the project seems to
+# have stalled again. The latest release (5.212.0 Alpha 4) from March
+# 2020 is based on a WebKit version from 2016, with many known security
+# vulnerabilities. Additionally, there is no process isolation and
+# sandboxing. Due to all those issues, while support for QtWebKit is
+# still available in qutebrowser for now, using it is strongly
+# discouraged.
 # Type: String
 # Valid values:
-#   - webengine: Use QtWebEngine (based on Chromium).
-#   - webkit: Use QtWebKit (based on WebKit, similar to Safari).
+#   - webengine: Use QtWebEngine (based on Chromium - recommended).
+#   - webkit: Use QtWebKit (based on WebKit, similar to Safari - many known security issues!).
 c.backend = 'webengine'
 
 # Turn on Qt HighDPI scaling. This is equivalent to setting
@@ -44,8 +52,7 @@ c.backend = 'webengine'
 # Type: Bool
 c.qt.highdpi = False
 
-# Automatically start playing `<video>` elements. Note: On Qt < 5.11,
-# this option needs a restart and does not support URL patterns.
+# Automatically start playing `<video>` elements.
 # Type: Bool
 c.content.autoplay = False
 
@@ -57,7 +64,14 @@ c.content.autoplay = False
 # unknown-3rdparty` per-domain on QtWebKit will have the same effect as
 # `all`. If this setting is used with URL patterns, the pattern gets
 # applied to the origin/first party URL of the page making the request,
-# not the request URL.
+# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
+# from URLs, so URL patterns using paths will not match. With
+# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
+# you will typically need to set this setting for `example.com` when the
+# cookie is set on `somesubdomain.example.com` for it to work properly.
+# To debug issues with this setting, start qutebrowser with `--debug
+# --logfilter network --debug-flag log-cookies` which will show all
+# cookies being set.
 # Type: String
 # Valid values:
 #   - all: Accept all cookies.
@@ -74,7 +88,14 @@ config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 # unknown-3rdparty` per-domain on QtWebKit will have the same effect as
 # `all`. If this setting is used with URL patterns, the pattern gets
 # applied to the origin/first party URL of the page making the request,
-# not the request URL.
+# not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
+# from URLs, so URL patterns using paths will not match. With
+# QtWebEngine 5.15.2+, subdomains are additionally stripped as well, so
+# you will typically need to set this setting for `example.com` when the
+# cookie is set on `somesubdomain.example.com` for it to work properly.
+# To debug issues with this setting, start qutebrowser with `--debug
+# --logfilter network --debug-flag log-cookies` which will show all
+# cookies being set.
 # Type: String
 # Valid values:
 #   - all: Accept all cookies.
@@ -82,6 +103,16 @@ config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 #   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 #   - never: Don't accept cookies at all.
 config.set('content.cookies.accept', 'all', 'devtools://*')
+
+# Value to send in the `Accept-Language` header. Note that the value
+# read from JavaScript is always the global value.
+# Type: String
+c.content.headers.accept_language = 'pt-BR;en-US,en;q=0.9'
+
+# Value to send in the `Accept-Language` header. Note that the value
+# read from JavaScript is always the global value.
+# Type: String
+config.set('content.headers.accept_language', '', 'https://matchmaker.krunker.io/*')
 
 # When to send the Referer header. The Referer header tells websites
 # from which website you were coming from when visiting them. No restart
@@ -225,14 +256,6 @@ config.set('content.media.audio_capture', True, 'https://teams.microsoft.com')
 #   - ask
 config.set('content.media.video_capture', True, 'https://teams.microsoft.com')
 
-# Allow websites to show notifications.
-# Type: BoolAsk
-# Valid values:
-#   - true
-#   - false
-#   - ask
-config.set('content.notifications', True, 'https://www.deezer.com')
-
 # Enable plugins in Web pages.
 # Type: Bool
 c.content.plugins = True
@@ -246,10 +269,10 @@ c.content.plugins = True
 #   - ask
 config.set('content.register_protocol_handler', True, 'https://mail.google.com?extsrc=mailto&url=%25s')
 
-# Editor (and arguments) to use for the `open-editor` command. The
-# following placeholders are defined:  * `{file}`: Filename of the file
-# to be edited. * `{line}`: Line in which the caret is found in the
-# text. * `{column}`: Column in which the caret is found in the text. *
+# Editor (and arguments) to use for the `edit-*` commands. The following
+# placeholders are defined:  * `{file}`: Filename of the file to be
+# edited. * `{line}`: Line in which the caret is found in the text. *
+# `{column}`: Column in which the caret is found in the text. *
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
@@ -307,7 +330,8 @@ c.tabs.indicator.width = 1
 # * `{quoted}` quotes all characters (for `slash/and&amp` this
 # placeholder   expands to `slash%2Fand%26amp`). * `{unquoted}` quotes
 # nothing (for `slash/and&amp` this placeholder   expands to
-# `slash/and&amp`).  The search engine named `DEFAULT` is used when
+# `slash/and&amp`). * `{0}` means the same as `{}`, but can be used
+# multiple times.  The search engine named `DEFAULT` is used when
 # `url.auto_search` is turned on and something else than a URL was
 # entered to be opened. Other search engines can be used by prepending
 # the search engine name to the search term, e.g. `:open google

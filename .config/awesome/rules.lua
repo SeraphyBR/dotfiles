@@ -65,6 +65,11 @@ awful.rules.rules = {
         properties = { opacity = 0.95 }
     },
 
+    {-- Jetbrains IDEA Community
+        rule = { class = "jetbrains-idea-ce" },
+        properties = { opacity = 0.95 }
+    },
+
     {-- https://github.com/mwh/dragon
         rule = { class = "Dragon" },
         properties = { 

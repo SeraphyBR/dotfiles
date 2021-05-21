@@ -80,14 +80,10 @@ in
       ueberzug
 
       #image
-      sxiv shotgun 
-      nur.repos.nexromancers.pkgs.hacksaw
+      sxiv shotgun hacksaw
 
       #editor/ide
       vscode neovim
-
-      #dev 
-      insomnia
 
       #printer
       simple-scan
@@ -128,6 +124,7 @@ in
     xdg.configFile."zathura".source = "${dotfiles}/.config/zathura";
 
     xresources.properties = {
+      "Xft.dpi" = "96";
       "Sxiv.font" = "Fira Code:size=12";
       "Sxiv.foreground" = "#222222";
       "Sxiv.background" = "#A0C28A";
@@ -140,6 +137,7 @@ in
     home.file.".zshenv".text = ''
       # Time zsh command
       export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
+      export PATH="$PATH:$(yarn global bin)"
     '';
 
     home.file.".ideavimrc".text = ''

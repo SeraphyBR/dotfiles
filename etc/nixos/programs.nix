@@ -28,6 +28,7 @@ in
   programs.light.enable = true; # Needed for the /run/wrappers/bin/light SUID wrapper.
 
   programs.steam.enable = true;
+  programs.java.enable = true;
 
   programs.wireshark = {
     enable = true;
@@ -58,7 +59,7 @@ in
     omnisharp-roslyn msbuild
 
     #rust dev
-    rustup cargo-edit lldb rust-analyzer
+    rustup lldb rust-analyzer
 
     #node dev
     nodejs yarn

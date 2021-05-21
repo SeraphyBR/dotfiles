@@ -17,7 +17,14 @@ fi
 gnome-keyring-daemon -r
 export SSH_AUTH_SOCK
 
+# If using nvidia as main graphics card
+xrandr --setprovideroutputsource 1 0
 xrandr --auto
+
+# Set dpi
+for i in 1 2; do
+    xrandr --fbmm `xrandr | sed -n '/ connected / {s/.* \([0-9]\+\)mm x \([0-9]\+\)mm/\1x\2/p;q}'`
+done
 
 exec  awesome
 

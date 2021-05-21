@@ -19,6 +19,10 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
+
+  # RDP Client
+  networking.firewall.allowedTCPPorts = [ 3389 ];
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

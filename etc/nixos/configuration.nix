@@ -43,6 +43,8 @@
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
 
   security.apparmor.enable = true;
   security.polkit.enable = true;
@@ -68,7 +70,7 @@
       extraGroups = [ 
         "video" "wheel"  
         "libvirtd" "networkmanager" 
-        "wireshark" "docker" 
+        "wireshark" "docker" "vboxusers"
       ];
     };
   };
