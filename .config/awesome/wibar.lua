@@ -19,6 +19,8 @@ local battery = require("widgets/battery")
 local calendar = require("widgets/calendar")
 local shared = require("shared")
 
+
+local modkey = "Mod4"
 local systray_margin = (theme.wibar_height - theme.systray_icon_size) / 2
 
 local clock_calendar = wibox.widget.textclock();
