@@ -11,7 +11,6 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.seraphybr = {
-
     programs = {
       home-manager.enable = true;
       git = {
@@ -90,13 +89,13 @@ in
 
       #others
       udiskie rofi zathura virt-manager
-      geoclue2 transmission-gtk
-      gcolor2 gnome3.gucharmap
+      geoclue2 transmission-gtk insomnia
+      gcolor2 gnome3.gucharmap bitwarden
 
       #xorg
       xorg.xdpyinfo wmctrl libnotify xorg.xkill
       xclip arandr xautolock picom dragon-drop
-      glxinfo
+      glxinfo xorg.xev
 
     ];
 
@@ -146,15 +145,6 @@ in
     '';
 
     home.file.".zlogin".text = ''
-      if [ ! -d "$HOME/Git/dotfiles" ]
-      then
-          echo "Downloading dotfiles..."
-          mkdir -p Git 
-          git clone --recurse-submodules -j3 "git@github.com:SeraphyBR/dotfiles.git"
-          echo "Apply dotfiles from home-manager in /etc/nixos/home.nix"
-          su -c "nixos-rebuild switch"
-      fi
-
       # Auto startx for tty1
       if [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ]
       then
@@ -162,6 +152,23 @@ in
       fi
     '';
 
+  };
+
+  home-manager.users.root = {
+    xdg.enable = true;
+
+    xdg.configFile."ranger" = {
+      source = "${dotfiles}/.config/ranger";
+      recursive = true;
+    };
+
+    xdg.configFile."nvim" = {
+      source = "${dotfiles}/.config/nvim";
+      recursive = true;
+    };
+
+    home.file.".zshrc".source = "${dotfiles}/.zshrc";
+    home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
   };
 
 }

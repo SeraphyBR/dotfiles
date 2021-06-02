@@ -65,7 +65,7 @@ in
     nodejs yarn
 
     #tools
-    gparted
+    gparted jmtpfs
 
     #others
     nvidia-offload
