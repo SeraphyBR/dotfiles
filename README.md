@@ -24,8 +24,8 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 
 | Type              | Program                                                                                                                           |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| Linux Distro      | [NixOS](https://nixos.org/Welcome)                                                                                           |
-| Window Manager    | [Awesome](https://github.com/baskerville/bspwm)                                                                                   |
+| Linux Distro      | [NixOS](https://nixos.org/Welcome)                                                                                                |
+| Window Manager    | [Awesome](https://awesomewm.org/)                                                                                   |
 | Compositor        | [Picom](https://github.com/yshui/picom)                                                                                           |
 | Web Browser       | [qutebrowser](https://qutebrowser.org/)                                                                                           |
 | Program Launcher  | [Rofi](https://github.com/DaveDavenport/rofi)                                                                                     |
@@ -43,7 +43,7 @@ Repository dedicated to my configuration files of my Desktop environment, with t
 | Lock Screen       | [Betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen) (i3lock-color script)                                         |
 | Automounter       | [Udiskie](https://github.com/coldfix/udiskie)                                                                                     |
 | GTK theme         | [Vimix-dark-laptop-beryl](https://github.com/vinceliuice/vimix-gtk-themes)                                                        |
-| Cursor theme      | Breeze Obsidian                                                                                                                   |
+| Cursor theme      | [Bibata Oil](https://github.com/ful1e5/Bibata_Cursor)                                                                             |
 | Icon theme        | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/)                                                          |
 
 ##### Obs: My vscode settings are not present in this repository, they are saved in a private gist, if you are interested, talk to me on the telegram.

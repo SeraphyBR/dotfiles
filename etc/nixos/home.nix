@@ -11,58 +11,6 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.seraphybr = {
-    programs = {
-      home-manager.enable = true;
-      git = {
-        enable = true;
-        userName  = "SeraphyBR";
-        userEmail = "luisjuniorbr@gmail.com";
-      };
-    };
-
-    xsession.enable = true;
-    xsession.windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks # package manager for lua
-        luadbi-mysql # Database abstration layer
-        lgi # Lua bindings to GObject libraries
-      ];
-    }; 
-
-    xdg = {
-      enable = true;
-      userDirs.enable = true;
-    };
-
-    gtk = {
-      enable = true;
-      font = {
-        package = pkgs.cantarell-fonts;
-        name = "Cantarell 11";
-      };
-
-      theme = {
-        package = pkgs.vimix-gtk-themes;
-        name = "vimix-dark-laptop-beryl";
-      };
-
-      iconTheme = {
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
-      };
-    };
-
-    qt = {
-      enable = true;
-      platformTheme = "gtk";
-    };
-
-    home.sessionVariables = {
-      TERMINAL = "kitty";
-      EDITOR = "nvim";
-    };
-
     home.packages = with pkgs; [
       #terminal & tools
       kitty cava calc hsetroot
@@ -100,6 +48,64 @@ in
 
     ];
 
+    programs = {
+      home-manager.enable = true;
+      git = {
+        enable = true;
+        userName  = "SeraphyBR";
+        userEmail = "luisjuniorbr@gmail.com";
+      };
+    };
+
+    xsession.enable = true;
+    xsession.windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks # package manager for lua
+        luadbi-mysql # Database abstration layer
+        lgi # Lua bindings to GObject libraries
+      ];
+    }; 
+
+    xdg = {
+      enable = true;
+      userDirs.enable = true;
+    };
+
+    xsession.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata_Oil";
+      size = 24;
+    };
+
+    gtk = {
+      enable = true;
+      font = {
+        package = pkgs.cantarell-fonts;
+        name = "Cantarell 11";
+      };
+
+      theme = {
+        package = pkgs.vimix-gtk-themes;
+        name = "vimix-dark-laptop-beryl";
+      };
+
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus-Dark";
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+    };
+
+    home.sessionVariables = {
+      TERMINAL = "kitty";
+      EDITOR = "nvim";
+    };
+
     xdg.configFile."awesome".source = "${dotfiles}/.config/awesome";
     xdg.configFile."cava/config".source = "${dotfiles}/.config/cava/config";
     xdg.configFile."rofi".source = "${dotfiles}/.config/rofi";
@@ -133,6 +139,14 @@ in
     home.file.".zshrc".source = "${dotfiles}/.zshrc";
     home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
     home.file.".xinitrc".source = "${dotfiles}/.xinitrc";
+
+    # https://github.com/nix-community/home-manager/issues/2081
+    home.file.".icons/default/index.theme".text = ''
+      [Icon Theme]
+      Name=Default
+      Comment=Default Cursor Theme
+      Inherits=Bibata_Oil
+    '';
 
     home.file.".zshenv".text = ''
       # Time zsh command
