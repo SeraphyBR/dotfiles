@@ -256,6 +256,14 @@ config.set('content.media.audio_capture', True, 'https://teams.microsoft.com')
 #   - ask
 config.set('content.media.video_capture', True, 'https://teams.microsoft.com')
 
+# Allow websites to show notifications.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.notifications.enabled', True, 'https://www.deezer.com')
+
 # Enable plugins in Web pages.
 # Type: Bool
 c.content.plugins = True

@@ -22,7 +22,7 @@ return {
         "caffeine",
         "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1 &",
         "udiskie --smart-tray",
-        scripts .. "wallblur/wallblur.sh -o " .. wallpapers,
+        -- scripts .. "wallblur/wallblur.sh -o " .. wallpapers,
         scripts .. "mpd_notify.sh"
     }
 }

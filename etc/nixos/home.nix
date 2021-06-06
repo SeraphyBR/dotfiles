@@ -43,6 +43,7 @@ in
       };
 
       theme = {
+        package = pkgs.vimix-gtk-themes;
         name = "vimix-dark-laptop-beryl";
       };
 

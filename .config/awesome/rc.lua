@@ -7,16 +7,6 @@ require("error")
 -- Standard awesome library
 local awful = require("awful")
 
--- Widget and layout library
-local wibox = require("wibox")
-
--- Theme handling library
-local beautiful = require("beautiful")
-beautiful.init(os.getenv("HOME").."/.config/awesome/theme.lua")
-
--- Notification library
-local default = require("programs").default
-
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.spiral.dwindle,
@@ -37,18 +27,6 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
 }
 
-mymainmenu = awful.menu({
-    items = {
-        { "awesome", myawesomemenu, beautiful.awesome_icon },
-        { "open terminal", default.terminal }
-    }
-})
-
-mylauncher = awful.widget.launcher({
-    image = beautiful.awesome_icon,
-    menu = mymainmenu
-})
-
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 --screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(
@@ -58,12 +36,17 @@ awful.screen.connect_for_each_screen(
     end
 )
 
+-- Theme handling library
+local beautiful = require("beautiful")
+beautiful.init(os.getenv("HOME").."/.config/awesome/theme.lua")
+
 -- Enable focus follow mouse
 require("awful.autofocus")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- My modules
 require("wibar")
 require("notifications")
 require("keybinds")

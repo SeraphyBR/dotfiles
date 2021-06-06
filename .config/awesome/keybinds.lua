@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local default = require("programs").default
+local mymainmenu = require("widgets/menu")
 
 local keybinds = {}
 
