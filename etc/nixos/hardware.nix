@@ -6,9 +6,14 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.bluetooth.enable = true;
+
+  nix.maxJobs = lib.mkDefault 8;
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   swapDevices = [ ];
 
@@ -20,25 +25,6 @@
   services.fstrim = {
     enable = true;
     interval = "weekly";
-  };
-
-  hardware.cpu.intel.updateMicrocode = true;
-
-  nix.maxJobs = lib.mkDefault 8;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  hardware.bluetooth.enable = true;
-
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.prime = {
-    #offload.enable = true;
-    sync.enable = true;
-
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
-
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
   };
 
   fileSystems."/" = {

@@ -1,20 +1,7 @@
 
 { config, pkgs, options,... }:
 
-let
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec -a "$0" "$@"
-  '';
-
-in
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  #
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
@@ -22,11 +9,28 @@ in
     };
   };
 
+  # Virtualization section
+  virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
+
+  # Security section
+  security.apparmor.enable = true;
+  security.polkit.enable = true;
+  security.sudo.enable = false;
+  security.pam.services.seraphybr.enableGnomeKeyring = true;
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+  };
+
   programs.command-not-found.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
   programs.light.enable = true; # Needed for the /run/wrappers/bin/light SUID wrapper.
-
   programs.steam.enable = true;
   programs.java.enable = true;
 
@@ -37,6 +41,12 @@ in
 
   environment.pathsToLink = [ "/libexec" ];
 
+  environment.sessionVariables.TERMINAL = [ "kitty" ];
+  environment.sessionVariables.EDITOR = [ "nvim" ];
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  #
   environment.systemPackages = with pkgs; [
     #terminal & tools
     neofetch htop ranger git
@@ -68,11 +78,7 @@ in
     gparted jmtpfs
 
     #others
-    nvidia-offload
     polkit_gnome
 
   ];
-
-  environment.sessionVariables.TERMINAL = [ "kitty" ];
-  environment.sessionVariables.EDITOR = [ "nvim" ];
 }

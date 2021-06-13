@@ -1,10 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, config,... }:
 let
   dotfiles = "/home/seraphybr/Git/dotfiles";
 in
 {
   imports = [
     (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+  ];
+
+  fonts.fonts = with pkgs; [
+    fira-code
+    cantarell-fonts
+    noto-fonts
+    noto-fonts-cjk
+    font-awesome_4
+    material-design-icons
+    corefonts
+    (nerdfonts.override {
+      fonts = [ "FiraCode" ];
+    })
   ];
 
   home-manager.useUserPackages = true;
@@ -139,14 +152,6 @@ in
     home.file.".zshrc".source = "${dotfiles}/.zshrc";
     home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
     home.file.".xinitrc".source = "${dotfiles}/.xinitrc";
-
-    # https://github.com/nix-community/home-manager/issues/2081
-    home.file.".icons/default/index.theme".text = ''
-      [Icon Theme]
-      Name=Default
-      Comment=Default Cursor Theme
-      Inherits=Bibata_Oil
-    '';
 
     home.file.".zshenv".text = ''
       # Time zsh command

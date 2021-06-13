@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware.nix
+      ./nvidia.nix
       ./network.nix
       ./boot.nix
       ./overlays.nix
@@ -15,7 +16,6 @@
       ./services.nix
       ./home.nix
     ];
-
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -27,36 +27,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  fonts.fonts = with pkgs; [
-    fira-code
-    cantarell-fonts
-    noto-fonts
-    noto-fonts-cjk
-    font-awesome_4
-    material-design-icons
-    corefonts
-    (nerdfonts.override {
-      fonts = [ "FiraCode" ];
-    })
-  ];
-
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  #virtualisation.virtualbox.host.enable = true;
-  #virtualisation.virtualbox.host.enableExtensionPack = true;
-
-  security.apparmor.enable = true;
-  security.polkit.enable = true;
-  security.sudo.enable = false;
-  security.pam.services.seraphybr.enableGnomeKeyring = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-  };
-
 
   users = {
     users.root = {
@@ -76,7 +46,7 @@
   };
 
   # This value determines the NixOS release from which the default
-# settings for stateful data, like file locations and database versions
+  # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
