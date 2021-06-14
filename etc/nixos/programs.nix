@@ -65,8 +65,12 @@
     pkg-config python38Full 
 
     # CSharp
-    dotnet-sdk_3 dotnet-aspnetcore dotnet-netcore mono6
-    omnisharp-roslyn msbuild
+    omnisharp-roslyn mono msbuild
+    (with dotnetCorePackages; combinePackages [
+      sdk_5_0
+      sdk_3_1
+      sdk_3_0
+    ])
 
     #rust dev
     rustup lldb rust-analyzer
