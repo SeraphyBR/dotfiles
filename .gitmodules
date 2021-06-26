@@ -7,3 +7,6 @@
 [submodule ".config/ranger/plugins/ranger_devicons"]
 	path = .config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons.git
+[submodule ".config/awesome/external/bling"]
+	path = .config/awesome/external/bling
+	url = https://github.com/SeraphyBR/bling.git
