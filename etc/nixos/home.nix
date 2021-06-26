@@ -30,7 +30,7 @@ in
       gitAndTools.gh
 
       #browser
-      qutebrowser
+      qutebrowser google-chrome
 
       #chat
       tdesktop discord teams
@@ -44,7 +44,7 @@ in
       sxiv shotgun hacksaw
 
       #editor/ide
-      vscode neovim
+      neovim
 
       #printer
       simple-scan
@@ -63,6 +63,10 @@ in
 
     programs = {
       home-manager.enable = true;
+      vscode = {
+        enable = true;
+        package = pkgs.vscode-fhs;
+      };
       git = {
         enable = true;
         userName  = "SeraphyBR";

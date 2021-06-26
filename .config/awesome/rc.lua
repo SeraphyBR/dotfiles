@@ -40,6 +40,21 @@ awful.screen.connect_for_each_screen(
 local beautiful = require("beautiful")
 beautiful.init(os.getenv("HOME").."/.config/awesome/theme.lua")
 
+-- Bling Wallpaper Module
+local bling = require("./external/bling")
+local dotfiles_images = os.getenv("HOME").."/Git/dotfiles/images"
+
+bling.module.wallpaper.setup {
+    set_function = bling.module.wallpaper.setters.random,
+    wallpaper = {
+        dotfiles_images.."/wallpapers", 
+        dotfiles_images.."/wallpapers2"
+    },
+    change_timer = 631,  -- prime numbers are better for timers
+    position = "fit",
+    background = "#424242"
+}
+
 -- Enable focus follow mouse
 require("awful.autofocus")
 -- Enable hotkeys help widget for VIM and other apps
