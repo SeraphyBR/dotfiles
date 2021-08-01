@@ -27,6 +27,10 @@
           ldoc = pkgs.luajitPackages.ldoc;
         });
 
+        betterlockscreen = super.betterlockscreen.overrideAttrs (old: {
+           version = "v4.0.0-beta1";
+        });
+
       })
     ];
 }

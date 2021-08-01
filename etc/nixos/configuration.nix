@@ -7,14 +7,15 @@
 {
   imports =
     [
+      ./users.nix
       ./hardware.nix
-      ./nvidia.nix
       ./network.nix
       ./boot.nix
       ./overlays.nix
       ./programs.nix
       ./services.nix
       ./home.nix
+      ./specialisation.nix
     ];
 
   # Select internationalisation properties.
@@ -27,23 +28,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  users = {
-    users.root = {
-      shell = pkgs.zsh;
-      initialPassword = "root";
-    };
-    users.seraphybr = {
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      initialPassword = "nixos";
-      extraGroups = [ 
-        "video" "wheel"  
-        "libvirtd" "networkmanager" 
-        "wireshark" "docker" "vboxusers"
-      ];
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

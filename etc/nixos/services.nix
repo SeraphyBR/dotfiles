@@ -4,8 +4,6 @@
 {
   # List services that you want to enable:
   services = {
-    # RDP client support
-    xrdp.enable = true;
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     # Bluetooth tool
@@ -43,12 +41,22 @@
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
+      videoDrivers = [ "modesetting" ];
       layout = "br,us";
       xkbVariant = "abnt2,intl";
       xkbOptions = "grp:shifts_toggle";
       libinput.enable = true;
       desktopManager.xterm.enable = false;
-      displayManager.startx.enable = true;
+      #displayManager.startx.enable = true;
+      displayManager.lightdm.enable = true;
+      windowManager.awesome = {
+        enable = true;
+        luaModules = with pkgs.luaPackages; [
+          luarocks # package manager for lua
+          luadbi-mysql # Database abstration layer
+          lgi # Lua bindings to GObject libraries
+        ];
+      }; 
       displayManager.sessionCommands = ''
         ${pkgs.xorg.xrdb}/bin/xrdb -merge $HOME/.Xresources
       '';

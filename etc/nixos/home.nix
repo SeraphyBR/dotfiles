@@ -10,6 +10,7 @@ in
   fonts.fonts = with pkgs; [
     fira-code
     cantarell-fonts
+    open-sans # Fix telegram font issue
     noto-fonts
     noto-fonts-cjk
     font-awesome_4
@@ -31,6 +32,9 @@ in
 
       #browser
       qutebrowser google-chrome
+
+      #mail
+      thunderbird
 
       #chat
       tdesktop discord teams
@@ -56,7 +60,7 @@ in
 
       #xorg
       xorg.xdpyinfo wmctrl libnotify xorg.xkill
-      xclip arandr xautolock picom dragon-drop
+      xclip arandr xautolock dragon-drop
       glxinfo xorg.xev
 
     ];
@@ -74,15 +78,15 @@ in
       };
     };
 
-    xsession.enable = true;
-    xsession.windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks # package manager for lua
-        luadbi-mysql # Database abstration layer
-        lgi # Lua bindings to GObject libraries
-      ];
-    }; 
+    services = {
+      picom = {
+        enable = true;
+        opacityRule = [ "92:class_g = 'Code'" ];
+        backend = "glx";
+        vSync = false;
+        shadowExclude = [ "name = 'hacksaw'" ];
+      };
+    };
 
     xdg = {
       enable = true;
@@ -147,7 +151,6 @@ in
     xdg.configFile."zathura".source = "${dotfiles}/.config/zathura";
 
     xresources.properties = {
-      "Xft.dpi" = "96";
       "Sxiv.font" = "Fira Code:size=12";
       "Sxiv.foreground" = "#222222";
       "Sxiv.background" = "#A0C28A";

@@ -5,6 +5,9 @@ local awful = require("awful")
 -- Widget and layout library
 local wibox = require("wibox")
 
+-- Notification
+local naughty = require("naughty")
+
 -- Theme handling library
 local beautiful = require("beautiful")
 
@@ -88,4 +91,3 @@ client.connect_signal("unfocus",
         c.border_color = beautiful.border_normal
     end
 )
-

@@ -17,7 +17,6 @@ return {
     -- List of apps to start once on start-up
     run_on_start_up = {
         "mpd",
-        "picom -b",
         "systemctl --user start redshift",
         "caffeine",
         "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1 &",

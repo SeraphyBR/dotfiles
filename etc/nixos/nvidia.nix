@@ -4,6 +4,7 @@
 {
 
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.prime = {
@@ -18,9 +19,15 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "nvidia" ];
-      # Manualy setting dpi, for nvidia prime sync
-      dpi = 96;
-    };
+    videoDrivers = lib.mkForce [ "nvidia" ];
+    # Manualy setting dpi, for nvidia prime sync
+    dpi = 96;
+    # Fix Screen tearing (may cause some others problems)
+    screenSection = ''
+      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      Option         "AllowIndirectGLXProtocol" "off"
+      Option         "TripleBuffer" "on"
+    '';
+  };
 
-  }
+}

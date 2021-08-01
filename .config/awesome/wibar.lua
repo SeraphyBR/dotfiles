@@ -96,13 +96,6 @@ awful.screen.connect_for_each_screen(
             buttons = taglist_buttons
         }
 
-        -- Create a tasklist widget
-        s.mytasklist = awful.widget.tasklist {
-            screen = s,
-            filter = awful.widget.tasklist.filter.currenttags,
-            buttons = tasklist_buttons
-        }
-
         -- Create an imagebox widget which will contain an icon indicating which layout we're using.
         -- We need one layoutbox per screen.
         s.mylayoutbox = awful.widget.layoutbox(s)
@@ -133,7 +126,6 @@ awful.screen.connect_for_each_screen(
                 { -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
                     spacing = theme.wibar_spacing,
-                    ethernet,
                     wireless,
                     shared.mk_separator(5),
                     volume.label,

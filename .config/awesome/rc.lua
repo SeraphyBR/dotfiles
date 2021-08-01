@@ -47,7 +47,7 @@ local dotfiles_images = os.getenv("HOME").."/Git/dotfiles/images"
 bling.module.wallpaper.setup {
     set_function = bling.module.wallpaper.setters.random,
     wallpaper = {
-        dotfiles_images.."/wallpapers", 
+        dotfiles_images.."/wallpapers",
         dotfiles_images.."/wallpapers2"
     },
     change_timer = 631,  -- prime numbers are better for timers

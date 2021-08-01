@@ -21,11 +21,4 @@ export SSH_AUTH_SOCK
 xrandr --setprovideroutputsource 1 0
 xrandr --auto
 
-# Set dpi
-for i in 1 2; do
-    xrandr --fbmm `xrandr | sed -n '/ connected / {s/.* \([0-9]\+\)mm x \([0-9]\+\)mm/\1x\2/p;q}'`
-done
-
-exec  awesome
-
-
+#exec  awesome
