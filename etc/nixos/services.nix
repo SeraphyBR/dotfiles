@@ -48,7 +48,6 @@
       libinput.enable = true;
       desktopManager.xterm.enable = false;
       #displayManager.startx.enable = true;
-      displayManager.lightdm.enable = true;
       windowManager.awesome = {
         enable = true;
         luaModules = with pkgs.luaPackages; [
@@ -57,6 +56,30 @@
           lgi # Lua bindings to GObject libraries
         ];
       }; 
+      displayManager.lightdm = {
+        enable = true;
+        background = config.boot.loader.grub.splashImage; 
+        greeters.gtk = {
+          enable = true;
+          theme = {
+            package = pkgs.vimix-gtk-themes;
+            name = "vimix-dark-laptop-beryl";
+          };
+          cursorTheme = {
+            package = pkgs.bibata-cursors;
+            name = "Bibata_Oil";
+            size = 24;
+          };
+          indicators = [ 
+            "~clock"
+            "~spacer"
+            "~session"
+            "~language"
+            "~a11y"
+            "~power" 
+          ];
+        };
+      };
       displayManager.sessionCommands = ''
         ${pkgs.xorg.xrdb}/bin/xrdb -merge $HOME/.Xresources
       '';
