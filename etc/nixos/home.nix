@@ -31,7 +31,7 @@ in
       gitAndTools.gh
 
       #browser
-      qutebrowser google-chrome
+      qutebrowser brave
 
       #mail
       thunderbird
@@ -93,10 +93,20 @@ in
       userDirs.enable = true;
     };
 
-    xsession.pointerCursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata_Oil";
-      size = 24;
+    # NixOS already handle this
+    home.keyboard = null;
+
+    xsession = {
+      # Needed for things like qt.platformTheme
+      enable = true;
+      scriptPath = ".xsession-hm";
+      # NixOS already handle this
+      windowManager.command = "";
+      pointerCursor = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata_Oil";
+        size = 24;
+      };
     };
 
     gtk = {

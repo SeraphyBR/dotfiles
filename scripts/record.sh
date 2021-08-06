@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 filename="$HOME/Video/ScreenRecords/record_$(date +%Y-%m-%d_%H:%M:%S).mkv"
-tmpfile="$HOME/current_record_$(date +%Y-%m-%d).mkv"
 
 thumb="/tmp/thumb.jpg"
 
@@ -15,9 +14,9 @@ audio_card="alsa_output.pci-0000_00_1f.3.analog-stereo.monitor"
 if pgrep ffmpeg; then
     sleep 2
     killall ffmpeg
-    ffmpeg -y -nostats -loglevel 0 -i "$tmpfile" -an -frames:v 1 -ss 3 "$thumb"
+    sleep 2
+    ffmpeg -y -nostats -loglevel 0 -i "$filename" -an -frames:v 1 -ss 3 "$thumb"
     notify-send -i "$thumb" "FFmpeg" "Gravação da tela finalizada!"
-    mv "$tmpfile" "$filename"
     exit 0
 fi
 
@@ -45,5 +44,5 @@ ffmpeg -nostats -loglevel 0 -s ${width}x${height} \
 -r 30 \
 -c:a libopus \
 -b:a 72k \
--y "$tmpfile" &
+-y "$filename" &
 
