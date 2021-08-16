@@ -125,6 +125,11 @@ in
         package = pkgs.papirus-icon-theme;
         name = "Papirus-Dark";
       };
+
+      gtk3.extraConfig = {
+        # No Close,Minimize,Maximize Buttons inside gtk apps
+        gtk-decoration-layout = "appmenu:";
+      };
     };
 
     qt = {
