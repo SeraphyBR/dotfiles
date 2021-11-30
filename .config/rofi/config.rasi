@@ -2,11 +2,8 @@ configuration {
 	modi: "run,drun,window";
 	width: 50;
 	lines: 17;
-	columns: 1;
 	font: "Fira Code Medium 14";
-	bw: 1;
 	location: 0;
-	padding: 5;
 	yoffset: 0;
 	xoffset: 0;
 	fixed-num-lines: true;
@@ -24,11 +21,9 @@ configuration {
 	eh: 1;
 	auto-select: false;
 	matching: "normal";
-	fullscreen: false;
 	dpi: -1;
 	threads: 0;
 	scroll-method: 1;
 	click-to-exit: true;
-	show-match: true;
 	theme: "themes/flat-green-transparent.rasi";
 }

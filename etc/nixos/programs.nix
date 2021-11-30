@@ -67,7 +67,6 @@
     (with dotnetCorePackages; combinePackages [
       sdk_5_0
       sdk_3_1
-      sdk_3_0
     ])
 
     #rust dev

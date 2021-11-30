@@ -19,11 +19,6 @@
         host all all all trust
       '';
     };
-    # Enable CUPS to print documents.
-    printing = {
-      enable = true;
-      drivers = [ pkgs.hplipWithPlugin ];
-    };
     redshift = {
       enable = true;
       executable = "/bin/redshift-gtk";

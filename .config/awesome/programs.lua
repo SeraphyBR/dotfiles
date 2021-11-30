@@ -16,6 +16,7 @@ return {
 
     -- List of apps to start once on start-up
     run_on_start_up = {
+        "snixembed",
         "mpd",
         "systemctl --user start redshift",
         "caffeine",

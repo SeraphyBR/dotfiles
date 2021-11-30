@@ -10,13 +10,13 @@
    maincolor:        #7FFF00;
    highlight:        bold #7FFF00;
    selection:        #556B2F;
-   urgentcolor:       #FF4500;
+   urgentcolor:     #FF4500;
 
    fgwhite:          #ffffff;
    blackdarkest:     #1d1d1d66;
    blackdarkest2:    #1d1d1d;
    blackwidget:      #262626;
-   blackwidget2:      #26262666;
+   blackwidget2:     #26262666;
    blackentry:       #29292966;
    blackselect:      #30303066;
    darkgray:         #848484;
@@ -24,30 +24,30 @@
    background-color: @blackdarkest;
 }
 
-#window {
+window {
    background-color: @blackdarkest;
    anchor: north;
    location: north;
    y-offset: 20%;
 }
 
-#mainbox {
+mainbox {
    background-color: @blackdarkest;
    spacing:0px;
    children: [inputbar, message, sidebar, listview];
 }
 
-#message {
+message {
    padding: 6px 10px;
    background-color:@blackwidget;
 }
 
-#textbox {
+textbox {
    text-color:@darkgr;
    background-color:@blackwidget;
 }
 
-#listview {
+listview {
    fixed-height: false;
    dynamic: true;
    scrollbar: true;
@@ -57,99 +57,104 @@
    background: @blackdarkest;
 }
 
-#element {
+element {
    padding: 2px 15px;
 }
 
-#element.normal.normal {
+element.normal.normal {
    padding: 0px 15px;
    background-color: @blackentry;
    text-color: @fgwhite;
 }
 
-#element.normal.urgent {
+element.normal.urgent {
    background-color: @blackentry;
    text-color: @urgentcolor;
 }
 
-#element.normal.active {
+element.normal.active {
    background-color: @blackentry;
    text-color: @maincolor;
 }
 
-#element.selected.normal {
+element.selected.normal {
     background-color: @selection;
     text-color:       @fgwhite;
 }
 
-#element.selected.urgent {
+element.selected.urgent {
     background-color: @urgentcolor;
     text-color:       @blackdarkest2;
 }
 
-#element.selected.active {
+element.selected.active {
     background-color: @maincolor;
     text-color:       @blackdarkest2;
 }
 
-#element.alternate.normal {
+element.alternate.normal {
     background-color: @blackentry;
     text-color:       @fgwhite;
 }
 
-#element.alternate.urgent {
+element.alternate.urgent {
     background-color: @blackentry;
     text-color:       @urgentcolor;
 }
 
-#element-icon {
+element-icon {
     size: 2.3ch;
 }
 
-#element.alternate.active {
+element.alternate.active {
     background-color: @blackentry;
     text-color:       @maincolor;
 }
 
-#scrollbar {
+scrollbar {
    background-color: @blackwidget2;
    handle-color: @darkgray;
    handle-width: 15px;
 }
 
-#sidebar {
+sidebar {
    background-color: @blackwidget;
 }
 
-#button {
+button {
    background-color: @blackwidget;
    text-color:       @darkgray;
 }
 
 
-#button.selected {
+button.selected {
     text-color:       @maincolor;
 }
 
-#inputbar {
+inputbar {
    background-color: @blackdarkest2;
    spacing: 0px;
 }
 
-#prompt {
+prompt {
    padding:6px 9px;
    background-color: @maincolor;
    text-color:@blackwidget;
 }
 
-#entry {
+entry {
    padding:6px 10px;
    background-color:@blackwidget;
    text-color:@fgwhite;
 }
 
-#case-indicator {
+case-indicator {
    padding:6px 10px;
    text-color:@maincolor;
    background-color:@blackwidget;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
 }

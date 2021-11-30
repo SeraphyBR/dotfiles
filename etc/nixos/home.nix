@@ -61,7 +61,7 @@ in
       #xorg
       xorg.xdpyinfo wmctrl libnotify xorg.xkill
       xclip arandr xautolock dragon-drop
-      glxinfo xorg.xev
+      glxinfo xorg.xev snixembed
 
     ];
 

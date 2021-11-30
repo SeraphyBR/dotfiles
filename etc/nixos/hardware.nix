@@ -6,11 +6,13 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "joydev" ];
   boot.extraModulePackages = [ ];
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.bluetooth.enable = true;
+  hardware.xpadneo.enable = true;
+  hardware.steam-hardware.enable = true;
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
