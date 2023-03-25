@@ -25,5 +25,6 @@ configuration {
 	threads: 0;
 	scroll-method: 1;
 	click-to-exit: true;
-	theme: "themes/flat-green-transparent.rasi";
 }
+
+@theme "themes/flat-green-transparent.rasi"

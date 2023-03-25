@@ -19,12 +19,6 @@
   security.sudo.enable = false;
   security.pam.services.seraphybr.enableGnomeKeyring = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-  };
-
   programs.command-not-found.enable = true;
   programs.dconf.enable = true;
   programs.zsh.enable = true;
@@ -62,13 +56,6 @@
     gnumake lua binutils.bintools gdb
     pkg-config python38Full 
 
-    # CSharp
-    omnisharp-roslyn mono msbuild
-    (with dotnetCorePackages; combinePackages [
-      sdk_5_0
-      sdk_3_1
-    ])
-
     #rust dev
     rustup lldb rust-analyzer
 
@@ -80,5 +67,8 @@
 
     #others
     polkit_gnome
+
+    # For pactl with pipewire
+    pulseaudio
   ];
 }

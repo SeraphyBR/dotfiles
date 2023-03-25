@@ -25,6 +25,7 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.seraphybr = {
+    home.stateVersion = "18.09";
     home.packages = with pkgs; [
       #terminal & tools
       kitty cava calc hsetroot
@@ -32,6 +33,7 @@ in
 
       #browser
       qutebrowser brave
+      firefox
 
       #mail
       thunderbird
@@ -60,7 +62,7 @@ in
 
       #xorg
       xorg.xdpyinfo wmctrl libnotify xorg.xkill
-      xclip arandr xautolock dragon-drop
+      xclip arandr xautolock xdragon
       glxinfo xorg.xev snixembed
 
     ];
@@ -81,7 +83,7 @@ in
     services = {
       picom = {
         enable = true;
-        opacityRule = [ "92:class_g = 'Code'" ];
+        opacityRules = [ "92:class_g = 'Code'" ];
         backend = "glx";
         vSync = false;
         shadowExclude = [ "name = 'hacksaw'" ];
@@ -96,17 +98,19 @@ in
     # NixOS already handle this
     home.keyboard = null;
 
+    home.pointerCursor = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Classic";
+        size = 24;
+        x11.enable = true;
+    };
+
     xsession = {
       # Needed for things like qt.platformTheme
       enable = true;
       scriptPath = ".xsession-hm";
       # NixOS already handle this
       windowManager.command = "";
-      pointerCursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata_Oil";
-        size = 24;
-      };
     };
 
     gtk = {
@@ -197,6 +201,7 @@ in
   };
 
   home-manager.users.root = {
+    home.stateVersion = "18.09";
     xdg.enable = true;
 
     xdg.configFile."ranger" = {

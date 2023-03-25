@@ -4,6 +4,13 @@
 {
   # List services that you want to enable:
   services = {
+    # Sound
+    pipewire = {
+    	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+    };
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     # Bluetooth tool
