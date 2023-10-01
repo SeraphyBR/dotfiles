@@ -10,7 +10,6 @@
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev"; # or "nodev" for efi only
   boot.loader.grub.splashImage = "/etc/nixos/boot_wallpaper.jpg"; 
@@ -20,5 +19,5 @@
     efiSysMountPoint = "/boot/efi";
   }; 
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 }

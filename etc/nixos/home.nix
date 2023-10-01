@@ -32,14 +32,13 @@ in
       gitAndTools.gh
 
       #browser
-      qutebrowser brave
-      firefox
+      qutebrowser microsoft-edge
 
       #mail
       thunderbird
 
       #chat
-      tdesktop discord teams
+      tdesktop discord
 
       #audio & video
       ncmpcpp mpd playerctl mpc_cli mpv
