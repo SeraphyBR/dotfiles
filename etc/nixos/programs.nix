@@ -42,7 +42,7 @@
   environment.systemPackages = with pkgs; [
     #terminal & tools
     neofetch htop ranger git
-    wget unzip exa pciutils unrar psmisc
+    wget unzip eza pciutils unrar psmisc
     cmatrix iw lm_sensors fbcat
 
     #theme
@@ -54,7 +54,7 @@
     #dev
     gcc zlib cmake musl clang clang-tools bzip2
     gnumake lua binutils.bintools gdb
-    pkg-config python38Full 
+    pkg-config 
 
     #rust dev
     rustup lldb rust-analyzer

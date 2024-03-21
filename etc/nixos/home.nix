@@ -4,10 +4,10 @@ let
 in
 {
   imports = [
-    (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+    (import "${builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz}/nixos")
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     fira-code
     cantarell-fonts
     open-sans # Fix telegram font issue
@@ -25,7 +25,7 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.seraphybr = {
-    home.stateVersion = "18.09";
+    home.stateVersion = "23.11";
     home.packages = with pkgs; [
       #terminal & tools
       kitty cava calc hsetroot
@@ -197,10 +197,16 @@ in
       fi
     '';
 
+
+      # Some weird bug
+      manual.manpages.enable = false;
+      manual.html.enable = false;
+      manual.json.enable = false;
+
   };
 
   home-manager.users.root = {
-    home.stateVersion = "18.09";
+    home.stateVersion = "23.11";
     xdg.enable = true;
 
     xdg.configFile."ranger" = {
@@ -215,6 +221,11 @@ in
 
     home.file.".zshrc".source = "${dotfiles}/.zshrc";
     home.file.".p10k.zsh".source = "${dotfiles}/.p10k.zsh";
+
+      # Some weird bug
+      manual.manpages.enable = false;
+      manual.html.enable = false;
+      manual.json.enable = false;
   };
 
 }
