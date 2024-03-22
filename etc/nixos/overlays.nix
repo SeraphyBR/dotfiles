@@ -9,13 +9,14 @@
             owner = "awesomeWM";
             repo = "awesome";
             # Commit hash
-            rev = "7707618336a9aabf8194d1be93f4a03e4ad01d07";
-            sha256 = "sha256:e6f5c7980862b7c3ec6c50c643b15ff2249310cc";
+            rev = "d36e1324d17efd571cec252374a2ef5f1eeae4fd";
+            hash = "sha256-zCxghNGk/GsSt2+9JK8eXRySn9pHXaFhrRU3OtFrDoA=";
           };
-          # Using LuaJIT
-          lgi = pkgs.luajitPackages.lgi;
-          lua = pkgs.luajitPackages.lua;
-          ldoc = pkgs.luajitPackages.ldoc;
+          patches = [ ];
+
+          postPatch = ''
+            patchShebangs tests/examples/_postprocess.lua
+          '';
         });
 
       })
