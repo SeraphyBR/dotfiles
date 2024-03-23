@@ -11,6 +11,7 @@
       ./hardware.nix
       ./network.nix
       ./boot.nix
+      ./overlays.nix
       ./programs.nix
       ./services.nix
       ./home.nix

@@ -3,9 +3,9 @@
 {
   nixpkgs.overlays =
     [ 
-      (self: super: {
-        awesome = super.awesome.overrideAttrs (old: {
-          src = super.fetchFromGitHub {
+      (final: prev: {
+        awesome = prev.awesome.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
             owner = "awesomeWM";
             repo = "awesome";
             # Commit hash
